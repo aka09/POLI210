@@ -1,0 +1,31 @@
+---
+title: 'POLI210: Political Science Research Methods'
+subtitle: "Lecture 6.2: Case studies"
+date: "October 5th 2021"
+author: "Olivier Bergeron-Boutin"
+header-includes:
+  - \usepackage{booktabs}
+output: 
+  beamer_presentation:
+    theme: "metropolis"
+    latex_engine: xelatex
+classoption: t
+urlcolor: blue
+bibliography: ../210lectures_bib.bib
+biblio-style: apalike
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+## Purposive sampling
+
+Why not identify a universe of relevant cases and sample randomly? 
+
+- The benefits of randomization are "lost" in small samples
+- Practical considerations: I know some of the cases much better than others! 
+
+## Method of similarity 
+
+## Method of difference

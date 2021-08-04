@@ -1,0 +1,42 @@
+---
+title: 'POLI210: Political Science Research Methods'
+subtitle: "Lecture 8.2: Are polls broken?"
+date: "2021"
+author: "Olivier Bergeron-Boutin"
+header-includes:
+  - \usepackage{booktabs}
+output: 
+  beamer_presentation:
+    theme: "metropolis"
+    latex_engine: xelatex
+classoption: t
+urlcolor: blue
+bibliography: ../210lectures_bib.bib
+biblio-style: apalike
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+## Polling and democracy
+
+Berinsky [-@berinsky_measuring_2017]: "in effect polls have become public opinion."
+
+## A short history of polling 
+
+First issue of *Public Opinion Quarterly*:
+
+- "an essay...explaining how George Gallup's quota-controlled survey of a few thousand triumphed over the *Literary Digest*'s straw poll of millions in correctly predicting the election outcome [of 1936]." Hillygus [-@hillygus_evolution_2011]
+## Potential explanations for 2016
+
+Hypotheses [@kennedy_evaluation_2018]
+
+- Nonresponse bias and deficient weighting 
+- Late deciders
+- Misspecified likely voter models
+- The "shy" Trump voters 
+
+## References {.allowframebreaks}
+
+\footnotesize

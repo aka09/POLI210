@@ -1,0 +1,52 @@
+---
+title: 'POLI210: Political Science Research Methods'
+subtitle: "Lecture 3.1: Literatures and RQs"
+date: "September 14th, 2021"
+author: "Olivier Bergeron-Boutin"
+header-includes:
+  - \usepackage{booktabs}
+output: 
+  beamer_presentation:
+    theme: "metropolis"
+    latex_engine: xelatex
+classoption: t
+urlcolor: blue
+bibliography: ../210lectures_bib.bib
+biblio-style: apalike
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+## Finding a research question
+
+Karl Popper: "there is no such thing as a logical method of having new ideas...Discovery contains an 'irrational element,' or a 'creative intuition.'"
+
+## Problem with scientific literatures
+
+Publication bias: outcome of study influences Pr(publication) \pause
+
+- Most often: "null results" mean no publication \pause
+- "file-drawer problem" \pause
+- Incentive for researchers: keep looking until you find something! \pause 
+- Evidence of this in PS: Gerber et al. [-@gerber_publication_2010]
+- Result: 
+  - 20 studies find no effect of X on Y
+  - 1 study finds effect of X on Y
+  - That one study is published, the other 20 are not
+- Solutions? 
+  - Tolerance of null results \pause
+  - Transparency: publish data and code \pause
+  - Pre-registration (now obligatory at JoP!) \pause
+  - Registered reports (early stages!)
+  
+## Null results can be interesting!
+
+We often **assume** that there is an effect of X on Y \pause
+
+Broockman and Kalla on minimal persuasive effects 
+
+## References {.allowframebreaks}
+
+\footnotesize

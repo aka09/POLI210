@@ -1,0 +1,113 @@
+---
+title: 'POLI210: Political Science Research Methods'
+subtitle: "Lecture 2: Thinking about Science"
+date: "September 7th, 2021"
+author: "Olivier Bergeron-Boutin"
+header-includes:
+  - \usepackage{booktabs}
+output: 
+  beamer_presentation:
+    theme: "metropolis"
+    latex_engine: xelatex
+classoption: t
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+## Plan for today
+
+- What makes science scientific? 
+- What is social science for?
+
+## Political science as a science
+
+Political science: the scientific study of politics \pause
+
+What does it mean to study something "scientifically"? \pause
+
+- Very contentious -- what science is and what science should be is an ever-evolving debate \pause
+- e.g. we may disagree that political science is a science! \pause 
+
+Definition by negation: Michael Moore
+
+## Discussing "Bowling for Columbine" 
+
+How scientific is Michael Moore's method? \pause
+
+The good: 
+- Longitudinal comparison in the US \pause
+- Cross-national comparisons \pause
+- Attempt to keep certain factors "constant" \pause
+
+The bad: 
+- No systematic data on keeping doors unlocked \pause
+- Relative vs absolute gun violence \pause 
+- Does not engage with prior work \pause 
+
+## Principles of scientific research
+
+Some principles (keep in mind these are contested) \pause 
+
+- Empiricism: knowledge is derived from real-world observation \pause 
+- Method: There are rules (more or less loose) for processing those real-world observations \pause 
+- Objectivity: observation and interpretation is independent of the researcher's biases \pause
+- Accumulation of knowledge: a community builds on one another's findings \pause
+  
+## Principles of scientific research
+
+You may wonder whether this is achieveable in the social sciences \pause
+
+There are a lot of complications...
+
+- We disagree on the best way to measure a concept \pause
+- We disagree on the proper method of analyzing data \pause
+- Our biases can get in the way of our analysis...\pause
+- And our biases almost certainly affects our choice of RQs! \pause
+- Findings can be contradictory; the "body" of literature not coherent 
+
+  - [Annual Review of Political Science](https://www.annualreviews.org/loi/polisci)
+
+## The scientific process
+
+1. Familiarize yourself with the literature
+2. Come up with a research question
+3. Clarify the core concepts
+4. Develop a theory
+5. Derive hypotheses 
+6. Find a suitable way to test hypotheses
+7. Gather empirical evidence 
+8. Analyze evidence  
+9. Communicate the results
+
+Each of these steps is an art of itself! 
+
+## A few presumptions
+
+Empirical (social science) rests on a few philosophical presumptions \pause 
+
+- We'll call this an **epistemology**: a belief about the nature of knowledge \pause 
+
+Presumptions:
+
+- There is objective truth that exists independently of the observer \pause
+- There is order to the world: outcomes of interest are determined by causal forces which we can observe \pause 
+- Following a particular method makes us more likely to establish truth \pause 
+
+Learning about empirical methods will allow you to develop your own "epistemology"
+
+## What makes for credible research? 
+
+No clear demarcation between good and bad empirical research \pause
+
+Keep in mind: a single finding/study is scarcely enough \pause
+
+Hallmarks of credible research: \pause
+
+- Clearly defines concepts \pause
+- Clearly outlines the assumptions made \pause
+- Clearly describes measurement of key concepts \pause
+- Considers contradictory evidence and engages in good faith \pause 
+- Transparent data collection and analysis 

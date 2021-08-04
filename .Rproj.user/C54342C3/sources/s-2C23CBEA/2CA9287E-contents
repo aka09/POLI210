@@ -1,0 +1,40 @@
+---
+title: 'POLI210: Political Science Research Methods'
+subtitle: "Lecture 5.1: Concepts"
+date: "September 28th, 2021"
+author: "Olivier Bergeron-Boutin"
+header-includes:
+  - \usepackage{booktabs}
+output: 
+  beamer_presentation:
+    theme: "metropolis"
+    latex_engine: xelatex
+classoption: t
+urlcolor: blue
+bibliography: ../210lectures_bib.bib
+biblio-style: apalike
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+## The basis of all research
+
+Gerring [-@gerring_social_2011,p.112]: "the most basic question of social science research: what are we talking about?"
+
+## "Blithe nominalism"
+
+Inspired from Gerring[-@gerring_social_2011,p.114]
+
+## Pathologies
+
+![](gerring_concepts.png)
+
+## What do we do? 
+
+
+
+## References {.allowframebreaks}
+
+\footnotesize

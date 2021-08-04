@@ -1,0 +1,40 @@
+---
+title: 'POLI210: Political Science Research Methods'
+subtitle: "Lecture 3.1: Literatures and RQs"
+date: "September 14th, 2021"
+author: "Olivier Bergeron-Boutin"
+header-includes:
+  - \usepackage{booktabs}
+output: 
+  beamer_presentation:
+    theme: "metropolis"
+    latex_engine: xelatex
+classoption: t
+urlcolor: blue
+bibliography: ../210lectures_bib.bib
+biblio-style: apalike
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+## Parsimony 
+
+## Falsifiability
+
+A scientific theory/hypothesis must be *falsifiable*: it must be possible to demonstrate that it is false \pause
+
+- Example? \pause 
+- *Riskiness*: it has to "stick its neck out" \pause
+- Godfrey-Smith [-@godfrey-smith_theory_2021,p.95]: "theories can appear to have lots of contact with observation when in fact they only have a kind of 'pseudo-contact' with observation, because they avoid all risk."
+
+
+KKV [-@king_designing_1994,p.19]: "We need to be able to give a direct answer to the question: What evidence would convince us that we are wrong?"
+
+
+
+## Is my theory falsifiable?
+
+KKV [-@king_designing_1994,p.19]: "to make sure a theory is falsifiable, choose one that is capable of generating as many *observable implications* as possible."
+

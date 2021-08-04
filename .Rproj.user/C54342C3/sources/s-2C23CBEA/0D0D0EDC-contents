@@ -1,0 +1,61 @@
+---
+title: 'POLI210: Political Science Research Methods'
+subtitle: "Lecture 6.2: Case studies"
+date: "October 5th 2021"
+author: "Olivier Bergeron-Boutin"
+header-includes:
+  - \usepackage{booktabs}
+output: 
+  beamer_presentation:
+    theme: "metropolis"
+    latex_engine: xelatex
+classoption: t
+urlcolor: blue
+bibliography: ../210lectures_bib.bib
+biblio-style: apalike
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+## Descriptive case studies 
+
+B&A, p.211: "the phenomenon is either completely or partially unknown...[the goal is] describing the phenomenon as the basis of contributing to an emerging or future research agenda."
+
+## Theory-testing case studies
+
+## Exploratory vs confirmatory 
+
+Gerring [-@gerring_what_2004,p.349]: "Case studies enjoy a natural advantage in research of an exploratory nature." 
+
+## Generalizability and scope conditions
+
+Overgeneralized: "susceptible to being undermined" 
+Undergeneralized: "it is susceptible to failing the 'so what' test"
+
+K&A, p.117: "The best approach is to qualify the generalization: the case study is *certain* in its explanation for the phenomenon being studied; it is *highly probably* to have a significant insight on a set of similar cases; and it *suggests* some interesting questions to ask in the widest population of cases." 
+
+## "Failed most-likely" vs "successful least-likely"
+
+## Causal mechanisms 
+
+Gerring [-@gerring_what_2004,p.348]: "Case studies, if well constructed, allow one to peer into the box of causality to the intermediate causes lying between some cause and its purported effect." 
+
+Gerring [-@gerring_what_2004,p.348]: "Ceteris paribus, case studies are more likely to shed light on causal mechanisms and less likely to shed light on true causal effects 
+
+## Qualitative vs quantitative
+
+We've said before that one is not better than the other
+
+They are *complementary*
+
+- Sometimes one approach is best suited to a given RQ \pause
+- Other times, we can approach the same RQ from different perspectives \pause
+  - Gerring [-@gerring_what_2004] speaks of the "triangulation of evidence"
+
+Berman vs Satyanath et al. on social capital and Nazis
+
+## References {.allowframebreaks}
+
+\footnotesize

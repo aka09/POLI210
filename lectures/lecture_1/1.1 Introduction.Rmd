@@ -1,0 +1,224 @@
+---
+title: 'POLI210: Political Science Research Methods'
+subtitle: "Lecture 1: Introduction"
+date: "September 2nd, 2021"
+author: "Olivier Bergeron-Boutin"
+header-includes:
+  - \usepackage{booktabs}
+output: 
+  beamer_presentation:
+    theme: "metropolis"
+    latex_engine: xelatex
+classoption: t
+urlcolor: blue
+bibliography: ../210lectures_bib.bib
+biblio-style: apalike
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+## Plan for today
+
+- Introducing myself
+- What this course is about
+- Syllabus and requirements
+- Why do you need this course?
+- Questions?
+
+## Introducing myself
+
+- M.A. student (3rd year/writing thesis) \pause
+- Interests: political behavior, political economy, quantitative methods, metascience \pause 
+- Thesis topic: social sorting and affective polarization in Canada \pause 
+- Recent work with Profs. Stolle, Gidengil, and Pelc \pause
+
+## Research projects I'm working on
+
+- Does anxiety about coronavirus weaken citizens' commitment to democracy? \pause
+- Social sorting/cross-cutting cleavages in Canada \pause
+- Decline of local news and attitudes toward trade 
+
+# What is this course about?
+
+## Empirical vs normative 
+
+We have to distinguish between empirical research and normative research \pause
+
+\metroset{block=fill}
+\begin{block}{Normative}
+  Focuses on: ``shoulds" -- on how things ought to be
+  \newline Character: Value-based and prescriptive
+  \newline Methods: Persuasion, logic
+\end{block}
+\pause
+\begin{block}{Empirical}
+  Focuses on: Measuring and observing how things are 
+  \newline Character: Observational, descriptive, predictive
+  \newline Methods: Collect evidence from the real world and process   that evidence using the scientific method 
+\end{block}
+
+## Empirical vs normative 
+
+POLLING QUESTION HERE: WHICH OF THESE QUESTIONS IS NORMATIVE? 
+
+## Empirical vs normative 
+
+Things are not quite as neat in the real world! \pause
+
+- Normative political science makes use of empirical political science \pause
+- And empirical political science often proceeds based on normative assumptions \pause
+
+From the normative statement: "Men and women need equal representation in legislatures"... \pause
+
+1. Does gender equality in legislatures lead to more family-friendly policies?
+2. Do quotas mandating a minimum proportion of women in legislatures decrease the quality of legislative output?
+
+## Zooming in on empirical
+
+In empirical political science, we focus on *inferring* things about the political world \pause
+
+- Infer: Form a belief based on a) evidence, and b) rules for processing that evidence \pause
+
+3 types of inference: 
+
+- Descriptive inference: What are the facts? 
+- Causal inference: Why does something occur? 
+- Predictive inference: How will things shake out? 
+
+## Descriptive inference
+
+![](gerring_730.png)
+
+Source: Gerring [-@gerring_mere_2012]
+
+New: [Journal of Quantitative Description](https://journalqd.org/)
+
+## Descriptive inference: DW-NOMINATE scores
+
+![](dwnominate_90.png)
+
+DW-NOMINATE scores for the 90th Congress (1967-1969)
+
+## Descriptive inference: DW-NOMINATE scores
+
+![](dwnominate_117.png)
+
+DW-NOMINATE scores for the 17th Congress (current)
+
+[See here: VoteView](https://voteview.com/congress/house)
+
+## Descriptive inference: UN voting
+
+![](voeten2017.png)
+
+Source: Bailey, Voeten and Strezhnev [-@bailey_estimating_2017]
+
+## Descriptive inference: affective polarization
+
+![](iyengar2019.png){width=90%}
+
+Source: Iyengar et al. [-@iyengar_origins_2019]
+
+## Causal inference
+
+Causal inference is about *why* \pause
+
+- Why did Congress polarize? \pause
+- Why did the Soviet Union fall? \pause 
+- Why did the Arab Spring lead to democracy in Tunisia but not in other countries? 
+
+## Predictive inference 
+
+Prediction is not causation! \pause
+
+Example? What is something I can predict but not interpret causally? 
+
+# Why make me do this? 
+
+## Some reasons 
+
+- The most boring answer: because political scientists use empirical methods and we need to be able to understand! \pause 
+
+  - Just about every area of political science has quantitative components! \pause
+  
+- Professional advancement \pause 
+
+  - There are *a lot* of jobs for social scientists with skills in empirical analysis \pause
+  - Facebook, Twitter, etc. have data science teams composed of many social scientists! \pause 
+- Developing a toolbox for your research \pause 
+- Engaging with broader scientific debates and controversies \pause 
+- Because I need this course for my degree...
+
+## Potentially the most important reason
+
+Because people make empirical claims all the time! \pause
+
+- And people make *bad* empirical claims all the time! \pause
+- Why? \pause
+  - Lack empirical competence \pause
+  - Motivated reasoning \pause 
+- One of your 1st readings: Gelman \pause
+
+No one in this room can be the ultimate arbiter of empirical truth -- let's not pretend otherwise! \pause
+
+- But claims exist on continuum of plausibility \pause
+- Give you tools to assess credibility of claims 
+
+## How are we feeling? 
+
+POLLING QUESTION: FEELING EXCITED/OVERWHELMED/CURIOUS/ANXIOUS
+
+## A note on learning methods 
+
+I know this can be intimidating \pause 
+
+- But this course is *not* math-heavy \pause
+- Everyone can do well
+- But do try to keep up and use the resources given to you!
+- Don't hesitate to reach out
+
+# Syllabus and requirements
+
+## Textbook
+
+![](explorations.png)
+
+## Course components
+
+Lectures: 2x per week (online)
+
+Labs: 1x per week (in person?)
+
+2 quizzes
+
+Midterm + final 
+
+4-5 assignments
+
+## Labs
+
+The labs will introduce you to *R*, a highly-powerful and free programming language
+
+- Main use: manipulating data, performing statistical tests, making graphs and tables... \pause
+- But also a lot more: slides, papers, websites, interactive visualizations, scraping... \pause
+- Why? \pause
+  - Scientifically: replicability and transparency
+  - For you: highly marketable and a good tool to master
+  - To pass your assignments ;)
+  
+ASAP: Download R and RStudio 
+
+- RStudio: IDE (Integrated Development Environment)
+
+## Contact
+
+Discussion boards on MyCourses: use them! 
+
+My email: olivier.bergeron-boutin@mail.mcgill.ca
+My office hours: TBA
+
+## References {.allowframebreaks}
+
+\footnotesize
