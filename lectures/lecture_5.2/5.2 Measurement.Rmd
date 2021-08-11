@@ -19,6 +19,10 @@ biblio-style: apalike
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
+## What type of validity?
+
+Adcock and Collier [-@adcock_measurement_2001]: 37 different adjectives attached to the word "validity" (!!)
+
 ## Measuring democratic backsliding
 
 ARPS article on low corrs across indices
