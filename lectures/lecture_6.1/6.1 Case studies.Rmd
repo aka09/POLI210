@@ -1,6 +1,6 @@
 ---
 title: 'POLI210: Political Science Research Methods'
-subtitle: "Lecture 6.2: Case studies"
+subtitle: "Lecture 6.1: Case studies"
 date: "October 5th 2021"
 author: "Olivier Bergeron-Boutin"
 header-includes:
@@ -19,30 +19,184 @@ biblio-style: apalike
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
-## Descriptive case studies 
+## Small-N Research 
 
-B&A, p.211: "the phenomenon is either completely or partially unknown...[the goal is] describing the phenomenon as the basis of contributing to an emerging or future research agenda."
+Today and Thursday: small-N research
 
-## Theory-testing case studies
+- What do we mean by "small-N"? 
+- We mean that we (intensively) study one or a few cases \pause
+- In a cross-country regression (large-N), we don't get to know each case intimately 
+  - Advantage of small-N research: you get to know your cases a lot! \pause
+- Two approaches:
+  - Case study: n = 1
+    - We test hypotheses by exploiting variation over time or variation in embedded units (e.g. states in a country) \pause
+  - Comparative method: n > 1
+    - We test hypotheses by comparing cases 
+    - Variation in our DV across cases \pause
+- Today: case study
 
-## Exploratory vs confirmatory 
+## Why not more cases?
 
-Gerring [-@gerring_what_2004,p.349]: "Case studies enjoy a natural advantage in research of an exploratory nature." 
+Why would you look at a single case when you can look at multiple? \pause
+
+- Time and resources are limited! 
+  - With a single case, you're able to get a very deep look at processes
+  - Necessarily, with n = 2, you have half the time and resources to devote to each case \pause
+- Some cases may be particularly important!
+  - If they fail to conform to theoretical expectation, the theory is in trouble (Berman and Weimar Germany) \pause
+- And remember: though we look at only one case, the "universe" of cases lies in the background
+  - We're trying to develop a broader theory that could explain our DV across different cases \pause
+  - Without aim of generality and theory, we would be doing history 
+  
+## Generalizability and scope conditions
+
+Remember: we look at just one case, but we want to be able to say something about the "universe" of cases
+
+- We want to be clear about how much our findings apply to other cases \pause
+
+- Overgeneralized: "susceptible to being undermined"
+
+  - e.g. my study of Vietnam has implications for *all* developing countries
+  - But maybe it only has implications for Southeast Asian countries \pause
+- Undergeneralized: "it is susceptible to failing the 'so what' test"
+  - If what I learn from a case can only be applied to that, how much do I care? \pause
 
 ## Generalizability and scope conditions
 
-Overgeneralized: "susceptible to being undermined" 
-Undergeneralized: "it is susceptible to failing the 'so what' test"
+K&R, p.117: "The best approach is to qualify the generalization: the case study is *certain* in its explanation for the phenomenon being studied; it is *highly probably* to have a significant insight on a set of similar cases; and it *suggests* some interesting questions to ask in the widest population of cases."
 
-K&A, p.117: "The best approach is to qualify the generalization: the case study is *certain* in its explanation for the phenomenon being studied; it is *highly probably* to have a significant insight on a set of similar cases; and it *suggests* some interesting questions to ask in the widest population of cases." 
+## Types of case studies 
 
-## "Failed most-likely" vs "successful least-likely"
+Broadly, 2 types of case studies:
+
+- Descriptive/exploratory case studies 
+  - Particularly useful when there is little theory to guide observation 
+  - B&R, p.211: "the phenomenon is either completely or partially unknown...[the goal is] describing the phenomenon as the basis of contributing to an emerging or future research agenda." 
+  - Sometimes, we don't even know what we're looking for! \pause
+- Theory-testing case studies
+  - The situation: a well-established theory that has clear implications for a case
+  - We will exploit some chosen cases in order to refine theory 
+  
+## Which case to analyze? Failed most-likely
+
+Fundamentally, theory-testing case studies assume that certain cases are more important for testing theory \pause
+
+- Failed most-likely: "if I cannot make it there, I cannot make it anywhere" [@levy_case_2008, p.12]
+  - All the conditions for the theory to hold are met -- *and yet* 
+  - This is an easy case for the theory; it should pass it with flying colors
+  - Democratic peace theory: 
+    - Two highly democratic countries that are "rich, culturally similar and economically codependent" [@gerring_selecting_2016, p.405]
+  - These cases seriously damage the theory
+  - Does it mean it's *wrong*? Well, we want to think probabilistically
+    - X clearly does not have a *deterministic* relationship with Y 
+    - Maybe we shouldn't discard theory entirely; but refine it
+    
+## Which case to analyze? Successful least-likely
+
+- Successful least-likely: "if I can make it there, I can make it anywhere" [@levy_case_2008, p.12]
+  - A hard case for the theory; the conditions are not conducive to success
+  - If the theory succeeds here, this is a sign that it "works" in more ways than expected 
+  - We expand the scope conditions
+  - Democratic peace theory:
+    - Two marginally democratic countries that are poor, dissimilar, with contested territory, and historic grievances 
 
 ## Causal mechanisms 
 
 Gerring [-@gerring_what_2004,p.348]: "Case studies, if well constructed, allow one to peer into the box of causality to the intermediate causes lying between some cause and its purported effect." 
 
-Gerring [-@gerring_what_2004,p.348]: "Ceteris paribus, case studies are more likely to shed light on causal mechanisms and less likely to shed light on true causal effects 
+Remember our example of the link between attending Harvard and earnings? 
+
+- Using data alone, we can perhaps estimate the causal effect *Going to Harvard* -> *Earnings*
+- But oftentimes, the precise causal mechanism is left unclear 
+
+## Causal mechanisms and the DPT
+
+Remember Maoz and Russett [-@maoz_normative_1993]? 2 mechanisms
+
+- Normative: "norms of compromise and cooperation"
+- Structural: "institutional constraints" make warmaking more costly/complex for leaders of democracy countries \pause
+
+In a large-N study, I can estimate the relationship between democracy and war
+
+- A large-N dataset: something like one observation for each country in each year 
+- But once I establish a relationship between X and Y, it can be hard to tease apart competing mechanisms 
+- Enter the case study
+
+## Causal mechanisms and the DPT
+
+If I can find a "successful least-likely" case...
+
+- i.e. a democratic "dyad" (two countries) for which all conditions were conducive to war
+- I can try to identify why war didn't break out in this particular instance \pause
+- For instance, if I can find...
+  - Memoranda of Cabinet meetings that have been declassified
+  - In which the PM expresses desire for war...
+  - But a minister/chief of staff points out the hurdle that the legislature represents...
+  - I have a good example of the "structural" mechanism in action!
+
+# Case study example: Berman 1997
+
+## Neo-Tocquevillian thought 
+
+Putnam and neo-Tocquevillian thought
+
+- Associations ("civil society") as central to democracy
+- Putnam [-@putnam_making_1993]: why do institutions succeed in certain contexts and fail in other contexts? 
+  - The Italian "experiment": decentralization in the 1970s
+  - Institutions are "fixed" across regions; yet some regions (in the North) perform a lot better than others
+  - Why? Because of civic culture
+  - "the success of a democratic government depends on the degree to which its surroundings approximate the ideal of a 'civic community."
+  - What is this "ideal"?
+  
+## The civic ideal
+
+- While citizens are not expected to abandon self-interest, they should "pursue what Tocqueville termed 'self-interest properly understood,' that is, self-interest defined in the context of broader public needs."
+- "Such a community is bound together by horizontal relations of reciprocity and cooperation, not by vertical relations of authority and dependency."
+- "the heart of the distinction between civic and uncivic communities": "[c]ollective life in the civic regions is eased by the expectation that others will probably follow the rules."
+
+## Berman's critique
+
+We have this theory: associational life -> democratic performance
+
+- In short: deep networks of (nonpolitical) associations are good!
+- Putnam's "Bowling Alone" 
+
+Berman points to a "deviant" case: Weimar Germany
+
+- In Weimar Germany, deep networks of associations
+- And yet, democracy did not flourish -- it collapsed
+- Why? We can exploit this case to learn more about the role of civil society in democratic performance
+- An example of the "failed most-likely" case study
+  - The theory posits that X leads to Y, but it did not
+  
+## Berman's method
+
+Berman works chronologically from the mid-1800s to 1933, when Hitler became Chancellor 
+
+- Includes comments from contemporaries and work by historians 
+
+- uses work by historians to analyze German associational life from the mid-1800s to 1933
+  
+## Berman's answer
+
+Why does the case of interwar Germany not follow the theory? 
+
+- One possibility: "Hitler's supporters were drawn primarily from alienated individuals who lacked a wide range of associational memberships and saw in the NSDAP a way of integrating themselves into a larger community, had German civil society been stronger, the republic might not have fallen."
+  - But that's not empirically supported! 
+- Instead, Berman says, "associationism should be considered a politically neutral multiplier -- neither inherently good nor inherently bad, but rather dependent for its effects on the wider political context." 
+  - What was the political context of Weimar Germany? 
+  - Weak institutions, widepsread discontent 
+- Germans frustrated with the national government retreated to private associations
+  - The network of associations facilitated recruitment of Nazi party members 
+
+## A crucial case
+
+\footnotesize
+
+"One might counter, of course, that a theory based on only a single
+case is inherently problematic and that, moreover, German political
+development during this period was certainly influenced by a range of
+factors extending beyond civil society, many of them highly particular. Nevertheless, there are several reasons why an inability of neo-Tocquevillean analysis to account for the central features of this case should be significant and troubling. First, scholars have long viewed the Weimar Republic and its collapse as a crucial theoretical testing ground. The disintegration of democracy in interwar Germany is so central to our understanding of comparative politics and so critical for the history of modern Europe that we should at the least be wary of any theory of political development that cannot explain it. Second, the postwar neo-Tocquevilleans highlighted precisely this case as an example of the impact of associationism (or lack thereof) on political out-comes. And third, while the United States has been considered the homeland of associationism ever since Tocqueville, comparable honors could also be bestowed on Germany, making it resemble a most likely case for determining the reliability of the neo-Tocquevillean theory."
 
 ## Qualitative vs quantitative
 
@@ -51,8 +205,8 @@ We've said before that one is not better than the other
 They are *complementary*
 
 - Sometimes one approach is best suited to a given RQ \pause
-- Other times, we can approach the same RQ from different perspectives \pause
-  - Gerring [-@gerring_what_2004] speaks of the "triangulation of evidence"
+- Other times, we can approach the same RQ from different perspectives
+  - Gerring [-@gerring_what_2004] speaks of the "triangulation of evidence" \pause
 
 Berman vs Satyanath et al. on social capital and Nazis
 

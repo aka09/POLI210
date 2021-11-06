@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.7.23)  31 JUL 2021 11:20
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.9.2)  6 SEP 2021 21:20
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **2.1-Studying-Politics-Scientifically.tex
 (./2.1-Studying-Politics-Scientifically.tex
 LaTeX2e <2021-06-01> patch level 1
-L3 programming layer <2021-07-12> (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf
+L3 programming layer <2021-08-27> (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf
 -dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2021/05/26 v3.63 A class for typesetting presentations
 
@@ -841,11 +841,11 @@ Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unico
 de-math.sty
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2021-07-12 L3 programming layer (loader) 
+Package: expl3 2021-08-27 L3 programming layer (loader) 
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backen
 d-xetex.def
-File: l3backend-xetex.def 2021-07-12 L3 backend support: XeTeX
+File: l3backend-xetex.def 2021-08-04 L3 backend support: XeTeX
 (|extractbb --version)
 \c__kernel_sys_dvipdfmx_version_int=\count334
 \l__color_backend_stack_int=\count335
@@ -865,11 +865,11 @@ TeX
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/
 xparse.sty
-Package: xparse 2021-06-18 L3 Experimental document command parser
+Package: xparse 2021-08-27 L3 Experimental document command parser
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2
 e/l3keys2e.sty
-Package: l3keys2e 2021-06-18 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2021-08-27 LaTeX2e option processing using LaTeX3 keys
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.
 sty
@@ -1460,7 +1460,7 @@ Overfull \vbox (50.56238pt too high) detected at line 138
 
 ]
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 151.
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 149.
 [2
 
 ] [3
@@ -1473,68 +1473,37 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10.95> not available
 
 ] [7
 
-] [8
-
-] [9
-
 ]
-Overfull \vbox (6.62785pt too high) detected at line 212
+Overfull \vbox (1.10786pt too high) detected at line 217
  []
 
-[10
+[8
 
 ]
-Overfull \vbox (6.62785pt too high) detected at line 212
+Overfull \vbox (1.10786pt too high) detected at line 217
  []
 
-[11
+[9
 
-]
-Overfull \vbox (6.62785pt too high) detected at line 212
- []
+] [10
 
-[12
+] [11
 
-]
-Overfull \vbox (6.62785pt too high) detected at line 212
- []
+] [12
 
-[13
+] [13
 
-]
-Overfull \vbox (6.62785pt too high) detected at line 212
- []
+] [14
 
-[14
+] [15
 
-]
-Overfull \vbox (6.62785pt too high) detected at line 212
- []
+] [16
 
-[15
+] [17
 
-]
-Overfull \vbox (6.62785pt too high) detected at line 212
- []
+] [18
 
-[16
-
-]
-Overfull \vbox (6.62785pt too high) detected at line 212
- []
-
-[17
-
-]
-Overfull \vbox (6.62785pt too high) detected at line 212
- []
-
-[18
-
-]
-File: kkv1994.jpg Graphic file (type bmp)
-<kkv1994.jpg>
-[19
+] [19
 
 ] [20
 
@@ -1562,52 +1531,173 @@ File: kkv1994.jpg Graphic file (type bmp)
 
 ] [32
 
-] [33
+]
+File: kkv1994.jpg Graphic file (type bmp)
+<kkv1994.jpg>
+[33
 
 ] [34
 
 ] [35
 
-]
-Overfull \vbox (14.44781pt too high) detected at line 321
- []
+] [36
 
-[36
+] [37
 
-]
-Overfull \vbox (14.44781pt too high) detected at line 321
- []
+] [38
 
-[37
+] [39
 
-]
-Overfull \vbox (14.44781pt too high) detected at line 321
- []
+] [40
 
-[38
+] [41
 
 ]
-Overfull \vbox (14.44781pt too high) detected at line 321
+File: coppock.png Graphic file (type bmp)
+<coppock.png>
+
+Overfull \vbox (28.61206pt too high) detected at line 426
  []
 
-[39
+[42
 
 ]
-Overfull \vbox (14.44781pt too high) detected at line 321
+File: aoc.png Graphic file (type bmp)
+<aoc.png>
+
+Overfull \vbox (7.87538pt too high) detected at line 431
  []
 
-[40
+[43
+
+] [44
 
 ]
-Overfull \vbox (14.44781pt too high) detected at line 321
+LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10> not available
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 486.
+[45
+
+] [46
+
+] [47
+
+] [48
+
+] [49
+
+] [50
+
+]
+Overfull \vbox (0.8126pt too high) detected at line 559
  []
 
-[41
+[51
+
+]
+Overfull \vbox (0.8126pt too high) detected at line 559
+ []
+
+[52
+
+]
+Overfull \vbox (0.8126pt too high) detected at line 559
+ []
+
+[53
+
+]
+Overfull \vbox (0.8126pt too high) detected at line 559
+ []
+
+[54
+
+]
+Overfull \vbox (0.8126pt too high) detected at line 559
+ []
+
+[55
+
+]
+Overfull \vbox (0.8126pt too high) detected at line 559
+ []
+
+[56
+
+] [57
+
+] [58
+
+] [59
+
+] [60
+
+] [61
+
+] [62
+
+]
+Overfull \vbox (6.62785pt too high) detected at line 677
+ []
+
+[63
+
+] [64
+
+]
+File: adcock_2010.png Graphic file (type bmp)
+<adcock_2010.png>
+
+Overfull \vbox (2.91531pt too high) detected at line 711
+ []
+
+[65
+
+] [66
+
+] [67
 
 ]
 LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <9> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 334.
-[42
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 822.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 9.27136pt on input line 822.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.18091pt on input line 822.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.15076pt on input line 822.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 8
+22.
+(c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 9.27232pt on input line 822.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.18155pt on input line 822.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.15129pt on input line 822.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.27054pt on input line 822.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.18036pt on input line 822.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.1503pt on input line 822.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 822
+.
+(c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 822
+.
+(c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [68
+
+] [69
+
+
+] [70
+
 
 ]
 \tf@nav=\write6
@@ -1625,12 +1715,12 @@ s not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 30143 strings out of 478450
- 619759 string characters out of 5856443
- 1051115 words of memory out of 5000000
- 49890 multiletter control sequences out of 15000+600000
- 404162 words of font info for 46 fonts, out of 8000000 for 9000
+ 30307 strings out of 478507
+ 623345 string characters out of 5860143
+ 1057210 words of memory out of 5000000
+ 49963 multiletter control sequences out of 15000+600000
+ 407067 words of font info for 65 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 101i,13n,120p,1837b,576s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,13n,120p,1837b,622s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 2.1-Studying-Politics-Scientifically.pdf (42 pages).
+Output written on 2.1-Studying-Politics-Scientifically.pdf (70 pages).

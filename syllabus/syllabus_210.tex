@@ -110,12 +110,46 @@
 	\noindent \begin{tabular*}{\textwidth}{ @{\extracolsep{\fill}} lr @{\extracolsep{\fill}}}
 
 
-E-mail: \texttt{\href{mailto:olivier.bergeron-boutin@mail.mcgill.ca}{\nolinkurl{olivier.bergeron-boutin@mail.mcgill.ca}}} & Web: TBD\\
-Office Hours: TBA  &  Class Hours: TR 8:35am-9:55am\\
-Office: TBA  & Class Room: \emph{online}\\
-	&  \\
+E-mail: \texttt{\href{mailto:olivier.bergeron-boutin@mail.mcgill.ca}{\nolinkurl{olivier.bergeron-boutin@mail.mcgill.ca}}} & Class Hours: TR
+8:35am-9:55am\\
+Office: Zoom & 
+Office Hours: T 10-11am; W 4-5pm; F 10-11am\\
+
+	\vspace{1mm} \\
 	\hline
 	\end{tabular*}
+
+\noindent \begin{tabular*}{\textwidth}{ @{\extracolsep{\fill}} lr @{\extracolsep{\fill}}}
+TA: Marion Dessalles &
+E-mail: \texttt{\href{mailto:marion.dessalles@mail.mcgill.ca}{\nolinkurl{marion.dessalles@mail.mcgill.ca}}}\\
+Office hours: W 4-5 &
+Office: Online \\
+\hline
+\end{tabular*}
+
+\noindent \begin{tabular*}{\textwidth}{ @{\extracolsep{\fill}} lr @{\extracolsep{\fill}}}
+	TA: Irene Zhang &
+	E-mail: \texttt{\href{mailto:peiyi.zhang@mail.mcgill.ca}{\nolinkurl{peiyi.zhang@mail.mcgill.ca}}}\\
+	Office hours: F 11:30-12:30 &
+	Office: Online \\
+	\hline
+\end{tabular*}
+
+\noindent \begin{tabular*}{\textwidth}{ @{\extracolsep{\fill}} lr @{\extracolsep{\fill}}}
+	TA: Christopher Ross &
+	E-mail: \texttt{\href{mailto:christopher.ross4@mail.mcgill.ca}{\nolinkurl{christopher.ross4@mail.mcgill.ca}}}\\
+	Office hours: T 1-2 &
+	Office: Leacock 520 \\
+	\hline
+\end{tabular*}
+
+\noindent \begin{tabular*}{\textwidth}{ @{\extracolsep{\fill}} lr @{\extracolsep{\fill}}}
+	TA: Danielle Bohonos &
+	E-mail: \texttt{\href{mailto:danielle.bohonos2@mail.mcgill.ca}{\nolinkurl{danielle.bohonos2@mail.mcgill.ca}}}\\
+	Office hours: F 1:30-2:30 &
+	Office: Online \\
+	\hline
+\end{tabular*}
 	
 \vspace{2mm}
 	
@@ -171,13 +205,15 @@ resources}\label{textbook-and-other-resources}}
 
 The textbook for this course will be:
 
-Berdahl, Loleen and Keith Archer. \emph{Explorations: Conducting
-Empirical Research in Canadian Political Science} (4th edition). Oxford
-University Press.
+Berdahl, Loleen and Jason Roy. \emph{Explorations: Conducting Empirical
+Research in Canadian Political Science} (4th edition). Oxford University
+Press.
 
 You can purchase the print version at the McGill bookstore or rent a
 copy at \href{https://www.redshelf.com}{redshelf}. Note that we will be
-using the newer 4th edition.
+using the newer 4th edition. If you use an older edition of the
+textbook, it is incumbent upon you to make sure that you are not missing
+important material.
 
 \hypertarget{other-resources}{%
 \subsection{Other resources}\label{other-resources}}
@@ -193,12 +229,18 @@ Fortunately, there are a lot of resources you can use:
   related to \emph{R} in Google, chances are that a StackOverflow thread
   will show up!
 \item
+  Thomas J. Leeper taught a similar course at LSE (the content of this
+  very course is inspired by his). You can view the syllabus and slides
+  on \href{https://thomasleeper.com/designcourse/}{his personal
+  website}.
+\item
   \emph{Quantitative Social Science: An Introduction} by Kosuke Imai is
   an excellent textbook that can help you learn \emph{R} and principles
   of statistics.
 \item
-  \emph{The Fundamentals of Political Science Research} by Kellstedt and
-  Whitten is a widely-used textbook.
+  \href{https://r4ds.had.co.nz/index.html}{\emph{R for Data Science}} is
+  a free online book that introduces you to the basics of
+  \emph{R}/\texttt{tidyverse}.
 \end{itemize}
 
 \hypertarget{remote-delivery}{%
@@ -207,21 +249,22 @@ Fortunately, there are a lot of resources you can use:
 \hypertarget{lectures}{%
 \subsection{Lectures}\label{lectures}}
 
-The lectures will be held remotely through Zoom.
+The lectures will be held remotely through Zoom. They will be recorded
+and posted on MyCourses.
 
 \hypertarget{labs}{%
 \subsection{Labs}\label{labs}}
 
 The labs will be held in person. You are expected to be in Montreal for
 the semester, but I understand that some may be unable/uncomfortable
-attending labs in person. Please let me know early if this is the case
-and we will find an arrangement.
+attending labs in person. As such, the labs will be recorded and posted
+on MyCourses. You are nonetheless encouraged to attend in person.
 
 \hypertarget{quizzes-and-midterm}{%
 \subsection{Quizzes and midterm}\label{quizzes-and-midterm}}
 
-The quizzes and the midterm will be available on MyCourses. From the
-time of posting, you will have 72 hours to complete them.
+The quizzes and the midterm will be available on MyCourses. See the
+``Evaluation policy'' section for more information.
 
 \hypertarget{labs-r-and-rstudio}{%
 \section{Labs: R and RStudio}\label{labs-r-and-rstudio}}
@@ -243,16 +286,114 @@ this course -- this is a skill that can only be learned by doing!
 
 In an effort to make the course materials more tangible, I will
 occasionally produce short (and hopefully fun) videos that approach
-things from a more informal angle. These are completely optional! I
-genuinely believe that this course -- and other methods courses -- is an
-excellent gateway into deeper, philosophical questions about the nature
-of knowledge. The aim is to ease your entry into the world of empirical
-political science by covering fun, real-world topics that would usually
-not be covered in a course like this. Some of the topics we may cover
-include: recent controversies in political science, the history of
-philosophy of science, how norms vary across disciplines in the social
-sciences, how the publication process works\ldots Please feel free to
-suggest a different topic you would like to hear about!
+things from a more informal angle. These are completely optional! This
+course -- and other methods courses -- is an excellent gateway into
+deeper, philosophical questions about the nature of knowledge. The aim
+is to ease your entry into the world of empirical political science by
+covering fun, real-world topics that would usually not be covered in a
+course like this. Some of the topics we may cover include: recent
+controversies in political science, the history of philosophy of
+science, how norms vary across disciplines in the social sciences, how
+the publication process works, what an efficient data analysis workflow
+looks like\ldots Please feel free to suggest a different topic you would
+like to hear about!
+
+\hypertarget{mycourses-discussions}{%
+\section{MyCourses discussions}\label{mycourses-discussions}}
+
+I have set up a class discussion on \emph{MyCourses} (accessible under
+the ``Discussions'' tab). You can ask general questions about the course
+content, questions about the assignments, etc. \emph{NEVER} post
+\emph{R} code! I have also set up a feedback discussion that you can use
+if you want to provide any feedback on the course. You are welcome to
+post anonymously if you prefer.
+
+\hypertarget{evaluation-policy}{%
+\section{Evaluation policy}\label{evaluation-policy}}
+
+\begin{itemize}
+\tightlist
+\item
+  Assignments: 45\%. There will be 5 assignments; assignment 1 is worth
+  5 points; assignments 2 through 5 are worth 10 points each. You are
+  allowed to talk generally about the problem sets with your classmates,
+  but you are expected to complete them individually. \emph{You cannot
+  share code with your classmates}.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Assignment 1, due on September 20th at 11:59pm, will simply ask to
+    fill in a class survey on the platform \emph{Qualtrics}. The data
+    you provide here will be of use to create some interactive examples
+    in class!
+  \item
+    Assignment 2, due on October 7th at 11:59pm, will ask you to perform
+    basic operations in \emph{R} using the class survey: compute
+    measures of central tendency, recoding variables, describing
+    distributions.
+  \item
+    Assignment 3, due on October 25th at 11:59pm, will ask you to work
+    with experimental data from a famous political science article. It
+    will address issues of causality.
+  \item
+    Assignment 4, due on November 1st at 11:59pm, will focus on the
+    case-study and comparative approaches.
+  \item
+    Assignment 5, due on November 26th at 11:59pm, will ask you to work
+    with data from the 2019 Canadian Election Study and will focus on
+    comparisons between means, p-values, multivariate regression.
+  \end{itemize}
+\item
+  Quizzes: 15\%. The first quiz will be posted to the ``Quiz'' section
+  on MyCourses on Monday October 25th and you will need to complete it
+  by Wednesday October 27th, 11:59pm. The second quiz will be posted on
+  Tuesday November 30th and you will need to complete it by Thursday
+  December 2nd, 11:59pm. Each is worth 7.5\%. Anything covered in
+  lectures or in the readings is fair game; the format is multiple
+  choice questions. Once you have opened the quiz, you will have 1.5
+  hour to complete it.
+\item
+  Midterm: 20\%. The midterm will be posted on MyCourses on Tuesday
+  November 9th and you will need to submit your answers by Friday
+  November 12th, 11:59pm. Everything up to the material from week 10
+  (inclusively) is fair game. You are allowed to use any course
+  materials, but you are expected to complete the midterm on an
+  individual basis. Once you have opened the midterm, you will have 3
+  hours to complete it.
+\item
+  Team project: 20\%. Due on December 6th at 11:59pm. In teams of four,
+  you will choose a political science article from a pre-approved list
+  that will span the subfields of the discipline as well as the
+  methodological approaches we will have covered in this course. You
+  will first have to answer basic questions about the article: what is
+  the research question? What is the hypothesis? Then, you will be asked
+  to take a more critical approach and assess the methodological merits
+  of the article. What are the main threats to inference and how well do
+  the authors defend their research design? More details will be given
+  in class in November.
+\end{itemize}
+
+\hypertarget{submissions}{%
+\section{Submissions}\label{submissions}}
+
+Everything will be handled remotely. These are the instructions for each
+component:
+
+\begin{itemize}
+\tightlist
+\item
+  Quizzes: The quizzes will be available on MyCourses under the tab
+  ``Quizzes.''
+\item
+  Midterm: The midterm will be posted on MyCourses and you will be able
+  too upload the finished product under the ``Assignments'' tab.
+\item
+  Assignments: You will be able to upload your work under the
+  ``Assignments'' tab. For the assignments involving R, you need to
+  upload both your R script (.R file) as well as your written answers
+  (in a PDF or Word document).
+\end{itemize}
 
 \hypertarget{course-and-university-policies}{%
 \section{Course and University
@@ -309,87 +450,6 @@ justification. I will then re-evaluate the assignment, but also reserve
 the right to raise or lower the grade. Please also see
 \href{http://www.mcgill.ca/politicalscience/files/politicalscience/assessment_and_\%20re-read_policy_final.pdf}{the
 department's guidelines}.
-
-\hypertarget{evaluation-policy}{%
-\section{Evaluation policy}\label{evaluation-policy}}
-
-\begin{itemize}
-\tightlist
-\item
-  Assignments: 45\%. There will be 5 assignments; assignment 1 is worth
-  5 points; assignments 2 through 5 are worth 10 points each. You are
-  allowed to talk generally about the problem sets with your classmates,
-  but you are expected to complete them individually. \emph{You cannot
-  share code with your classmates}.
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Assignment 1, due on September 20th at 11:59pm, will simply ask to
-    fill in a class survey on the platform \emph{Qualtrics}. The data
-    you provide here will be of use to create some interactive examples
-    in class!
-  \item
-    Assignment 2, due on October 4th at 11:59pm, will ask you to perform
-    basic operations in \emph{R} using the class survey: compute
-    measures of central tendency, recoding variables, describing
-    distributions.
-  \item
-    Assignment 3, due on October 18th at 11:59pm, will ask you to work
-    with experimental data from a famous political science article. It
-    will address issues of causality.
-  \item
-    Assignment 4, due on November 8th at 11:59pm, will focus on
-    analyzing open-ended responses from our class survey as well as
-    questions focusing on the case-study and comparative approaches.
-  \item
-    Assignment 5, due on November 26th at 11:59pm, will ask you to work
-    with data from the 2019 Canadian Election Study and will focus on
-    comparisons between means, p-values, multivariate regression.
-  \end{itemize}
-\item
-  Quizzes: 15\%. The first quiz will be posted on Monday October 11th
-  and you will need to hand it in by Wednesday October 13th, 11:59pm.
-  The second quiz will be posted on Monday November 29th and you will
-  need to hand it in by Wednesday December 1st, 11:59pm. Each is worth
-  10\%. Anything covered in lectures or in the readings is fair game.
-\item
-  Midterm: 20\%. The midterm will be posted on MyCourses on Tuesday
-  November 2nd and you will need to submit your answers by November 5th,
-  11:59pm. Everything up to survey research (inclusively) is fair game.
-\item
-  Team project: 20\%. Due on December 6th at 11:59pm. In teams of four,
-  you will choose a political science article from a pre-approved list
-  that will span the subfields of the discipline as well as the
-  methodological approaches we will have covered in this course. You
-  will first have to answer basic questions about the article: what is
-  the research question? What is the hypothesis? Then, you will be asked
-  to take a more critical approach and assess the methodological merits
-  of the article. What are the main threats to inference and how well do
-  the authors defend their research design? More details will be given
-  in class in November.
-\end{itemize}
-
-\hypertarget{submissions}{%
-\section{Submissions}\label{submissions}}
-
-Everything will be handled remotely. These are the instructions for each
-component:
-
-\begin{itemize}
-\tightlist
-\item
-  Quizzes: The quizzes will be available on MyCourses under the tab
-  ``Quizzes.''
-\item
-  Midterm: The midterm will be posted on MyCourses and you will be able
-  too upload the finished product under the ``Assignments'' tab.
-\item
-  Assignments: You will be able to upload your work under the
-  ``Assignments tab''. For the assignments involving R, you need to
-  upload both your R script (.R file) as well as your written answers
-  (in a PDF or Word document).
-\end{itemize}
 
 \hypertarget{class-schedule}{%
 \section{Class schedule}\label{class-schedule}}
@@ -452,10 +512,10 @@ component:
 \item
   Lecture 3.1 (Sept 14th): What is a scientific ``literature''? How do
   we come up with a research question, and what makes for a good one?
+  How to build theory: inductive vs deductive approaches. Formulating
+  hypotheses. Hypothesis testing and refining theory.
 \item
-  Lecture 3.2 (Sept 16th): How to build theory: inductive vs deductive
-  approaches. Formulating hypotheses. Hypothesis testing and refining
-  theory.
+  Lecture 3.2 (Sept 16th): Library workshop.
 \item
   Readings:
 
@@ -463,6 +523,10 @@ component:
   \tightlist
   \item
     \emph{Explorations} chapters 2 (full) and 4 (pp.55-58).
+  \item
+    Mutz, Diana C., and Jahnavi S. Rao. 2018. ``The Real Reason Liberals
+    Drink Lattes.'' \emph{PS: Political Science \& Politics} 51(4):
+    762--67.
   \end{itemize}
 \end{itemize}
 
@@ -485,11 +549,14 @@ component:
   Readings:
 
   \begin{itemize}
+  \tightlist
   \item
     Druckman, James N., Donald P. Greene, James H. Kuklinski, and Arthur
     Lupia. 2011. ``Experiments.'' In \emph{Cambridge Handbook of
     Experimental Political Science}, Cambridge: Cambridge University
     Press, 15--26.
+  \item
+    \emph{Explorations} chapter 9.
   \item
     Butler, Daniel M., and David E. Broockman. 2011. ``Do Politicians
     Racially Discriminate Against Constituents? A Field Experiment on
@@ -521,16 +588,22 @@ component:
   \item
     \emph{Explorations} chapter 4 (pp.58-66).
   \item
-    Collier, David, and Steven Levitsky. 1997. ``Democracy with
-    Adjectives: Conceptual Innovation in Comparative Research.''
-    \emph{World Politics} 49(3): 430--51.
-  \item
-    Mansbridge, Jane. 2003. ``Rethinking Representation.''
-    \emph{American Political Science Review} 97(4): 515--28.
-  \item
-    Lueders, Hans, and Ellen Lust. 2018. ``Multiple Measurements,
-    Elusive Agreement, and Unstable Outcomes in the Study of Regime
-    Change.'' \emph{The Journal of Politics} 80(2): 736--41.
+    Choose one:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Collier, David, and Steven Levitsky. 1997. ``Democracy with
+      Adjectives: Conceptual Innovation in Comparative Research.''
+      \emph{World Politics} 49(3): 430--51.
+    \item
+      Mansbridge, Jane. 2003. ``Rethinking Representation.''
+      \emph{American Political Science Review} 97(4): 515--28.
+    \item
+      Lueders, Hans, and Ellen Lust. 2018. ``Multiple Measurements,
+      Elusive Agreement, and Unstable Outcomes in the Study of Regime
+      Change.'' \emph{The Journal of Politics} 80(2): 736--41.
+    \end{itemize}
   \end{itemize}
 \end{itemize}
 
@@ -571,7 +644,8 @@ component:
 
 \begin{itemize}
 \item
-  Lecture 7.1 (Oct 15th): Guest lecture.
+  Lecture 7.1 (Oct 15th): Guest lecture by Professor Tania Islas
+  Weinstein.
 \item
   Readings:
 
@@ -580,46 +654,48 @@ component:
   \item
     \emph{Explorations} chapter 7.
   \item
-    Cramer, Katherine J. 2012. ``Putting Inequality in Its Place: Rural
-    Consciousness and the Power of Perspective.'' \emph{American
-    Political Science Review} 106(3): 517--32.
+    Fujii, Lee Ann. 2018. Interviewing in social science research: a
+    relational approach (Routledge): ch.~1 \& 4 (pp.~1-11 \& 53-72).
   \end{itemize}
 \end{itemize}
 
 \setlength{\leftskip}{0cm}
 
-\textbf{Week 8}: Midterm + ethnography
+\textbf{Week 8}: Ethnography and the interpretive method + survey
+research I.
 
 \setlength{\leftskip}{1cm}
 
 \begin{itemize}
 \item
-  Lecture 8.1 (Oct 19th): Ethnography/discourse analysis.
+  Lecture 8.1 (Oct 19th): Ethnography/interpretive method.
 \item
-  Lecture 8.2 (Oct 21st):
+  Lecture 8.2 (Oct 21st): A short history of political polling. How do
+  we sample for polls?
 \item
   Readings:
 
   \begin{itemize}
   \tightlist
   \item
-    \emph{Explorations} chapter ?.
+    \emph{Explorations} chapter 5.
   \end{itemize}
 \end{itemize}
 
 \setlength{\leftskip}{0cm}
 
-\textbf{Week 9}: Survey research
+\textbf{Week 9}: Survey research II + descriptive statistics.
 
 \setlength{\leftskip}{1cm}
 
 \begin{itemize}
 \item
-  Lecture 9.1 (Oct 26th): A short history of political polling. How do
-  we sample for polls?
-\item
-  Lecture 10.2 (Oct 28th): The promises and pitfalls of survey research.
+  Lecture 9.1 (Oct 26th): The promises and pitfalls of survey research.
   What happened in 2016 and 2020 -- are polls broken?
+\item
+  Lecture 9.2 (Oct 28th): Measures of central tendency and measures of
+  variance. Confidence intervals. The central importance of
+  distributions.
 \item
   Readings:
 
@@ -632,19 +708,18 @@ component:
 
 \setlength{\leftskip}{0cm}
 
-\textbf{Week 10}: Descriptive statistics and the basics of statistical
-inference
+\textbf{Week 10}: The basics of statistical inference and hypothesis
+testing.
 
 \setlength{\leftskip}{1cm}
 
 \begin{itemize}
 \item
-  Lecture 10.1 (Nov 2nd): Measures of central tendency and measures of
-  variance. Confidence intervals. The central importance of
-  distributions.
-\item
-  Lecture 10.2 (Nov 4th): Measures of association for different types of
+  Lecture 10.1 (Nov 2nd): Measures of association for different types of
   variables. Linear vs non-linear relationships.
+\item
+  Lecture 10.2 (Nov 4th): Difference-in-means and hypothesis testing.
+  p-values and what they do/don't tell you.
 \item
   Readings:
 
@@ -657,24 +732,24 @@ inference
 
 \setlength{\leftskip}{0cm}
 
-\textbf{Week 11}: Hypothesis testing; research ethics and the
-replication crisis
+\textbf{Week 11}: Research ethics and the replication crisis
 
 \setlength{\leftskip}{1cm}
 
 \begin{itemize}
 \item
-  Lecture 11.1 (Nov 9th): Difference-in-means and hypothesis testing.
-  p-values and what they do/don't tell you.
+  Lecture 11.1 (Nov 9th): Research ethics and the replication crisis.
+  Advances in research transparency: public data, pre-registration,
+  registered reports.
 \item
-  Lecture 11.2 (Nov 11th): Research ethics and the replication crisis.
+  Lecture 11.2 (Nov 11th): No class (complete midterm).
 \item
   Readings:
 
   \begin{itemize}
   \tightlist
   \item
-    \emph{Explorations} chapter 8.
+    \emph{Explorations} chapter 3.
   \item
     Lee, Stephanie M. 2018.
     ``\href{https://www.buzzfeednews.com/article/stephaniemlee/brian-wansink-cornell-p-hacking\#.qs6A0K3DW}{Here's
@@ -714,17 +789,27 @@ replication crisis
 
 \setlength{\leftskip}{0cm}
 
-\textbf{Week 13}: TBD (mixed methods + more on regression?)
+\textbf{Week 13}: More on regression + mixed methods.
 
 \setlength{\leftskip}{1cm}
 
 \begin{itemize}
 \item
-  Lecture 13.1 (Nov 23rd):
+  Lecture 13.1 (Nov 23rd): Basic regression diagnostics. What linear
+  regression does and doesn't tell you about the political world. A
+  short word on mixed methods.
 \item
-  Lecture 13.2 (Nov 25th):
+  Lecture 13.2 (Nov 25th): Preparation for the final project: how should
+  we read empirical political science articles? How do we tell whether
+  we should trust the findings?
 \item
   Readings:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \emph{Explorations} chapter 14 (optional).
+  \end{itemize}
 \end{itemize}
 
 \setlength{\leftskip}{0cm}
@@ -735,12 +820,18 @@ replication crisis
 
 \begin{itemize}
 \item
-  Lecture 14.1 (Nov 23rd): Empirical political science today -- what
+  Lecture 14.1 (Nov 30th): Review session.
+\item
+  Lecture 14.2 (Dec 2nd): Empirical political science today -- what
   \emph{haven't} we learned in this class?
 \item
-  Lecture 14.2 (Nov 25th): Review session.
-\item
   Readings:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    None.
+  \end{itemize}
 \end{itemize}
 
 

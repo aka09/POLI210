@@ -1,0 +1,29 @@
+---
+title: "Mock Assignment 2, POLI210"
+author: "Olivier Bergeron-Boutin"
+date: "04/10/2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+# Question 1 
+
+```{r}
+setwd("~/Grad/McGill Fall 2021/POLI210/assignments/pset1")
+```
+
+Do NOT use the `View()` function when knitting. For RStudio Cloud users: you do not need to set the working directory and you must "import" the dataset into the cloud. 
+
+# Question 2
+
+```{r}
+# place whatever code you need here
+```
+
+The dataset contains whatever number of observations and whatever number of columns
+
+
+

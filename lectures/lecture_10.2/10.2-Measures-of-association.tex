@@ -1,0 +1,480 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+  ignorenonframetext,
+  t]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{metropolis}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={POLI210: Political Science Research Methods},
+  pdfauthor={Olivier Bergeron-Boutin},
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=blue,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{48,48,48}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.87,0.87,0.75}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.86,0.86,0.80}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.76,0.75,0.62}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.75,0.75,0.82}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.94,0.94,0.82}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{\textbf{#1}}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{animate}
+\usepackage{xmpmulti}
+\setsansfont[BoldFont={FiraSans-Bold.ttf}]{FiraSans-Light.ttf}
+\setmonofont{FiraMono-Regular.ttf}
+\usepackage{color}
+\definecolor{mygreen}{HTML}{008000}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[style=authoryear,]{biblatex}
+\addbibresource{../210lectures\_bib.bib}
+
+\title{POLI210: Political Science Research Methods}
+\subtitle{Lecture 10.2: Measures of association}
+\author{Olivier Bergeron-Boutin}
+\date{October 28th, 2021}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Where we're going}
+\protect\hypertarget{where-were-going}{}
+We should now be able to describe the distribution of one variable
+
+\begin{itemize}
+\tightlist
+\item
+  The next step: describe how two variables move together
+\item
+  We will speak of \textbf{correlations}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    When one variable is big/small, does that give me a clue about
+    whether some other variable is big/small?
+  \end{itemize}
+\item
+  We want to judge correlations according to two criteria:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Direction
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Positive correlation: when x is big, y is also big
+    \item
+      Negative correlation: when x is big, y is small
+    \end{itemize}
+  \item
+    Strength
+
+    \begin{itemize}
+    \tightlist
+    \item
+      How well can I guess the value of y if you give me x?
+    \end{itemize}
+  \end{itemize}
+\item
+  The \textbf{correlation coefficient} summarizes both of these
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It's a value between -1 and 1
+  \item
+    Closer to -1 or 1: stronger relationship
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Correlation of 0: no (linear) relationship
+    \end{itemize}
+  \item
+    The sign indicates the direction
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The scatterplot as a visual tool: economic voting}
+\protect\hypertarget{the-scatterplot-as-a-visual-tool-economic-voting}{}
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{10.2-Measures-of-association_files/figure-beamer/unnamed-chunk-1-1} \caption{Relationship between economic growth and incumbent vote share in the United States, 1792-2016. Data from Guntermann, Lenz, and Myers (2021).}\label{fig:unnamed-chunk-1}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Economic voting}
+\protect\hypertarget{economic-voting}{}
+The Pearson correlation coefficient:
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(economy}\SpecialCharTok{$}\NormalTok{gdpchangeyr3, economy}\SpecialCharTok{$}\NormalTok{partyincshr, }\AttributeTok{use =} \StringTok{"pairwise"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.3763856
+\end{verbatim}
+
+\normalsize
+
+A positive, moderately strong relationship
+
+\begin{itemize}
+\tightlist
+\item
+  As GDP growth increases, vote share for the incumbent tends to
+  increase as well
+\end{itemize}
+
+\begin{table}
+\centering
+\begin{tabular}[t]{ll}
+\toprule
+r & Rough meaning\\
+\midrule
+\cellcolor{gray!6}{+/-0.1-0.3} & \cellcolor{gray!6}{Modest}\\
++/-0.3-0.5 & Moderate\\
+\cellcolor{gray!6}{+/-0.5-0.8} & \cellcolor{gray!6}{Strong}\\
++/-0.8-1 & Very strong\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Economic voting for each party}
+\protect\hypertarget{economic-voting-for-each-party}{}
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{10.2-Measures-of-association_files/figure-beamer/unnamed-chunk-4-1} \caption{Relationship between economic growth and incumbent vote share in the United States, 1792-2016. Data from Guntermann, Lenz, and Myers (2021).}\label{fig:unnamed-chunk-4}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Economic voting for each party}
+\protect\hypertarget{economic-voting-for-each-party-1}{}
+\begin{figure}
+\includegraphics[width=0.95\linewidth]{10.2-Measures-of-association_files/figure-beamer/unnamed-chunk-5-1} \caption{Relationship between economic growth and incumbent vote share in the United States, 1792-2016. Data from Guntermann, Lenz, and Myers (2021).}\label{fig:unnamed-chunk-5}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Economic voting for each party}
+\protect\hypertarget{economic-voting-for-each-party-2}{}
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{library}\NormalTok{(tidyverse)}
+\NormalTok{economy }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(inc\_party) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{cor =} \FunctionTok{cor}\NormalTok{(gdpchangeyr3, partyincshr, }\AttributeTok{use =} \StringTok{"pairwise"}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 3 x 2
+##   inc_party    cor
+##   <chr>      <dbl>
+## 1 Democrat   0.206
+## 2 Other      0.432
+## 3 Republican 0.593
+\end{verbatim}
+
+\normalsize
+
+It looks like the correlation is stronger for Republican incumbents!
+
+Is this a causal relationship? \pause
+
+\begin{itemize}
+\tightlist
+\item
+  Maybe\ldots maybe not!
+\item
+  We could think of many \textbf{confounders}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    A confounders is related to both X and Y
+  \item
+    International economy, partisan control of Congress\ldots{}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{College majors: women and income}
+\protect\hypertarget{college-majors-women-and-income}{}
+\includegraphics[width=1\linewidth]{10.2-Measures-of-association_files/figure-beamer/unnamed-chunk-7-1}
+\end{frame}
+
+\begin{frame}{College majors: women and unemployment}
+\protect\hypertarget{college-majors-women-and-unemployment}{}
+\includegraphics[width=1\linewidth]{10.2-Measures-of-association_files/figure-beamer/unnamed-chunk-8-1}
+\end{frame}
+
+\begin{frame}[fragile]{College majors: correlation coefficients}
+\protect\hypertarget{college-majors-correlation-coefficients}{}
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(majors}\SpecialCharTok{$}\NormalTok{ShareWomen, majors}\SpecialCharTok{$}\NormalTok{Median, }
+    \AttributeTok{use =} \StringTok{"pairwise"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] -0.6186898
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(majors}\SpecialCharTok{$}\NormalTok{ShareWomen, majors}\SpecialCharTok{$}\NormalTok{Unemployment\_rate, }
+    \AttributeTok{use =} \StringTok{"pairwise"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.07320458
+\end{verbatim}
+
+\normalsize
+
+\texttt{Share\ of\ women} and \texttt{Median\ salary}: a strong negative
+correlation
+
+\texttt{Share\ of\ women} and \texttt{Unemployment}: basically no
+association
+\end{frame}
+
+\begin{frame}{TV shows}
+\protect\hypertarget{tv-shows}{}
+\includegraphics[width=1\linewidth]{10.2-Measures-of-association_files/figure-beamer/unnamed-chunk-10-1}
+\end{frame}
+
+\begin{frame}[fragile]{TV shows}
+\protect\hypertarget{tv-shows-1}{}
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{cor}\NormalTok{(show\_level}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{1}\StringTok{\textasciigrave{}}\NormalTok{, show\_level}\SpecialCharTok{$}\StringTok{\textasciigrave{}}\AttributeTok{2}\StringTok{\textasciigrave{}}\NormalTok{, }\AttributeTok{use =} \StringTok{"pairwise"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## [1] 0.8274108
+\end{verbatim}
+
+\normalsize
+
+Wow, that's a really strong correlation!
+
+\begin{itemize}
+\tightlist
+\item
+  How to interpret?
+\item
+  Knowing how well-rated the first season is, you can make a very good
+  guess as to the rating of the second season
+\item
+  Do you think the relationship is as strong between season 1 and season
+  5?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Seasons 1 and 5}
+\protect\hypertarget{seasons-1-and-5}{}
+\includegraphics[width=1\linewidth]{10.2-Measures-of-association_files/figure-beamer/unnamed-chunk-12-1}
+\end{frame}
+
+\begin{frame}{Linearity}
+\protect\hypertarget{linearity}{}
+The correlation coefficient evaluates \textbf{linear} covariation
+\end{frame}
+
+\begin{frame}[fragile]{Anscombe's quartet}
+\protect\hypertarget{anscombes-quartet}{}
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{data}\NormalTok{(}\StringTok{"anscombe"}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{figure}
+\centering
+\includegraphics{anscombe.png}
+\caption{The famous Anscombe's quartet}
+\end{figure}
+\end{frame}
+
+\begin{frame}{The Datasaurus Dozen}
+\protect\hypertarget{the-datasaurus-dozen}{}
+\transduration<0-13>{0}
+\multiinclude[<+->][format=png, graphics={width=\textwidth}]{frame}
+
+\begin{figure}
+\centering
+\includegraphics{disonaurus_dozen.gif}
+\caption{time series}
+\end{figure}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{References}
+\protect\hypertarget{references}{}
+\footnotesize
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
+  \bibliographytrue
+  \printbibliography[heading=none]
+\end{frame}
+
+\end{document}

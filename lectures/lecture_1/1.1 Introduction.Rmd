@@ -30,7 +30,7 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ## Introducing myself
 
 - M.A. student (3rd year/writing thesis) \pause
-- Interests: political behavior, political economy, quantitative methods, metascience \pause 
+- Interests: political behavior, political economy, quantitative methods \pause 
 - Thesis topic: social sorting and affective polarization in Canada \pause 
 - Recent work with Profs. Stolle, Gidengil, and Pelc \pause
 
@@ -39,8 +39,6 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 - Does anxiety about coronavirus weaken citizens' commitment to democracy? \pause
 - Social sorting/cross-cutting cleavages in Canada \pause
 - Decline of local news and attitudes toward trade 
-
-# What is this course about?
 
 ## Empirical vs normative 
 
@@ -61,10 +59,6 @@ We have to distinguish between empirical research and normative research \pause
 
 ## Empirical vs normative 
 
-POLLING QUESTION HERE: WHICH OF THESE QUESTIONS IS NORMATIVE? 
-
-## Empirical vs normative 
-
 Things are not quite as neat in the real world! \pause
 
 - Normative political science makes use of empirical political science \pause
@@ -81,11 +75,11 @@ In empirical political science, we focus on *inferring* things about the politic
 
 - Infer: Form a belief based on a) evidence, and b) rules for processing that evidence \pause
 
-3 types of inference: 
+3 types of inference: \pause
 
-- Descriptive inference: What are the facts? 
-- Causal inference: Why does something occur? 
-- Predictive inference: How will things shake out? 
+- Descriptive inference: What are the facts? \pause
+- Causal inference: Why does something occur? \pause
+- Predictive inference: How will things shake out? \pause
 
 ## Descriptive inference
 
@@ -105,7 +99,7 @@ DW-NOMINATE scores for the 90th Congress (1967-1969)
 
 ![](dwnominate_117.png)
 
-DW-NOMINATE scores for the 17th Congress (current)
+DW-NOMINATE scores for the 117th Congress (current)
 
 [See here: VoteView](https://voteview.com/congress/house)
 
@@ -125,26 +119,51 @@ Source: Iyengar et al. [-@iyengar_origins_2019]
 
 Causal inference is about *why* \pause
 
-- Why did Congress polarize? \pause
-- Why did the Soviet Union fall? \pause 
-- Why did the Arab Spring lead to democracy in Tunisia but not in other countries? 
+- If X (our *independent variable*) happens, what happens to Y (our *dependent variable*) \pause
+
+Taking our congressional polarization example: 
+- As DV: Why did Congress polarize? 
+- As IV: What sort of consequences has congressional polarization had?
+
+We care a lot about causality \pause
+
+- But it is *very hard* to establish credibly!
+- Recently: more credible causal claims \pause
+
+## Cool things we've learned with causal inference
+
+- Returns to office: British MPs die a lot wealthier than if they had not been elected [@eggers_mps_2009] \pause
+- Descriptive representation: black legislators are more responsive to black constituents and white legislators are more responsive to white constituents [@butler_politicians_2011] \pause
+
+Some counterintuitive findings that may clash with your priors...
+
+- Access to Western TV in East Germany *decreased* opposition to the East German regime [@kern_opium_2009] \pause
+- The election of women has no effect on women's political participation and future candidacies [@broockman_female_2014] \pause
+- For my own benefit: Giving out cookies during course evaluations causes better evaluations! [@hessler_availability_2018]
 
 ## Predictive inference 
 
 Prediction is not causation! \pause
 
-Example? What is something I can predict but not interpret causally? 
+Example? What is something I can predict but not interpret causally? \pause
+
+- Coming to office hours and grades in the class 
+
+Sometimes all I want to do is be able to predict \pause
+
+- For instance, political campaigns must decide which voters to target during a campaign
+- They want to target persuadable voters who are on the fence
+- They build models predicting turnout and vote choice 
 
 # Why make me do this? 
 
 ## Some reasons 
 
 - The most boring answer: because political scientists use empirical methods and we need to be able to understand! \pause 
-
   - Just about every area of political science has quantitative components! \pause
+  - Even political theory! Theories of participatory democracy need to know if participation actually has the intended effects \pause
   
 - Professional advancement \pause 
-
   - There are *a lot* of jobs for social scientists with skills in empirical analysis \pause
   - Facebook, Twitter, etc. have data science teams composed of many social scientists! \pause 
 - Developing a toolbox for your research \pause 
@@ -175,49 +194,15 @@ POLLING QUESTION: FEELING EXCITED/OVERWHELMED/CURIOUS/ANXIOUS
 I know this can be intimidating \pause 
 
 - But this course is *not* math-heavy \pause
-- Everyone can do well
-- But do try to keep up and use the resources given to you!
+- Everyone can do well \pause
+- But do try to keep up and use the resources given to you! \pause
 - Don't hesitate to reach out
 
-# Syllabus and requirements
+## Questions?
 
-## Textbook
+Any questions? \pause
 
-![](explorations.png)
-
-## Course components
-
-Lectures: 2x per week (online)
-
-Labs: 1x per week (in person?)
-
-2 quizzes
-
-Midterm + final 
-
-4-5 assignments
-
-## Labs
-
-The labs will introduce you to *R*, a highly-powerful and free programming language
-
-- Main use: manipulating data, performing statistical tests, making graphs and tables... \pause
-- But also a lot more: slides, papers, websites, interactive visualizations, scraping... \pause
-- Why? \pause
-  - Scientifically: replicability and transparency
-  - For you: highly marketable and a good tool to master
-  - To pass your assignments ;)
-  
-ASAP: Download R and RStudio 
-
-- RStudio: IDE (Integrated Development Environment)
-
-## Contact
-
-Discussion boards on MyCourses: use them! 
-
-My email: olivier.bergeron-boutin@mail.mcgill.ca
-My office hours: TBA
+Let's look at the syllabus now
 
 ## References {.allowframebreaks}
 

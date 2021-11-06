@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.7.23)  1 AUG 2021 18:37
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.9.2)  16 SEP 2021 08:29
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **3.2-Building-Theory.tex
 (./3.2-Building-Theory.tex
 LaTeX2e <2021-06-01> patch level 1
-L3 programming layer <2021-07-12> (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf
+L3 programming layer <2021-08-27> (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf
 -dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2021/05/26 v3.63 A class for typesetting presentations
 
@@ -841,11 +841,11 @@ Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unico
 de-math.sty
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2021-07-12 L3 programming layer (loader) 
+Package: expl3 2021-08-27 L3 programming layer (loader) 
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backen
 d-xetex.def
-File: l3backend-xetex.def 2021-07-12 L3 backend support: XeTeX
+File: l3backend-xetex.def 2021-08-04 L3 backend support: XeTeX
 (|extractbb --version)
 \c__kernel_sys_dvipdfmx_version_int=\count334
 \l__color_backend_stack_int=\count335
@@ -865,11 +865,11 @@ TeX
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/
 xparse.sty
-Package: xparse 2021-06-18 L3 Experimental document command parser
+Package: xparse 2021-08-27 L3 Experimental document command parser
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2
 e/l3keys2e.sty
-Package: l3keys2e 2021-06-18 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2021-08-27 LaTeX2e option processing using LaTeX3 keys
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.
 sty
@@ -1457,10 +1457,7 @@ Overfull \vbox (50.56238pt too high) detected at line 125
 
 [1
 
-]
-LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10.95> not available
-(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 146.
-[2
+] [2
 
 ] [3
 
@@ -1469,6 +1466,169 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10.95> not available
 ] [5
 
 ] [6
+
+]
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.8961pt on input line 209.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.64008pt on input line 209.
+LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
+09.
+(c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
+File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
+)
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 11.28131pt on input line 209.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.89691pt on input line 209.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.64066pt on input line 209.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 11.27914pt on input line 209.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.8954pt on input line 209.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.63957pt on input line 209.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 209
+.
+(c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
+File: umsa.fd 2013/01/14 v3.01 AMS symbols A
+)
+LaTeX Font Info:    Trying to load font information for U+msb on input line 209
+.
+(c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
+File: umsb.fd 2013/01/14 v3.01 AMS symbols B
+) [7
+
+] [8
+
+] [9
+
+] [10
+
+] [11
+
+]
+LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10.95> not available
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 275.
+
+Overfull \vbox (17.68956pt too high) detected at line 275
+ []
+
+[12
+
+]
+Overfull \vbox (17.68956pt too high) detected at line 275
+ []
+
+[13
+
+]
+Overfull \vbox (17.68956pt too high) detected at line 275
+ []
+
+[14
+
+]
+Overfull \vbox (17.68956pt too high) detected at line 275
+ []
+
+[15
+
+] [16
+
+] [17
+
+] [18
+
+]
+Overfull \vbox (26.88954pt too high) detected at line 335
+ []
+
+[19
+
+]
+Overfull \vbox (26.88954pt too high) detected at line 335
+ []
+
+[20
+
+]
+Overfull \vbox (26.88954pt too high) detected at line 335
+ []
+
+[21
+
+]
+Overfull \vbox (26.88954pt too high) detected at line 335
+ []
+
+[22
+
+]
+Overfull \vbox (26.88954pt too high) detected at line 335
+ []
+
+[23
+
+] [24
+
+] [25
+
+] [26
+
+]
+Overfull \vbox (14.43686pt too high) detected at line 398
+ []
+
+[27
+
+]
+Overfull \vbox (14.43686pt too high) detected at line 398
+ []
+
+[28
+
+]
+Overfull \vbox (14.43686pt too high) detected at line 398
+ []
+
+[29
+
+]
+Overfull \vbox (14.43686pt too high) detected at line 398
+ []
+
+[30
+
+]
+Overfull \vbox (14.43686pt too high) detected at line 398
+ []
+
+[31
+
+]
+LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <9> not available
+(Font)              Font shape `TU/lmss/m/sl' tried instead on input line 429.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 9.27136pt on input line 429.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 6.18091pt on input line 429.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.15076pt on input line 429.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 9.27232pt on input line 429.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 6.18155pt on input line 429.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.15129pt on input line 429.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.27054pt on input line 429.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 6.18036pt on input line 429.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.1503pt on input line 429.
+[32
 
 ]
 \tf@nav=\write6
@@ -1482,15 +1642,15 @@ LaTeX Font Info:    Font shape `TU/lmss/m/it' in size <10.95> not available
 
 (./3.2-Building-Theory.aux)
 Package rerunfilecheck Info: File `3.2-Building-Theory.out' has not changed.
-(rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
+(rerunfilecheck)             Checksum: 136DABC1D0D2A96852B737E44FFDAF07;258.
  ) 
 Here is how much of TeX's memory you used:
- 30062 strings out of 478450
- 617435 string characters out of 5856443
- 1049519 words of memory out of 5000000
- 49816 multiletter control sequences out of 15000+600000
- 404146 words of font info for 44 fonts, out of 8000000 for 9000
+ 30272 strings out of 478507
+ 623591 string characters out of 5860143
+ 1051106 words of memory out of 5000000
+ 49926 multiletter control sequences out of 15000+600000
+ 409894 words of font info for 81 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 101i,13n,120p,1820b,576s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 101i,13n,120p,1820b,741s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 3.2-Building-Theory.pdf (6 pages).
+Output written on 3.2-Building-Theory.pdf (32 pages).

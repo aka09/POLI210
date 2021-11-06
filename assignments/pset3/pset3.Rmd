@@ -1,0 +1,165 @@
+---
+title: "Problem set 3"
+author: "POLI210, Fall 2021"
+date: "Due November 15th, 11:59PM"
+output:
+  tint::tintPdf:
+    latex_engine: xelatex
+  tufte::tufte_html: 
+    tufte_features: ["fonts", "background"]
+link-citations: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  include = FALSE,
+  fig.margin = TRUE
+)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+## General instructions
+
+In this assignment, we will first use data from a poll conducted by the Monmouth University Polling Institute (graded as an A pollster by FiveThirtyEight). This dataset, along with the original codebook, are posted in the assignment folder. I do not provide a cleaned dataset and abbreviated codebook on purpose: you will need to comb through the original codebook in order to complete this assignment. In question 7-10, we will then use data on life expectancy and economic wealth across many countries. This dataset can be downloaded using the `gapminder` package (see instructions in question 7). Any data visualizations you submit should be as informative as possible, with proper titles and axes labels.
+
+Submission: You must submit both a .Rmd file and the .pdf file that the knitting process produces. All of your code must be visible in the knitted PDF. Your written answers must be included as well. If you have any questions about the assignment, **post them on the MyCourses discussions board**. Do not email the instructor or the TAs. If you require individualized assistance, you are of course welcome to office hours.  
+
+## Assignment questions
+
+1. Using the Monmouth polling data provided to you, begin by subsetting the data to respondents who intend to vote for one of Trump, Biden, Hawkins, Jorgensen, or other. Make a dummy variable that indicates intention to vote for Biden and another dummy variable that indicates intention to vote for Trump. Using those dummy variables, examine the proportions who intend to vote for Donald Trump and Joe Biden. How close do the estimates come to the actual election results? 
+
+```{r}
+library(tidyverse)
+poll <- read.csv("assignments/pset3/monmouth_september_poll.csv")
+poll_voters <- subset(poll, 
+                      q2 %in% c("Donald Trump", 
+                                "Joe Biden",
+                                "Howie Hawkins", 
+                                "Jo Jorgensen", "Other"))
+poll_voters$intent_biden <- 
+  ifelse(poll_voters$q2 == "Joe Biden", 1, 0)
+poll_voters$intent_trump <- 
+  ifelse(poll_voters$q2 == "Donald Trump", 1, 0)
+mean(poll_voters$intent_biden)
+mean(poll_voters$intent_trump)
+```
+
+
+```{marginfigure}
+The sample estimates are quite close to the true election results, though support for Biden is underestimated by more than 2 percentage points.
+```
+
+2. If one were to construct a 95% confidence interval around the proportion for Biden from this Monmouth sample, can one be 95% certain that the election result will fall somewhere within it? 
+
+```{marginfigure}
+NO! We have no idea if the sample is representative of the population. With sampling bias, 95% confidence intervals will not necessarily cover the true parameter 95% of the time. Additionally: the election was 2 months away; we may have misidentified likely voters. 
+```
+
+3. Call the `table()` function on the variable that represents educational attainment.^[Use the subset that we created in question 1.] Create a new variable of class `factor` with the different levels of education in the proper order. Examine the distribution of this new variable. Does the sample look representative of the American population?^[Just an educated guess is required here.]
+
+```{r}
+# character variable does not have proper order
+table(poll_voters$qd4)
+
+# new factor variable with proper order
+poll_voters <- poll_voters %>% 
+  mutate(
+    education = factor(
+      qd4, 
+      levels = c(
+        "8th grade or less",
+        "High School incomplete [Grades 9, 10 and 11]",
+        "High School Complete [Grade 12]",
+        "Vocational_Technical School",
+        "Some College",
+        "Junior College Graduate [2 year, Associate Degree]",
+        "4 year College Graduate [Bachelors Degree]",
+        "Graduate School [Masters, Law_Medical School, etc.]"
+      )
+    )
+  )
+
+table(poll_voters$education) %>% prop.table() %>% round(3)
+```
+
+```{marginfigure}
+The sample does not look representative. The most striking problem is the vast overrepresentation of individuals with graduate school education. 
+```
+
+4. For this poll, Monmouth assigned each respondent a weight based on their region, age, education, gender, and race. Find the 10 respondents with the lowest weights and print a dataframe containing their weight, their education level, their age, and their gender. What do these individuals seem to have in common? In your own words, explain why sampling weights are useful. 
+
+```{r}
+poll_voters %>% 
+  arrange(finalwgt) %>% 
+  slice(1:10) %>% 
+  dplyr::select(finalwgt, qd4, qd5, qd10)
+```
+
+```{marginfigure}
+The 10 individuals seem to be highly educated, fairly old (but not too much), and more male. Survey weights are useful to correct for the unavoidable issues caused by non-response bias/sampling bias. 
+```
+
+5. Using the function `weighted.mean` from the `stats` package, re-estimate the quantities from question 1 using the weights. Are the results closer to the actual election outcome? 
+
+```{r}
+weighted.mean(poll_voters$intent_biden, poll_voters$finalwgt)
+weighted.mean(poll_voters$intent_trump, poll_voters$finalwgt)
+```
+
+```{marginfigure}
+Our estimate for the Biden vote is closer to the true election outcome, whereas our estimate for the Trump vote is actually worse. 
+```
+
+6. We will now turn to the other dataset for this assignment. Download the package `gapminder`. You will be able to access the dataset for this section if you call the function `gapminder::gapminder()`.^[You can store it inside an object.] Draw a random sample of 20 countries from 2007. Compute the mean life expectancy in this sample. How does it compare to the mean life expectancy among all countries in the dataset? 
+
+```{r}
+library(gapminder)
+set.seed(1101)
+gapminder_2007 <- filter(gapminder, year == 2007)
+gapminder_2007_sample <- 
+  gapminder_2007[sample(1:nrow(gapminder_2007), 20),]
+
+mean_lifeexp_sample <- mean(gapminder_2007_sample$lifeExp)
+mean_lifeexp_pop <- mean(gapminder_2007$lifeExp)
+c(mean_lifeexp_sample, mean_lifeexp_pop)
+```
+
+7. Construct a 95% confidence interval around the sample mean you just computed. For 5 bonus points, construct the confidence interval by hand, i.e. not using any premade functions.^[Your answer may be slightly different than what premade functions will show because of statistical subtleties we are not covering in this course.] What is this confidence interval saying? 
+
+```{r}
+lwr <- mean_lifeexp_sample -
+  sd(gapminder_2007_sample$lifeExp)/sqrt(20)*1.96
+
+upr <- mean_lifeexp_sample +
+  sd(gapminder_2007_sample$lifeExp)/sqrt(20)*1.96
+
+c(lwr, mean_lifeexp_sample, upr)
+```
+
+```{marginfigure}
+In 95% of repeated samples, the true population parameter (the true mean life expectancy) will be contained within the 95% confidence interval. The students may use 1.96 or 2 as the critical value -- it does not matter.
+```
+
+8. Using ggplot, make a scatterplot showing the relationship between GDP per capita and life expectancy in 2007 (make sure to think about which variable goes on the x axis and which on the y axis). The size of the points should be proportional to each country's population. How would you describe the relationship between GDP per capita and life expectancy? Make to sure to talk about strength, direction, and linearity. 
+
+```{r,fig.fullwidth=TRUE,fig.margin=FALSE}
+ggplot(filter(gapminder, year == 2007), 
+       aes(x = gdpPercap, y = lifeExp,
+                           size = pop)) +
+  geom_point()
+```
+
+
+9. Let's assume that we hypothesized: a) that economic development causes better health, and b) that large populations lead to worse health outcomes. Referring to your figure above, which case(s) would you be interested in studying intensively? Explain why. 
+
+```{marginfigure}
+We would probably be interested in studying the cases that do not conform to theoretical expectation. For instance, the cluster of cases around 10,000 on the x axis but with low life expectancy; or the very large and poor countries with decent life expectancy. 
+```
+
+10. "In political science, it is always better to sample randomly." Why might this statement be wrong-headed? Answer by referring to case study and comparative research. 
+
+```{marginfigure}
+a) studying select cases allows for an in-depth look at causal mechanisms b) some cases are critical tests for a theory and merit more attention c) the benefits of random sampling are more or less lost in very small samples d) for practical reasons, we know some cases much better than others.
+```
+

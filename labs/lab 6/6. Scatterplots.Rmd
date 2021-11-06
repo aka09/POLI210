@@ -1,0 +1,241 @@
+---
+title: '6. Bivariate Relationships III | Scatterplots'
+date: 'POLI210, Fall 2021, Week 8'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this tutorial, we will analyse how corruption varies in countries with different levels of economic development. The dataset for the analysis is in the file `corruption.csv` available on MyCourses. This dataset contains country-level data on for a large number of countries (\textit{N} = 170). The codebook for the dataset is below. In previous labs, we saw two sets of bivariate analyses: we learned how to analyze relationships between two categorical variables and, between one categorical and one continuous variable. In this tutorial, we will look at a third type of bivariate relationship, which consists of associations between two continuous variables. 
+
+The question to be explored in the data is whether corruption impedes economic growth. Research suggests corruption is an impedement to economic growth because it weakens institutions and discourages foreign investment\footnote{Gupta, S., Davoodi, H., \& Alonso-Terme, R. (2002). Does corruption affect income inequality and poverty? \textit{Economics of governance}, 3(1), 23-45.}. For demonstration purposes, we will presume that corruption has some effect on a country's level of economic development. Specifically, we hypothesize that more corrupt countries are likely to be poorer. Of course, in reality, there are many factors that affect economic development. We cannot determine the causal direction with cross-sectional data and you may have another theory about how these or other variables relate to one another.  
+
+# Codebook
+
+ ----------------------  ---------------------------------------------------------------------------
+ Name                    Description
+ ----------------------  ---------------------------------------------------------------------------
+  `ccode`                 A unique numerical code identifying each country. 
+
+  `cname`                 Country name.
+  
+  `ccodealp`              Alphabetical code for each country.
+  
+  `ti_cpi`                Transparency International's \textit{Corruption Perception Index}. Lower scores 
+                           indicate a country is more corrupt.
+  
+  `undp_gdp`              GDP per capita in $US (purchasing power parity).
+  
+  `democracy`             Dichotomous variable rating countries as either weaker or stronger democracies.
+
+ ---------------------------------------------------------------------------------------------------
+
+```{r, message = F, warning = F}
+setwd("~/Grad/McGill Fall 2021/POLI210/labs/lab 6")
+df <- read.csv("corruption.csv")
+
+library(psych)
+library(ggplot2)
+```
+
+# Bivariate relationships between continuous variables
+
+We want to know whether there is a correlation (i.e., an association or a relationship) between corruption and wealth. Examining the distribution of these variables, we can see that both are measured on continuous scales.
+
+```{r}
+hist(df$undp_gdp)
+hist(df$ti_cpi,
+     breaks = 50) # Note the breaks argument: higher values more fine-grained look at data
+
+```
+
+When both independent and dependent variables are measured on continuous scales, we can use a \textbf{scatterplot} to visualize the bivariate relationship. There are many tools in \textsf{R} to help visualize data. A particularly flexible tool is the package `ggplot()`.
+
+Recall from our previous lab that `ggplot()` requires three pieces of information: (i) the dataset, (ii) the variables to be plotted on the x- and y-axes, and (iii) the type of data visualization to produce (called a "geom"). For a scatterplot, we can use the `geom_point()` command.
+
+```{r, warning = F, message = F}
+ggplot(data = df, aes(x = ti_cpi, y = undp_gdp)) +
+  geom_point()
+```
+
+Recall that after specifying the minimum information required to generate our plot, we can customize our data visualization by adding successive layers to our plot.
+
+```{r, warning = F, message = F}
+ ggplot(data = df, aes(x = ti_cpi, y = undp_gdp)) +
+  geom_point() +
+  xlab("Corruption Index \n 0 (Highly corrupt) to 10 (Low corruption)") +
+  ylab("GDP per capita (US$ PPP)") 
+
+# Add a "line of best fit" to the graph:
+
+ ggplot(data = df, aes(x = ti_cpi, y = undp_gdp)) +
+  geom_point() +
+  xlab("Corruption Index \n 0 (Highly corrupt) to 10 (Low corruption)") +
+  ylab("GDP per capita (US$ PPP)") +
+  geom_smooth(method = "lm")
+```
+
+In this last figure, we added a "line of best fit" -- the line that best represents the relationship between x and y. We will actually learn about this later in the course!
+
+# Measures of association
+
+From the scatterplot, we can clearly see that there is a positive relationship between the corruption index and GDP per capita. We can even get a sense of the strength of the relationship by examining how tightly the points in the scatterplot are clustered together. This is a fairly subjective decision\footnote{How well can you "eye-ball" a correlation from a scatterplot? Try your luck: http://guessthecorrelation.com/.} and we will learn how to use some statistical evidence to help us make a decision. We can also determine the direction of the relationship by examining the slope of the line of best fit: if the line moves upwards, the relationship is positive (as values on the x-axis increase, values on the y-axis also increase), and if the line moves downwards, the relationship is negative (as values on the x-axis increase, values on the y-axis decrease). 
+
+So, how strong is the association between these variables in the dataset, exactly? We might also be interested in asking whether this relationship is consistent for countries with weaker or stronger democratic institutions\footnote{Perhaps because the researcher think this variable is relevant to \textit{control for} based on a theory that both corruption and economic development might be caused by a third variable: weak democratic institutions.}. To answer this question, we need to first look at the original bivariate relationship, and then break the relationship down by levels of democracy and compare how our estimate of the relationship changes.
+
+We will learn several different types of measures of association, and which one we select depends on how the variables are distributed. For this relationship, which level of association do you think is most appropriate?
+
+ ------------------------ ----------------------------
+ Measure of association   Lowest level of measurement
+ ------------------------ ----------------------------
+ Pearson's \textit{r}     Interval or ratio. 
+
+ Kendall's \textit{tau}   Ordinal.
+  
+ Cramer's \textit{V}      Nominal.
+ ------------------------ ---------------------------- 
+ 
+The answer is Pearson's \textit{r}. This statistic measures the correlation between two continuous measures. First, let's examine the overall relationship across all countries:
+
+```{r}
+# Pooled sample (all observations)
+
+cor(df$ti_cpi, df$undp_gdp, 
+    method = "pearson",
+    use = "complete.obs")
+```
+Our estimate of the correlation between wealth and democracy is \textit{r} = 0.82. A correlation coefficient will always be between 0 and 1. 0 means no correlation -- i.e. the two variables are not associated whatsoever. Whatever the value of x, we cannot use it to guess what the value of y likely is. By contrast, a correlation of 1 is a perfect (linear) correlation: if I give you the value of x, you know exactly what the value of y is, for all observations. With 0.82, what we observe here is a very strong correlation. 
+
+## Does the relationship change among weaker and stronger democracies?
+
+To answer this question, we need to look at the correlation between wealth and corruption seperately among “stronger” and “weaker” democracies. We can present this information separately by adding colour aesthetics to our plot. We can also do this statistically by calculating our \textbf{correlation coefficient} separately from stronger and weaker democracies. To do this, we need to `subset()` the data. This effectively creates two datasets: one with only the observations at a “strong” level of democracy, and another with only observations at a “weaker” level of democracy.
+
+```{r, message = F, warning = F}
+# Add colours to points and line of best fit:
+
+ ggplot(data = df, aes(x = ti_cpi, y = undp_gdp)) +
+  geom_point(aes(colour = democracy)) + # Note two ))
+  xlab("Corruption Index \n 0 (Highly corrupt) to 10 (Low corruption)") +
+  ylab("GDP per capita (US$ PPP)") +
+  geom_smooth(method = "lm", aes(colour = democracy)) # Note ends in two ))
+```
+
+As we can see from the graph, our lines of best fit have different slopes. This tells us the correlation betwee corruption scores and GDP per capita differ depending on a country's level of democracy.
+
+```{r}
+# Subset the data by level of democracy:
+
+df.strong <- subset(df, democracy=="Strong democracy") 
+df.weak <- subset(df, democracy=="Weak democracy")
+```
+
+Now, re-run the correlation command on the “weaker” and “stronger” data, seperately:
+
+```{r}
+# Stronger democracies
+
+cor(df.strong$ti_cpi, df.strong$undp_gdp, 
+    method = "pearson",
+    use = "complete.obs") # 0.79
+
+# Weaker democracies
+
+cor(df.weak$ti_cpi, df.weak$undp_gdp, 
+    method = "pearson",
+    use = "complete.obs") # 0.62
+```
+
+The correlation (i.e., association; relationship) holds for both strong and weak democracies, but it is weaker
+among weak democracies. Among countries with stronger democratic institutions, corruption scores are a better predictor of wealth. Perhaps, among weaker democracies, there are other factors at play, beside corruption, that influence GDP per capita. These are questions that the researcher could explore in more detail using \textit{multivariate} analyses.
+
+ ------------------------ ----------------------------
+ Sample                   Correlation
+ ------------------------ ----------------------------
+ Pooled (all countries)   0.82                
+
+ Strong democracies       0.79
+  
+ Weak democracies         0.62
+ ------------------------ ---------------------------- 
+ 
+## How do corruption scores differ among stronger and weaker democracies?
+
+```{r}
+describeBy(df$ti_cpi, df$democracy, mat = T)
+```
+We see that corruption scores are lower among the weaker democracies (\textit{Mean} = 2.98, \textit{SD} = 1.22) than stronger democracies (\textit{Mean} = 5.55, \textit{SD} = 2.17). How large is the average difference?
+
+```{r}
+# This is called "hard-coding" and you shouldn't ever do this! 
+5.545070 - 2.978788
+```
+
+We can visualize this difference by making a \textbf{barplot}
+
+```{r}
+# Create a dataset of summary statistics to plot
+
+df.summary <- describeBy(df$ti_cpi, df$democracy, mat = T)
+
+# Make a plot
+
+ggplot(data = df.summary, aes(x = group1, y = mean)) +
+  geom_col() # you can also use geom_bar(stat = "identity")
+
+# Clean up your data visualization to make it as informative as possible
+
+ggplot(data = df.summary, aes(x = group1, y = mean)) +
+  geom_col(fill = "steel blue", colour = "black") +
+  xlab("Quality of democracy") +
+  ylab("Average corruption scores \n 0 (high corruption) to 10 (low corruption") +
+  ggtitle("Transparency International's corruption scores among \n stronger and weaker democracies") +
+  theme_bw()
+```
+
+## Visualizing the entire distribution
+
+The figure above shows the mean level of corruption in strong and weak democracies. That is, we have a *measure of central tendency* for our distribution of corruption. But this doesn't tell us how the rest of the data is distributed! Consider the two following distributions:
+
+```{r}
+dist1 <- c(rnorm(100, 25, 5), rnorm(100, 75, 5))
+dist2 <- c(rnorm(100, 50, 5))
+
+par(mfrow = c(1, 2))
+
+hist(dist1, 
+     freq = FALSE,
+     xlim = c(0, 100))
+abline(v = mean(dist1), col = "red")
+
+hist(dist2,
+     freq = FALSE,
+     xlim = c(0, 100))
+abline(v = mean(dist2), col = "red")
+```
+
+Notice that the two distributions displayed above have roughly the same mean, as indicated by the red vertical line. However, this masks real differences: the first distribution is composed of a bunch of observations around 20 and a bunch of observations around 80, with very few observations around 50 *even though that is the mean*. By contrast, most observations in the second distribution are quite close to 50. We may think of this in the following way. Imagine that the histograms above show the distribution of age in two samples. We may imagine that the data in the first sample was collected at a special grandparent/grandchild event. Then, it makes sense that we have many observations around 25 and many around 75. We may also imagine that the data in the second sample was collected at a special event for people planning their retirement, which is why we have so many people between 40 and 60. This is why we use different methods to examine distributions and why histograms are so helpful. *Know you data*. 
+
+One helpful tool for visualizing distributions is a boxplot. 
+
+```{r}
+ggplot(data = df, aes(x = democracy, y = ti_cpi)) +
+  geom_boxplot(fill = "steel blue", colour = "black") +
+  xlab("Quality of democracy") +
+  ylab("Corruption scores \n 0 (high corruption) to 10 (low corruption)") +
+  ggtitle("Transparency International's corruption scores among \n stronger and weaker democracies") +
+  theme_bw()
+```
+The thick horizontal black line is the distribution's median. If we have a distribution with 100 values and we order them from smallest to largest, the median is equal to the 50th value. The horizontal lines above and below the median are the 75th percentile and the 25th percentile, respectively. If we have a distribution with 100 values and we order them from smallest to largest, the 25th percentile is equal to the 25th value. (Don't worry about the vertical lines) The little dots are outliers -- data points that are really far away from the rest of the distribution.
+
+So what can we tell from this? The two distributions are really quite different, but there *are* some weak democracies with low coruption. 
+
+## Practice exercise
+
+1. Examine the distribution for corruption scores and wealth using the `table()` and `describe()` functions. Based on these distributions and your own opinions of what constitutes "high" and "low" levels of corruption and wealth, recode these into \textit{categorical variables} with either two or three levels. 
+
+2. Repeat the analysis using cross-tabs (for the pooled sample, and for each subsetted dataset at high and low levels of corruption). You will have three cross-tabs. 
+
+3. Analyse the bivariate relationship in each cross-tab and compare your findings back to your results above.
+

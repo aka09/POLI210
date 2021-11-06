@@ -1,0 +1,117 @@
+---
+title: "Problem set 1"
+author: "POLI210, Fall 2021"
+date: "Due October 7th, 11:59PM"
+output:
+  tint::tintPdf:
+    latex_engine: xelatex
+  tufte::tufte_html: 
+    tufte_features: ["fonts", "background"]
+link-citations: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = FALSE,
+                      include = FALSE,
+                      root.dir = rprojroot::find_rstudio_root_file(),
+                      fig.margin = TRUE)
+```
+
+## General instructions
+
+In this assignment, you will use data from the POLI210 Class Survey. This dataset is posted in the assignment folder. A codebook describing the variables is presented below. Download the dataset and save it to your designated working directory. Any data visualizations you submit should be as informative as possible, with proper titles and axes labels.
+
+Submission: You must submit both a .Rmd file and the .pdf file that the knitting process produces. You will be shown in lab how to do this. All of your code must be visible in the knitted PDF. Your written answers must be included as well. If you have any questions about the assignment, **post them on the MyCourses discussions board**. Do not email the instructor or the TAs. If you require individualized assistance, you are of course welcome to office hours.  
+
+## Codebook
+
+```{r, echo = FALSE, include = TRUE, message = FALSE}
+library(dplyr)
+library(knitr)
+library(kableExtra)
+
+class_survey <- read.csv("C:/Users/olivi/Documents/Grad/McGill Fall 2021/POLI210/assignments/pset1/class_survey_full.csv") %>% 
+  slice(-1, -2) %>% 
+  dplyr::select(Q10, Q25_1) %>% 
+  rename(ideology = Q25_1,
+         gender = Q10)
+
+write.csv(class_survey,
+          "C:/Users/olivi/Documents/Grad/McGill Fall 2021/POLI210/assignments/pset1/class_survey.csv")
+
+data_table <- data.frame(
+  "Variable" = c("gender", "ideology"),
+  "Content" = c("Female; Male; Other",
+                "0 = left; 10 = right")
+)
+knitr::kable(data_table, 
+             caption = "Contents of class\\_survey.csv", booktabs = T) %>%
+  kable_styling(full_width = T, "striped") %>%
+  column_spec(1, bold = T)
+```
+
+## Assignment 
+
+1. Open RStudio and set your working directory (you *must* show the code that sets your working directory). Read the dataset into R and store the dataset as an object. Make sure to give the object a short, informative name. 
+
+```{r}
+class_survey <- read.csv("C:/Users/olivi/Documents/Grad/McGill Fall 2021/POLI210/assignments/pset1/class_survey.csv")
+```
+
+
+2. How many observations are there in the dataset? How many variables are there in the dataset? 
+
+```{r}
+dim(class_survey)
+```
+
+
+3. Extract the first observation from the dataset and "print" it. 
+
+```{r}
+class_survey[1,]
+```
+
+
+4. Review the codebook and find the variable that measures students’ political ideology on a 0-10 scale, where lower scores reflect a more “left-leaning” political ideology, and higher scores reflect a more “right-leaning” political ideology. Examine how this variable, political ideology, is distributed using both the table() and the hist() functions. Make sure your histogram has an appropriate title as well as labels for the x- and y-axes.
+
+```{r}
+table(class_survey$ideology)
+hist(class_survey$ideology,
+     ylim = c(0, 80),
+     breaks = seq(-1, 10, 1))
+```
+
+5. Record the mean, median, and standard deviation for the variable, political ideology.
+
+```{r}
+mean(class_survey$ideology, na.rm = T)
+median(class_survey$ideology, na.rm= T)
+sd(class_survey$ideology, na.rm= T)
+```
+
+
+6. Based on your answers to questions 3 and 4, how would you characterize the distribution of political ideology in the class (2 to 3 sentences)? Be sure to make reference to the data in your answer.
+
+7. Create a new variable where self-reported political ideology is recoded into three categories as follows: “Left-leaning” (0-3), “Moderates” (4-6), and “Right-leaning” (7-10). Report the number of observations in each new
+category.
+
+```{r}
+class_survey$ideology_3cat <- NA
+class_survey$ideology_3cat[class_survey$ideology<=3] <- "Left-leaning"
+class_survey$ideology_3cat[class_survey$ideology>= 4 &
+                             class_survey$ideology<=6] <- "Moderate"
+class_survey$ideology_3cat[class_survey$ideology>=7] <- "Right-leaning"
+table(class_survey$ideology_3cat)
+```
+
+
+8. (BONUS +5) Make a subset of the dataset that only contains male respondents and another subset that only contains female respondents. How would you describe the differences in political ideology in the class between men and women? To answer this question, you can analyze the data in any way you see fit. 
+
+```{r}
+class_male <- class_survey[class_survey$gender=="Male",]
+class_female <- class_survey[class_survey$gender=="Female",]
+mean(class_male$ideology, na.rm = T)
+mean(class_female$ideology, na.rm = T)
+```
+

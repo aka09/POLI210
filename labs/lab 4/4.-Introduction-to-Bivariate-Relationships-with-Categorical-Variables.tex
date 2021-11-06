@@ -1,0 +1,519 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
+\documentclass[
+]{article}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={4. Introduction to Bivariate Relationships with Categorical Variables},
+  hidelinks,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\usepackage[margin=1in]{geometry}
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{248,248,248}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{0.94,0.16,0.16}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.77,0.63,0.00}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\BuiltInTok}[1]{#1}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.64,0.00,0.00}{\textbf{#1}}}
+\newcommand{\ExtensionTok}[1]{#1}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.00,0.00,0.81}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\ImportTok}[1]{#1}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.13,0.29,0.53}{\textbf{#1}}}
+\newcommand{\NormalTok}[1]{#1}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.81,0.36,0.00}{\textbf{#1}}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textit{#1}}}
+\newcommand{\RegionMarkerTok}[1]{#1}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.00,0.00,0.00}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.31,0.60,0.02}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.56,0.35,0.01}{\textbf{\textit{#1}}}}
+\usepackage{longtable,booktabs,array}
+\usepackage{calc} % for calculating minipage widths
+% Correct order of tables after \paragraph or \subparagraph
+\usepackage{etoolbox}
+\makeatletter
+\patchcmd\longtable{\par}{\if@noskipsec\mbox{}\fi\par}{}{}
+\makeatother
+% Allow footnotes in longtable head/foot
+\IfFileExists{footnotehyper.sty}{\usepackage{footnotehyper}}{\usepackage{footnote}}
+\makesavenoteenv{longtable}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+
+\title{4. Introduction to Bivariate Relationships with Categorical
+Variables}
+\author{}
+\date{\vspace{-2.5em}POLI210, Fall 2021, Week 6}
+
+\begin{document}
+\maketitle
+
+\section{Getting Started}
+
+Review the \texttt{codebook} for the 2015 Canadian Election Study (CES)
+in the Labs folder folder on MyCourses (PDF format). Note how large this
+document is! It's important to be as specific as possible so that we
+know the measures we are using. Search for the following variables and
+examine their question wording and how response options are coded. Think
+about how you might \textbf{recode} these variables to ignore
+non-responses.\footnote{\textit{Hint:} Use ctrl (or command on a mac) + F to quickly search for the varible name.}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.24}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 2\tabcolsep) * \real{0.75}}@{}}
+\toprule
+Name & Description \\
+\midrule
+\endhead
+\texttt{p\_climate} & A unique identifier for each observation in the
+dataset \\
+\texttt{p\_selfplace} & Left-Right self-reported political ideology \\
+\bottomrule
+\end{longtable}
+
+\section{Research Questions and Hypotheses}
+
+During the 2015 Canadian federal election, the carbon tax was a salient
+campaign issue. In this tutorial, we will analyse Canadians' support for
+a tax on carbon, and examine how this support varies with political
+ideology.
+
+There are two parts to this research question. The first is the amount
+of support Canadians show for this type of climate tax, and the second
+being how support for the tax varies with left-right political ideology.
+In other words, not only do we want to know the overall level of support
+or opposition to the proposed tax, but the way in which support for the
+tax differs among respondents on the ``political left'' and ``political
+right''.
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\item
+  How do you think political ideology is related to support for such a
+  tax? What led you to come to this conclusion?
+\item
+  What is the independent variable? What is the dependent variable?
+\item
+  Formulate a hypothesis that reflects how you think political ideology
+  and support for a climate tax are related.
+\item
+  Keep your hypothesis in mind as you work through the example below.
+\end{enumerate}
+
+From the codebook, we know that survey respondents are describing their
+political ideology on a scale from Left (0) to Right (10).
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{p\_selfplace)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##    0    1    2    3    4    5    6    7    8    9   10 1000 
+##  104   97  221  284  280 1078  356  316  229   76   71  519
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Set those scored 1000 (did not answer) to missing:}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{ideology\_recode }\OtherTok{\textless{}{-}}\NormalTok{ df}\SpecialCharTok{$}\NormalTok{p\_selfplace }\CommentTok{\# Never over{-}write the original variable}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{ideology\_recode[df}\SpecialCharTok{$}\NormalTok{ideology\_recode }\SpecialCharTok{==} \DecValTok{1000}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA} \CommentTok{\# Remove missing data}
+
+\CommentTok{\# Check your work to make sure you re{-}coded properly}
+\FunctionTok{table}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{ideology\_recode)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##    0    1    2    3    4    5    6    7    8    9   10 
+##  104   97  221  284  280 1078  356  316  229   76   71
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Examine descriptive statistics (measures of central tendency and variability)}
+\FunctionTok{summary}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{ideology\_recode)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max.    NA's 
+##   0.000   4.000   5.000   4.973   6.000  10.000    6375
+\end{verbatim}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{hist}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{ideology\_recode) }\CommentTok{\# Histogram}
+\end{Highlighting}
+\end{Shaded}
+
+\includegraphics{4.-Introduction-to-Bivariate-Relationships-with-Categorical-Variables_files/figure-latex/unnamed-chunk-4-1.pdf}
+
+Now that we know a bit more about how political ideology is distributed,
+we will turn our attention to what people think about the proposed tax
+to combat climate change.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{p\_climate)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##    1    5    8    9 1000 
+## 1273 4126  748   50   23
+\end{verbatim}
+
+바
+
+\textit{As usual}, we have some data cleaning to do. Again, we see that
+23 respondents were presented with this question, but for one reason or
+another did not answer the question. We will set them to NA, but what
+about the 748 respondents scored as 8 and the 50 respondents scored as
+9? Again, the codebook tells us that these respondents either did not
+know or had no opinion, or they explicitly refused to answer the
+question, respectively. We will also treat these observations as missing
+data.\footnote{Can you think of any possible limitations to ignoring these responses?}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# Recode into a new variable. Generally, we want to keep the original variable in case }
+\CommentTok{\# we need to refer back to it later.}
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{climate\_recode[df}\SpecialCharTok{$}\NormalTok{p\_climate}\SpecialCharTok{==}\DecValTok{1}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"Favour"} 
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{climate\_recode[df}\SpecialCharTok{$}\NormalTok{p\_climate}\SpecialCharTok{==}\DecValTok{5}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"Oppose"}
+
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{climate\_recode[df}\SpecialCharTok{$}\NormalTok{p\_climate}\SpecialCharTok{==}\DecValTok{8}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA} 
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{climate\_recode[df}\SpecialCharTok{$}\NormalTok{p\_climate}\SpecialCharTok{==}\DecValTok{9}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA} 
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{climate\_recode[df}\SpecialCharTok{$}\NormalTok{p\_climate}\SpecialCharTok{==}\DecValTok{1000}\NormalTok{] }\OtherTok{\textless{}{-}} \ConstantTok{NA}
+\FunctionTok{table}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{climate\_recode)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Favour Oppose 
+##   1273   4126
+\end{verbatim}
+
+Canadians in the sample (n = 4,126; 76\% of those who answered the
+question) are generally opposed to a 10\% tax on gas and heating oil to
+fight climate change. This addresses our first question. However, we
+also want to know how support for this climate tax changes depending on
+where people place themselves on the left-right scale. While univariate
+statistics can tell us about individual variables, we need to do a bit
+more work with the data to get insights into \textbf{bivariate}
+relationships.
+
+\section{Examining bivariate relationships}
+
+Now that we have an understanding of how `typical' responses are on our
+independent and dependent variables, we can start to examine the
+\textit{association}, also called the relationship, between these
+variables. In other words, does self-reported politiical ideology differ
+among those who favour and oppose a climate tax, and if so, by how much?
+
+In data analysis, the \textbf{level of measurement} of our variables is
+important. \texttt{Categorical} variables often reflect groups or
+rankings (e.g., low, medium, high) and are measured at the nominal or
+ordinal level. \texttt{Continuous} variables reflect larger scales and
+are often measured at the interval and ratio level. Note that rating
+scales, also known as Likert scales, are often treated as continuous
+measures, even though they are ordinal variables. How our variables are
+measured determines the type(s) of analysis we may run so we must always
+pay close attention to the \textit{level of measurement} of each
+variable in our model.
+
+\subsection{Cross-Tabs with Categorical Variables}
+
+To start this analysis, we will re-code this 0 (left) to 10 (right)
+scale into three categories so that we can easily compare left-leaning
+respondents, right-leaning respondents, and respondents who are more
+moderate. The first step to doing so is for you to decide, based on the
+spread of the data and the underlying meaning in the scale, is what
+constitutes a ``left-leaning'', ``right-leaning'' and ``moderate''
+individual.
+
+Given the distribution of the variable (see the histogram above), it
+could be justified to group everyone who scored between 0 and 4 together
+and call them ``left-leaners'' (or maybe liberals), group everyone who
+scored between 6 and 10 together and call them ``right-leaners'' (or
+conservatives), and group the people who placed themselves at the
+midpoint (5) as
+``moderates.''\footnote{This is one example of the many types of decisions researchers need to make as they analyze their data. You might decide some other categorization is appropriate. That is ok, provided you are able to justify your decisions.}
+
+Let's recode the continuous measure of political ideology into the three
+categories, as described above:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{ideology\_recode\_cat[df}\SpecialCharTok{$}\NormalTok{ideology\_recode }\SpecialCharTok{\textless{}} \DecValTok{5}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"Left{-}Leaning"} 
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{ideology\_recode\_cat[df}\SpecialCharTok{$}\NormalTok{ideology\_recode }\SpecialCharTok{==} \DecValTok{5}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"Moderates"} 
+\NormalTok{df}\SpecialCharTok{$}\NormalTok{ideology\_recode\_cat[df}\SpecialCharTok{$}\NormalTok{ideology\_recode }\SpecialCharTok{\textgreater{}} \DecValTok{5}\NormalTok{] }\OtherTok{\textless{}{-}} \StringTok{"Right{-}Leaning"}
+\end{Highlighting}
+\end{Shaded}
+
+Remember, \textit{always} check your recoding was done correctly. Here,
+we are looking at the distribution across two variables: the original
+variable (with missing data removed) and the newly recoded variable with
+three response categories. This is a helpful way to quickly check
+respondents are correctly categorized.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{ideology\_recode, df}\SpecialCharTok{$}\NormalTok{ideology\_recode\_cat)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##     
+##      Left-Leaning Moderates Right-Leaning
+##   0           104         0             0
+##   1            97         0             0
+##   2           221         0             0
+##   3           284         0             0
+##   4           280         0             0
+##   5             0      1078             0
+##   6             0         0           356
+##   7             0         0           316
+##   8             0         0           229
+##   9             0         0            76
+##   10            0         0            71
+\end{verbatim}
+
+\subsection{Cross-Tabulation: Associations between categorical variables}
+
+When we are interested in assessing whether two categorical variables
+are related, we can use what is called a \textbf{cross-tabulation}, or
+cross-tab, for short. You may also see these called
+\textbf{contingency tables}. Cross-tabs demonstrate the number of
+participants that fall into each category of the dependent variable,
+conditional on their responses on the independent variable. In other
+words, cross-tabs allow us to see the extent to which scores on X are
+associated with scores on Y.
+
+We have already done this using \textsf{table()}. In a cross-tab, we
+always put the dependent variable across the rows and put the
+independent variable down the columns.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{table}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{climate\_recode, df}\SpecialCharTok{$}\NormalTok{ideology\_recode\_cat) }\CommentTok{\# First Y (rows) then X (column)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         
+##          Left-Leaning Moderates Right-Leaning
+##   Favour          313       132           171
+##   Oppose          476       728           731
+\end{verbatim}
+
+Here, we are asking,
+\textit{which values of the independent variable are associated with which values on the dependent variable}.
+The location of each observation in the table depends on their score on
+both variables. This is helpful information but because we have an
+unequal number of observations within each cell of the table, we should
+not compare the raw numbers of participants that fall in each cell.
+Instead, we need to compare the \textbf{proportion} of respondents that
+fall within each cell.
+
+Recall, that we are asking whether political ideology and support for a
+climate tax are related. With this data, we cannot tell which way the
+causal arrows go, but we can figure out whether or not there is any
+evidence of an association between these two variables. For argument's
+sake, our hypothesis is that support for a climate tax is higher among
+those on the ``political left'' than it is for those on the ``political
+right.'' We have no particular expectation about where moderates might
+fall, but let us keep them in mind as we compare those on the political
+left and right.
+
+If we suspect that our hypothesis is correct, and that more left-leaning
+respondents favour the climate tax, we should expect to see a
+\textsf{higher proportion of left-leaning individuals indicate they are in favour of the tax, and a lower proportion of left-leaning individuals indicating they are opposed to the tax, relative to right-leaning respondents and ideological moderates}.
+
+We can do this in base \textsf{R} using the \textsf{prop.table()}
+function. First, save your cross-tab from above as an object, then pass
+that object to the \textsf{prop.table()}
+function\footnote{See the documentation for the package \textsf{?prop.table()}. Note the \textsf{margin} argument. By default, it calculates proportions of respondents at each level of the dependent variable, within levels of the independent variable (i.e., it calculates proportions across the rows of the table. This is the opposite of what we want. Instead, we set the \textsf{margins} argument to be equal to 2, which specifies column percentages; the proportion of individuals within levels of the independent variable, at each level of the dependent variable).}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{my.table }\OtherTok{\textless{}{-}} \FunctionTok{table}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{climate\_recode, df}\SpecialCharTok{$}\NormalTok{ideology\_recode\_cat)}
+\FunctionTok{prop.table}\NormalTok{(my.table, }\AttributeTok{margin =} \DecValTok{2}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+##         
+##          Left-Leaning Moderates Right-Leaning
+##   Favour    0.3967047 0.1534884     0.1895787
+##   Oppose    0.6032953 0.8465116     0.8104213
+\end{verbatim}
+
+We can get the same result using a helpful package called
+\textsf{gmodels}:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# install.packages("gmodels") \# Uncomment (remove first \#) to install the package.}
+\FunctionTok{library}\NormalTok{(gmodels)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## Warning: package 'gmodels' was built under R version 4.1.1
+\end{verbatim}
+
+Remember, you can review the documentation for any package or function
+to see the available arguments (we won't use most!) - run:
+\textsf{?gmodels()}.
+
+In this case, we will ``turn off'' or ``set as FALSE'' a few options in
+order to tidy the output, making it easier \# for us to analyze. In
+addition to the raw number of participants in each cell, we will also
+request the column percentages - the proportion of individuals who
+favour or oppose the tax, depending on their level of political
+ideology.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{CrossTable}\NormalTok{(df}\SpecialCharTok{$}\NormalTok{climate\_recode, df}\SpecialCharTok{$}\NormalTok{ideology\_recode\_cat,}
+           \AttributeTok{format=}\StringTok{"SPSS"}\NormalTok{, }\CommentTok{\# This makes the table a bit nicer on the eyes }
+           \AttributeTok{prop.c =} \ConstantTok{TRUE}\NormalTok{, }\CommentTok{\# Yes, we want "column percentages"}
+           \AttributeTok{prop.r =} \ConstantTok{FALSE}\NormalTok{, }\CommentTok{\# No, we do not want "row percentages"}
+           \AttributeTok{prop.t =} \ConstantTok{FALSE}\NormalTok{, }\CommentTok{\# No, we do not want "total percentages" }
+           \AttributeTok{prop.chisq =} \ConstantTok{FALSE}\NormalTok{) }\CommentTok{\# We also do not want this statistic.}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##    Cell Contents
+## |-------------------------|
+## |                   Count |
+## |          Column Percent |
+## |-------------------------|
+## 
+## Total Observations in Table:  2551 
+## 
+##                   | df$ideology_recode_cat 
+## df$climate_recode |  Left-Leaning  |     Moderates  | Right-Leaning  |     Row Total | 
+## ------------------|---------------|---------------|---------------|---------------|
+##            Favour |          313  |          132  |          171  |          616  | 
+##                   |       39.670% |       15.349% |       18.958% |               | 
+## ------------------|---------------|---------------|---------------|---------------|
+##            Oppose |          476  |          728  |          731  |         1935  | 
+##                   |       60.330% |       84.651% |       81.042% |               | 
+## ------------------|---------------|---------------|---------------|---------------|
+##      Column Total |          789  |          860  |          902  |         2551  | 
+##                   |       30.929% |       33.712% |       35.359% |               | 
+## ------------------|---------------|---------------|---------------|---------------|
+## 
+## 
+\end{verbatim}
+
+\textbf{But what am I suppose to be looking at?} In a cross-tab,
+\textit{we compare catgories of the independent variable in terms of the percentage distribution on the dependent variable}.
+In this example, we compare the percentage of left-leaning respondents
+that favour the climate tax (39.7\%) with the percentage of
+right-leaning (16.8\%) and moderate (15.3\%) respondents that favour the
+climate
+tax.\footnote{Note that we can also focus our comparison within the "oppose" category on the dependent variable. It is just the mirror image!}
+
+The results from the cross-tab show us that although moderates and
+right-leaning respondents are somewhat similar in their support for a
+climate tax, left-leaning respondents are
+\textit{nearly twice as likely} to support the climate tax than
+non-left-leaning respondents. Also note that although left-leaning
+respondents demonstrated the highest levels of support for a 10\% tax on
+oil and gas to fight climate change, support within this group of
+respondents is still well below 50\%.
+
+Taken together, this analysis demonstrates that although most Canadians
+oppose a such a climate tax, support is generally stronger among
+respondents that characterize their political ideology as relatively
+left-leaning. This provides us with \textbf{substantive evidence} to say
+that indeed there does appear to be a relationship between political
+ideology and support for a climate tax, such that those on the
+ideological left have higher levels of support than others. In the
+lectures, we will learn how to bring more statistical evidence into our
+results, but for now we will just focus on this general assessment.
+
+\end{document}

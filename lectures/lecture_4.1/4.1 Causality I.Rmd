@@ -1,0 +1,380 @@
+---
+title: 'POLI210: Political Science Research Methods'
+subtitle: "Lecture 4.1: Causality I -- The potential outcomes framework"
+date: "September 21st, 2021"
+author: "Olivier Bergeron-Boutin"
+header-includes:
+  - \usepackage{booktabs}
+output: 
+  beamer_presentation:
+    theme: "metropolis"
+    latex_engine: xelatex
+classoption: t
+urlcolor: blue
+bibliography: ../210lectures_bib.bib
+biblio-style: apalike
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+## Boring admin stuff
+
+- Thanks for taking the survey! Grades will appear soon
+- Assignment 2 will be available shortly 
+  - Don't stress too much! Very gentle intro 
+
+## Example from the class survey
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+class_survey <- read.csv("labs/lab 2/class_survey.csv")
+
+library(tidyverse)
+library(ggplot2)
+library(extrafont)
+
+ggplot(data = class_survey,
+       aes(x = Q17, y = Q19_1)) +
+  geom_jitter(width = 0.15) +
+  theme_bw(base_family = "Fira Sans",
+           base_size = 16) +
+  labs(x = "Reported hours of sleep per night",
+       y = "Reported happiness (0-100)") +
+  scale_x_continuous(breaks = seq(4, 10, 1))
+```
+
+## Example from the class survey
+
+```{r, echo = FALSE,message=FALSE,warning=FALSE}
+library(knitr)
+library(kableExtra)
+
+class_survey %>% 
+  group_by(Q17) %>% 
+  summarise(`Mean happiness` = mean(Q19_1, na.rm = T)) %>% 
+  rename(`Reported hours of sleep` = Q17) %>% 
+  round(1) %>% 
+  kable(booktabs = TRUE) %>% 
+  kable_styling(bootstrap_options = "striped")
+```
+
+## Example from the class survey
+
+- Interpret the data I presented: what is the relationship?
+- What's your prior: do you think sleep causally affects happiness? 
+- Can the data be interpreted causally? Why or why not? 
+- Come up with a theory:
+  - why there would be a *positive* causal effect
+  - why there would be *no* causal effect
+  - why there would be a *negative* causal effect
+
+## Do hospitals hurt people?
+
+Angrist and Pischke [-@angrist_mostly_2009] report data from the 2005 National Health Interview Survey
+
+- Self-reported health on 1-5 scale (5 = healthiest) \pause
+- Visit to hospital or not? ("dummy" variable) \pause
+- Visited hospital: mean health of 3.21 \pause
+- Did not visit hospital: mean health of 3.93 \pause
+
+Did going to the hospital **cause** people to become less healthy? 
+
+- Well, maybe...We can probably fit a theory to the data! 
+  - Hospitals are full of infectious people! \pause
+- But probably not, right?
+  - So what's the problem? 
+  
+## The counterfactual: what if?
+
+The relevant question:
+
+- What would be the health status of some person who went to the hospital, *had they not gone to the hospital*? \pause
+- What would be the health status of some person who did not go to the hospital, *had they gone to the hospital*? \pause
+- This is the **counterfactual**: what *would have happened* \pause
+
+The **fundamental problem of causal inference**: we'll never get to observe the counterfactual! \pause
+
+- If a person goes to the hospital, I'll never know what would have happened to them if they didn't go \pause
+- If a person does not go to the hospital, I'll never know what would have happened to them if they had gone \pause 
+- Causal inference as a problem of missing data
+
+## Some notation
+
+$Y$: the outcome/dependent variable \pause
+
+$Y_1$: the value of the outcome for the 1st unit \pause
+
+$Y_i$: the value of the outcome for the $i$\textsuperscript{th} unit \pause
+
+$D$: The treatment status \pause
+
+- Generally, 1 means "treatment" and 0 means "control" \pause
+
+$D_i$: the treatment status for the $i$\textsuperscript{th} unit
+
+## The potential outcomes
+
+A potential outcome: the outcome that *would be observed* under a certain state of the world \pause
+
+- $Y_i(1)$: the potential outcome under treatment for the $i$\textsuperscript{th} unit \pause
+
+- $Y_i(0)$: the potential outcome under control for the $i$\textsuperscript{th} unit \pause
+
+If my treatment is going to the hospital... 
+
+- $Y_i(1)$ is value that Y would take if unit $i$ went to the hospital
+\pause
+- $Y_i(0)$ is value that Y would take if unit $i$ did not go to the hospital \pause
+
+FPCI, restated: you observe only one of $Y_i(1)$ and $Y_i(0)$ \pause
+
+- What if we could [observe both](https://www.youtube.com/watch?v=BvUbv4iwbDs)? We could compute the individual-level treatment effect: $\tau_i = Y_i(1) - Y_i(0)$
+
+## Ideal data
+
+Without the fundamental problem of causal inference, what would our data look like? \pause
+
+- Let's keep our example on hospitals \pause
+- $Y_i$: reported health status on 1 to 5 scale (5 = healthiest) \pause
+- $D_i$: hospital stay in last 12 months ("dummy" variable: 1s and 0s) \pause
+
+\begin{table}[]
+\begin{tabular}{@{}llll@{}}
+\toprule
+$D_i$ & $Y_i(1)$ & $Y_i(0)$ & $Y_i$                         \\ \midrule
+1 & 2 & 1 & {\color[HTML]{FE0000} ?} \\
+1 & 3 & 3 & {\color[HTML]{FE0000} ?} \\
+0 & 5 & 4 & {\color[HTML]{FE0000} ?} \\
+1 & 3 & 1 & {\color[HTML]{FE0000} ?} \\
+0 & 2 & 4 & {\color[HTML]{FE0000} ?} \\ \bottomrule
+\end{tabular}
+\end{table}
+
+## Ideal data
+
+Without the fundamental problem of causal inference, this is what our data would look like:
+
+\begin{table}[]
+\begin{tabular}{@{}llll@{}}
+\toprule
+$D_i$ & $Y_i(1)$ & $Y_i(0)$ & $Y_i$     \\ \midrule
+1 & 2 & 1 & 2 \\
+1 & 3 & 3 & 3 \\
+0 & 5 & 4 & 4 \\
+1 & 3 & 1 & 3 \\
+0 & 2 & 4 & 4 \\ \bottomrule
+\end{tabular}
+\end{table}
+
+## Ideal data
+
+Without the fundamental problem of causal inference, this is what our data would look like:
+
+\begin{table}[]
+\begin{tabular}{@{}lllll@{}}
+\toprule
+$D_i$ & $Y_i(1)$ & $Y_i(0)$ & $Y_i$ & $\tau_i$                    \\ \midrule
+1 & 2 & 1 & 2 & {\color[HTML]{FE0000} ?} \\
+1 & 3 & 3 & 3 & {\color[HTML]{FE0000} ?} \\
+0 & 5 & 4 & 4 & {\color[HTML]{FE0000} ?} \\
+1 & 3 & 1 & 3 & {\color[HTML]{FE0000} ?} \\
+0 & 2 & 4 & 4 & {\color[HTML]{FE0000} ?} \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Remember that $\tau_i$ is the treatment effect: the difference in potential outcomes for any given unit
+
+## Ideal data
+
+Without the fundamental problem of causal inference, this is what our data would look like:
+
+\begin{table}[]
+\begin{tabular}{@{}lllll@{}}
+\toprule
+$D_i$ & $Y_i(1)$ & $Y_i(0)$ & $Y_i$ & $\tau_i$  \\ \midrule
+1 & 2 & 1 & 2 & 1   \\
+1 & 3 & 3 & 3 & 0   \\
+0 & 5 & 4 & 4 & 1   \\
+1 & 3 & 1 & 3 & 2   \\
+0 & 2 & 4 & 4 & -2  \\ \bottomrule
+\end{tabular}
+\end{table}
+
+\pause
+I can compute $\tau_i$ since for each unit $i$, I have access to both potential outcomes \pause
+
+- What do we conclude about the *causal* effect of a hospital stay on health?
+
+## Real data
+
+With the fundamental problem of causal inference, we only see one realized outcome $Y_i$ for each unit $i$:
+
+\pause
+
+\begin{table}[]
+\begin{tabular}{@{}lllll@{}}
+\toprule
+$D_i$ & $Y_i(1)$ & $Y_i(0)$ & $Y_i$ & $\tau_i$                      \\ \midrule
+1 & 2                        & {\color[HTML]{FE0000} ?} & 2 & {\color[HTML]{FE0000} ?} \\
+1 & 3                        & {\color[HTML]{FE0000} ?} & 3 & {\color[HTML]{FE0000} ?} \\
+0 & {\color[HTML]{FE0000} ?} & 4                        & 4 & {\color[HTML]{FE0000} ?} \\
+1 & 3                        & {\color[HTML]{FE0000} ?} & 3 & {\color[HTML]{FE0000} ?} \\
+0 & {\color[HTML]{FE0000} ?} & 4                        & 4 & {\color[HTML]{FE0000} ?} \\ \bottomrule
+\end{tabular}
+\end{table}
+
+Mean health for those who were treated? $\dfrac{2+3+3}{3}=2.66$ \pause
+
+Mean health for those who were not treated? $\dfrac{4+4}{2}=4$
+
+## What's the problem? 
+
+How would you describe this problem? \pause
+
+**Selection bias**
+
+- If the people who went to the hospital had not been... \pause
+- they would be doing much worse... \pause
+- than the people who, in fact, did not go to the hospital \pause
+
+Stated in more formal terms...
+
+- The potential outcome under control for those who self-selected into the treatment is different, on average, than the potential outcome under control for those who self-selected into the control 
+- $\mathbb{E}[Y_i(0)|D_i=1] \neq \mathbb{E}[Y_i(0)|D_i=0]$
+
+People do stuff for a reason! 
+
+- Go to the hospital because if you don't, you'll be really sick! \pause
+- In this case, the bias is *so strong* that even the direction of the relationship is wrong!
+
+## Selection bias in our ideal data
+
+\begin{table}[]
+\begin{tabular}{@{}lllll@{}}
+\toprule
+$D_i$ & $Y_i(1)$ & $Y_i(0)$ & $Y_i$ & $\tau_i$  \\ \midrule
+1 & 2 & 1 & 2 & 1   \\
+1 & 3 & 3 & 3 & 0   \\
+0 & 5 & 4 & 4 & 1   \\
+1 & 3 & 1 & 3 & 2   \\
+0 & 2 & 4 & 4 & -2  \\ \bottomrule
+\end{tabular}
+\end{table}
+
+- Among those who **self-selected** into the control state, what is the average $Y_i(0)$?
+
+## Selection bias in our ideal data
+
+\begin{table}[]
+\begin{tabular}{@{}lllll@{}}
+\toprule
+$D_i$ & $Y_i(1)$ & $Y_i(0)$ & $Y_i$ & $\tau_i$  \\ \midrule
+1 & 2 & 1 & 2 & 1   \\
+1 & 3 & 3 & 3 & 0   \\
+0 & 5 & {\color[HTML]{FE0000} 4} & 4 & 1   \\
+1 & 3 & 1 & 3 & 2   \\
+0 & 2 & {\color[HTML]{FE0000} 4} & 4 & -2  \\ \bottomrule
+\end{tabular}
+\end{table}
+
+- Among those who **self-selected** into the control state, what is the average $Y_i(0)$?
+  - \rightarrow 4 \pause
+  - Is this something I can observe?
+
+## Selection bias in our ideal data
+
+\begin{table}[]
+\begin{tabular}{@{}lllll@{}}
+\toprule
+$D_i$ & $Y_i(1)$ & $Y_i(0)$ & $Y_i$ & $\tau_i$  \\ \midrule
+1 & 2 & 1 & 2 & 1   \\
+1 & 3 & 3 & 3 & 0   \\
+0 & 5 & 4 & 4 & 1   \\
+1 & 3 & 1 & 3 & 2   \\
+0 & 2 & 4 & 4 & -2  \\ \bottomrule
+\end{tabular}
+\end{table}
+
+- Among those who **self-selected** into the control state, what is the average $Y_i(0)$? 
+  - \rightarrow 4
+  - Is this something I can observe? 
+- Among those who **self-selected** into the treatment state, what is the average $Y_i(0)$?
+
+## Selection bias in our ideal data
+
+\begin{table}[]
+\begin{tabular}{@{}lllll@{}}
+\toprule
+$D_i$ & $Y_i(1)$ & $Y_i(0)$ & $Y_i$ & $\tau_i$  \\ \midrule
+1 & 2 & {\color[HTML]{FE0000} 1} & 2 & 1   \\
+1 & 3 & {\color[HTML]{FE0000} 3} & 3 & 0   \\
+0 & 5 & 4 & 4 & 1   \\
+1 & 3 & {\color[HTML]{FE0000} 1} & 3 & 2   \\
+0 & 2 & 4 & 4 & -2  \\ \bottomrule
+\end{tabular}
+\end{table}
+
+- Among those who **self-selected** into the control state, what is the average $Y_i(0)$? 
+  - \rightarrow 4
+  - Is this something I can observe? 
+- Among those who **self-selected** into the treatment state, what is the average $Y_i(0)$?
+  - \rightarrow 1.66 \pause
+  - Is this something we can observe?
+
+## What's the solution?
+
+Given the FPCI, what should we do?
+
+- We'd like to compare the POs and compute $\tau_i$ \pause
+- But we can't!
+- Does this mean we can never draw causal inferences? \pause
+- Next lecture: the power of randomization 
+
+## Example from the class survey
+
+```{r,echo=FALSE,warning=FALSE,message=FALSE}
+class_survey <- read.csv("labs/lab 2/class_survey.csv")
+
+library(tidyverse)
+library(ggplot2)
+library(extrafont)
+
+ggplot(data = class_survey,
+       aes(x = Q17, y = Q19_1)) +
+  geom_jitter(width = 0.15) +
+  theme_bw(base_family = "Fira Sans",
+           base_size = 16) +
+  labs(x = "Reported hours of sleep per night",
+       y = "Reported happiness (0-100)") +
+  scale_x_continuous(breaks = seq(4, 10, 1))
+```
+
+## Example from the class survey
+
+```{r, echo = FALSE,message=FALSE,warning=FALSE}
+library(knitr)
+library(kableExtra)
+
+class_survey %>% 
+  group_by(Q17) %>% 
+  summarise(`Mean happiness` = mean(Q19_1, na.rm = T)) %>% 
+  rename(`Reported hours of sleep` = Q17) %>% 
+  round(1) %>% 
+  kable(booktabs = TRUE) %>% 
+  kable_styling(bootstrap_options = "striped")
+```
+
+## Example from the class survey
+
+- Interpret the data I presented: what is the relationship?
+- What's your prior: do you think sleep causally affects happiness? 
+- Can the data be interpreted causally? Why or why not? 
+- Come up with a theory:
+  - why there would be a *positive* causal effect
+  - why there would be *no* causal effect
+  - why there would be a *negative* causal effect
+
+## References {.allowframebreaks}
+
+\footnotesize

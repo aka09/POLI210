@@ -1,0 +1,921 @@
+---
+title: 'POLI210: Political Science Research Methods'
+subtitle: "Lecture 9.2: Means and distributions"
+date: "October 28th, 2021"
+author: "Olivier Bergeron-Boutin"
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
+  - \usepackage{fontspec}
+  - \usepackage{animate}
+  - \setsansfont[BoldFont={FiraSans-Bold.ttf}]{FiraSans-Light.ttf}
+  - \setmonofont{FiraMono-Regular.ttf}
+  - \usepackage{color}
+  - \definecolor{mygreen}{HTML}{008000}
+output: 
+  beamer_presentation:
+    theme: "metropolis"
+    highlight: zenburn
+    latex_engine: xelatex
+classoption: t
+urlcolor: blue
+bibliography: ../210lectures_bib.bib
+biblio-style: apalike
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+knitr::opts_chunk$set(fig.height = 6, fig.width = 10, 
+                      message = FALSE, warning = FALSE,
+                      out.width = '75%')
+```
+
+## Boring admin stuff
+
+- First quiz: how did it go? (POLLING)
+  - I will release the grades shortly
+- Grading in pset1: some accommodations
+- I will attend labs tomorrow and announce in-person OHs
+
+## Plan for this lecture
+
+1. Descriptive statistics
+  + Measures of central tendency: mean, median, mode
+  + Measures of dispersion: standard deviation, variance
+2. Confidence intervals
+3. How should I describe distributions?
+
+## Measures of central tendency: the mean
+
+$$\mu={\frac {1}{n}}\sum _{i=1}^{n}a_{i}={\frac {a_{1}+a_{2}+\cdots +a_{n}}{n}}$$
+Wait, what? 
+
+## Measures of central tendency: the mean
+
+$${\color[HTML]{FE0000} \mu}={\frac {1}{n}}\sum _{i=1}^{n}a_{i}={\frac {a_{1}+a_{2}+\cdots +a_{n}}{n}}$$
+
+Wait, what?
+
+- ${\color[HTML]{FE0000} \mu}$ is simply a letter that represents the mean
+
+## Measures of central tendency: the mean
+
+$$
+{\color[HTML]{FE0000} \mu} = {\color[HTML]{0000FF} {\frac {1}{n}}\sum _{i=1}^{n}a_{i}} = {\frac {a_{1}+a_{2}+\cdots +a_{n}}{n}}
+$$
+
+Wait, what?
+
+- ${\color[HTML]{FE0000} \mu}$ is simply a letter that represents the mean
+- \textcolor{blue}{This} is a summation operator
+
+## Measures of central tendency: the mean
+
+$$
+{\color[HTML]{FE0000} \mu} = {\color[HTML]{0000FF} {\frac {1}{n}}\sum _{i=1}^{n}a_{i}} = {\color[HTML]{008000}{\frac {a_{1}+a_{2}+\cdots +a_{n}}{n}}}
+$$
+
+Wait, what?
+
+- ${\color[HTML]{FE0000} \mu}$ is simply a letter that represents the mean
+- \textcolor{blue}{This} is a summation operator
+- \textcolor{mygreen}{This} is what the summation operator does
+
+\pause
+
+$$\sum_{i=1}^{5}a_{i} = 1 + 2 + 3 + 4 + 5$$
+
+\pause 
+
+$$\sum_{i=10}^{12}a_{i} = 10+11+12$$
+
+## Measures of central tendency: the mean
+
+Take the following vector: $(7, 1, 10) = (a_1,a_2,a_3)$ \pause
+
+- The mean is: 
+$$\mu = \frac {1}{5} \sum_{i=1}^{3}a_{i}$$ \pause
+$$ = \frac {7+1+10}{3} = 6$$ \pause
+
+## Measures of central tendency: the mean
+
+Why do we like the mean? It's often a good one-number summary of the data
+
+- But not always: the mean is sensitive to outliers
+- What's the mean here? $(23, 28, 97)$
+- $\mu = \dfrac{23+28+96}{3} = 49$
+
+But there's no one even close to 49! 
+
+- That's because of the "outlying" value of 97
+- Outlier: a value that is far from rest of distribution
+- Example:
+  - The mean income is in this zoom meeting? Probably around 5,000$
+  - What if Elon Musk walks in? (net worth: 255 billion)
+  - $\mu = \dfrac{255 \text{ billion+ whatever we make}}{100+1} = 2.5 \text{ billion}$
+  
+## Measures of central tendency: the median
+
+Observation $\dfrac{n+1}{2}$ (once ordered)
+
+Consider this vector of values:
+
+\scriptsize 
+
+```{r}
+set.seed(123)
+incomes_5 <- sample(1:100, size = 5, replace = TRUE)
+incomes_5
+
+# Let's order them:
+incomes_5[order(incomes_5)]
+```
+
+\normalsize 
+
+The median is the: $\dfrac{5+1}{2} = 3^{\text{rd}}\text{ value} = 42$
+
+## Measures of central tendency: the median
+
+\scriptsize
+
+```{r,echo=FALSE}
+options(scipen = 999)
+library(ggplot2)
+library(graphics)
+library(scales)
+library(dplyr)
+library(lubridate)
+library(extrafont)
+```
+
+```{r}
+# Imagine that there are 9 students and me; our incomes:
+incomes <- sample(1000:15000, size = 10, replace = TRUE)
+
+# Let's order them:
+incomes[order(incomes)]
+
+median(incomes)
+
+# Elon Musk walks in...
+incomes <- c(incomes, 255000000000)
+# Let's order them:
+incomes[order(incomes)]
+median(incomes)
+```
+
+## Measures of central tendency: the mode
+
+The mode is pretty simple: the value that appears most often
+
+- Not so useful for continuous variables, e.g. income
+- Pretty useful for nominal variables
+  - Nominal variables: values cannot be ordered
+  
+## Measures of dispersion: the standard deviation
+
+If you picked a random value from a distribution, how far away from the mean would you expect it to be? 
+
+$$\sigma = \sqrt{\frac{1}{N-1} \sum_{i=1}^N (x_i - \overline{x})^2}$$
+Procedure:
+
+- For each value, you compute its distance from the mean
+- You square that distance (e.g. $4^2 = 16$)
+- You sum up all of those squared distances 
+- You divide by $n-1$
+- You take the square root
+
+## Measures of dispersion: the standard deviation
+
+\scriptsize
+
+```{r}
+incomes_5
+mean(incomes_5)
+incomes_5 - mean(incomes_5)
+distance_from_mean_sq <- (incomes_5 - mean(incomes_5))^2
+distance_from_mean_sq
+sum_distance <- sum(distance_from_mean_sq)
+sum_distance
+sqrt(sum_distance/(5-1))
+```
+
+# Confidence intervals
+
+## Uncertainty due to sampling 
+
+We draw a sample
+
+- Ideally by randomly drawing from the population
+- We compute some sample statistic of interest, e.g. the mean height
+- We want to **infer** the population parameter
+- But we know that there is **sampling variation**
+  - Even if we draw a random sample, we may be more or less far from the true population parameter
+  
+Remember the **central limit theorem**
+
+- Under repeated (random) sampling, the distribution of sample means (the sampling distribution) will approximate a normal distribution 
+- No matter the underlying shape of the population distribution!
+
+## CLT, again
+
+```{r,echo=FALSE,out.width='100%'}
+survey <- read.csv("assignments/pset1/class_survey.csv")
+sample_mean_20 <- matrix(nrow = 1000, ncol = 1) %>% as.data.frame() %>% rename(sample20 = V1)
+for(i in 1:1000){
+  sample_mean_20[i,] <- survey[
+    sample(1:nrow(survey), size = 20, replace = FALSE),
+  ]$ideology %>% mean(na.rm = T)
+}
+sample_mean_20 <- sample_mean_20 %>% as.data.frame()
+library(extrafont)
+ggplot(sample_mean_20,
+       aes(x = sample20)) +
+  geom_histogram(col = "black",
+                 fill = "steel blue") +
+  geom_vline(xintercept = mean(survey$ideology, na.rm = T), col = "red", size = 1.2) +
+  theme_bw(base_family = "Fira Sans",
+           base_size = 18) +
+  labs(title = "Distribution of the mean of ideology from 1,000 samples of size 20 each",
+       y = "Number of samples",
+       x = "Sample mean of ideology")
+```
+
+## Confidence intervals
+
+We don't know if we drew a "good sample"
+
+- A good sample: sample mean is close to true population parameter
+- Given CLT, we are more likely to be close than to be far
+- But there is a possibility that we're way off!
+
+This is where confidence intervals come in
+
+\scriptsize
+
+```{r}
+# true parameter that sampling is trying to infer
+mean(survey$ideology, na.rm = T)
+# Making one sample of 30 students 
+survey_30 <- survey[sample(1:nrow(survey), 30),]
+mean(survey_30$ideology, na.rm = T)
+t.test(survey_30$ideology)$"conf.int"
+```
+## What your confidence interval says and does not say
+
+Confidence intervals have a confidence "level"
+
+- Generally 95%, but sometimes 90% or 99%
+- If we were to repeatedly sample random units and computed the mean and associated confidence interval for each sample, I would expect 95% of confidence intervals to include the true population parameter
+- Does **this specific CI in this specific sample** contain the true population parameter? 
+  - **We don't know!** It's more likely that it does than it doesn't! But it might not!
+- Do confidence intervals replace the need for appropriate sampling strategies?
+  - **NO!!!** Confidence intervals are only valid under random sampling from the population
+  - If there is sampling bias, the confidence interval is NOT VALID
+  - i.e. it will NOT be true that in 95% of repeated samples, 95% of the confidence intervals will contain the true population parameter
+  
+## Confidence intervals from the class survey
+
+```{r,out.width='100%',echo=FALSE}
+set.seed(1035)
+ci <- matrix(nrow = 20, ncol = 3) %>% as.data.frame() %>% rename(lower = V1, mean = V2, upper = V3)
+for(i in 1:20){
+  sample <- survey[sample(1:285, 20),]
+  ci[i,2] <- mean(sample$ideology, na.rm = T)
+  ci[i,1] <- t.test(sample$ideology)$"conf.int"[1]
+  ci[i,3] <- t.test(sample$ideology)$"conf.int"[2]
+}
+
+ci$contains <- NA
+ci$contains <- ifelse(ci$lower < mean(survey$ideology, na.rm = T) &
+                        ci$upper > mean(survey$ideology, na.rm = T),
+                      1, 0)
+ci$sample <- as.numeric(row.names(ci))
+
+ggplot(ci, aes(x = mean, y = sample, xmin = lower, xmax = upper,
+               col = factor(contains))) +
+  geom_point(size = 2) +
+  geom_vline(xintercept = mean(survey$ideology, na.rm = T),
+             linetype = "dashed") +
+  geom_errorbar(width = 0, size = 1, alpha = 0.3) +
+  theme_bw(base_size = 19) +
+  labs(x = "Sample mean of ideology",
+       y = "Sample number") +
+  scale_color_manual(name = "Contains pop. parameter",
+                     values = c("#ca0020", "#0571b0")) +
+  scale_x_continuous(limits = c(1, 5))
+```
+
+Each sample is size 20
+
+- Note the quite large CIs! (but coverage looks fine!)
+
+## Confidence intervals with larger samples 
+
+```{r,out.width='100%',echo=FALSE}
+ci_large <- matrix(nrow = 20, ncol = 3) %>% as.data.frame() %>% rename(lower = V1, mean = V2, upper = V3)
+for(i in 1:20){
+  sample <- survey[sample(1:285, 80),]
+  ci_large[i,2] <- mean(sample$ideology, na.rm = T)
+  ci_large[i,1] <- t.test(sample$ideology)$"conf.int"[1]
+  ci_large[i,3] <- t.test(sample$ideology)$"conf.int"[2]
+}
+
+ci_large$contains <- NA
+ci_large$contains <- ifelse(ci_large$lower < mean(survey$ideology, na.rm = T) &
+                        ci_large$upper > mean(survey$ideology, na.rm = T),
+                      1, 0)
+ci_large$sample <- as.numeric(row.names(ci_large))
+
+ggplot(ci_large, aes(x = mean, y = sample, xmin = lower, xmax = upper,
+               col = factor(contains))) +
+  geom_point(size = 2) +
+  geom_vline(xintercept = mean(survey$ideology, na.rm = T),
+             linetype = "dashed") +
+  geom_errorbar(width = 0, size = 1, alpha = 0.3) +
+  theme_bw(base_size = 19) +
+  labs(x = "Sample mean of ideology",
+       y = "Sample number") +
+  scale_color_manual(name = "Contains pop. parameter",
+                     values = c("#ca0020", "#0571b0")) +
+  scale_x_continuous(limits = c(1, 4.5))
+```
+
+Each sample is size 80
+
+- The CIs are much narrower (same x scale as before)
+
+## Confidence intervals with sampling bias
+
+```{r,out.width='100%',echo=FALSE}
+set.seed(1036)
+survey$answered <- ifelse(survey$gender == "Male", rbinom(1,1,0.2),rbinom(1,1,0.9))
+ci_biased <- matrix(nrow = 20, ncol = 3) %>% as.data.frame() %>% rename(lower = V1, mean = V2, upper = V3)
+for(i in 1:20){
+  sample <- survey[sample(1:285, 30),]
+  sample <- sample[sample$answered==1,]
+  ci_biased[i,2] <- mean(sample$ideology, na.rm = T)
+  ci_biased[i,1] <- t.test(sample$ideology)$"conf.int"[1]
+  ci_biased[i,3] <- t.test(sample$ideology)$"conf.int"[2]
+}
+
+ci_biased$contains <- NA
+ci_biased$contains <- ifelse(ci_biased$lower < mean(survey$ideology, na.rm = T) &
+                        ci_biased$upper > mean(survey$ideology, na.rm = T),
+                      1, 0)
+ci_biased$sample <- as.numeric(row.names(ci_biased))
+
+ggplot(ci_biased, aes(x = mean, y = sample, xmin = lower, xmax = upper,
+               col = factor(contains))) +
+  geom_point(size = 2) +
+  geom_vline(xintercept = mean(survey$ideology, na.rm = T),
+             linetype = "dashed") +
+  geom_errorbar(width = 0, size = 1, alpha = 0.3) +
+  theme_bw(base_size = 19) +
+  labs(x = "Sample mean of ideology",
+       y = "Sample number") +
+  scale_color_manual(name = "Contains pop. parameter",
+                     values = c("#ca0020", "#0571b0"))
+```
+Non-response bias: men have 0.2 probability of answering; women 0.9
+
+- 3 of my confidence intervals (15%) do not include the true parameter
+
+## How is the confidence interval computed?
+
+For the 95% confidence interval, a helpful rule of thumb is:
+
+$\text{CI}_{\text{lower}} = \hat{\mu} - 2*SE$
+
+- What's the hat on top of mu? Simply means it's an estimate from our sample 
+- What's SE? 
+  - The **standard error** of the mean
+  - It's our estimate of the **standard deviation of the sampling distribution**
+  - If I could draw many samples, compute the mean each time, and plot the distribution of sample means...what would be its standard deviation? 
+- The idea: the larger the SE, the more dispersed the sampling distribution
+  - The more likely I draw a sample that is far from true parameter
+  - And thus the less confidence we have in our sample estimate 
+
+## How is the confidence interval computed?
+
+$SE = \dfrac{\hat{\sigma}}{\sqrt{n}}$
+
+$\hat{\sigma}$: our estimate of the population standard deviation
+
+\scriptsize
+
+```{r}
+sample <- survey[sample(1:nrow(survey), 30),]
+mean(sample$ideology, na.rm = T)
+sd(sample$ideology, na.rm = T)
+se <- sd(sample$ideology, na.rm = T) / sqrt(30)
+se
+mean(sample$ideology,na.rm = T) + 2*se
+```
+
+## What affects the confidence intervals?
+
+Two parameters influence the width of the confidence interval:
+
+- The standard deviation of the data in the sample
+  - More spread out means less certainty
+  - Think of opposite situation: I draw values of 2,3,2,3,3,3...
+  - My mean is still pretty close to 2.95
+  - But the sample's SD is very small; the CI will be narrower
+- The sample size
+  - More people in the sample $\leadsto$ more precise estimates
+  - BUT: notice the square root?
+  - There are *diminishing returns* to sample size
+  - Going from 100 to 1,000: great!
+  - Going from 1,000 to 10,000: not a great resource expenditure!
+  
+## SD of the data and CIs
+
+\centering 
+
+```{r,fig.height=8,fig.width=6,out.height='90%',echo=FALSE}
+library(tidyr)
+nb <- data.frame(large_sd = rnorm(100, 75, 8),
+                 small_sd = rnorm(100, 75, 4)) %>% 
+  pivot_longer(cols = everything())
+
+nb %>% 
+  group_by(name) %>% 
+  summarise(mean = mean(value),
+            lwr = mean - sd(value)/sqrt(100)*qt(0.975, 100),
+            upr = mean + sd(value)/sqrt(100)*qt(0.975, 100)) %>% 
+  ungroup() %>% 
+  ggplot(aes(x = name, y = mean, ymin = lwr, ymax = upr, fill = name)) +
+  geom_jitter(data = nb, aes(x = name, y = value, col = name), 
+              width = 0.2, alpha = 0.4, inherit.aes = F) +
+  geom_bar(stat = 'identity', alpha = 0.2) +
+  geom_errorbar(width = 0.2) +
+  guides(col = FALSE,
+         fill = FALSE) +
+  scale_y_continuous(limits = c(min(nb$value), max(nb$value)), oob = rescale_none) +
+  theme_bw(base_size = 19) +
+  labs(x = "Type of distribution", 
+       y = "Class grade")
+```
+
+
+## NBA scoring
+
+```{r,echo=FALSE,include=FALSE,message=FALSE,warning=FALSE}
+# library(nbastatR)
+# players <- nbastatR::game_logs(seasons = 2011:2021) %>% 
+#   dplyr::select(dateGame, namePlayer, pts)
+# 
+# harden_last85 <- players %>% 
+#   filter(namePlayer == "James Harden") %>% 
+#   arrange(desc(dateGame)) %>% 
+#   slice(1:85)
+# 
+# zion_first85 <- players %>% 
+#   filter(namePlayer == "Zion Williamson")
+# 
+# zion_harden <- rbind(harden_last85, zion_first85)
+# 
+# write.csv(zion_harden, file = "lectures/lecture_9.2/nba_data.csv")
+```
+
+\scriptsize 
+
+```{r}
+zion_harden <- read.csv("lectures/lecture_9.2/nba_data.csv")
+
+# A tidyverse function to sample from dataframe
+sample_n(zion_harden, 6)
+```
+::: columns
+
+:::: column
+
+![Zion Williamson](zion.jpg){height='30%'}
+
+::::
+
+:::: column
+
+![James Harden](harden.png){height='30%'}
+
+::::
+
+:::
+
+
+## Zion vs Harden
+
+\scriptsize
+
+```{r,out.width='95%'}
+ggplot(zion_harden, aes(x = namePlayer, y = pts)) +
+  geom_jitter(width = 0.2) +
+  labs(x = "Player", y = "Points in a game") +
+  theme_bw(base_size = 19, base_family = "Fira Sans")
+```
+
+## Visualizing with a boxplot
+
+\tiny
+
+```{r,out.width='85%'}
+ggplot(zion_harden, aes(x = namePlayer, y = pts)) +
+  geom_boxplot() +
+  geom_jitter(width = 0.1, aes(col = namePlayer, fill = namePlayer), shape = 21, size = 2) +
+  labs(x = "Player", y = "Points in a game") +
+  theme_bw(base_size = 19, base_family = "Fira Sans") +
+  scale_fill_manual(values =  c("#CE1141", "#0C2340")) +
+  scale_color_manual(values = c("#000000", "#C8102E")) +
+  guides(fill = FALSE, col = FALSE)
+```
+
+## Visualizing with a density plot
+
+\scriptsize 
+
+```{r,out.width='85%'}
+ggplot(zion_harden, aes(x = pts, col = namePlayer)) +
+  geom_density(size = 1.25) +
+  labs(x = "Points in a game", y = "Density") +
+  theme_bw(base_size = 19, base_family = "Fira Sans") +
+  scale_color_manual(values =  c("#CE1141", "#0C2340"), name = "Player")
+```
+
+## Confirming our intuition
+
+\scriptsize
+
+```{r}
+zion_harden %>% 
+  group_by(namePlayer) %>% 
+  summarise(mean_pts = mean(pts),
+            sd_pts = sd(pts))
+```
+
+\normalsize
+
+Zion scores 25.7 points per game, on average
+
+- On any given night, he's likely to be pretty close to that
+
+Harden scores 27.9 points per game, on average 
+
+- On any given night, he may disappear or blow up and score 50
+
+## Drawing a first sample of 20 games
+
+```{r,echo=FALSE,out.width='93%',fig.height=8,fig.width=10}
+set.seed(1035)
+zion_first85 <- filter(zion_harden, namePlayer == "Zion Williamson")
+harden_last85 <- filter(zion_harden, namePlayer == "James Harden")
+ci <- matrix(nrow = 20, ncol = 4) %>% as.data.frame() %>% rename(lower = V1, mean = V2, upper = V3, namePlayer = V4)
+for(i in seq(1, 40, 2)){
+  sample <- zion_first85[sample(1:85, 20),]
+  ci[i,2] <- mean(sample$pts, na.rm = T)
+  ci[i,1] <- t.test(sample$pts)$"conf.int"[1]
+  ci[i,3] <- t.test(sample$pts)$"conf.int"[2]
+  ci[i,4] <- "Zion Williamson"
+}
+
+for(i in seq(2, 40, 2)){
+  sample <- harden_last85[sample(1:85, 20),]
+  ci[i,2] <- mean(sample$pts, na.rm = T)
+  ci[i,1] <- t.test(sample$pts)$"conf.int"[1]
+  ci[i,3] <- t.test(sample$pts)$"conf.int"[2]
+  ci[i,4] <- "James Harden"
+}
+
+ci <- ci %>% 
+  mutate(contains = case_when(
+    namePlayer == "Zion Williamson" ~ ifelse(lower < mean(zion_first85$pts) & upper > mean(zion_first85$pts), 1, 0),
+    namePlayer == "James Harden" ~ ifelse(lower < mean(harden_last85$pts) & upper > mean(harden_last85$pts), 1, 0)
+  ))
+
+ci$sample <- rep(1:20, 1, each =2)
+
+playermeans <- zion_harden %>% 
+  group_by(namePlayer) %>% 
+  summarise(mean_pts = mean(pts))
+
+filter(ci, sample == 1) %>% 
+  ggplot(aes(x = mean, y = sample, xmin = lower, xmax = upper,
+               col = factor(contains))) +
+  geom_point(size = 2) +
+  geom_errorbar(width = 0, size = 1, alpha = 0.3) +
+  facet_wrap(~namePlayer) +
+  geom_vline(data = playermeans, aes(xintercept = mean_pts),
+             linetype = "dashed") +
+  theme_bw(base_size = 19, base_family = "Fira Sans") %+replace%
+  theme(legend.position = "bottom") +
+  labs(x = "Sample mean of points",
+       y = "Sample number") +
+  scale_color_manual(name = "Contains pop. parameter",
+                     values = c("#ca0020", "#0571b0"),
+                     limits = c("0", "1")) +
+  scale_y_continuous(limits = c(1, 20),
+                     breaks = seq(1, 20, 1)) +
+  scale_x_continuous(limits = c(min(ci$lower), max(ci$upper)))
+```
+
+## Adding a second sample of 20 games
+
+```{r,echo=FALSE,out.width='93%',fig.height=8,fig.width=10}
+filter(ci, sample <= 2) %>% 
+  ggplot(aes(x = mean, y = sample, xmin = lower, xmax = upper,
+               col = factor(contains))) +
+  geom_point(size = 2) +
+  geom_errorbar(width = 0, size = 1, alpha = 0.3) +
+  facet_wrap(~namePlayer) +
+  geom_vline(data = playermeans, aes(xintercept = mean_pts),
+             linetype = "dashed") +
+  theme_bw(base_size = 19, base_family = "Fira Sans") %+replace%
+  theme(legend.position = "bottom") +
+  labs(x = "Sample mean of points",
+       y = "Sample number") +
+  scale_color_manual(name = "Contains pop. parameter",
+                     values = c("#ca0020", "#0571b0"),
+                     limits = c("0", "1")) +
+  scale_y_continuous(limits = c(1, 20),
+                     breaks = seq(1, 20, 1)) +
+  scale_x_continuous(limits = c(min(ci$lower), max(ci$upper)))
+```
+
+## And a third...
+
+```{r,echo=FALSE,out.width='93%',fig.height=8,fig.width=10}
+filter(ci, sample <= 3) %>% 
+  ggplot(aes(x = mean, y = sample, xmin = lower, xmax = upper,
+               col = factor(contains))) +
+  geom_point(size = 2) +
+  geom_errorbar(width = 0, size = 1, alpha = 0.3) +
+  facet_wrap(~namePlayer) +
+  geom_vline(data = playermeans, aes(xintercept = mean_pts),
+             linetype = "dashed") +
+  theme_bw(base_size = 19, base_family = "Fira Sans") %+replace%
+  theme(legend.position = "bottom") +
+  labs(x = "Sample mean of points",
+       y = "Sample number") +
+  scale_color_manual(name = "Contains pop. parameter",
+                     values = c("#ca0020", "#0571b0"),
+                     limits = c("0", "1")) +
+  scale_y_continuous(limits = c(1, 20),
+                     breaks = seq(1, 20, 1)) +
+  scale_x_continuous(limits = c(min(ci$lower), max(ci$upper)))
+```
+
+## All 20 samples
+
+```{r,echo=FALSE,out.width='93%',fig.height=8,fig.width=10}
+ci %>% 
+  ggplot(aes(x = mean, y = sample, xmin = lower, xmax = upper,
+               col = factor(contains))) +
+  geom_point(size = 2) +
+  geom_errorbar(width = 0, size = 1, alpha = 0.3) +
+  facet_wrap(~namePlayer) +
+  geom_vline(data = playermeans, aes(xintercept = mean_pts),
+             linetype = "dashed") +
+  theme_bw(base_size = 19, base_family = "Fira Sans") %+replace%
+  theme(legend.position = "bottom") +
+  labs(x = "Sample mean of points",
+       y = "Sample number") +
+  scale_color_manual(name = "Contains pop. parameter",
+                     values = c("#ca0020", "#0571b0"),
+                     limits = c(0, 1)) +
+  scale_y_continuous(limits = c(1, 20),
+                     breaks = seq(1, 20, 1)) +
+  scale_x_continuous(limits = c(min(ci$lower), max(ci$upper)))
+```
+
+## Harden vs Williamson 
+
+Harden samples have wider CIs; why? 
+
+- The standard deviation is higher for Harden
+- Thus, the standard error of the mean is higher 
+  - $SE = \dfrac{{\color[HTML]{FE0000}\hat{\sigma}}}{\sqrt{n}}$
+- If I draw many samples...
+  - The sampling distribution has a larger standard deviation
+    - i.e. $\uparrow$ standard error of the mean
+    
+## Sampling distribution for Harden
+
+```{r,echo=FALSE,out.width='100%', fig.height=6, fig.width=17}
+set.seed(1030)
+harden_mean_20 <- matrix(nrow = 1000, ncol = 2) %>% as.data.frame() %>% rename(sample20 = V1, player = V2) %>% mutate(player = "Harden")
+for(i in 1:1000){
+  harden_mean_20[i,1] <- harden_last85[
+    sample(1:nrow(harden_last85), size = 20, replace = FALSE),
+  ]$pts %>% mean(na.rm = T)
+}
+harden_mean_20 <- harden_mean_20 %>% as.data.frame()
+library(extrafont)
+ggplot(harden_mean_20,
+       aes(x = sample20)) +
+  geom_histogram(col = "black",
+                 fill = "steel blue") +
+  geom_vline(xintercept = mean(harden_last85$pts, na.rm = T), col = "red", size = 1.2) +
+  theme_bw(base_family = "Fira Sans",
+           base_size = 18) +
+  labs(title = "Distribution of the mean of points from 1,000 samples of size 20 each",
+       y = "Number of samples",
+       x = "Sample mean of points (Harden)")
+```
+\scriptsize
+
+```{r}
+sd(harden_mean_20$sample20)
+harden_sample <- sample_n(harden_last85, size = 20)$pts
+harden_sample
+sd(harden_sample)/sqrt(20)
+```
+## Sampling distribution for Zion
+
+```{r,echo=FALSE,out.width='100%', fig.height=6, fig.width=17}
+set.seed(1030)
+zion_mean_20 <- matrix(nrow = 1000, ncol = 2) %>% as.data.frame() %>% rename(sample20 = V1, player = V2) %>% mutate(player = "Zion")
+for(i in 1:1000){
+  zion_mean_20[i,1] <- zion_first85[
+    sample(1:nrow(zion_first85), size = 20, replace = FALSE),
+  ]$pts %>% mean(na.rm = T)
+}
+zion_mean_20 <- zion_mean_20 %>% as.data.frame()
+library(extrafont)
+ggplot(zion_mean_20,
+       aes(x = sample20)) +
+  geom_histogram(col = "black",
+                 fill = "steel blue") +
+  geom_vline(xintercept = mean(zion_first85$pts, na.rm = T), col = "red", size = 1.2) +
+  theme_bw(base_family = "Fira Sans",
+           base_size = 18) +
+  labs(title = "Distribution of the mean of points from 1,000 samples of size 20 each",
+       y = "Number of samples",
+       x = "Sample mean of points (Harden)")
+```
+
+\scriptsize
+
+```{r}
+sd(zion_mean_20$sample20)
+zion_sample <- sample_n(zion_first85, size = 20)$pts
+zion_sample
+sd(zion_sample)/sqrt(20)
+```
+
+## Two sampling distributions together
+
+\scriptsize 
+
+```{r,fig.width='90%'}
+rbind(zion_mean_20, harden_mean_20) %>% 
+  ggplot(aes(x = sample20, col = player)) +
+  geom_density(size = 1.25) +
+  theme_bw(base_size = 19, base_family = "Fira Sans")
+```
+
+
+# Describing distributions
+
+## The normal distribution
+
+We'll start with something we've seen before: the normal distribution 
+
+- The shape is commonly known: the "bell curve"
+- It is perfectly symmetrical: mean = mode = median
+- Turns out, a lot of things naturally follow the normal curve!
+
+![](normal.png)
+
+## Normality in my listening habits
+
+```{r,include=FALSE,echo=FALSE,message=FALSE}
+music <- read.csv("lectures/lecture_9.2/aka09.csv") %>% 
+  mutate(date = as.POSIXct(as.character(X26.Oct.2021.01.46),
+                           format = "%d %B %Y %H:%M"),
+         time = format(date, "%H:%M") %>% as.POSIXct(format = "%H:%M", tz = "UTC") %>% with_tz("America/New_York")) %>% 
+  rename(Artist = 1, 
+         Album = 2, 
+         Song = 3,
+         Date = 4)
+
+lims <- as.POSIXct(strptime(c("2021-10-26 20:00:00", 
+                              "2021-10-27 19:59:59"), 
+                               format = "%Y-%m-%d %H:%M:%S",
+                            tz = "America/New_York"))
+```
+
+\scriptsize
+
+```{r,fig.height=10,fig.width=20,out.width='100%',message=FALSE, warning=FALSE}
+ggplot(music, aes(x = time)) +
+  geom_histogram(fill = "steel blue", col = "black") +
+  scale_x_datetime(breaks = scales::breaks_width("60 min"),
+                   date_labels = "%H:%S") +
+  theme_bw(base_size = 19)
+```
+
+
+## Skewed distributions: right-skew
+
+\scriptsize
+
+```{r,message=FALSE,fig.height=6,fig.width=10,out.width='90%'}
+load("lectures/lecture_9.1/survey.RData")
+survey_500s <- subset(survey_full, time_conjoint1 < 500)
+ggplot(data = survey_500s, aes(x = time_conjoint1)) +
+  geom_histogram(fill = "steel blue", col = "black") +
+  theme_bw(base_size = 19)
+```
+
+## Skewed distributions: right-skew
+
+Skewed distributions are asymmetric
+
+- In the example above, the right-tail is much longer
+  - It's a **right-skewed** distribution 
+  - Also called a positively-skewed distribution
+- Mean $\neq$ Median
+
+\pause
+
+\scriptsize
+  
+```{r}
+mean(survey_500s$time_conjoint1)
+median(survey_500s$time_conjoint1)
+```
+
+## Skewed distributions: left-skew
+
+\scriptsize
+
+```{r}
+grades <- read.csv("lectures/lecture_9.2/pset1_grades.csv")
+ggplot(grades, aes(x = grade)) +
+  geom_histogram(fill = "steel blue", col = "black") +
+  theme_bw(base_size = 19) +
+  geom_vline(xintercept = mean(grades$grade,na.rm = T), 
+             col = "red", size = 1) +
+  geom_vline(xintercept = median(grades$grade,na.rm = T), 
+             col = "green", size = 1) 
+```
+
+## Multimodal distributions: NFL players
+
+\scriptsize
+
+```{r}
+nfl <- read.csv("lectures/lecture_9.2/nfl_height_weight.csv")
+ggplot(data = nfl, aes(x = weight_in_lbs)) +
+  geom_histogram(breaks = seq(150, 350, 5),
+                 fill = "steel blue", col = "black") +
+  theme_bw(base_size = 19)
+```
+
+## Multimodal distributions
+
+\scriptsize
+
+```{r,echo=FALSE,out.width='100%'}
+nfl <- nfl %>% 
+  mutate(position = case_when(
+    position %in% c("C", "G", "OG", "OT", "T") ~ "O-line",
+    position %in% c("DE", "DT", "NT") ~ "D-line",
+    position %in% c("WR", "RB") ~ "Receivers and RBs",
+    position %in% c("ILB", "LB", "MLB", "OLB") ~ "Linebackers",
+    position %in% c("CB", "SS", "FS") ~ "Secondary",
+    position == "QB" ~ "Quarterback"
+  ))
+nfl %>% 
+  filter(!is.na(position)) %>% 
+ggplot(aes(x = weight_in_lbs)) +
+  geom_histogram(breaks = seq(150, 350, 5),
+                 fill = "steel blue", col = "black") +
+  theme_bw(base_size = 19) +
+  facet_wrap(~position) +
+  labs(x = "Weight (pounds)", y = "Number of players")
+```
+
+
+
+## Skewed distribution: what kind of skewness?
+
+![Distribution of results from Blood Alcohol Content tests in Washington state, 1999-2007 [@hansen_punishment_2015]](bac_tests.png)
+
+
+## References {.allowframebreaks}
+
+\footnotesize

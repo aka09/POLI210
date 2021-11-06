@@ -1,0 +1,147 @@
+---
+title: "Problem set 2"
+author: "POLI210, Fall 2021"
+date: "Due October 25th, 11:59PM"
+output:
+  tint::tintPdf:
+    latex_engine: xelatex
+  tufte::tufte_html: 
+    tufte_features: ["fonts", "background"]
+link-citations: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  include = TRUE,
+  root.dir = rprojroot::find_rstudio_root_file(),
+  fig.margin = TRUE
+)
+```
+
+## General instructions
+
+In this assignment, you will use data from a 2003 article published in the *Journal of Politics*.^[Druckman, James N. 2003. “The Power of Television Images: The First Kennedy-Nixon Debate Revisited.” Journal of Politics 65(2): 559–71.] This dataset is posted in the assignment folder. You do not have to read the article in order to complete this assignment, though you may do so if interested (it is quite short and captivating). A codebook describing the variables is presented below. Download the dataset and save it to your designated working directory. Any data visualizations you submit should be as informative as possible, with proper titles and axes labels.
+
+Submission: You must submit both a .Rmd file and the .pdf file that the knitting process produces. All of your code must be visible in the knitted PDF. Your written answers must be included as well. If you have any questions about the assignment, **post them on the MyCourses discussions board**. Do not email the instructor or the TAs. If you require individualized assistance, you are of course welcome to office hours.  
+
+## Codebook
+
+```{r,echo=FALSE, include = TRUE, message = FALSE}
+library(dplyr)
+library(knitr)
+library(kableExtra)
+codebook <- 
+  tribble(
+    ~Variable, ~Description,
+    "tv", "Experimental condition the respondent was randomly assigned to (1 = TV; 0 = Radio)",
+    "won2", "Respondent's perception of who won the debate coded from 0 to 1 (0 = clear Kennedy win; 1 = clear Nixon win)",
+    "sex2", "Sex of the respondent (0 = male; 1 = female)",
+    "catholic", "Whether the respondent is Catholic (0 = No; 1 = Yes)",
+    "sophdum3", "Whether the respondent is identified as politically sophisticated (0 = No; 1 = Yes)"
+  )
+
+knitr::kable(codebook, 
+             caption = "Codebook for Druckman data", booktabs = T) %>%
+  kable_styling(full_width = T, "striped") %>%
+  column_spec(1, bold = T)
+```
+
+## Context of the study
+
+On September 26th 1960 took place the first of a series of debates between presidential candidates John F. Kennedy and Richard Nixon. For the first time in United States history, the debate was broadcast not only on radio, but also on television.^[See [this short video](https://www.youtube.com/watch?v=GMWQnoDA0o8) on the debate if interested. ] As soon as the debate ended, political commentators speculated that television had helped Kennedy and hurt Nixon. The former "was bronzed beautifully...Nixon looked like death." (quoted in Druckman [2003], p.563) 
+
+
+## Assignment questions
+
+1. Imagine that I had conducted a survey of American citizens just after the debate. In this hypothetical survey, each respondent was asked if they watched the debate on television or listened to it on the radio. They were also asked who they thought had won the debate -- Kennedy or Nixon. The hypothetical results are shown in the table below. Describe the results. Can we conclude that the media format *caused* changes in perceptions of who won? Why or why not? 
+
+```{marginfigure}
+Respondents SELF-SELECT into TV or radio. Thus, we cannot assume that if respondents who watched the debate on TV had instead listened to it on the radio, they would have the same attitudes as respondents who actually listened to it on the radio. (In POs: $[Y_i(0)|D_i=1] \neq [Y_i(0)|D_i=0]$) A naive difference-in-means is a combination of the true causal effect + selection bias.
+```
+
+```{r,echo=FALSE, include = TRUE, message = FALSE}
+library(dplyr)
+library(knitr)
+library(kableExtra)
+hyp_survey <- 
+  tribble(~Format, ~N, ~`Nixon won`, ~`Kennedy won`,
+          "Radio", "723", "64%", "36%",
+          "Television", "568", "42%", "58%")
+
+knitr::kable(hyp_survey, booktabs = T) %>%
+  kable_styling(full_width = T, "striped") %>%
+  column_spec(1, bold = T)
+```
+
+2. Let's assume that watching the debate on television has *no* causal effect, compared to a baseline condition of listening to the debate on the radio. Identify a confounding variable that could plausibly explain the patterns presented in the table above. You should justify why this variable is a good candidate for being a confounder. 
+
+```{marginfigure}
+People who self-select into the TV condition are probably wealthier, and perhaps being wealthy is associated with preferring Kennedy.
+```
+
+3. We saw in class that we can think of causal inference as a problem of missing data. What data are we "missing" in the case of this study? OPTIONAL: For 5 bonus points, use the notation presented in class to answer this question (be sure to explain what each element of the equation represents). 
+
+```{marginfigure}
+The missing data is the unobserved potential outcome that is never realized. If we could observe it, we could compute individual-level treatment effects by subtracting one potential outcome from the other. 
+```
+
+4. We will now turn to the experimental study conducted by James Druckman. Among participants who *watched* the debate, what is the mean evaluation of the winner (`won2`)? And what about participants who *listened to* the debate? Based on those quantities, compute the treatment effect of watching the debate (versus the "control" condition of listening the debate). Interpret the effect -- is this what we would consider a "large" effect?
+
+
+```{r}
+library(haven)
+debate <- read_dta(
+  "druckman_2003_data.dta"
+  ) %>% 
+  dplyr::select(tv, won2, sex2, catholic, sophdum3)
+
+write.csv(debate, "druckman_2003.csv")
+
+# Quite large treatment effect of more than 0.11 on 0-1 scale
+debate %>% 
+  group_by(tv) %>% 
+  summarise(won = mean(won2, na.rm = T))
+```
+
+5. You show your results to a friend, who is intrigued but warns that "correlation does not equal causation." Can we interpret the quantity estimated above as causal? Why or why not? 
+
+```{marginfigure}
+We can because of random assignment. The less sophisticated answer: the two experimental groups should be the same, on average, across all pre-treatment covariates. Therefore, there should not be any confounders biasing the relationship betwen X and Y. The more sophisticated answer: the potential outcome under control for the treatment group can be assumed to be the same as the potential outcome under control for the control group, i.e. $[Y_i(0)|D_i=1] = [Y_i(0)|D_i=0]$. Therefore, a simple difference-in-means recovers the causal effect. 
+```
+
+6. Choose a pre-treatment variable from the codebook and analyze how it is distributed across the two experimental conditions.^[You may analyze the data in any way you see fit.] What can you say about the two distributions and what does that tell you about the experiment? 
+
+```{r}
+# similar props. of women
+# randomization properly conducted
+# could also use "catholic" or "sophdum3"
+debate %>% 
+  group_by(tv) %>% 
+  summarise(female = mean(sex2, na.rm = T),
+            catholic = mean(catholic, na.rm = T))
+```
+
+7. Druckman notes that he "recruited mostly young people...from summer courses at the University of Minnesota." Additionally, the sample underrepresents Republicans and overrepresents women. How should we interpret the results in light of this? Are we less confident in establishing causality? 
+
+```{marginfigure}
+Limited external validity: not clear if the results would hold if we had access to the entire American population. But causality is still established (internal validity remains).
+```
+
+8. One might think that people who are more politically sophisticated will not be influenced by the appearances of a candidate. Do you find evidence that the causal effect is different between political sophisticates and non-sophisticates?
+
+```{r}
+# There is a difference in treatment effect, but not super large
+debate %>% 
+  group_by(sophdum3, tv) %>% 
+  summarise(won = mean(won2, na.rm = T))
+
+soph <- subset(debate, sophdum3 == 1)
+nonsoph <- subset(debate, sophdum3 == 0)
+
+ate_soph <- mean(soph$won2[soph$tv==1],na.rm=T) - mean(soph$won2[soph$tv==0],na.rm=T)
+
+ate_nsoph <- mean(nonsoph$won2[nonsoph$tv==1],na.rm=T) - mean(nonsoph$won2[nonsoph$tv==0],na.rm=T)
+```
+
+

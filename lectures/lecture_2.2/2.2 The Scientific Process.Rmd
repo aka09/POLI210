@@ -11,6 +11,8 @@ output:
     latex_engine: xelatex
 classoption: t
 urlcolor: blue
+bibliography: ../210lectures_bib.bib
+biblio-style: apalike
 ---
 
 ```{r setup, include=FALSE}
@@ -20,15 +22,12 @@ knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ## The scientific process
 
 0. Familiarize yourself with the literature
-1. Identity a problem/puzzle/outcome of interest
-2. Come up with a research question
-3. Clarify the core concepts
-4. Develop a theory
-5. Derive hypotheses 
-6. Find a suitable way to test hypotheses
-7. Gather empirical evidence 
-8. Analyze evidence  
-9. Communicate the results
+1. Come up with a research question
+2. Clarify the core concepts
+3. Develop a theory
+4. Derive hypotheses 
+5. Find a suitable way to test hypotheses
+6. Gather evidence and test the hypothesis
 \pause
 
 Each of these steps is an art of itself! 
@@ -38,25 +37,27 @@ Important: this is an endless, iterative process!
 
 - Results refine theory, which leads to more hypotheses, more tests...
 
-## Some vocabulary
+## The scientific method
 
-**Variable**: A factor that can vary or change (versus a constant) \pause
+![](fuckaround.PNG)
 
-**Dependent variable** (DV): What we seek to explain \pause
+## 1. Find a research question
 
-**Independent variable**: Factor that causes some change in the DV \pause
+RQ: asks the "who, what, when or why" behind some phenomenon of interest \pause
 
-**Hypothesis**: Formal statement of the relationship between DV and IV
+- The "phenomenon of interest" is our **dependent variable** \pause 
 
-**Explanatory theory**: Story that justifies the hypothesis/answers a research question
+Examples:
 
-## 1. Identify a problem/puzzle/outcome
+- Does candidate gender affect vote choice? \pause
+- Why do countries sign trade agreements that limit their ability to impose tariffs? \pause
+- How did Barack Obama's election in 2008 change Americans' racial attitudes? \pause
 
-This is what we want to explain -- our **dependent variable** (DV) \pause
+The RQ can be fairly broad; we don't have a clear hypothesis yet
 
-We need *variation* in this DV -- otherwise there's nothing to explain!
+## 1. Find a research question
 
-How do we find our DV? \pause
+How do we find a research question? 
 
 - Relevance: some things are important to explain! \pause
   - e.g. vaccine hesitancy in current times
@@ -65,29 +66,12 @@ How do we find our DV? \pause
   - Most people say they favor free trade, yet barriers to trade are immense; why? \pause
 - Exploit a deviant case \pause
   - Duverger's Law and Canada's party system
+  
+Karl Popper: "there is no such thing as a logical method of having new ideas...Discovery contains an 'irrational element,' or a 'creative intuition.'"
 
+## 2. Clarify the core concepts 
 
-## 2. Come up with a research question
-
-RQ: asks the "who, what, when or why" behind some phenomenon of interest \pause
-
-Example: polarization in Congress \pause
-
-- Has Congress polarized? 
-  - Yes, but what is the reference point? \pause
-- When did Congress begin to polarize?
-  - In the 1980s, roughly \pause
-- Who is polarizing -- Democrats or Republicans?
-  - Asymmetric polarization: Republicans becoming more extreme at faster rate \pause
-- Why has Congress polarized? \pause
-  - A polarized electorate? Gerrymandering? Primary elections? Money in politics? \pause
-  - Key: most/all political phenomena are **multicausal**
-
-## 2. Research questions (examples)
-
-??
-
-## 3. Clarify the core concepts 
+Gerring [-@gerring_social_2011,p.112]: "the most basic question of social science research: what are we talking about?"
 
 When did the US become a democracy? \pause
 
@@ -101,54 +85,88 @@ We can all agree on:
 
 But we may disagree on whether these are *necessary* conditions for democracy! \pause
 
-Justice Potter Stewart in *Jacobellis v. Ohio*: "I know it when I see it" re: obscenity \pause
+Justice Potter Stewart in *Jacobellis v. Ohio*: "I know it when I see it" re: obscenity -- we want a better standard!
 
-## 4. Develop a theory
+## 3. Develop a theory
 
 Theory: a set of logically related propositions that help explain an outcome. 
 
-- It provides *mechanisms* that explain *how* DV and IV are linked
+- The theory provides **mechanisms** that explain how/why DV and IV are linked \pause
 
 Say you're interested in the link between attending Harvard and career earnings; potential theories? \pause
 
 - Harvard makes you a more productive/skillful employee \pause
 - You make connections at Harvard \pause
-- You got into Harvard because you were already better 
+- You got into Harvard because you were already better \pause
 
-These are **observationally equivalent** \pause
+These are **observationally equivalent**, i.e. we may all believe in the link Harvard -> earnings, but diverge on the *why*
 
-- i.e. we may all believe in the link Harvard -> earnings, but diverge on the *why*
 - Ideally, each theory has *testable implications*
 
-## 5. Generating hypotheses 
+## 3. Develop a theory
+
+Two approaches:
+
+- Inductive: a bottom-up process that begins with empirical observation and attempts to generalize from them 
+  - Observation \rightarrow Pattern \rightarrow Tentative hypothesis \rightarrow Theory \pause
+  - Often more *exploratory* in nature -- when we don't know how to approach RQ \pause
+- Deductive: a top-down process that begins with an established theory and draws on observations to test the theory
+  - Theory \rightarrow Hypothesis \rightarrow Observation \rightarrow Confirm/Falsify \pause
+  - Often more *confirmatory* in nature
+
+## 4. Generating hypotheses 
 
 The hypothesis formally states:
 
 - The relationship between two concepts \pause
 - The direction of the relationship \pause
-- The unit of analysis -- what is one "case" \pause 
+- The unit of analysis -- what is one "case" \pause
 
-## 6. Find a suitable way to test your hypotheses
+In addition, your hypothesis must be **falsifiable**
 
-## 7. Gather empirical evidence
+- It must be possible to prove that it is false \pause
+- Examples? \pause
+- There lives a white gorilla on Mount-Royal \pause
+- Bertrand Russell: "If I were to suggest that between the Earth and Mars there is a china teapot revolving about the sun in an elliptical orbit, nobody would be able to disprove my assertion provided I were careful to add that the teapot is too small to be revealed even by our most powerful telescopes."
 
-## 8. Analyze evidence
+## 4. Generating hypotheses: quote on falsifiability
 
-Reflecting back on your theory
+"It is comforting that the finest minds in science are as prone as the rest of us to bitching. But the theoretical physicist Wolfgang Pauli (1900-1958) is in a category of his own: the withering comment for which he's best known combines utter contempt on the one hand with philosophical profundity on the other. 'This isn't right,' Pauli is supposed to have said of a student's physics paper. It's not even wrong.'"
 
-- The semantics are important here! \pause
-  - Do the results "confirm" the theory? 
-  - "Lend support" \pause
-  - "are consistent with" \pause
-- Generally: make careful statements, consider strength of evidence as a continuum, think about accumulation of evidence \pause 
-- Tension: Modifying theory post-hoc
+[Source: see this Guardian article](https://www.theguardian.com/science/2005/sep/19/ideas.g2)
 
-## 9. Communicate the results
+## 5. Find a suitable way to test your hypotheses
 
-How the publication process works: 
+Now that we have a hypothesis, we need to find a way to test it
 
-Note: this can take a long time! \pause
-- Potential problem: social science is often not very responsive to events "on the ground" 
+- We want to find a suitable *research design* \pause
+- Not all research designs suit all questions \pause
+- We'll see some research designs later in the course!
+
+## 6. Gather evidence and test hypothesis
+
+The empirical evidence can be: interviews, survey data, country-level statistics, election results, historical records...
+
+The purpose is to test your hypothesis to see if it is supported by the data
+
+- We are working to disprove the **null hypothesis**
+- The null states that IV and DV are not related to one another 
+- If we find evidence that is (very) inconsistent with the null hypothesis, we **reject the null hypothesis**
+
+## 7. Other steps
+
+Reflect back on your theory and refine it \pause
+Communicate the results \pause
+Replicate the results (in other contexts, with different empirical strategy...) \pause
+
+Words of wisdom once you have your results:
+ 
+- Make careful statements based on strength of evidence
+  - Are the results merely "consistent with" the theory? Or something more? \pause
+- Consider strength of evidence as a continuum 
+  - A theory is not either "true" or "debunked" \pause
+- Think about accumulation of evidence 
+  - Your study is just a small drop in an ocean of scholarship 
 
 ## A note on qualitative vs quantitative approaches
 
@@ -159,20 +177,22 @@ Note: this can take a long time! \pause
 Quantitative: large-N, aims for breadth and generalization
 Qualitative: small- and medium-N, in-depth look at cases 
 
-People to take sides in this debate... \pause
+People tend to take sides in this debate... \pause
 
 - I want you to keep an open-mind \pause
 - You can have a preference! But we want to be conversant in both \pause
+
+Leo Strauss: "Nevertheless one may say of it [quantitative political science] that it fiddles while Rome burns. It is excused by two facts: it does not know that it fiddles, and it does not know that Rome burns." [quoted in @bond_scientification_2007, p.897]
 
 ## How a scientist behaves
 
 - Acknowledge uncertainty \pause
 - Think probabilistically \pause 
+- Consider alternative explanations \pause
+- Acknowledge complexity of multicausal processes \pause
 - Convey provisional nature of findings \pause 
   - "Further research should..." \pause
   - Also helps you avoid to do the work yourself if lazy ;)
-- Consider alternative explanations \pause
-- Acknowledge complexity of multicausal processes \pause
 
 ## "Beyond the scope"
 
@@ -200,9 +220,15 @@ Hallmarks of credible research: \pause
 
 What you should know:
 
-- What distinguishes science from non-science?
-- Different types of variables
-- RQ vs Theory vs hypothesis 
-- What are the steps in the scientific process? \pause
+- Key terms: independent/dependent variable, hypothesis, inductive/deductive theory-building, falsifiability
+- You should be asking yourself:
+  - What distinguishes science from non-science? 
+  - What distinguishes the natural sciences from the social sciences? 
+  - How close to the scientific ideal is political science?
+  
 
 Questions?
+
+## References {.allowframebreaks}
+
+\footnotesize

@@ -1,0 +1,161 @@
+---
+title: "4. Introduction to Bivariate Relationships with Categorical Variables"
+date: 'POLI210, Fall 2021, Week 6'
+output: pdf_document
+---
+
+```{r, include = F}
+setwd("~/Grad/McGill Fall 2021/POLI210")
+
+df <- read.csv("labs/lab 4/2015 CES.csv")
+```
+
+\section{Getting Started}
+
+Review the `codebook` for the 2015 Canadian Election Study (CES) in the Labs folder folder on MyCourses (PDF format). Note how large this document is! It's important to be as specific as possible so that we know the measures we are using.  Search for the following variables and examine their question wording and how response options are coded. Think about how you might \textbf{recode} these variables to ignore non-responses.\footnote{\textit{Hint:} Use ctrl (or command on a mac) + F to quickly search for the varible name.}
+
+ ----------------------  ---------------------------------------------------------------------------
+ Name                    Description
+ ----------------------  ---------------------------------------------------------------------------
+  `p_climate`             A unique identifier for each observation in the dataset 
+
+ `p_selfplace`            Left-Right self-reported political ideology
+
+ ---------------------------------------------------------------------------------------------------
+
+\section{Research Questions and Hypotheses}
+
+During the 2015 Canadian federal election, the carbon tax was a salient campaign issue. In this tutorial, we will analyse Canadians’ support for a tax on carbon, and examine how this support varies with political ideology.
+
+There are two parts to this research question. The first is the amount of support Canadians show for this type of climate tax, and the second being how support for the tax varies with left-right political ideology. In other words, not only do we want to know the overall level of support or opposition to the proposed tax, but the way in which support for the tax differs among respondents on the “political left” and “political right”.
+
+1. How do you think political ideology is related to support for such a tax? What led you to come to this conclusion?
+
+2. What is the independent variable? What is the dependent variable?
+
+3. Formulate a hypothesis that reflects how you think political ideology and support for a climate tax are related.
+
+4. Keep your hypothesis in mind as you work through the example below.
+
+From the codebook, we know that survey respondents are describing their political ideology on a scale from Left (0) to Right (10). 
+
+```{r}
+table(df$p_selfplace)
+```
+
+```{r}
+# Set those scored 1000 (did not answer) to missing:
+
+df$ideology_recode <- df$p_selfplace # Never over-write the original variable
+df$ideology_recode[df$ideology_recode == 1000] <- NA # Remove missing data
+
+# Check your work to make sure you re-coded properly
+table(df$ideology_recode)
+```
+
+```{r}
+# Examine descriptive statistics (measures of central tendency and variability)
+summary(df$ideology_recode)
+hist(df$ideology_recode) # Histogram
+```
+
+Now that we know a bit more about how political ideology is distributed, we will turn our attention to what people think about the proposed tax to combat climate change.
+
+```{r}
+table(df$p_climate)
+```
+
+바
+
+\textit{As usual}, we have some data cleaning to do. Again, we see that 23 respondents were presented with this
+question, but for one reason or another did not answer the question. We will set them to NA, but what
+about the 748 respondents scored as 8 and the 50 respondents scored as 9? Again, the codebook tells us that
+these respondents either did not know or had no opinion, or they explicitly refused to answer the question, respectively. We will also treat these observations as missing data.\footnote{Can you think of any possible limitations to ignoring these responses?}
+
+```{r}
+# Recode into a new variable. Generally, we want to keep the original variable in case 
+# we need to refer back to it later.
+df$climate_recode[df$p_climate==1] <- "Favour" 
+df$climate_recode[df$p_climate==5] <- "Oppose"
+
+df$climate_recode[df$p_climate==8] <- NA 
+df$climate_recode[df$p_climate==9] <- NA 
+df$climate_recode[df$p_climate==1000] <- NA
+table(df$climate_recode)
+```
+
+Canadians in the sample (n = 4,126; 76% of those who answered the question) are generally opposed to a 10% tax on gas and heating oil to fight climate change. This addresses our first question. However, we also want to know how support for this climate tax changes depending on where people place themselves on the left-right scale. While univariate statistics can tell us about individual variables, we need to do a bit more work with the data to get insights into \textbf{bivariate} relationships.
+
+\section{Examining bivariate relationships}
+
+Now that we have an understanding of how ‘typical’ responses are on our independent and dependent variables, we can start to examine the \textit{association}, also called the relationship, between these variables. In other words, does self-reported politiical ideology differ among those who favour and oppose a climate tax, and if so, by how much?
+
+In data analysis, the \textbf{level of measurement} of our variables is important. `Categorical` variables often reflect groups or rankings (e.g., low, medium, high) and are measured at the nominal or ordinal level. `Continuous` variables reflect larger scales and are often measured at the interval and ratio level. Note that rating scales, also known as Likert scales, are often treated as continuous measures, even though they are ordinal variables. How our variables are measured determines the type(s) of analysis we may run so we must always pay close attention to the \textit{level of measurement} of each variable in our model. 
+
+\subsection{Cross-Tabs with Categorical Variables}
+
+To start this analysis, we will re-code this 0 (left) to 10 (right) scale into three categories so that we can easily compare left-leaning respondents, right-leaning respondents, and respondents who are more moderate. The first step to doing so is for you to decide, based on the spread of the data and the underlying meaning in the scale, is what constitutes a “left-leaning”, “right-leaning” and “moderate” individual.
+
+Given the distribution of the variable (see the histogram above), it could be justified to group everyone who scored between 0 and 4 together and call them “left-leaners” (or maybe liberals), group everyone who scored between 6 and 10 together and call them “right-leaners” (or conservatives), and group the people who placed themselves at the midpoint (5) as "moderates."\footnote{This is one example of the many types of decisions researchers need to make as they analyze their data. You might decide some other categorization is appropriate. That is ok, provided you are able to justify your decisions.}
+
+Let's recode the continuous measure of political ideology into the three categories, as described above:
+
+```{r}
+df$ideology_recode_cat[df$ideology_recode < 5] <- "Left-Leaning" 
+df$ideology_recode_cat[df$ideology_recode == 5] <- "Moderates" 
+df$ideology_recode_cat[df$ideology_recode > 5] <- "Right-Leaning"
+```
+
+Remember, \textit{always} check your recoding was done correctly. Here, we are looking at the distribution across two variables: the original variable (with missing data removed) and the newly recoded variable with three response categories. This is a helpful way to quickly check respondents are correctly categorized.
+
+```{r}
+table(df$ideology_recode, df$ideology_recode_cat)
+```
+
+\subsection{Cross-Tabulation: Associations between categorical variables}
+
+When we are interested in assessing whether two categorical variables are related, we can use what is called a \textbf{cross-tabulation}, or cross-tab, for short. You may also see these called \textbf{contingency tables}. Cross-tabs demonstrate the number of participants that fall into each category of the dependent variable, conditional on their responses on the independent variable. In other words, cross-tabs allow us to see the extent to which scores on X are associated with scores on Y.
+
+We have already done this using \textsf{table()}. In a cross-tab, we always put the dependent variable across the rows and put the independent variable down the columns.
+
+```{r}
+table(df$climate_recode, df$ideology_recode_cat) # First Y (rows) then X (column)
+```
+
+Here, we are asking, \textit{which values of the independent variable are associated with which values on the dependent variable}. The location of each observation in the table depends on their score on both variables. This is helpful information but because we have an unequal number of observations within each cell of the table, we should not compare the raw numbers of participants that fall in each cell. Instead, we need to compare the \textbf{proportion} of respondents that fall within each cell. 
+
+Recall, that we are asking whether political ideology and support for a climate tax are related. With this data, we cannot tell which way the causal arrows go, but we can figure out whether or not there is any evidence of an association between these two variables. For argument’s sake, our hypothesis is that support for a climate tax is higher among those on the “political left” than it is for those on the “political right.” We have no particular expectation about where moderates might fall, but let us keep them in mind as we compare those on the political left and right.
+
+If we suspect that our hypothesis is correct, and that more left-leaning respondents favour the climate tax, we should expect to see a \textsf{higher proportion of left-leaning individuals indicate they are in favour of the tax, and a lower proportion of left-leaning individuals indicating they are opposed to the tax, relative to right-leaning respondents and ideological moderates}.
+
+We can do this in base \textsf{R} using the \textsf{prop.table()} function. First, save your cross-tab from above as an object, then pass that object to the \textsf{prop.table()} function\footnote{See the documentation for the package \textsf{?prop.table()}. Note the \textsf{margin} argument. By default, it calculates proportions of respondents at each level of the dependent variable, within levels of the independent variable (i.e., it calculates proportions across the rows of the table. This is the opposite of what we want. Instead, we set the \textsf{margins} argument to be equal to 2, which specifies column percentages; the proportion of individuals within levels of the independent variable, at each level of the dependent variable).}:
+
+```{r}
+my.table <- table(df$climate_recode, df$ideology_recode_cat)
+prop.table(my.table, margin = 2)
+```
+
+We can get the same result using a helpful package called \textsf{gmodels}:
+
+```{r}
+# install.packages("gmodels") # Uncomment (remove first #) to install the package.
+library(gmodels)
+```
+
+Remember, you can review the documentation for any package or function to see the available arguments (we won't use most!) - run: \textsf{?gmodels()}. 
+
+In this case, we will "turn off" or "set as FALSE" a few options in order to tidy the output, making it easier # for us to analyze. In addition to the raw number of participants in each cell, we will also request the column percentages - the proportion of individuals who favour or oppose the tax, depending on their level of political ideology. 
+
+```{r}
+CrossTable(df$climate_recode, df$ideology_recode_cat,
+           format="SPSS", # This makes the table a bit nicer on the eyes 
+           prop.c = TRUE, # Yes, we want "column percentages"
+           prop.r = FALSE, # No, we do not want "row percentages"
+           prop.t = FALSE, # No, we do not want "total percentages" 
+           prop.chisq = FALSE) # We also do not want this statistic.
+```
+\textbf{But what am I suppose to be looking at?} In a cross-tab, \textit{we compare catgories of the independent variable in terms of the percentage distribution on the dependent variable}. In this example, we compare the percentage of left-leaning respondents that favour the climate tax (39.7%) with the percentage of right-leaning (16.8%) and moderate (15.3%) respondents that favour the climate tax.\footnote{Note that we can also focus our comparison within the "oppose" category on the dependent variable. It is just the mirror image!}
+
+The results from the cross-tab show us that although moderates and right-leaning respondents are somewhat similar in their support for a climate tax, left-leaning respondents are \textit{nearly twice as likely} to support the climate tax than non-left-leaning respondents. Also note that although left-leaning respondents demonstrated the highest levels of support for a 10% tax on oil and gas to fight climate change, support within this group of respondents is still well below 50%.
+
+Taken together, this analysis demonstrates that although most Canadians oppose a such a climate tax, support is generally stronger among respondents that characterize their political ideology as relatively left-leaning. This provides us with \textbf{substantive evidence} to say that indeed there does appear to be a relationship between political ideology and support for a climate tax, such that those on the ideological left have higher levels of support than others. In the lectures, we will learn how to bring more statistical evidence into our results, but for now we will just focus on this general assessment.

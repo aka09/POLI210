@@ -1,0 +1,181 @@
+---
+title: "Lab 2: Importing Data into R"
+date: 'POLI210, Week 4, Fall 2021'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE,
+                      root.dir = rprojroot::find_rstudio_root_file())
+```
+
+Remember what we saw last week: we said that R is an **object-oriented** programming language, meaning that you store different values in "objects" using the assignment operator ("<-"). 
+
+```{r}
+object1 <- "hello" # creating a first object that contains "hello"
+object2 <- 2 # creating a second object that contains the number 2
+object3 <- 3 + 4 # creating a third object that contains the result of this operation
+```
+
+The point of having objects is that you can reuse them! Once you have created an object, it is stored in your Environment and you can access it by calling its name. 
+
+```{r}
+object1 # executing this line of code will print whatever the object contains
+```
+
+We also created **vectors** using the `c()` function, which stands for concatenation. Vectors are useful because they can contain multiple values. Vectors have different **elements**, each of which represents a value.
+
+```{r}
+c(1, 2) # this is a vector with two elements
+vector_2elements <- c(4, 7) # and here I'm simply storing this vector in an object 
+```
+
+Finally, we also performed some subsetting, meaning that we could extract certain elements from a vector using the square brackets "[]". 
+
+```{r}
+vector_2elements[1] # accessing the first element of our vector
+vector_2elements[2] # accessing the second element of our vector
+
+is.vector(vector_2elements) # i can call this **function** to confirm it's a vector
+```
+
+### Data types 
+
+In \textsf{R}, there are different **data types**. We will see three of them: numeric, character, and logical. 
+
+a. Numeric data contains numbers. You can perform mathematical operations. 
+b. Character data contains...you guessed it -- characters!
+c. Logical data contains either `TRUE` or `FALSE` values. 
+
+The trick with vectors is that the elements of any given vector must all be of the same type. A vector cannot have a number as the first element and a character as its second element.
+
+```{r}
+numeric_vector <- c(4, 7, 3) # a vector that contains numeric values
+class(numeric_vector) # I can call the class **function** to see the data type it contains
+
+# doing the same with a character vector
+character_vector <- c("hello", "dude", "there can be multiple words doesn't matter")
+class(character_vector)
+
+# aaaaand the same with a logical vector
+logical_vector <- c(TRUE, FALSE, FALSE)
+class(logical_vector)
+
+# will this work??
+mixed_vector <- c(2, "a word")
+class(mixed_vector)
+mixed_vector # what's going on here? look out for the quotation marks around 2...
+```
+
+### Naming objects
+
+You can name your objects almost anything you like. But try to keep it both: short AND informative. For instance...
+
+```{r}
+# this is way too long!
+this_is_a_vector_that_contains_hello <- "hello"
+
+# this is just sad and uninformative
+i_hate_r <- "hello"
+
+# this seems okay!
+random_vec <- "hello"
+```
+
+# Importing data
+
+Before we begin analyzing our data, we need to make sure the data we want to use is saved somewhere on our computer. Make sure you download the datasets posted in each Tutorial Folder on MyCourses and save this data in your working directory. Also make sure that your \textsf{R} script has a complete record of all the code that is important for your analysis. This will ensure that your analysis is both transparent and reproducible.
+
+## Set your working directory
+
+The first thing you want to do when you open \textsf{R} is to tell \textsf{R} which folder you want to work from on your computer. This folder is called you \textbf{working directory}. Every time you open a new session of R you will need to set your working directory. I suggest you make a new folder on your desktop and use this folder as your working directory for the course so that it is easy to find.
+
+In your working directory, you should save your research-related materials for the course, including the datasets you download from MyCourses. You should also store your code, notes, and any other files that are relevant to your research. \textsf{R} will be able to open datasets that are stored in your working directory and also save things to this folder, such as the graphs you will make for your analyses. All your \textsf{R}-related materials should be stored in one spot so you can easily find them. You should also save your \textsf{R} script (i.e., your code) to your working directory.
+
+There are two ways to set your working directory in \textsf{R}:
+
+1. \textbf{Use the \textsf{setwd()} function}: Use the function \textsf{setwd()} if you know the file path of the folder you want to use as your working directory.\footnote{Tip: On Windows, you can navigate to any particular folder in your Explorer, right-click the folder, choose "Properties", and the entire path will be listed under "Location". But not that the "\" signs will need to be changed for "/" signs. Don't ask me why!}
+
+```{r}
+# setwd("~/Grad/McGill Fall 2021/POLI210") 
+# Your folder may have a different name.
+```
+
+\textit{Note:} You can also find out what your current working directory is:
+
+```{r}
+getwd()
+```
+
+2. \textbf{Point-and-click}: Use the File and Plot Viewer (bottom right) in \textsf{RStudio}. Click the Files tab and navigate to the folder you want to use as your working directory. Next, click the ‘More’ dropdown menu and select \textit{Set as Working Directory}. Notice the code appears in the \textit{Console window} and runs automatically. Your working directory is all set, but if you set your working directory this way, you should copy this code from your console and paste it into your script so that you have a written record of \textbf{all} your steps.
+
+## Loading data into \textsf{R}
+
+Once we have set our working directory by telling \textsf{R} where our dataset is stored and made sure that the dataset we want to use is actually saved in this folder, you are ready to load the data into \textsf{R} and begin your analysis.
+
+Each time we want to work with a dataset, we have to load it into \textit{R}. One way to load data into \textsf{R} is to use the \textit{point-and-click} method using the dropdown menus in \textsf{RStudio}. A preferred approach, however, is to specify your dataset using one of three functions, depending on which file extentsion is used by your dataset. This approach is preferred because it ensures you have a reproducible script containing all of your code so you (or your instructor) can see exactly what you did in your analysis.
+
+### Read data from a .csv file
+
+Comma-separated-value (.csv) files are a common format for data storage. To open a dataset stored in .csv format, use the \textsf{read.csv()} function:
+
+```{r}
+class_survey <- read.csv("class_survey.csv")
+
+class(class_survey) # this is an object of the "data.frame" type 
+is.data.frame(class_survey) # just making sure...
+```
+
+Note the \textbf{assignment operator} (<-). Recall that \textsf{R} is an object-oriented language. We want to be able to direct \textsf{R} to the dataset, so we save it as an object, `class_survey`, in order to call on some of the variables stored within the dataset later in our analysis.
+
+So what's special about a data.frame object? Two distinguishing features:
+
+1. Each row is an observation, i.e. one case of your unit of analysis. For our purposes here, each row represents one student who answered the survey. 
+2. Each column is a variable. For our purposes here, this means that each column is one question from the survey. 
+
+The first thing you want to do when importing a dataset into *R* is to be familiar with its structure. How many observations (cases) do we have? How many variables do we have? To look at the dataset itself, you can click on its name in the environment. The dataset will open in a Viewer tab and you will be able to scroll through it. Alternatively: 
+
+```{r}
+View(class_survey) # note the capital-letter "V"
+```
+
+We can also get a glimpse at the dataset directly from the script:
+
+```{r}
+nrow(class_survey) # this function simply prints the number of rows
+ncol(class_survey) # same with the number of columns
+dim(class_survey) # or both at once!
+
+str(class_survey) # this will also show each variable with its type and first few values
+```
+
+
+## What if your data is not in .csv format?
+
+Sometimes you may come across data that is stored in a format other than \textsf{.csv}. The two most common forms you might encounter are from the statistical programs, STATA and SPSS. STATA files end in the extension, \textsf{.dta}. Data saved in SPSS format as the file extention, \textsf{.sav}.\footnote{There are other ways to store data too and sometimes you may need to use a special package to load the data.}
+
+To read data from STATA or SPSS into \textsf{R}, we can use the \textsf{read\_dta()} and \textsf{read\_sav()} functions, respectively. However, unlike the functions we have seen so far, including \textsf{read.csv()}, \textsf{c()}, or \textsf{sqrt()}, that all come pre-installed with \textsf{R}, many add-on functions exist that we can download. These functions are grouped together in \textbf{packages}.
+
+You only need to install packages once. Every time you open \textsf{R}, you can then load the packages you installed using the function, \textsf{library()}. A very useful package that allows you to work with data stored in different formats is called the \textsf{haven()} package. To install the package, run the command \textsf{install.packages("haven")}.\footnote{Note that the name of the package is in quotations when you want to install a new package.}
+
+Once you have installed the package (make sure you are connected to the internet!), you can load the package by using the \textsf{library()} command. Remember, you only need to install new packages once, but each time you open a new \textsf{R} session, you will need to load the packages into \textsf{R} using the \textsf{library()} function.
+
+```{r}
+library(haven) # Package to read other file formats, including .dta and .sav.
+```
+
+Once you have loaded the \textsf{haven} package, you can now use the functions contained in that package, which include the functions, \textsf{read\_dta()} and \textsf{read\_sav()}, which allow you to open datasets that are saved as STATA (.dta) or SPSS (.sav) formats. You can also use the point-and-click interface of \textsf{RStudio} to manually load datasets by clicking on the file name and selecting \textit{Import Dataset...} and clicking \textit{Import} again.\footnote{If you choose to open data this way, be sure to copy the code in the \textit{Code Preview} window and paste it into yur script so that you have a complete record of all the steps in your analysis. You might also want to change the name of the object that identifies the dataset in \textsf{R} so that it is shorter and easier to type out.}
+
+Still having questions about reading data into \textsf{R} or have you found a dataset you would like to use but cannot get the data to load properly? Make sure to stop by office hours, the drop-in lab sessions to work through any issues you might encounter while learning \textsf{R}.
+
+\section{Review}
+
+By this point, we have covered the very basics of using \textsf{R}. In the rest of the course, we will start using \textsf{R} to analyze real data. Let's recap what we have learned so far:
+
+By now, you should know:
+
+* How do download and install \textsf{R} and \textsf{RStudio}.
+* Use \textsf{R} to do basic arithematic and use the assignment operator (<-) to store datasets and lists of names and numbers as objects.
+* How to use various \textbf{functions}, including \textsf{c()}, \textsf{seq()}, and to load data using either the \textsf{read.csv()}, \textsf{read\_dta()} or \textsf{read\_sav()} functions, depending on whether your data is saved in .csv, .dta, or .sav format.
+* Know how to install additional \textsf{R} packages from the internet, such as the \textsf{haven()} package, using the \textsf{install.packages(")} function.
+* How to load these additional packages into \textsf{R} by using the \textsf{library()} function.

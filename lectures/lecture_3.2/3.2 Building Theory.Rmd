@@ -1,7 +1,7 @@
 ---
 title: 'POLI210: Political Science Research Methods'
-subtitle: "Lecture 3.1: Literatures and RQs"
-date: "September 14th, 2021"
+subtitle: "Lecture 3.2: Building Theory"
+date: "September 16th, 2021"
 author: "Olivier Bergeron-Boutin"
 header-includes:
   - \usepackage{booktabs}
@@ -19,22 +19,122 @@ biblio-style: apalike
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
+## Boring admin stuff
+
+- Discussion board for R questions
+- Learning R: try to keep up -- it's cumulative
+- Office hours: use them! 
+  - Polling question 
+- Assignment 1 out -- MC status will not update
+
+## What is theory?
+
+B&R, p.55: "a theory states that concepts are related, how they are related, and why they are related."
+
+A theory sets the stage for your formal hypothesis
+
+- It justifies why we should think your hypothesis makes sense 
+
+## Why do we need theory? 
+
+What does an atheoretical science look like?
+
+- Turns out it'd be messy! \pause
+
+Theories **guide observation** 
+
+- There are simply too many observations to be made
+- We need theory to help narrow down the search for empirical relationships 
+- Think of the survey you took: any pair of questions could be analyzed 
+
+## Why do we need theory? Toshkov's answer
+
+\small
+"It is instructive to consider at this point what an atheoretical science would look like. Imagine you arrange to spend a month at a public organisation (say, a ministry) with the purpose of understanding how the organization works. Furthermore, imagine that you manage to lose, on purpose or not, all the theoretical background you had acquired over years of schooling – you forget all concepts such as hierarchy, coordination, and authority; all knowledge of organizational structures, roles, culture, and so on. You approach the organization with  your mind as a blank slate, tabula rasa, with the intention to observe and record everything as it is without the interference of theory. But, of course, once you started this atheoretical observation, you would be  promptly overwhelmed by a cacophony of impressions, overloaded with information, dizzy from the lack of focus."
+
+[@toshkov_research_2016, p.59]
+
+# What qualities should our theories have? 
+
 ## Parsimony 
 
-## Falsifiability
+Parsimony: (other things equal) we prefer simple theories to complex theories \pause
 
-A scientific theory/hypothesis must be *falsifiable*: it must be possible to demonstrate that it is false \pause
+- "Like a lever, [the theory] lifts heavy weights with a moderate application of force." [@gerring_social_2011, p.66]
 
-- Example? \pause 
-- *Riskiness*: it has to "stick its neck out" \pause
-- Godfrey-Smith [-@godfrey-smith_theory_2021,p.95]: "theories can appear to have lots of contact with observation when in fact they only have a kind of 'pseudo-contact' with observation, because they avoid all risk."
+Why? Multiple reasons (often left implicit) [@gunitsky_rival_2019]
 
+- Aesthetic: "parsimony as elegance and clarity" \pause
+- Ontological: "parsimony as description of the world" \pause
+- Epistemological: parsimony as instrumentally valuable 
+  - There are some things we can safely leave out
+  - What does "safely" mean?
+  - The theory can still fulfill its intended purpose
+  
+## Parsimony: making assumptions
 
-KKV [-@king_designing_1994,p.19]: "We need to be able to give a direct answer to the question: What evidence would convince us that we are wrong?"
+In seeking parsimony, we will make *assumptions*
 
+The role of assumptions is often debated...
 
+- Scientific instrumentalism: scientific theory is valuable insofar as it allows for prediction and explanation, regardless of whether or not it is literally true
+  - i.e. we know that the assumptions are unreasonable, but we don't care! \pause
+  - Friedman [-@friedman_methodology_1953, p.14]: "Truly important and significant hypotheses will be found to have 'assumptions' that are wildly inaccurate descriptive representations of reality, and, in general, the more significant the theory, the more unrealistic the assumptions." \pause
+- Scientific realism: scientific theories are (or should be aspire to be) literally true \pause
 
-## Is my theory falsifiable?
+## Parsimony: poking holes
 
-KKV [-@king_designing_1994,p.19]: "to make sure a theory is falsifiable, choose one that is capable of generating as many *observable implications* as possible."
+The broader point: it is easy to "poke holes" in a theory by pointing out that the assumptions are unrealistic...
+
+- Much harder to show that incorporating more complexity by relaxing an assumption will meaningfully improve the theory! \pause
+- "Theories 'lie' in the same ways that maps lie, but they do so for a reason: to highlight the salient features of the world." [@gunitsky_rival_2019, p.707] \pause
+- This is fine! As long as we are being explicit 
+
+## Generality 
+
+Generality: (other things equal) we prefer theories that explain more cases to theories that explain fewer cases \pause
+
+The extremes:
+
+- A "law-like" theory that applies to every unit, at any time, under any circumstances
+  - Gravity? But unlikely in the social sciences! \pause
+- A theory that explains a single idiosyncratic event
+  - This is often the approach that historians use \pause
+
+But, at the same time, we want to be clear about **boundedness** (or "scope conditions")
+
+- General theories are good, **up to a point** \pause
+- There are conditions under which our theory no longer applies (or performs poorly)
+
+## Latte liberals
+
+Note: you are not meant to understand everything! \pause
+
+- The point: there are multiple theories compatible with the association 
+  - Availability of coffee shops
+  - Income
+  - Gender
+  - Nationalism \pause
+- We want to...
+  - list the relevant theories 
+  - derive testable implications for each
+  - systematically test them 
+
+## Post-hoc theorization
+
+Theorizing after the results are known is considered bad practice \pause
+
+- Why? \pause
+- King, Keohane and Verba [-@king_designing_1994, p.21]: "Human beings are very good at recognizing patterns but not very good at recognizing nonpatterns."
+
+Any problem with this? \pause
+
+- Didn't we see that the inductive approach is all about fitting the hypothesis to the data? 
+- How do we learn if we don't come up with a theory beforehand? \pause
+
+The problem: not the inductive approach itself! But lack of honesty about how we arrived at our results
+
+## References {.allowframebreaks}
+
+\footnotesize
 

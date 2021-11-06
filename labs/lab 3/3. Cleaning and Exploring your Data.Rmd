@@ -1,0 +1,229 @@
+---
+title: "Lab 3: Cleaning and Exploring your Dataset"
+author: "POLI 210, Fall 2021, Week 5"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+Now that we have gotten comfortable with the basics of \textsf{R} by learning tools like how to store information into objects; getting organized by storing project-related files in your working directory; install and load new packages; and read various types of data files into \textsf{R}, we can begin to use \textsf{R} for data analysis. It is rare that a data analyst receives a dataset that is perfectly set up for their needs. There is almost always some “cleaning” that needs to be done first so that the dataset is properly set up to make the necessary comparisons. In this example, we will learn some ways we can manipulate or “recode” data in \textsf{R} by taking a variable in the dataset and altering it in some way.
+
+\section{Getting Started}
+
+The data come from the \textit{2019 Canadian Election Study}, a public opinion survey with data from thousands of Canadians across the country. The data was collected during the 2019 federal election campaign, between September 13th and October 21st, 2019. The dataset for this example only contains a few variables from the survey. Later, we will introduce the full dataset, which has many more variables.
+
+To begin, go to the Data Lab folder on MyCourses and download the dataset. Be sure to save this file in your \textbf{working directory} This file is called “2019 CES - lab 3.csv”. The data contains a small number of variables from the \textit{2019 Canadian Election Study (CES)}.
+
+\section{The Codebook}
+
+Datasets usually do not have straight-forward names for each variable. So that you can understand what information a dataset contains, researchers make \textbf{codebooks} that accommpany their datasets. Codebooks are documents that identify key pieces of information, like how a variable is operationalized and the label (i.e., variable name) that identifies it in the dataset. Codebooks usually also contain technical details about the dataset. The codebook for the dataset used in this tutorial is:
+
+ ----------------------  ---------------------------------------------------------------------------
+ Name                    Description
+ ----------------------  ---------------------------------------------------------------------------
+  `id`                    A unique identifier for each observation in the dataset 
+
+ `cps19_age`              Age of respondent (measured in years) 
+
+ `cps19_gender`           Gender of respondent (1 = Male; 2 = Female; 3 = Other)
+
+ `cps19_interest_gen_1`   Self-reported interest in politics (Not at all [0] to A great deal [10]).
+
+ ---------------------------------------------------------------------------------------------------
+
+\section{Set up}
+
+Download the dataset from the Data Lab folder on MyCourses and save this data somewhere on your computer and make this folder your \textbf{working directory}.
+
+```{r}
+setwd("labs/lab 3") # You could have a different file path
+```
+
+Next, load the data into \textsf{R}:
+
+```{r}
+ces.df <- read.csv("labs/lab 3/2019 CES - lab 3.csv") # Watch out for typos (including spaces)!
+```
+
+\section{Explore the dataset}
+
+A dataset is a matrix of rows and columns. Each column represents a variable and each row is a single observation (i.e., a case). The first thing we want to do when we start working with a new dataset is to get an idea for how it is structured.
+
+\textsf{RStudio} allows us to view the shape of our data by clicking on the object we stored in the Environment window. We can also get \textsf{RStudio} to open the dataset by using the \textsf{View()} function. If we would like to get a quick look at the data, the \textsf{head()} function reports the first 6 observations for each variable.
+
+```{r}
+head(ces.df)
+```
+
+\subsection{Selecting specific variables within a dataset}
+
+In the dataset provided for this tutorial, the variable cps19_age contains the data recording respondents’ age in years. To refer to specific variables within a dataset, we join the name of our dataset (\textsf{ces.df}) by the name of the variable we are interested in (\textsf{ces19\_age}) by an “selector operator”, \$. The selector operator (\$), when paired with a dataset, allows us to select a specific variable to work with. In this case, we are telling R that we want to work with the variable \textsf{cps19\_age} which is found in the in the dataset, \textsf{ces.df}. To be more precise, *R* will take all values of the variable and arrange them into a vector. 
+
+```{r}
+# what are the square brackets doing here? 
+ces.df$cps19_age[1:10]
+```
+To generate a frequency table for a particular variable, we can use the \textsf{table()} function:
+
+```{r}
+table(ces.df$cps19_age)
+```
+
+Based on this frequency table, we can see each unique value of a variable, as well as the number of observations
+for each value. The youngest respondent in the dataset is 18 years old (and there are 293 of them) and the
+oldest respondent is 99 (there are 63 who reported being 99 years old at the time of the survey). In addition
+to looking at how the variable, age, is distributed, a frequency table would also draw our attention to any
+potential coding mistakes in a dataset. Although we do not have any here, if we had a participant who was
+given a score of, say, 1000, we would know that there is a mistake somewhere as this cannot be a plausible value for someone's age.\footnote{Some datasets will also use a certain value to indicate missing data, for example, -9999. Based on a careful reading of the codebook accompanying a dataset, the analyst would know that any value of -9999 actually represents missing data and the variable should be recoded so that \textsf{R} excludes this value from the analysis.}
+
+When a varible has many unique values, as the variable cps19_age does, it is often easier to visualize the distribution of the data, rather than look at a frequency table. A histogram is a visual representation of a frequency table. We can visualize the distribution of ages in the dataset by plotting (i.e., graphing or visualizing) respondents’ year of birth with the \textsf{hist()} function:
+
+```{r}
+hist(ces.df$cps19_age)
+```
+
+Presenting plots is a very important part of communicating the results of your research as they can efficiently communicate a great deal of information. It is important that your plots be as informative as possible. All plots require an informative title as well as appropriate labels on the x- and y-axes. When presenting results, the rule is that the independent variable always goes along the x-axis, while the dependent variable always goes along the y-axis. We can change the labels on the axes, along with the title of the plot, by specifying different \textbf{arguments} in \textsf{R}. Note the comma (,) after each new argument:\footnote{You can see all the different arguments that are available within a function by calling up the function's \textbf{documentation} by typing \textsf{?hist()} into \textsf{R}'s console window. We will only ever use a few arguments available for any particular function.}
+
+```{r}
+hist(ces.df$cps19_age,
+     main = "Respondents' Age in the 2019 CES", # Add a title 
+     xlab = "Year of Birth",  # Re-label the x-axis
+     ylab = "Number of Respondents") # Re-label the y-axis
+```
+
+Before doing any fancy analysis of our data, we want to be aware of how the different variables we're interested are distributed. How would you describe the distribution of age in the 2019 CES? Think of *central tendency*, *dispersion*, and *shape*. Central tendency refers to the "center" of a distribution -- what does a "typical" unit look like in terms of age? We use statistics like the mean and the median for this purpose. Dispersion refers to how tight the distribution is around its "center". Are most observations close to the typical observation, or is there a lot of variation? Shape refers to -- you guessed it -- the shape of the histogram. Is there a point where the distribution noticeably peaks? Or is the shape more uniform? 
+
+\section{Recoding variables}
+
+It is often the case that when dealing with quantitative data we will find ourselves in a situation where data arrives in one format and, in order to properly test our hypotheses and explore theorized relationships, we will need to \textit{manipulate} or \textit{recode} it in some way. Recoding variables can help us make the appropriate comparisons or simplify the interpretation of our results. Recoding variables also allows us to re-organize variables and exclude missing values.
+
+\textsf{R} is very flexible. It is possible to recode variables in a number of different ways. Let's look at a few of the different ways we can recode the variable measuring \textsf{gender} in the dataset.
+
+```{r}
+table(ces.df$cps19_gender)
+```
+We have 15,550 survey respondents who indicated they are men (score of 1), 21,980 that indicated they are women (score of 2), and 291 that indicated they identify as non-binary (score of 3).\footnote{As we will see in class, because gender is a \textbf{nominal} variable, the numbers we assign to men, women, and non-binary individuals do not inherently matter (remember, we cannot order nominal variables). In other words, while we use the number "1" to designate men and the number "2" to designate women, women are not "twice as" something as men.}
+
+One way to recode variables is to collapse response categories together. To illustrate, create a new variable that compares men to both women and non-binary individuals. One approach is to create a new variable and assign values based on subsets of the original variable. For example, we can create a new variable, called men, and take those coded as 1 on the original gender variable (males) and label them as “Men” on the new variable. We can also take those who received a score of 2 (women) and 3 (non-binary) and give them the label “Women" and "non-binary” on the new variable:
+
+```{r}
+# Create a new variable called "gender_r" (for "gender, recoded"). 
+# Give everyone a score of NA:
+ces.df$gender_r <- NA
+
+# Next, we can fill this variable as needed, based on the value given to
+# respondents on the original variable. 
+ces.df$gender_r[ces.df$cps19_gender==1] <- "Men"
+ces.df$gender_r[ces.df$cps19_gender==2] <- "Women"
+ces.df$gender_r[ces.df$cps19_gender==3] <- "Non-binary"
+```
+
+There are two things to point out here. First, note the different way we labeled the categories on this new variable. You can store either numerical or textual information (called ‘factors’ or ‘characters’) in your variables, but textual information needs to be in quotation marks. Second, we need to use a double equal sign (==) in R whenever we want to indicate a specific value.
+
+It is \textit{essential} that you verify whether you properly recoded your variable. Always double check your work, because if you made a mistake at the stage of recoding your variables, that mistake will carry through during the entire analysis!
+
+```{r}
+table(ces.df$cps19_gender) # Original variable
+table(ces.df$gender_r) # New variable
+table(ces.df$cps19_gender, ces.df$gender_r) # Bivariate (2-variable) frequency table
+```
+
+What if we wanted to create a new variable that compares women to men, but excludes the relatively small number of respondents that indicated a non-binary option? If we find ourselves in situations with a relatively small number of observations in a particular category, for statistical reasons, we usually need to drop those observations from the data.
+
+Let’s call this new variable which compares men and women, \textsf{female}. We will give women a score of 1, men a score of 0, and we will set those indicating a gender other othan male or female, as missing (i.e., \textit{NA}). Remember that this is called a **dummy variable**, i.e. it can only take on one of two values -- 0 or 1. 
+
+```{r}
+# Copy the information from the original variable into the new variable:
+
+ces.df$female <- ces.df$cps19_gender # Make an exact copy with different label
+
+# Set those selecting "Other" on the original variable to be NA ("missing") 
+# on the new variable
+ces.df$female[ces.df$female == 3] <- NA
+```
+
+If we check out work, we will see that we have the same number of men (scored 1) and women (scored 2) as in the original variable, however we have set those indicating “Other” (scored 3) to be missing.
+
+```{r}
+table(ces.df$female)
+table(ces.df$cps19_gender, ces.df$female)
+```
+
+All we need now is to recode men to 0 and women to 1. This is how dummy variables are typically coded: rather than keep 1 and 2, we will call the variable "female" and recode to 0 and 1. 0 indicates "failure" -- i.e. the observation is *not* female. 1 indicates "success" -- i.e. the observation *is* female.  
+
+```{r}
+ces.df$female[ces.df$female==1] <- 0
+ces.df$female[ces.df$female==2] <- 1
+table(ces.df$female)
+```
+
+
+\section{Example: Are Canadians interested in politics?}
+
+From the mini codebook included at the start of this Lab Guide, we can see that the variable \textsf{cps19\_interest\_gen\_1} measures respondents’ self-reported interest in politics on a scale ranging from “Not at all interested” (scored as 0) to “’A great deal of interest” (scored as 10). The first step is to examine the distribution of the variable, either using a frequency table or a histogram.
+
+```{r}
+table(ces.df$cps19_interest_gen_1)
+hist(ces.df$cps19_interest_gen_1)
+```
+
+This histogram is alright for a quick glance, but if you were to submit it in an assignment, you need to tidy it up by giving it an informative title and axis labels.
+
+```{r}
+ hist(ces.df$cps19_interest_gen_1,
+      main = "Distribution of Canadians' self-reported interest in politics", 
+      xlab = "Interest in politics (higher scores reflect greater interest)")
+```
+Based on the distribution of this variable, how would you characterize the level of interest in politics reported
+by Canadians? With no other information except what is conveyed in the histogram (or the frequency
+table), we can see that the most common response options are 6, 7 and 8, and the bulk of the data it on the
+higher end of the scale, which signifies “A great deal of interest.” From this distribution, we could conlude that Canadians are quite interested in politics.\footnote{Are you convinced? What are some of the strengths and weaknesses of a self-report measure of interest in politics? As we will see in class, we don't want to take for granted that the concept is properly measured!}
+
+\subsection{Re-categorize into "low", "medium" and "high" interest}
+
+```{r}
+ces.df$interest_cat[ces.df$cps19_interest_gen_1 <= 3] <- "Low interest"
+ces.df$interest_cat[ces.df$cps19_interest_gen_1 >= 4 & 
+                      ces.df$cps19_interest_gen_1 < 7] <- "Moderate interest"
+ces.df$interest_cat[ces.df$cps19_interest_gen_1 >=7] <- "High interest"
+```
+
+Were all respondents classified correctly? Tabulate the original and the newly recoded variable:
+
+```{r}
+table(ces.df$cps19_interest_gen_1, ces.df$interest_cat)
+```
+
+By default, \textsf{R} places these “factors” (\textsf{R}’s term for some non-numeric variables) in alphabetical order. We should re-order these columns so that they are ranked properly, from lowest to highest. We can overwrite the ordering:
+
+```{r}
+# note the line break after the opening "(" of the function
+# simply allows more space for the function's arguments
+ces.df$interest_cat <- factor(
+  ces.df$interest_cat,
+  levels = c("Low interest", "Moderate interest", "High interest")
+)
+table(ces.df$interest_cat)
+```
+
+\section{Univariate statistics: Measures of central tendency and dispersion}
+
+In base \textsf{R}, functions exist for quickly calculating \textbf{measures of central tendency} and \textbf{measures of dispersion}. Note that to avoid errors (NA is not a number and cannot be used in a calculation), we specify the argument, \textsf{na.rm = TRUE}, so the program removes the missing values from the calculation of summary statistics.
+
+```{r}
+mean(ces.df$cps19_interest_gen_1) # Wrong, because of missing data
+mean(ces.df$cps19_interest_gen_1, na.rm = TRUE)
+median(ces.df$cps19_interest_gen_1, na.rm = TRUE)
+sd(ces.df$cps19_interest_gen_1, na.rm = TRUE) # standard deviation 
+```
+
+We can also call the `summary()` function to get lots of summary statistics for a variable. 
+
+```{r}
+summary(ces.df$cps19_interest_gen_1)
+```
+
+
+

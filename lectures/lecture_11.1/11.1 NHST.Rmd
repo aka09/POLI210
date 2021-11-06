@@ -1,0 +1,755 @@
+---
+title: 'POLI210: Political Science Research Methods'
+subtitle: "Lecture 11.2: Null Hypothesis Significance Testing"
+date: "November 4th, 2021"
+author: "Olivier Bergeron-Boutin"
+header-includes:
+  - \usepackage{booktabs}
+  - \usepackage{longtable}
+  - \usepackage{array}
+  - \usepackage{multirow}
+  - \usepackage{wrapfig}
+  - \usepackage{float}
+  - \usepackage{colortbl}
+  - \usepackage{pdflscape}
+  - \usepackage{tabu}
+  - \usepackage{threeparttable}
+  - \usepackage{threeparttablex}
+  - \usepackage[normalem]{ulem}
+  - \usepackage{makecell}
+  - \usepackage{xcolor}
+  - \usepackage{fontspec}
+  - \usepackage{animate}
+  - \usepackage{xmpmulti}
+  - \usepackage{caption}
+  - \setsansfont[BoldFont={FiraSans-Bold.ttf}]{FiraSans-Light.ttf}
+  - \setmonofont{FiraMono-Regular.ttf}
+  - \usepackage{color}
+  - \definecolor{mygreen}{HTML}{008000}
+output: 
+  beamer_presentation:
+    keep_tex: yes
+    citation_package: biblatex
+    theme: "metropolis"
+    highlight: zenburn
+    latex_engine: xelatex
+classoption: t
+urlcolor: blue
+bibliography: ../210lectures_bib.bib
+biblio-style: authoryear
+link-citations: yes
+---
+
+```{r setup, include=FALSE}
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+knitr::opts_chunk$set(fig.height = 6, fig.width = 10, 
+                      message = FALSE, warning = FALSE,
+                      out.width = '75%')
+```
+
+```{r customtheme}
+# taken from Andrew Heiss' website
+library(ggtext)
+theme_custom <- function(){
+  theme_minimal(base_size = 19,
+           base_family = "Fira Sans") %+replace%
+  theme(legend.position = "none",
+        panel.grid.minor = element_blank(),
+        plot.title = element_markdown(face = "bold", size = rel(1.7)),
+        plot.subtitle = element_markdown(face = "plain", size = rel(1.3)),
+        axis.title = element_text(face = "bold"),
+        axis.title.x = element_text(margin = margin(t = 10), hjust = 0),
+        axis.title.y = element_text(margin = margin(r = 10), hjust = 1, angle = 90))
+}
+```
+
+## When do you believe me? 
+
+Let's suppose that after the midterm, I tell you that the mean grade is 73 
+
+- You suspect that I'm lying, for some reason...
+- But don't want to call me out unless you're quite sure
+- You ask a colleague in lab about their grade...
+  - Then another, and another, and another...
+- When do you have enough evidence to call me out? 
+
+\pause
+  
+## Meeting students 
+
+\centering
+
+```{r,echo=FALSE}
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+hyp_grades <- tribble(~`Student #`, ~Grade,
+       "1", 63,
+       "2", 67,
+       "3", 71,
+       "4", 56,
+       "5", 77,
+       "6", 47,
+       "7", 55)
+kbl(hyp_grades[1,],
+    booktabs = TRUE, 
+    caption = "Grades of students you meet in lab")
+```
+
+Do you call me a liar? 
+
+## Meeting students 
+
+\centering
+
+```{r,echo=FALSE}
+kbl(hyp_grades[1:2,],
+    booktabs = TRUE, 
+    caption = "Grades of students you meet in lab")
+```
+
+Do you call me a liar? 
+
+## Meeting students 
+
+\centering
+
+```{r,echo=FALSE}
+kbl(hyp_grades[1:3,],
+    booktabs = TRUE, 
+    caption = "Grades of students you meet in lab")
+```
+
+Do you call me a liar? 
+
+## Meeting students 
+
+\centering
+
+```{r,echo=FALSE}
+kbl(hyp_grades[1:4,],
+    booktabs = TRUE, 
+    caption = "Grades of students you meet in lab")
+```
+
+Do you call me a liar? 
+
+## Meeting students 
+
+\centering
+
+```{r,echo=FALSE}
+kbl(hyp_grades[1:5,],
+    booktabs = TRUE, 
+    caption = "Grades of students you meet in lab")
+```
+
+Do you call me a liar? 
+
+## Meeting students 
+
+\centering
+
+```{r,echo=FALSE}
+kbl(hyp_grades[1:6,],
+    booktabs = TRUE, 
+    caption = "Grades of students you meet in lab")
+```
+
+Do you call me a liar? 
+
+## The null hypothesis
+
+The setup:
+
+- We set a **null hypothesis**, also referred to as $H_0$
+  - The null hypothesis is our reference point -- it is arbitrary!
+  - It's a sort of statistical "strawman" 
+- We then set an **alternative hypothesis**, or $H_1$
+  - If the null is not true, then the alternative hypothesis must be true
+- We start from the premise that the null hypothesis is true
+  - The key question: *How surprised are you to see the data that you have, if the null hypothesis is true?*
+  - Evidence is inconsistent with the null $\leadsto$ reject the null
+  - Evidence is not inconsistent with the null $\leadsto$ fail to reject the null
+- This is the framework of **hypothesis testing**
+  - Start from the null
+  - Think about what the data should look like, if the null were true
+  - Analyze the data; reject/fail to reject the null
+  
+## The null hypothesis in our example
+
+What was the null hypothesis in the example above? \pause
+
+- $H_0$: $\mu_{exam} = 73$
+
+What was the alternative hypothesis? \pause
+
+- $H_1$: $\mu_{exam} \neq 73$ (non-directional hypothesis)
+- $H_1$: $\mu_{exam} > 73$ (directional hypothesis)
+- $H_1$: $\mu_{exam} < 73$ (directional hypothesis) \pause
+
+## Hypothesis testing in our example
+
+Assume that the null is true -- i.e. the true mean is 73
+
+- What do you expect to see when talking to your peers? \pause
+  - You expect to see have a sample mean of roughly 73!
+  - It might be 71, it might be 75
+    - Central limit theorem: the sampling distribution is normal and centered on the true population parameter 
+  - But you would be surprised to talk to 20 random students and learn that their mean grade is 59
+  - The data would be *inconsistent with the null hypothesis*
+  - At some point, the data is *so inconsistent with the null hypothesis* that we are comfortable rejecting it 
+    - How much we need to see before rejecting the null depends on the confidence level that we set
+    
+## Sampling distributions 
+
+If the midterm average really is 73, the sampling distribution should look like this:
+
+```{r,echo=FALSE,out.width='100%'}
+library(ggtext)
+library(extrafont)
+set.seed(1031)
+data.frame(student_grade = rnorm(200, mean = 73, sd = 3)) %>% 
+  ggplot(aes(x = student_grade)) +
+  geom_histogram(fill = "steelblue", col = "black") +
+  labs(x = "Mean grade in any given sample",
+       y = "Number of samples") +
+  theme_custom() 
+```
+
+## Sampling distributions 
+
+I can also show this using a density plot:
+
+```{r,echo=FALSE,fig.width='100%'}
+set.seed(1031)
+data.frame(student_grade = rnorm(200, mean = 73, sd = 3)) %>% 
+  ggplot(aes(x = student_grade)) +
+  geom_density(col = "steel blue", size = 2) +
+  theme_custom() +
+  labs(x = "Mean grade in any given sample",
+       y = "Density") +
+  geom_vline(aes(xintercept = 73), linetype = "dashed", size = 2) +
+  geom_label(aes(x = 72, y = 0.03), label = expression(H[0]*":"*mu*"=73"), size = 5, parse = T)
+```
+
+## Sampling distributions with different SD
+
+My sampling distribution may have a different standard deviation: 
+
+```{r,echo=FALSE,out.width='100%'}
+set.seed(1031)
+data.frame(`sd_3` = rnorm(200, mean = 73, sd = 3),
+           `sd_1` = rnorm(200, mean = 73, sd = 2),
+           `sd_4` = rnorm(200, mean = 73, sd = 4)) %>% 
+  gather() %>% 
+  ggplot(aes(x = value, col = key)) +
+  geom_density(size = 2) +
+  scale_color_viridis_d() +
+  theme_custom() %+replace%
+  theme(legend.position = "bottom") +
+  labs(x = "Mean grade in any given sample",
+       y = "Density")
+```
+
+## The sampling distribution and hypothesis
+
+Whatever the particular SD of sampling distribution...
+
+- It should approximate a normal distribution and be centered on the true parameter
+- The key feature of a normal distribution:
+  - About 68.4% of the data is within 1SD of the mean
+  - About 95% of the data is within 2SD of the mean
+  - About 99.7% of the data is within 3SD of the mean
+- Therefore, if the null is true, I am...
+  - Not surprised to observe a sample statistic that's 1SD away from the null
+  - Surprised to observe a sample statistic that's 2 SDs away from the null
+  - Very surprised to observe a sample statistic that is 3 SDs away from the null
+  
+## What does my sampling distribution looks like?
+
+Remember that, in practice, we only draw a single sample
+
+- We *do not* observe the sampling distribution
+- But, the sampling distribution has 2 properties:
+  - The mean
+    - We will assume that the mean is equal to whatever the null hypothesis indicates
+  - Standard deviation, for which we have a good guess: 
+    - $\hat{SE} = \dfrac{\hat{\sigma}}{\sqrt{n}}$
+- With this in mind, we have a good idea of what the sampling distribution *should look like* if the null were true
+  - And therefore we know how unlikely it is to have drawn the sample that we drew
+  
+## A hypothetical sampling distribution 
+
+```{r,echo=FALSE,out.width='100%',fig.width=10,fig.height=7}
+ggplot(NULL, aes(c(60,86))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "grey80", xlim = c(60,73)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "grey80", xlim = c(73, 86)) +
+  geom_vline(aes(xintercept = 73), linetype = "dashed", size = 2) +
+  geom_label(aes(x = 74.5, y = 0.03), label = expression(H[0]*":"*mu*"=73"), 
+             size = 5, parse = T) +
+  theme_custom() +
+  labs(x = "Sample mean for the midterm",
+       y = "Density")
+```
+
+## A hypothetical sampling distribution 
+
+```{r,echo=FALSE,out.width='100%',fig.width=10,fig.height=7}
+ggplot(NULL, aes(c(60,86))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "#00998a", xlim = c(60,67)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "grey80", xlim = c(67, 79)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "#00998a", xlim = c(79,86)) +
+  geom_vline(aes(xintercept = 73), linetype = "dashed", size = 2) +
+  geom_label(aes(x = 74.5, y = 0.03), label = expression(H[0]*":"*mu*"=73"), 
+             size = 5, parse = T) +
+  annotate(geom = "label",
+           x = 65, y = 0.03,
+           label = "Surprised to see this!", col = "#00998a") +
+  annotate(geom = "segment", 
+           x = 65, xend = 65, 
+           y = 0.025, yend = 0.005,
+           arrow = arrow(
+             length = unit(0.1, "in"))) +
+  annotate(geom = "label",
+           x = 81, y = 0.03,
+           label = "Surprised to see this!", col = "#00998a") +
+  annotate(geom = "segment", 
+           x = 81, xend = 81, 
+           y = 0.025, yend = 0.005,
+           arrow = arrow(
+             length = unit(0.1, "in"))) +
+  theme_custom() +
+  labs(x = "Sample mean for the midterm",
+       y = "Density")
+```
+
+## A hypothetical sampling distribution
+
+```{r,echo=FALSE,out.width='100%',fig.width=10,fig.height=7}
+ggplot(NULL, aes(c(60,86))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "grey80", xlim = c(60,67)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "#00998a", xlim = c(67, 79)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "grey80", xlim = c(79,86)) +
+  geom_vline(aes(xintercept = 73), linetype = "dashed", size = 2) +
+  geom_label(aes(x = 74.5, y = 0.03), label = expression(H[0]*":"*mu*"=73"), 
+             size = 5, parse = T) +
+  annotate(geom = "label",
+           x = 79, y = 0.105,
+           label = "Not surprised to see this!", col = "#00998a") +
+  annotate(geom = "segment", 
+           x = 78, xend = 76, 
+           y = 0.10, yend = 0.085,
+           arrow = arrow(
+             length = unit(0.1, "in")),
+           size = 1.5) +
+  theme_custom() +
+  labs(x = "Sample mean for the midterm",
+       y = "Density")
+```
+
+## But what about small samples?
+
+Any problem with the previous figure? 
+
+- If we draw a single outlying value, should we be surprised? 
+- Not enough for us to reject the null hypothesis! It's just a single value
+- So what is the problem with the normal distribution? 
+  - It doesn't take into account sample size
+- So instead, we'll use the **t-distribution**
+  - It has an additional parameter: **degrees of freedom**
+  - For our purposes, "degrees of freedom" refers to sample size
+  - With a very high number of degrees of freedom, the t-distribution is just like the normal
+  - With lower "df", the t-distribution has "fatter tails" $\leadsto$ higher probability of extreme values 
+
+## The t-distribution
+
+
+```{r,echo=FALSE,out.width='100%',fig.width=10,fig.height=7}
+library(viridis)
+ggplot(data.frame(x = c(-6, 6)), aes(x = x)) +
+  stat_function(fun = dnorm, args = list(mean = 0, sd = 1),
+                col = viridis(4, option = "magma")[3], size = 1.5) +
+  stat_function(fun = dt, args = list(df = 1), 
+                col = viridis(3, option = "magma")[1], size = 1.5) +
+  stat_function(fun = dt, args = list(df = 4), 
+                col = viridis(3, option = "magma")[2], size = 1.5) +
+  annotate(geom = "label",
+           x = 3, y = 0.35,
+           label = "Normal distribution", col = viridis(4, option = "magma")[3],
+           size = 5) +
+  annotate(geom = "label",
+           x = 3, y = 0.32,
+           label = "t (df = 4)", col = viridis(3, option = "magma")[2],
+           size = 5) +
+  annotate(geom = "label",
+           x = 3, y = 0.29,
+           label = "t (df = 1)", col = viridis(3, option = "magma")[1],
+           size = 5) +
+  theme_custom() +
+  labs(x = "Standard deviations away from the mean",
+       y = "Density")
+```
+
+## p-values
+
+I now "know" what the sampling distribution *would look like* under the null:
+
+  - I know where it peaks (at the null hypothesis, e.g. $H_0$: $\mu=73$)
+  - I "know" its standard deviation by estimating the standard error
+    - $SE = \dfrac{\hat{\sigma}}{\sqrt{n}}$
+  - I know the "degrees of freedom" parameter (the sample size)
+
+The next step: how likely is the data I observe, if the null is true?
+
+- If $\mu_{\text{true}} = 73$, I'm not surprised to draw a sample with mean - 73
+- At some point, the data I observe is so unlikely to have been produced by sampling from a population with $\mu_{\text{true}} = 73$ that I must reject the null
+
+## p-values
+
+- Even if I draw a sample that's far from $H_0$, it's possible I drew a weird sample by chance
+- e.g. it is possible to draw 20 random students with $\mu_{\text{grade}} = 62$ even if the true mean is 73
+- But there is a point where it's so unlikely that I'm comfortable rejecting the null
+  - This is our prespecified **significance level** (often $\alpha = 0.05$)
+- When looking at our data, we can compute a **p-value**
+  - The p-value is a number between 0 and 1
+  - It represents the expected probability of observing the sample data, if the null hypothesis were true
+  - p-value close to 1: given the null, we're not surprised to see this $\leadsto$ fail to reject the null 
+  - p-value close to 0: given the null, we're surprised to see this $\leadsto$ reject the null 
+  - $p < \alpha$: reject the null; $p > alpha$: fail to reject the null
+  
+## Interpreting p-values
+
+In our example above, let's say I randomly sample students and compute a mean grade of 67
+
+- $H_0$: $\mu_{\text{true}} = 73$
+- Let's say I get a p-value of 0.13
+- What I can say:
+  - If I were to repeatedly sample from our population (students who took the midterm)...
+  - I would expect to get a result as "extreme" as this (extreme = far away from the null hypothesis)...
+  - In about 13% of repeated samples...
+  - If the null hypothesis is true
+- In other words: it's somewhat unlikely, but very much possible
+- With $\alpha = 0.05$, we fail to reject the null that the mean is 73
+  - Can we conclude that the mean is 73? 
+    - NO! We do NOT "accept" the null; we "fail to reject"
+  - There is no **statistically significant** difference between our sample mean and the null hypothesis 
+
+## p = 0.4
+
+```{r,echo=FALSE,out.width='100%',fig.width=10,fig.height=7}
+ggplot(NULL, aes(c(60,86))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "#00998a", xlim = c(60, 73-qnorm(0.80)*3)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "grey80", xlim = c(73-qnorm(0.80)*3, 73+qnorm(0.80)*3)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "#00998a", xlim = c(73+qnorm(0.80)*3,86)) +
+  geom_vline(aes(xintercept = 73), linetype = "dashed", size = 2) +
+  geom_vline(aes(xintercept = 73-qnorm(0.80)*3), 
+             linetype = "dashed", size = 1) +
+  geom_label(aes(x = 74.5, y = 0.03), label = expression(H[0]*":"*mu*"=73"), 
+             size = 5, parse = T) +
+  geom_label(aes(x = 73-qnorm(0.80)*3-2.2, y = 0.11), 
+             label = expression(mu[sample]*"=70.48"), 
+             size = 5, parse = T) +
+  annotate(geom = "label",
+           x = 80, y = 0.095,
+           label = "20% of repeated sample means", col = "#00998a") +
+  annotate(geom = "segment", 
+           x = 79, xend = 77, 
+           y = 0.09, yend = 0.065,
+           arrow = arrow(
+             length = unit(0.1, "in")),
+           size = 1.5) +
+  annotate(geom = "label",
+           x = 66, y = 0.095,
+           label = "20% of repeated sample means", col = "#00998a") +
+  annotate(geom = "segment", 
+           x = 67, xend = 69, 
+           y = 0.09, yend = 0.065,
+           arrow = arrow(
+             length = unit(0.1, "in")),
+           size = 1.5) +
+  theme_custom() +
+  labs(x = "Sample mean for the midterm",
+       y = "Density")
+```
+
+## p = 0.2
+
+```{r,echo=FALSE,out.width='100%',fig.width=10,fig.height=7}
+ggplot(NULL, aes(c(60,86))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "#00998a", xlim = c(60, 73-qnorm(0.90)*3)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "grey80", xlim = c(73-qnorm(0.90)*3, 73+qnorm(0.90)*3)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "#00998a", xlim = c(73+qnorm(0.90)*3,86)) +
+  geom_vline(aes(xintercept = 73), linetype = "dashed", size = 2) +
+  geom_vline(aes(xintercept = 73-qnorm(0.9)*3), 
+             linetype = "dashed", size = 1) +
+  geom_label(aes(x = 74.5, y = 0.03), label = expression(H[0]*":"*mu*"=73"), 
+             size = 5, parse = T) +
+  geom_label(aes(x = 73-qnorm(0.90)*3-2.2, y = 0.11), 
+             label = expression(mu[sample]*"=69.16"), 
+             size = 5, parse = T) +
+  annotate(geom = "label",
+           x = 81, y = 0.055,
+           label = "10% of repeated sample means", col = "#00998a") +
+  annotate(geom = "segment", 
+           x = 81, xend = 79, 
+           y = 0.05, yend = 0.025,
+           arrow = arrow(
+             length = unit(0.1, "in")),
+           size = 1.5) +
+  annotate(geom = "label",
+           x = 64, y = 0.055,
+           label = "10% of repeated sample means", col = "#00998a") +
+  annotate(geom = "segment", 
+           x = 65, xend = 67, 
+           y = 0.05, yend = 0.025,
+           arrow = arrow(
+             length = unit(0.1, "in")),
+           size = 1.5) +
+  theme_custom() +
+  labs(x = "Sample mean for the midterm",
+       y = "Density")
+```
+
+## p = 0.1
+
+```{r,echo=FALSE,out.width='100%',fig.width=10,fig.height=7}
+ggplot(NULL, aes(c(60,86))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "#00998a", xlim = c(60, 73-qnorm(0.95)*3)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "grey80", xlim = c(73-qnorm(0.95)*3, 73+qnorm(0.95)*3)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "#00998a", xlim = c(73+qnorm(0.95)*3,86)) +
+  geom_vline(aes(xintercept = 73), linetype = "dashed", size = 2) +
+  geom_vline(aes(xintercept = 73-qnorm(0.95)*3), 
+             linetype = "dashed", size = 1) +
+  geom_label(aes(x = 74.5, y = 0.03), label = expression(H[0]*":"*mu*"=73"), 
+             size = 5, parse = T) +
+  geom_label(aes(x = 73-qnorm(0.95)*3-2.2, y = 0.11), 
+             label = expression(mu[sample]*"=68.07"), 
+             size = 5, parse = T) +
+  annotate(geom = "label",
+           x = 81, y = 0.055,
+           label = "5% of repeated sample means", col = "#00998a") +
+  annotate(geom = "segment", 
+           x = 81, xend = 79, 
+           y = 0.05, yend = 0.025,
+           arrow = arrow(
+             length = unit(0.1, "in")),
+           size = 1.5) +
+  annotate(geom = "label",
+           x = 64, y = 0.055,
+           label = "5% of repeated sample means", col = "#00998a") +
+  annotate(geom = "segment", 
+           x = 65, xend = 67, 
+           y = 0.05, yend = 0.025,
+           arrow = arrow(
+             length = unit(0.1, "in")),
+           size = 1.5) +
+  theme_custom() +
+  labs(x = "Sample mean for the midterm",
+       y = "Density")
+```
+
+## p = 0.05
+
+```{r,echo=FALSE,out.width='100%',fig.width=10,fig.height=7}
+ggplot(NULL, aes(c(60,86))) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "#00998a", xlim = c(60, 73-qnorm(0.975)*3)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "grey80", xlim = c(73-qnorm(0.975)*3, 73+qnorm(0.975)*3)) +
+  geom_area(stat = "function", fun = dnorm, args = list(mean = 73, sd = 3),
+            fill = "#00998a", xlim = c(73+qnorm(0.975)*3,86)) +
+  geom_vline(aes(xintercept = 73), linetype = "dashed", size = 2) +
+  geom_vline(aes(xintercept = 73-qnorm(0.975)*3), 
+             linetype = "dashed", size = 1) +
+  geom_label(aes(x = 74.5, y = 0.03), label = expression(H[0]*":"*mu*"=73"), 
+             size = 5, parse = T) +
+  geom_label(aes(x = 73-qnorm(0.975)*3-2.2, y = 0.11), 
+             label = expression(mu[sample]*"=67.12"), 
+             size = 5, parse = T) +
+  annotate(geom = "label",
+           x = 81, y = 0.035,
+           label = "2.5% of repeated sample means", col = "#00998a") +
+  annotate(geom = "segment", 
+           x = 82, xend = 80, 
+           y = 0.03, yend = 0.01,
+           arrow = arrow(
+             length = unit(0.1, "in")),
+           size = 1.5) +
+  annotate(geom = "label",
+           x = 64, y = 0.035,
+           label = "2.5% of repeated sample means", col = "#00998a") +
+  annotate(geom = "segment", 
+           x = 64, xend = 66, 
+           y = 0.03, yend = 0.01,
+           arrow = arrow(
+             length = unit(0.1, "in")),
+           size = 1.5) +
+  theme_custom() +
+  labs(x = "Sample mean for the midterm",
+       y = "Density")
+```
+
+## One-sample t-test in R
+
+\scriptsize
+
+```{r}
+# the hypothetical grades I gave you earlier
+grades <- c(63, 67, 71, 56, 77, 47)
+t.test(grades, mu = 73)
+```
+\normalsize
+
+Interpret the confidence interval and the p-value
+
+- Should you call me a liar? 
+
+## When should you have called me a liar?
+
+```{r,echo=FALSE}
+hyp_grades$p_value <- NA_real_
+for(i in 2:nrow(hyp_grades)){
+  hyp_grades[i,3] <- t.test(hyp_grades$Grade[1:i], mu = 73)$"p.value" %>% round(3)
+}
+kbl(hyp_grades[1:7,],
+    booktabs = TRUE, 
+    caption = "Grades of students you meet in lab") %>% 
+  row_spec(7, color = "red")
+```
+
+You can call me a liar when you get the 7th data point!
+
+- (Assuming $\alpha = 0.05$)
+
+## Type I and Type II errors
+
+When $p$ is very small, we're very surprised by the data we're seeing
+
+- But weird samples happen! 
+- It's not *impossible* that the null *is* true given the data; it's just very unlikely 
+
+Take the example above 
+
+- If 100 of you talk to peers and ask about their midterm grade
+- Each person sets $\alpha = 0.05$
+- 5 people will accuse me of lying *even if the true mean is 73*
+  - i.e. they will draw data that is inconsistent with what I said, even if what I said is true
+- This is **Type I error**: I reject the null when the null is actually true
+  - Also known as a **false positive**
+  - By setting a lower $\alpha$, I reduce the chances of Type I errors
+  
+## Type I and Type II errors
+
+**Type II error** is the opposite
+
+- You fail to reject the null when the null is actually not true
+- Also known as a **false negative**
+- By setting a lower $\alpha$, you *increase* the chances of Type II error
+
+\centering
+
+![](pregnant_error.png){height='70%'}
+
+## Differences-in-means
+
+I just presented an example of one hypothesis test where we examined the mean of a variable against some null hypothesis
+
+- Hypothesis tests can be conducted for many different hypotheses
+- Another important application: differences-in-means
+- Remember what we did in assignment 2 (causality)?
+
+\scriptsize
+
+```{r}
+druckman <- read_csv("lectures/lecture_11.1/druckman_2003.csv")
+druckman %>% 
+  group_by(tv) %>% 
+  summarise(who_won = mean(won2,na.rm = T) %>% round(3))
+```
+
+## The setup
+
+Again, we have a null hypothesis; what is it? \pause
+
+- $H_0$: $\mu_1 = \mu_2$ \pause
+
+And we have an alternative hypothesis: $H_1$: $\mu_1 \neq \mu_2$
+
+If the null is true, what do we expect to see? 
+
+- If we draw many repeated samples...
+- And compute the difference-in-means for each...
+- The sampling distribution should be centered on 0
+
+And again, depending on how surprising the data is given the null, we decide to reject the null or fail to reject it
+
+## The difference-in-means in R
+
+\scriptsize
+
+```{r}
+t.test(druckman$won2[druckman$tv==0], druckman$won2[druckman$tv==1])
+```
+
+The difference-in-means is different from 0 in a **statistically significant** manner
+
+## The difference-in-means in R
+
+\scriptsize
+
+```{r}
+# equivalent to the above
+t.test(druckman$won2 ~ druckman$tv) # mu = 0 is the default
+```
+
+## How to interpret the difference-in-means
+
+Are differences-in-means causal quantities?
+
+- Well, it depends!
+- If they're means from experimental conditions $\leadsto$ causal interpretation
+- If not, it's probably hard to interpret them causally
+- But they're still interesting!
+
+Statistical significance is not the same as substantive significance!
+
+## Example: difference-in-means
+
+```{r,echo=FALSE}
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+hyp_grades <- tribble(~`Male #`, ~Grade, ~`Female #`, ~Grade,
+       "1", 63, "1", 68,
+       "2", 67, "2", 74,
+       "3", 71, "3", 73,
+       "4", 56, "4", 76,
+       "5", 77, "5", 61,
+       "6", 47, "6", 54,
+       "7", 55, "7", 61)
+kbl(hyp_grades[1,],
+    booktabs = TRUE, 
+    caption = "Grades of students you meet in lab")
+```
+
+## References {.allowframebreaks}
+
+\footnotesize

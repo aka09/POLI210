@@ -1,0 +1,192 @@
+---
+title: "8. Basic tidyverse, visualizations, and sampling error"
+date: "POLI210, Week 10, Fall 2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+In this lab, we will use data from a survey I fielded (along with Profs. Dietlind Stolle and Elisabeth Gidengil) in the United States in May 2020. We will examine the representativeness of our sample using tools from the `tidyverse`, a collection of R packages that are very useful for "data wrangling." Let's begin by loading the data. 
+
+```{r}
+library(tidyverse)
+library(ggplot2)
+conjoint <- read.csv("labs/lab 8/conjoint_data.csv")
+```
+
+We will examine how our sample compares to the broader population in terms of support for Donald Trump. The first thing we'll try is to look at the entire sample and examine the distribution of vote choice. 
+
+```{r}
+# Frequency table of vote choice 
+table(conjoint$Q148)
+
+# wrap with prop.table to get proportions
+prop.table(table(conjoint$Q148))
+```
+
+This is not so helpful! We are including people who did not vote or were not eligible to vote. We would want to have the proportions only among people who voted. So let's create a subset that only contains voters. 
+
+```{r}
+# subset function: only keeps rows that meet condition
+# operators "&" and "|" for multiple conditions
+conjoint_voters <- subset(conjoint, Q148 != "I did not vote" & 
+                            Q148 != "I was not eligible to vote")
+
+# We lost quite a few people!
+nrow(conjoint_voters)
+
+# Getting proportions from this subset
+prop.table(table(conjoint_voters$Q148))
+
+# For clarity, we can use round() with the nb of digits as argument
+round(prop.table(table(conjoint_voters$Q148)), 3)
+```
+
+That doesn't look too bad! The actual results were 48.2% for Clinton, 46.1% for Trump, and 5.7% for other candidates. So it seems like we are almost on target for Clinton, underestimating Trump (by a fair bit!), and overestimating other candidates. 
+
+But surveys are generally designed to be representative at the *national* level (and even that is pretty difficult, as we saw in class). Surveys that are representative at the national level are often not representative within subgroups. For instance, while it is plausible that our sample is fairly representative of the whole US population, it would be an enormous leap of faith respondents from only one state and assume that this subsample is representative of the state's population. To examine the proportion of Trump respondents by state in our sample, we will introduce a couple of functions from the `tidyverse`. 
+
+The first is the "pipe operator", which is used by typing ` %>% `. There is a keyboard shortcut for this: Control + Shift + M. What this does is it takes whatever is to the left of it, and uses it as the data argument for whatever is to the right of it. For instance, if I want to compute the mean of a vector of numeric values, one option is to do this:
+
+```{r}
+mean(c(1, 2, 3))
+```
+Which works perfectly fine! But we can also do it using the pipe operator:
+
+```{r}
+c(1, 2, 3) %>% mean()
+```
+Here, we first create a vector of values and then use the pipe operator to pass it to the `mean` function. The mean will take what is being given to it by the pipe operator as its data. What's the point of this? Well, when we have multiple functions that we want to perform one after the other, pipe operators can simplify your code and make it more readable. For instance, when we wanted to get a proportion table with numbers rounded to three digits, we resorted to nesting functions inside one another, just like this:
+
+```{r}
+round(prop.table(table(conjoint_voters$Q148)), 3)
+```
+
+But then, we have a function, inside a function, inside a function. That's pretty confusing to read! And as our workflows become more complex, we are likely to have even more complex code. So instead, we can simply use the pipe operator:
+
+```{r}
+table(conjoint_voters$Q148) %>% prop.table() %>% round(3)
+```
+Note that I don't need to specify the data as an argument in the `prop.table` and `round` functions. The pipe operator is already passing the data. Let's now create a simple dummy variable that indicates whether a respondent voted for Donald Trump. 
+
+
+```{r}
+# ifelse(condition, behavior if true, behavior if false)
+conjoint_voters$trump_vote <- ifelse(conjoint_voters$Q148 == "Donald Trump", 1, 0)
+
+# mean of a dummy = proportion
+mean(conjoint_voters$trump_vote)
+```
+
+Great! The next step is to use the `group_by` and `summarise` functions from the `tidyverse`. With the former, you can specify a variable that represents the subgroups with which you want to compute certain statistics. In our case, we are interested in states. With the `summarise` function, we can compute whichever summary statistics we are interested in. The results is a dataframe with the number of rows equal to the number of values of the grouping variable and the number of columns equal to the number of grouping variables + the number of statistics computed. 
+
+```{r}
+trump_by_state <- conjoint_voters %>% 
+  group_by(state) %>% 
+  summarise(trump_prop = mean(trump_vote, na.rm = T),
+            n = n())
+
+trump_by_state
+```
+
+As you can see, our survey shows quite wide variation in support for Trump by state. That's not surprising -- West Virginians or Texans voted for Trump at much higher rates than New Yorkers or Californians. To see whether our sample estimates are any good, we need to compare them to some credible benchmark -- in this case, the actual election results in each state. Ideally, we would want each of our state subsample to show the exact same proportion of people voting for Trump as the actual election results. 
+
+
+```{r}
+# This dataset contains state-level election results 1976-2020
+state_returns <- read.csv("labs/lab 8/1976-2020-president.csv")
+
+# We are only interested in 2016 and Republican candidates
+state_returns_2020 <- subset(state_returns, year == 2016 &
+                               party_simplified == "REPUBLICAN")
+
+# The proportion received by Trump is computed and stored in a new variable
+state_returns_2020$trump_prop_elec <- state_returns_2020$candidatevotes / 
+  state_returns_2020$totalvotes
+
+# Histogram of proportion received by Trump
+hist(state_returns_2020$trump_prop_elec)
+```
+
+That's all great, but the information is in two different datasets! We will want to **merge** the datasets into a single one. That is, we want to match each row in one dataset with a row in the other dataset, and bind the columns together. To find a "match" for each row, we need a variable to merge on; in our case, this will be the `state` variable. 
+
+```{r}
+head(state_returns_2020$state)
+head(trump_by_state$state)
+```
+
+Hmm, that's a problem! The variables are not coded in the same way. This is a frequent problem when working with multiple datasets from different sources. There are some naming standards and conventions, but not every one follows them. We will to recode the state variables in order to make sure they're exactly the same. 
+
+```{r}
+# tolower: takes a character value and returns all lower-case
+# But the first letter is lower case as well!
+state_returns_2020$state <- tolower(state_returns_2020$state)
+head(state_returns_2020$state)
+
+# So we want to apply the same function to the other dataset
+trump_by_state$state <- tolower(trump_by_state$state)
+
+# Merging the two datasets
+trump_by_state <- left_join(trump_by_state, state_returns_2020, by = "state")
+```
+
+We will not go into details, but simply know that there multiple types of merges/joins. The left join that we use here will keep all rows in the first dataframe provided to it (regardless of whether or not it finds a "match" in the second dataframe). Look at the new dataframe: you'll see that it now contains all of the information that we need. Using a scatterplot, we will compare support for Trump in our state subsamples vs the numbers from the election that we're targeting. 
+
+```{r}
+trump_rep <- ggplot(trump_by_state, aes(x = trump_prop, y = trump_prop_elec)) +
+  geom_point()
+
+trump_rep
+```
+
+That looks *okay*, but we can convey a lot more information by adding a 45-degree line that shows what the data would look like if each state subsample had the exact same proportion of Trump voters as the actual election. Points under the line represent state subsamples that *oversample* Trump voters. Points over the line represent state subsamples that *undersample* Trump voters For the sake of clarity, we will exclude states with a sample size smaller than 20 (for which sampling variation is much larger). 
+
+```{r}
+trump_rep +
+  geom_abline()
+```
+Okay, that's better! But we have no idea whether the states that are really far away from where they should be are problematic just because they're small. We can add a size argument **inside the aes** so that the size of the points is controlled by a variable (outside the `aes()`, I cannot refer to variables). In this case, we have a variable `n` that represents the sample size for each state. 
+
+```{r}
+ggplot(trump_by_state, aes(x = trump_prop, y = trump_prop_elec, size = n)) +
+  geom_point() +
+  geom_abline()
+```
+
+Let's change the theme and modify the `alpha` argument, which controls the transparency of the points. 0 means completely transparent, 1 means completely opaqure. Anything in between is a value that you can input. 
+
+```{r}
+ggplot(trump_by_state, aes(x = trump_prop, y = trump_prop_elec, size = n)) +
+  geom_point(alpha = 0.4) +
+  geom_abline() +
+  theme_bw()
+```
+I can add a geom that adds labels to the points:
+
+```{r}
+library(ggrepel)
+ggplot(trump_by_state, aes(x = trump_prop, y = trump_prop_elec, size = n,
+                           label = state)) +
+  geom_point(alpha = 0.4) +
+  geom_label_repel() +
+  geom_abline() +
+  theme_bw()
+```
+
+But notice how the labels are of different sizes; when you supply arguments directly in the call to ggplot (rather than inside each geom function), these arguments will be applied to each geom. To change this behavior, I could take out the size argument from the ggplot call and supply it only to the geom_point function (*inside* the aes, of course). 
+
+```{r}
+library(ggrepel)
+ggplot(trump_by_state, aes(x = trump_prop, y = trump_prop_elec,
+                           label = state)) +
+  geom_point(aes(size = n), alpha = 0.4) +
+  geom_label_repel() +
+  geom_abline() +
+  theme_bw()
+```
+
+So, what can say about our state subsamples? Some overestimate Trump support; others underestimate it. Many are quite close to our election benchmark, but some are very problematic (but this is mostly in small states for which there is a lot of sampling variation due to the limited sample sizes). For the most part, there does not seem to be a systematic unerestimation of Trump support. 
+

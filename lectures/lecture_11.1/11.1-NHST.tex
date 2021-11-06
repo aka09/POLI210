@@ -1,0 +1,1066 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+  ignorenonframetext,
+  t]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{metropolis}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={POLI210: Political Science Research Methods},
+  pdfauthor={Olivier Bergeron-Boutin},
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=blue,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{48,48,48}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.87,0.87,0.75}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.86,0.86,0.80}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.76,0.75,0.62}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.75,0.75,0.82}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.94,0.94,0.82}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{\textbf{#1}}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{animate}
+\usepackage{xmpmulti}
+\usepackage{caption}
+\setsansfont[BoldFont={FiraSans-Bold.ttf}]{FiraSans-Light.ttf}
+\setmonofont{FiraMono-Regular.ttf}
+\usepackage{color}
+\definecolor{mygreen}{HTML}{008000}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[style=authoryear,]{biblatex}
+\addbibresource{../210lectures\_bib.bib}
+
+\title{POLI210: Political Science Research Methods}
+\subtitle{Lecture 11.2: Null Hypothesis Significance Testing}
+\author{Olivier Bergeron-Boutin}
+\date{November 4th, 2021}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}[fragile]
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# taken from Andrew Heiss\textquotesingle{} website}
+\FunctionTok{library}\NormalTok{(ggtext)}
+\NormalTok{theme\_custom }\OtherTok{\textless{}{-}} \ControlFlowTok{function}\NormalTok{()\{}
+  \FunctionTok{theme\_minimal}\NormalTok{(}\AttributeTok{base\_size =} \DecValTok{19}\NormalTok{,}
+           \AttributeTok{base\_family =} \StringTok{"Fira Sans"}\NormalTok{) }\SpecialCharTok{\%+replace\%}
+  \FunctionTok{theme}\NormalTok{(}\AttributeTok{legend.position =} \StringTok{"none"}\NormalTok{,}
+        \AttributeTok{panel.grid.minor =} \FunctionTok{element\_blank}\NormalTok{(),}
+        \AttributeTok{plot.title =} \FunctionTok{element\_markdown}\NormalTok{(}\AttributeTok{face =} \StringTok{"bold"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.7}\NormalTok{)),}
+        \AttributeTok{plot.subtitle =} \FunctionTok{element\_markdown}\NormalTok{(}\AttributeTok{face =} \StringTok{"plain"}\NormalTok{, }\AttributeTok{size =} \FunctionTok{rel}\NormalTok{(}\FloatTok{1.3}\NormalTok{)),}
+        \AttributeTok{axis.title =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{face =} \StringTok{"bold"}\NormalTok{),}
+        \AttributeTok{axis.title.x =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{t =} \DecValTok{10}\NormalTok{), }\AttributeTok{hjust =} \DecValTok{0}\NormalTok{),}
+        \AttributeTok{axis.title.y =} \FunctionTok{element\_text}\NormalTok{(}\AttributeTok{margin =} \FunctionTok{margin}\NormalTok{(}\AttributeTok{r =} \DecValTok{10}\NormalTok{), }\AttributeTok{hjust =} \DecValTok{1}\NormalTok{, }\AttributeTok{angle =} \DecValTok{90}\NormalTok{))}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{When do you believe me?}
+\protect\hypertarget{when-do-you-believe-me}{}
+Let's suppose that after the midterm, I tell you that the mean grade is
+73
+
+\begin{itemize}
+\tightlist
+\item
+  You suspect that I'm lying, for some reason\ldots{}
+\item
+  But don't want to call me out unless you're quite sure
+\item
+  You ask a colleague in lab about their grade\ldots{}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Then another, and another, and another\ldots{}
+  \end{itemize}
+\item
+  When do you have enough evidence to call me out?
+\end{itemize}
+
+\pause
+\end{frame}
+
+\begin{frame}{Meeting students}
+\protect\hypertarget{meeting-students}{}
+\centering
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-1}Grades of students you meet in lab}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+Student \# & Grade\\
+\midrule
+1 & 63\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Do you call me a liar?
+\end{frame}
+
+\begin{frame}{Meeting students}
+\protect\hypertarget{meeting-students-1}{}
+\centering
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-2}Grades of students you meet in lab}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+Student \# & Grade\\
+\midrule
+1 & 63\\
+2 & 67\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Do you call me a liar?
+\end{frame}
+
+\begin{frame}{Meeting students}
+\protect\hypertarget{meeting-students-2}{}
+\centering
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-3}Grades of students you meet in lab}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+Student \# & Grade\\
+\midrule
+1 & 63\\
+2 & 67\\
+3 & 71\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Do you call me a liar?
+\end{frame}
+
+\begin{frame}{Meeting students}
+\protect\hypertarget{meeting-students-3}{}
+\centering
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-4}Grades of students you meet in lab}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+Student \# & Grade\\
+\midrule
+1 & 63\\
+2 & 67\\
+3 & 71\\
+4 & 56\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Do you call me a liar?
+\end{frame}
+
+\begin{frame}{Meeting students}
+\protect\hypertarget{meeting-students-4}{}
+\centering
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-5}Grades of students you meet in lab}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+Student \# & Grade\\
+\midrule
+1 & 63\\
+2 & 67\\
+3 & 71\\
+4 & 56\\
+5 & 77\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Do you call me a liar?
+\end{frame}
+
+\begin{frame}{Meeting students}
+\protect\hypertarget{meeting-students-5}{}
+\centering
+
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-6}Grades of students you meet in lab}
+\centering
+\begin{tabular}[t]{lr}
+\toprule
+Student \# & Grade\\
+\midrule
+1 & 63\\
+2 & 67\\
+3 & 71\\
+4 & 56\\
+5 & 77\\
+\addlinespace
+6 & 47\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Do you call me a liar?
+\end{frame}
+
+\begin{frame}{The null hypothesis}
+\protect\hypertarget{the-null-hypothesis}{}
+The setup:
+
+\begin{itemize}
+\tightlist
+\item
+  We set a \textbf{null hypothesis}, also referred to as \(H_0\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The null hypothesis is our reference point -- it is arbitrary!
+  \item
+    It's a sort of statistical ``strawman''
+  \end{itemize}
+\item
+  We then set an \textbf{alternative hypothesis}, or \(H_1\)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If the null is not true, then the alternative hypothesis must be
+    true
+  \end{itemize}
+\item
+  We start from the premise that the null hypothesis is true
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The key question: \emph{How surprised are you to see the data that
+    you have, if the null hypothesis is true?}
+  \item
+    Evidence is inconsistent with the null \(\leadsto\) reject the null
+  \item
+    Evidence is not inconsistent with the null \(\leadsto\) fail to
+    reject the null
+  \end{itemize}
+\item
+  This is the framework of \textbf{hypothesis testing}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Start from the null
+  \item
+    Think about what the data should look like, if the null were true
+  \item
+    Analyze the data; reject/fail to reject the null
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The null hypothesis in our example}
+\protect\hypertarget{the-null-hypothesis-in-our-example}{}
+What was the null hypothesis in the example above? \pause
+
+\begin{itemize}
+\tightlist
+\item
+  \(H_0\): \(\mu_{exam} = 73\)
+\end{itemize}
+
+What was the alternative hypothesis? \pause
+
+\begin{itemize}
+\tightlist
+\item
+  \(H_1\): \(\mu_{exam} \neq 73\) (non-directional hypothesis)
+\item
+  \(H_1\): \(\mu_{exam} > 73\) (directional hypothesis)
+\item
+  \(H_1\): \(\mu_{exam} < 73\) (directional hypothesis) \pause
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Hypothesis testing in our example}
+\protect\hypertarget{hypothesis-testing-in-our-example}{}
+Assume that the null is true -- i.e.~the true mean is 73
+
+\begin{itemize}
+\tightlist
+\item
+  What do you expect to see when talking to your peers? \pause
+
+  \begin{itemize}
+  \tightlist
+  \item
+    You expect to see have a sample mean of roughly 73!
+  \item
+    It might be 71, it might be 75
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Central limit theorem: the sampling distribution is normal and
+      centered on the true population parameter
+    \end{itemize}
+  \item
+    But you would be surprised to talk to 20 random students and learn
+    that their mean grade is 59
+  \item
+    The data would be \emph{inconsistent with the null hypothesis}
+  \item
+    At some point, the data is \emph{so inconsistent with the null
+    hypothesis} that we are comfortable rejecting it
+
+    \begin{itemize}
+    \tightlist
+    \item
+      How much we need to see before rejecting the null depends on the
+      confidence level that we set
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sampling distributions}
+\protect\hypertarget{sampling-distributions}{}
+If the midterm average really is 73, the sampling distribution should
+look like this:
+
+\includegraphics[width=1\linewidth]{11.1-NHST_files/figure-beamer/unnamed-chunk-7-1}
+\end{frame}
+
+\begin{frame}{Sampling distributions}
+\protect\hypertarget{sampling-distributions-1}{}
+I can also show this using a density plot:
+
+\includegraphics[width=0.75\linewidth]{11.1-NHST_files/figure-beamer/unnamed-chunk-8-1}
+\end{frame}
+
+\begin{frame}{Sampling distributions with different SD}
+\protect\hypertarget{sampling-distributions-with-different-sd}{}
+My sampling distribution may have a different standard deviation:
+
+\includegraphics[width=1\linewidth]{11.1-NHST_files/figure-beamer/unnamed-chunk-9-1}
+\end{frame}
+
+\begin{frame}{The sampling distribution and hypothesis}
+\protect\hypertarget{the-sampling-distribution-and-hypothesis}{}
+Whatever the particular SD of sampling distribution\ldots{}
+
+\begin{itemize}
+\tightlist
+\item
+  It should approximate a normal distribution and be centered on the
+  true parameter
+\item
+  The key feature of a normal distribution:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    About 68.4\% of the data is within 1SD of the mean
+  \item
+    About 95\% of the data is within 2SD of the mean
+  \item
+    About 99.7\% of the data is within 3SD of the mean
+  \end{itemize}
+\item
+  Therefore, if the null is true, I am\ldots{}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Not surprised to observe a sample statistic that's 1SD away from the
+    null
+  \item
+    Surprised to observe a sample statistic that's 2 SDs away from the
+    null
+  \item
+    Very surprised to observe a sample statistic that is 3 SDs away from
+    the null
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{What does my sampling distribution looks like?}
+\protect\hypertarget{what-does-my-sampling-distribution-looks-like}{}
+Remember that, in practice, we only draw a single sample
+
+\begin{itemize}
+\tightlist
+\item
+  We \emph{do not} observe the sampling distribution
+\item
+  But, the sampling distribution has 2 properties:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The mean
+
+    \begin{itemize}
+    \tightlist
+    \item
+      We will assume that the mean is equal to whatever the null
+      hypothesis indicates
+    \end{itemize}
+  \item
+    Standard deviation, for which we have a good guess:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \(\hat{SE} = \dfrac{\hat{\sigma}}{\sqrt{n}}\)
+    \end{itemize}
+  \end{itemize}
+\item
+  With this in mind, we have a good idea of what the sampling
+  distribution \emph{should look like} if the null were true
+
+  \begin{itemize}
+  \tightlist
+  \item
+    And therefore we know how unlikely it is to have drawn the sample
+    that we drew
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{A hypothetical sampling distribution}
+\protect\hypertarget{a-hypothetical-sampling-distribution}{}
+\includegraphics[width=1\linewidth]{11.1-NHST_files/figure-beamer/unnamed-chunk-10-1}
+\end{frame}
+
+\begin{frame}{A hypothetical sampling distribution}
+\protect\hypertarget{a-hypothetical-sampling-distribution-1}{}
+\includegraphics[width=1\linewidth]{11.1-NHST_files/figure-beamer/unnamed-chunk-11-1}
+\end{frame}
+
+\begin{frame}{A hypothetical sampling distribution}
+\protect\hypertarget{a-hypothetical-sampling-distribution-2}{}
+\includegraphics[width=1\linewidth]{11.1-NHST_files/figure-beamer/unnamed-chunk-12-1}
+\end{frame}
+
+\begin{frame}{But what about small samples?}
+\protect\hypertarget{but-what-about-small-samples}{}
+Any problem with the previous figure?
+
+\begin{itemize}
+\tightlist
+\item
+  If we draw a single outlying value, should we be surprised?
+\item
+  Not enough for us to reject the null hypothesis! It's just a single
+  value
+\item
+  So what is the problem with the normal distribution?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It doesn't take into account sample size
+  \end{itemize}
+\item
+  So instead, we'll use the \textbf{t-distribution}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    It has an additional parameter: \textbf{degrees of freedom}
+  \item
+    For our purposes, ``degrees of freedom'' refers to sample size
+  \item
+    With a very high number of degrees of freedom, the t-distribution is
+    just like the normal
+  \item
+    With lower ``df'', the t-distribution has ``fatter tails''
+    \(\leadsto\) higher probability of extreme values
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{The t-distribution}
+\protect\hypertarget{the-t-distribution}{}
+\includegraphics[width=1\linewidth]{11.1-NHST_files/figure-beamer/unnamed-chunk-13-1}
+\end{frame}
+
+\begin{frame}{p-values}
+\protect\hypertarget{p-values}{}
+I now ``know'' what the sampling distribution \emph{would look like}
+under the null:
+
+\begin{itemize}
+\tightlist
+\item
+  I know where it peaks (at the null hypothesis, e.g.~\(H_0\):
+  \(\mu=73\))
+\item
+  I ``know'' its standard deviation by estimating the standard error
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(SE = \dfrac{\hat{\sigma}}{\sqrt{n}}\)
+  \end{itemize}
+\item
+  I know the ``degrees of freedom'' parameter (the sample size)
+\end{itemize}
+
+The next step: how likely is the data I observe, if the null is true?
+
+\begin{itemize}
+\tightlist
+\item
+  If \(\mu_{\text{true}} = 73\), I'm not surprised to draw a sample with
+  mean - 73
+\item
+  At some point, the data I observe is so unlikely to have been produced
+  by sampling from a population with \(\mu_{\text{true}} = 73\) that I
+  must reject the null
+\end{itemize}
+\end{frame}
+
+\begin{frame}{p-values}
+\protect\hypertarget{p-values-1}{}
+\begin{itemize}
+\tightlist
+\item
+  Even if I draw a sample that's far from \(H_0\), it's possible I drew
+  a weird sample by chance
+\item
+  e.g.~it is possible to draw 20 random students with
+  \(\mu_{\text{grade}} = 62\) even if the true mean is 73
+\item
+  But there is a point where it's so unlikely that I'm comfortable
+  rejecting the null
+
+  \begin{itemize}
+  \tightlist
+  \item
+    This is our prespecified \textbf{significance level} (often
+    \(\alpha = 0.05\))
+  \end{itemize}
+\item
+  When looking at our data, we can compute a \textbf{p-value}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The p-value is a number between 0 and 1
+  \item
+    It represents the expected probability of observing the sample data,
+    if the null hypothesis were true
+  \item
+    p-value close to 1: given the null, we're not surprised to see this
+    \(\leadsto\) fail to reject the null
+  \item
+    p-value close to 0: given the null, we're surprised to see this
+    \(\leadsto\) reject the null
+  \item
+    \(p < \alpha\): reject the null; \(p > alpha\): fail to reject the
+    null
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Interpreting p-values}
+\protect\hypertarget{interpreting-p-values}{}
+In our example above, let's say I randomly sample students and compute a
+mean grade of 67
+
+\begin{itemize}
+\tightlist
+\item
+  \(H_0\): \(\mu_{\text{true}} = 73\)
+\item
+  Let's say I get a p-value of 0.13
+\item
+  What I can say:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If I were to repeatedly sample from our population (students who
+    took the midterm)\ldots{}
+  \item
+    I would expect to get a result as ``extreme'' as this (extreme = far
+    away from the null hypothesis)\ldots{}
+  \item
+    In about 13\% of repeated samples\ldots{}
+  \item
+    If the null hypothesis is true
+  \end{itemize}
+\item
+  In other words: it's somewhat unlikely, but very much possible
+\item
+  With \(\alpha = 0.05\), we fail to reject the null that the mean is 73
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Can we conclude that the mean is 73?
+
+    \begin{itemize}
+    \tightlist
+    \item
+      NO! We do NOT ``accept'' the null; we ``fail to reject''
+    \end{itemize}
+  \item
+    There is no \textbf{statistically significant} difference between
+    our sample mean and the null hypothesis
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{p = 0.4}
+\protect\hypertarget{p-0.4}{}
+\includegraphics[width=1\linewidth]{11.1-NHST_files/figure-beamer/unnamed-chunk-14-1}
+\end{frame}
+
+\begin{frame}{p = 0.2}
+\protect\hypertarget{p-0.2}{}
+\includegraphics[width=1\linewidth]{11.1-NHST_files/figure-beamer/unnamed-chunk-15-1}
+\end{frame}
+
+\begin{frame}{p = 0.1}
+\protect\hypertarget{p-0.1}{}
+\includegraphics[width=1\linewidth]{11.1-NHST_files/figure-beamer/unnamed-chunk-16-1}
+\end{frame}
+
+\begin{frame}{p = 0.05}
+\protect\hypertarget{p-0.05}{}
+\includegraphics[width=1\linewidth]{11.1-NHST_files/figure-beamer/unnamed-chunk-17-1}
+\end{frame}
+
+\begin{frame}[fragile]{One-sample t-test in R}
+\protect\hypertarget{one-sample-t-test-in-r}{}
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# the hypothetical grades I gave you earlier}
+\NormalTok{grades }\OtherTok{\textless{}{-}} \FunctionTok{c}\NormalTok{(}\DecValTok{63}\NormalTok{, }\DecValTok{67}\NormalTok{, }\DecValTok{71}\NormalTok{, }\DecValTok{56}\NormalTok{, }\DecValTok{77}\NormalTok{, }\DecValTok{47}\NormalTok{)}
+\FunctionTok{t.test}\NormalTok{(grades, }\AttributeTok{mu =} \DecValTok{73}\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  One Sample t-test
+## 
+## data:  grades
+## t = -2.1615, df = 5, p-value = 0.08303
+## alternative hypothesis: true mean is not equal to 73
+## 95 percent confidence interval:
+##  52.20211 74.79789
+## sample estimates:
+## mean of x 
+##      63.5
+\end{verbatim}
+
+\normalsize
+
+Interpret the confidence interval and the p-value
+
+\begin{itemize}
+\tightlist
+\item
+  Should you call me a liar?
+\end{itemize}
+\end{frame}
+
+\begin{frame}{When should you have called me a liar?}
+\protect\hypertarget{when-should-you-have-called-me-a-liar}{}
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-19}Grades of students you meet in lab}
+\centering
+\begin{tabular}[t]{lrr}
+\toprule
+Student \# & Grade & p\_value\\
+\midrule
+1 & 63 & NA\\
+2 & 67 & 0.156\\
+3 & 71 & 0.122\\
+4 & 56 & 0.072\\
+5 & 77 & 0.156\\
+\addlinespace
+6 & 47 & 0.083\\
+\textcolor{red}{7} & \textcolor{red}{55} & \textcolor{red}{0.034}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+You can call me a liar when you get the 7th data point!
+
+\begin{itemize}
+\tightlist
+\item
+  (Assuming \(\alpha = 0.05\))
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Type I and Type II errors}
+\protect\hypertarget{type-i-and-type-ii-errors}{}
+When \(p\) is very small, we're very surprised by the data we're seeing
+
+\begin{itemize}
+\tightlist
+\item
+  But weird samples happen!
+\item
+  It's not \emph{impossible} that the null \emph{is} true given the
+  data; it's just very unlikely
+\end{itemize}
+
+Take the example above
+
+\begin{itemize}
+\tightlist
+\item
+  If 100 of you talk to peers and ask about their midterm grade
+\item
+  Each person sets \(\alpha = 0.05\)
+\item
+  5 people will accuse me of lying \emph{even if the true mean is 73}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    i.e.~they will draw data that is inconsistent with what I said, even
+    if what I said is true
+  \end{itemize}
+\item
+  This is \textbf{Type I error}: I reject the null when the null is
+  actually true
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Also known as a \textbf{false positive}
+  \item
+    By setting a lower \(\alpha\), I reduce the chances of Type I errors
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Type I and Type II errors}
+\protect\hypertarget{type-i-and-type-ii-errors-1}{}
+\textbf{Type II error} is the opposite
+
+\begin{itemize}
+\tightlist
+\item
+  You fail to reject the null when the null is actually not true
+\item
+  Also known as a \textbf{false negative}
+\item
+  By setting a lower \(\alpha\), you \emph{increase} the chances of Type
+  II error
+\end{itemize}
+
+\centering
+
+\includegraphics[width=\textwidth,height=0.7\textheight]{pregnant_error.png}
+\end{frame}
+
+\begin{frame}[fragile]{Differences-in-means}
+\protect\hypertarget{differences-in-means}{}
+I just presented an example of one hypothesis test where we examined the
+mean of a variable against some null hypothesis
+
+\begin{itemize}
+\tightlist
+\item
+  Hypothesis tests can be conducted for many different hypotheses
+\item
+  Another important application: differences-in-means
+\item
+  Remember what we did in assignment 2 (causality)?
+\end{itemize}
+
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{druckman }\OtherTok{\textless{}{-}} \FunctionTok{read\_csv}\NormalTok{(}\StringTok{"lectures/lecture\_11.1/druckman\_2003.csv"}\NormalTok{)}
+\NormalTok{druckman }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{group\_by}\NormalTok{(tv) }\SpecialCharTok{\%\textgreater{}\%} 
+  \FunctionTok{summarise}\NormalTok{(}\AttributeTok{who\_won =} \FunctionTok{mean}\NormalTok{(won2,}\AttributeTok{na.rm =}\NormalTok{ T) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{round}\NormalTok{(}\DecValTok{3}\NormalTok{))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## # A tibble: 2 x 2
+##      tv who_won
+##   <dbl>   <dbl>
+## 1     0   0.38 
+## 2     1   0.262
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{The setup}
+\protect\hypertarget{the-setup}{}
+Again, we have a null hypothesis; what is it? \pause
+
+\begin{itemize}
+\tightlist
+\item
+  \(H_0\): \(\mu_1 = \mu_2\) \pause
+\end{itemize}
+
+And we have an alternative hypothesis: \(H_1\): \(\mu_1 \neq \mu_2\)
+
+If the null is true, what do we expect to see?
+
+\begin{itemize}
+\tightlist
+\item
+  If we draw many repeated samples\ldots{}
+\item
+  And compute the difference-in-means for each\ldots{}
+\item
+  The sampling distribution should be centered on 0
+\end{itemize}
+
+And again, depending on how surprising the data is given the null, we
+decide to reject the null or fail to reject it
+\end{frame}
+
+\begin{frame}[fragile]{The difference-in-means in R}
+\protect\hypertarget{the-difference-in-means-in-r}{}
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{t.test}\NormalTok{(druckman}\SpecialCharTok{$}\NormalTok{won2[druckman}\SpecialCharTok{$}\NormalTok{tv}\SpecialCharTok{==}\DecValTok{0}\NormalTok{], druckman}\SpecialCharTok{$}\NormalTok{won2[druckman}\SpecialCharTok{$}\NormalTok{tv}\SpecialCharTok{==}\DecValTok{1}\NormalTok{])}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  druckman$won2[druckman$tv == 0] and druckman$won2[druckman$tv == 1]
+## t = 3.4387, df = 166.76, p-value = 0.0007382
+## alternative hypothesis: true difference in means is not equal to 0
+## 95 percent confidence interval:
+##  0.05022681 0.18565360
+## sample estimates:
+## mean of x mean of y 
+## 0.3798450 0.2619048
+\end{verbatim}
+\end{frame}
+
+\begin{frame}[fragile]{The difference-in-means in R}
+\protect\hypertarget{the-difference-in-means-in-r-1}{}
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# equivalent to the above}
+\FunctionTok{t.test}\NormalTok{(druckman}\SpecialCharTok{$}\NormalTok{won2 }\SpecialCharTok{\textasciitilde{}}\NormalTok{ druckman}\SpecialCharTok{$}\NormalTok{tv) }\CommentTok{\# mu = 0 is the default}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+##  Welch Two Sample t-test
+## 
+## data:  druckman$won2 by druckman$tv
+## t = 3.4387, df = 166.76, p-value = 0.0007382
+## alternative hypothesis: true difference in means between group 0 and group 1 is not equal to 0
+## 95 percent confidence interval:
+##  0.05022681 0.18565360
+## sample estimates:
+## mean in group 0 mean in group 1 
+##       0.3798450       0.2619048
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Example: difference-in-means}
+\protect\hypertarget{example-difference-in-means}{}
+\begin{table}
+
+\caption{\label{tab:unnamed-chunk-23}Grades of students you meet in lab}
+\centering
+\begin{tabular}[t]{lrlr}
+\toprule
+Male \# & Grade & Female \# & Grade\\
+\midrule
+1 & 63 & 1 & 68\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{References}
+\protect\hypertarget{references}{}
+\footnotesize
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
+  \bibliographytrue
+  \printbibliography[heading=none]
+\end{frame}
+
+\end{document}

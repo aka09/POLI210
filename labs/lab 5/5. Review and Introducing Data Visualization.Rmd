@@ -1,0 +1,206 @@
+---
+title: '5. Review | Bivariate Relationships II'
+date: 'POLI210, Fall 2021, Week 7'
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+In this lab, we review some of the \textbf{functions} introduced so far. We will work with the data we collected from our class survey. To download the dataset, navigate to the course website on MyCourses and download the dataset as well as the codebook. Remember to store these files in the folder you plan to use as your \textbf{working directory}. 
+
+Once you have downloaded the data to your working directory, take a moment to familiarize yourself with the \textbf{codebook}. This document outlines the question wording and response options from the survey. It also provides important information about how variables are coded and named in the dataset.
+
+```{r}
+
+# Set your working directory (the folder where your data is stored):
+setwd("~/Grad/McGill Fall 2021/POLI210/labs/lab 5") 
+
+# Read the data and store it as an object:
+class.data <- read.csv("class_survey.csv") # Case- and space-sensitive
+```
+
+# Example: Do students who are more satisfied with democracy hold more favourable views about politicians?
+
+The research question we will explore asks whether satisfaction with democracy is related to students' feelings about politicians. Examining the codebook, we see that students' \textbf{satisfaction with democracy} is measured by a survey question that asks, \textit{"How satisfied are you with the way democracy works in Canada?"} Students can respond to the question by indicating they are \textit{very satisfied}, \textit{fairly satisfied}, \textit{not very satisfied}, or \textit{not satisfied at all}. The variable in the dataset that corresponds to this question is \textsf{Q29}. \textbf{Feelings toward politicians} is measured by a question asking, \textit{"How do you feel about politicians in general?"} Here, students are asked to indicate their feelings toward politicians on a scale that ranges from 0 to 100, with lower scores indicating more negative feelings and higher scores indicating more positive feelings about politicians. This question corresponds to variable \textsf{Q33} in the dataset.
+
+## Step 1: Formulate a hypothesis
+
+The first step in addressing our research question is to formulate a hypothesis. The hypothesis we will examine in this example is that students that are \textit{more satisfied with the way democracy works} are more likely to have \textit{positive feelings} about politicians. Of course, you might also hypothesize an alternative relationship between these variables. Whatever your hypothesis, you should be able to draw on theory and justify why you anticipate the relationship to go in the hypothesized direction.
+
+Can you come up with a potential causal mechanism? It is important to remember that we can not determine the true causal direction of this relationship (we are not working with \textit{experimental data}!). We cannot actually tell, for example, whether satisfaction with democracy \textit{causes} more positive feelings toward politicians or if positive feelings toward politicians is what leads to greater satisfaction with democracy. To do so, we would need a much more advanced research design and even then this may still be difficult to untangle. For this example, we will treat satisfaction with democracy as the independent variable and feelings toward politicians as the dependent variable for illustration purposes.
+
+
+## Step 2: Examine how your variables are distributed, recoding as necessary
+
+Once we have developed a hypothesis related to our research question and selected our variables from the codebook, the next step is to explore the data to get a sense of how your independent and dependent variables are distributed. \textsf{Frequency tables} and \textsf{histograms} are two useful tools to examine these univariate distributions. They also point out helpful things about the data, such as whether any variables need to be recoded.
+
+```{r}
+table(class.data$Q29) # Frequency table
+```
+
+As we can see from the codebook, we have some missing data that we need to remove:
+
+```{r}
+class.data$Q29[class.data$Q29==""] <- NA
+table(class.data$Q29) # Always check your recoding!
+```
+
+From the codebook, we can see that students who are satisfied with democracy are scored as either a 1 or a 2 in the dataset, while those that are not satisfied with democracy are scored as 3 or a 4. Most students are satisfied with the way democracy works in Canada. Let's recode this variable so that we can distinguish those who are satisfied from those who are not satisfied. We will call this new variable `dem_sat`:\footnote{Remember, there are several different ways to recode variables.}
+
+```{r}
+class.data$dem_sat <- class.data$Q29
+class.data$dem_sat[class.data$Q29 <= 2] <- "Satisfied"
+class.data$dem_sat[class.data$Q29 >= 3] <- "Not satisfied"
+
+# A bivariate frequency table will let us check our respondents were correctly classified:
+table(class.data$Q29, class.data$dem_sat)
+```
+
+Next, examine how `feelings toward politicians` is distributed:
+
+```{r}
+table(class.data$Q33)
+
+class.data$Q33[class.data$Q33 == -99] <- NA
+```
+
+## Step 3: Use descriptive statistics to summarize the data:
+
+Univariate statistics provide helpful information about describing or summarizing your data. The most helpful univariate statistics we will examine include measures of \textsf{central tendency} (the mean, median, and mode) and \textsf{measures of variability} (the standard deviation).\footnote{See chapter 14 of the textbook for more information}
+
+How would we summarize students' average feelings toward politicians? There are two functions that can help us:
+
+```{r}
+# What is the average response? 
+median(class.data$Q33, na.rm=T) # Remember to specify the na.rm = T argument because of missing data
+mean(class.data$Q33, na.rm=T) 
+
+# How much variability (how 'spread out') is the data around the mean?
+
+sd(class.data$Q33, na.rm = T) 
+
+```
+
+The "average" score given to politicians is a 44.4. Students are slightly on the negative side, but this is not too far from the mid-point of the scale so we might characterize their overall response as relatively neutral. Looking at the standard deviation, we can see that most students are within 19 points of the average. We can see this variability more clearly by looking at a `histogram`:
+
+```{r}
+hist(class.data$Q33,
+     main = "", # We can choose to hide the title here
+     xlab = "Feeling toward politcians \n Higher scores indicate more positive feelings") 
+
+# Note: we can skip a line in our title or axis labels with \n
+```
+
+
+Recall that a very useful function to quickly generate many helpful descriptive statistics is the \textsf{describe()} function in the \textsf{psych} package. If you have not already downloaded the \textsf{psych} package onto your computer, run the following code: \textsf{install.packages("psych")}. Note that you only need to install packages once. Once the package is installed, load the package using the \textsf{library} function to use the functions stored in the package:
+
+```{r}
+# install.packages("psych") # Uncomment to run the code, if needed.
+
+library(psych)
+
+describe(class.data$Q33)
+```
+
+This output includes a lot of statistical information that we will not use in this course. You can get a simpler result table by specifying the argument `fast = TRUE` (see the documentation).
+
+```{r}
+describe(class.data$Q33, fast = T)
+```
+
+## Step 4: Examine the bivariate relationship
+
+We now know that students in the class are generally satisfied with democracy and that they have somewhat neutral attitudes toward politicians (although from the histogram we can see that more students are leaning toward the negative side of the scale than the positive side!). Now that we have examined the distribution of each our variables and have familiarized ourselves with the data, we are ready to move to the main phase of our analysis and evaluate the evidence in favour of our hypothesis. Remember, the hypothesis for this example is that students that report greater satisfaction with democracy have more positive feelings toward politicians.
+
+How would we test whether greater satisfaction with democracy is linked to more positive feelings about politcians? We can compare, on average, how students feel about politicians based on their level of satisfaction with democracy. If our hypothesis is supported by the data, we would expect to see students that are more satisfied with democracy rate politicians more positively than students that are not satisfied with democracy. In other words, we need to break our summary statistics down by levels of our independent variable. We can do this by using the \textsf{describeBy()} function, which is an extention of \textsf{describe()} and is also included in the `psych` package.
+
+```{r}
+
+# ?describeBy() # Uncomment and run the code to review the documentation
+
+describeBy(class.data$Q33, # Dependent variable
+           group = class.data$dem_sat) # Independent variable
+```
+
+On average, students that are satisfied with democracy (\textit{Mean = 46.26}) rate politicians more positively than students who are not satisfied with democracy (\textit{Mean = 35.36}). This is in line with our expectation. \textit{How large is the difference in self-reported feelings about politicians between these two groups of students?} 
+
+We can use calculate the size of the average difference between two groups, which gives us an indication about the \textbf{size of the effect}: 
+
+```{r}
+46.26 - 35.36
+```
+
+Subtracting the group means shows that on average, students that report being "not very" or "not at all" satisfied with the way democracy works in Canada rate politicians 10.9 units lower on the 0 to 100 scale. In \textit{your opinion}, is this a small, medium, or large difference? Later in the course, we will learn how to apply statistical evidence to help our decision-making. As you can see, assessing whether an \textsf{effect} is \textbf{substantively significant} (i.e., impactful, meaningful) is open to some interpretation. 
+
+\section{Visualizing Group Differences using a Barplot}
+
+\textbf{Data visualization} is a powerful tool for understanding your data and communicating your results to others. When we have a continuous dependent variable (i.e., feelings toward politicians) and a categorical predictor (i.e., satisfaction with democracy), we can visualize the average difference between the groups using a \textbf{barplot}. 
+
+## Step 1: Storing the describeBy() output as an object
+
+In addition to providing quick descriptive statistics, the \textsf{psych} package is a helpful tool in producing barplots because we can store the results as an object that we can then call upon to plot the descriptive statistics. To do so, we will modify the code above by specifying the \textsf{mat = T} argument (see documentation) so that we can save the output as a data table. 
+
+```{r}
+
+summary.data <- describeBy(class.data$Q33, class.data$dem_sat,
+                           mat = T, # See documentation. This argument stores a data table.
+                           fast = T) # Simplifies the output 
+
+head(summary.data) # preview the summary data
+```
+
+Here, we are saving the output from the \textsf{describeBy()} function into an object called \textsf{summary.data}. \textbf{It is important to note the new variable names in this data table}:
+
+* First, the grouping variable \textsf{dem\_sat} is in a column called \textbf{group1}.
+* Second, the mean feeling scores for each group are stored in a column called \textbf{mean}
+
+## Step 2: The ggplot() function 
+
+There are many different ways to visualize our data in \textsf{R}. 
+
+A very powerful function for data visualization is the \textsf{ggplot()} function, which stands for the \textit{g}rammer of \textit{g}raphics. First, install the \textsf{ggplot()} package by running \textsf{install.packages("ggplot2")} and running the library
+
+```{r, message = F}
+# install.packages("ggplot2") # Uncomment and run the code, if needed.
+
+library(ggplot2)
+```
+
+\textsf{ggplot()} provides a convenient way to make extremely customizable graphs by specifying a dataset and the variables to be plotted along with the type of data visualization to make (called a \textsf{geom} in \textsf{ggplot()} language). In \textsf{ggplot()}, we start with a basic plot, which we can then build up in layers, adding features by linking new lines of code together using the + sign.\footnote{Additional resources for using `ggplot()` are posted to MyCourses and we will come back to this useful tool in the weeks to come.} 
+
+```{r}
+ggplot(data = summary.data, aes(x = group1, y = mean)) + # X= IV; Y = DV
+  geom_col() # Add a geom to the plot. 
+
+# Note stat = identity just tells R to plot group means.
+```
+
+## Step 3: Customize your data visualization
+
+\textsf{ggplot()} is an excellent function for data visualization because it is so customizable. Plenty of how-to guides are available online, including example code you can adapt for your own purposes. For example, a very detailed guide to \textsf{ggplot()} is available [here (click)](http://www.sthda.com/english/wiki/be-awesome-in-ggplot2-a-practical-guide-to-be-highly-effective-r-software-and-data-visualization).\footnote{\textit{Hint:} Always feel free to bring your data analysis to office hours to get feedback and discuss your methodology and findings.}
+
+While the above plot might be helpful as a quick glance of the data, we want to clean it up a little before we present it to someone else. In the code below, we take the code for the basic plot from above and add to it (\textsf{+}) in layers. Comments in the code below specify what each argument does, but you can view a full list of arguments available in the package documentation.
+
+```{r}
+ggplot(data = summary.data, aes(x = group1, y = mean)) +
+  geom_col(fill = "steelblue", color="black") + # Fill bars, add coloured border
+  ggtitle("Average feelings toward politicians by \n students' satisfaction with democracy") + # Add title 
+  xlab("Satisfaction with democracy") + # Add x-axis label
+  ylab("Feelings toward politicians \n 0 (Negative) to 100 (Positive)") + # Add y-axis label 
+  ylim(0,100) + # Extend y-axis length of the original scale
+  theme_bw() # Remove the grey background
+```
+\newpage
+
+# Practice Questions
+In the previous lab, we introduced the \textbf{cross-tab} as a way of assessing the relationship between two categorical variables. In this lab, we dealth with a continuous outcome and a categorical predictor. As homework, re-analyze the relationship outlined above using a cross-tab (see Lab Guide 4). 
+
+* Recode the variable \textsf{Q33} into a categorical indicator of feelings toward politicians with three categories (negative, neutral, positive). Think about how you would justify your cut-off points for each category.
+* Use the \textsf{gmodels} package (see Lab Guide 4) to generate a cross-tab between this new variable and satisfaction with democracy.
+* Using the cross-tab, re-analyze the relationship. How would you summarize your findings? Does your assessment of the size of the effect differ?
+* What are the strengths and limitations to analyzing \textsf{feelings about politicians} as a three-level categorical variable compared to its original scale?
+
+
+

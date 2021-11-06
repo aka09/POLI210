@@ -19,13 +19,93 @@ biblio-style: apalike
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
 ```
 
-## What type of validity?
+## Boring admin stuff
 
-Adcock and Collier [-@adcock_measurement_2001]: 37 different adjectives attached to the word "validity" (!!)
+Assignment 2 due on Thursday the 7th, 11:59PM 
 
-## Measuring democratic backsliding
+- Hand i **both** .Rmd and PDF files
+- Everything should be done in RMarkdown; no R script
+- RStudio Cloud:
+  - No need to set your working directory
+  - Need to import your file into the cloud 
+- Do not use the `View()` function when knitting
+- Use the .csv from the Assignments tab on MC 
 
-ARPS article on low corrs across indices
+Remember: this is worth 10% and it's your 1st coding assignment ever!
+
+## Four levels of measurement
+
+Nominal variables
+
+- Values are categories that we cannot rank-order from least to most
+- Examples: religious affiliation; party identification \pause
+
+Ordinal variables
+
+- Values can be ranked, but the distance between categories is not equal across the variable's range 
+- Implication: addition and subtraction not meaningful
+- Example: Education level 
+  - Less than high school < High school graduate < Some college < College graduate < Postgraduate
+  - Can we assume that the gap between "high school graduate" and "some college" is the same as the gap between "some college" and "college graduate"?
+  
+## Four levels of measurement (cntd)
+
+Interval variables
+
+- Values can ranked and equal distance between numbers/categories across the range 
+- But no meaningful value of 0
+- Example: credit score (minimum of 300), feeling thermometer (0 = strong negative feeling, not no feeling)...\pause
+
+Ratio variables
+
+- Just like an interval variable, but it has a meaningful 0: when the value is 0, there is none of that variable
+- Example: military personnel of a country, state welfare expenditures in dollars...
+
+## Operationalization
+
+Many of the concepts we care about are elusive 
+
+- You often can't directly *observe* the concept; it is not tangible 
+- e.g. can you observe and measure socio-economic status? anxiety? anger? 
+  - Certainly not in the same way that we can measure the amount of oxygen in the air \pause
+  
+We will have to **operationalize** 
+
+- Oftentimes, your theory involves abstract concepts that must be operationalized
+  - For instance, I may hypothesize that an incumbent's electoral fortunes are influenced by economic performance
+  - But how do we operationalize "economic performance"? i.e. what do I need to observe and measure in order to classify cases as "good" or "bad" economic performance? 
+  
+## Economic performance
+
+The key point: there are many different ways to operationalize economic performance!
+
+- GDP growth? (in the 12 months prior to the election?)
+- Unemployment rate? 
+- Inflation? \pause
+
+People will disagree on the best way to operationalize concepts
+
+- Ideally, our results should be robust to alternative operationalizations \pause
+
+Many of the concepts we care about are multidimensional 
+
+- It often makes sense to incorporate multiple indicators into a single **index**
+
+## What makes for a good measure?
+
+Reliability
+
+- Our measure should have as little "noise" as possible
+- Example: a scale 
+- This is random measurement error
+
+Validity
+
+- There are different types of validity, but in short: 
+  - "A valid measure accurately represents the concept that it is supposed to measure, whereas an invalid measure measures something other than what was originally intended." \pause
+- Our measure should have as little systematic error as possible
+- Example: a scale and tall people 
+  - This is non-random or *systematic* error
 
 ## References {.allowframebreaks}
 
