@@ -1,0 +1,495 @@
+---
+title: "9. Data wrangling and workflow"
+date: "POLI210, Week 11, Fall 2021"
+output: 
+  pdf_document:
+    latex_engine: lualatex
+header-includes:
+  - \usepackage[utf8]{inputenc}
+  - \usepackage{emoji}
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+
+# The plan for this lab
+
+The purpose of this lab is to show you the typical workflow of a quantitative project in R. We will start with a figure that appeared in the New York Times based on academic work by Roberto Foa and Yascha Mounk.^[Foa, Roberto Stefan, and Yascha Mounk. 2017. “The Signs of Deconsolidation.” Journal of Democracy 28(1): 5–15.] We will try to reproduce the figure together; in the process, we will see what datasets actually look like "in the wild" and practice data wrangling (manipulating your data to get in the right format for presentation of results). Here is the figure we will be replicating: 
+
+![Figure published in the New York Times based on Foa and Mounk's research ([link](https://www.nytimes.com/2016/11/29/world/americas/western-liberal-democracy.html))](nyt_figure.png)
+
+The point of this lab is to show you the process from A to Z (or almost). You'll see that there are a lot of steps and a lot of things that can go wrong. This is why we want to keep nicely commented code!
+
+The figure  we want to replicate uses data from the World Values Survey, a famous survey that has been conducted in many countries. In particular, we will be using data from Wave 5 of the WVS, which contains some 83,000 respondents. Let's load the data.
+
+```{r}
+# the file is in .dta format
+library(haven)
+wvs <- read_dta("labs/lab 9/WV5_Data_Stata_v20180912.dta")
+dim(wvs)
+```
+Ok, this is a much larger dataset than we're used to working with! There are of course lots of respondents -- the World Values Survey tries to cover as many countries as possible. But there are also a lot of variables, so the codebook becomes a crucial tool. If you open the codebook, you'll see that it is a looong PDF document -- 123 pages in total. To find what you need, using the search function in your PDF reader is key. 
+
+In our case, to reconstruct the Foa and Mounk figure, we essentially need three variables: age or year of birth, country of residence, and respondents' ratings of how important it is for them to live in a democracy. If we take a look at the column names...
+
+```{r}
+# printing the first 10 column names
+colnames(wvs)[1:10]
+```
+You'll see that the names are not evocative at all. I personally find this somewhat annoying, but quite a few datasets are coded this way. The nice thing about a .dta file is that it can contain "variable labels", which provide some description of each variable. If you open the dataset in the viewer (either by clicking on it in the environment or using the `View()` function), you'll see that underneath each column name is a short description of what it represents. Rather than looking at the codebook, we will use these "variable labels" to find the variable that represents country of residence.
+
+# Country of residence 
+
+```{r}
+# install.packages("labelled")
+library(labelled)
+
+# you give this function a dataset with variable labels and a string 
+# that you want to look for
+# the "details" argument prevents all values to be printed
+look_for(wvs, "country", details = "none")
+```
+
+Well well well, a lot of variable labels contain the string "country". The best candidate for our purposes seems to be `V2`. Let's look at the values it takes on...
+
+```{r}
+table(wvs$V2)
+```
+
+What's going on here?! It's not entirely clear, but it looks like countries were coded using some sort of a numeric scheme in which each country is assigned a particular number. Looking at the pdf codebook, there does not seem to be a list of which numbers correspond to which countries. 
+
+Fortunately, datasets tend to include standardized codes. One of these standardized coding schemes is the country codes provided by the Correlates of War project. As we can see in the list above, there is a variable called  `COW` in the WVS dataset! Let's look at the values it takes on...
+
+
+```{r}
+table(wvs$COW)
+```
+That also doesn't seem too helpful. But it turns out that a small piece of code can retrieve the information we're interested in. First, let's load the `countrycode` package (actually maintained by a political science professor at Université de Montréal!)
+
+```{r}
+library(countrycode)
+```
+
+Next, type `?countrycode` in the console to look at the documentation. How do you think the function should be used? Take a minute to have a look. 
+
+## The `countrycode` function
+
+The `countrycode` function needs 3 main arguments:
+
+1. `sourcevar`: a vector that contains the information the country codes that we want to transform. In our case, this is simply the relevant variable in the dataframe. 
+2. `origin`: the coding scheme that we currently have. If you type `?codelist` in the console, you'll that there are *a lot* of different coding schemes for countries. Some of them are more common than others. In our case, you can see that there you can provide the argument `cown` to tell the function that our original data is in Correlates of War numeric format. Great! Notice that there is also a "wvs" argument, so we actually could have used `V2` as well. 
+3. `destination`: this is how you want to recode the values. In our case, we'd like to have the actual names of the countries, so we'll use "country.name". But we could transform the COW codes into anything else (e.g. if you download a dataset from the UN and want to merge it with the WVS dataset, you may have to use the "un" option). 
+
+The broader point is: **real-world data is messy**. A large part of the work in quantitative political science and data science is to find suitable data and clean it according to your needs. You *cannot* get better at this unless you practice it. This whole section on country codes is meant to illustrate one particular problem that you may run into with real-world datasets, but there are countless more. Every week, I run into issues that I don't know how to deal with. That's entirely normal! 
+
+To back come to our country code problem, here is the code that we need: 
+
+```{r,echo=TRUE,eval=FALSE}
+countrycode(sourcevar = wvs$COW, 
+            origin = "cown",
+            destination = "country.name")
+```
+
+Now, if I just run this, I'm not actually modifying the dataframe that I have in memory; I will just print a vector of country names. So I'll have to assign the result of this to a variable in the `wvs` dataframe. It's generally good practice *not* to overwrite original variables, so we'll just make a new one. For this purpose, we can use the function `mutate()` from the `tidyverse`. Here is how it works:
+
+```{r,message=FALSE,warning=FALSE}
+library(tidyverse)
+# let's create a toy dataframe with two columns: a and b
+toy_df <- data.frame(
+  a = c(1, 2, 3),
+  b = c(4, 5, 6)
+)
+
+# here is what it looks like 
+toy_df
+
+# The mutate function adds a new column 
+# note the pipe: we pass the toy_df to the mutate function
+# and so don't need to specify a data argument in mutate
+toy_df %>% 
+  mutate(c = a + b)
+
+
+# We can add mutiple variables at once
+toy_df %>% 
+  mutate(c = a + b,
+         d = a - b)
+
+
+# The above actually doesn't change the toy_df dataframe
+# so instead, we can use the assignment operator:
+toy_df <- toy_df %>% 
+  mutate(c = a + b,
+         d = a - b)
+```
+
+Using mutate, we will make a new variable that we'll call `country_name`. It will be composed of the output from the `countrycode` function. Let's put it all together:
+
+```{r}
+# note: wvs is passed due to the pipe, so no need to specify 
+# where the variables are from 
+wvs_countries <- wvs %>% 
+  mutate(country_name = countrycode(sourcevar = COW,
+                                    origin = "cown",
+                                    destination = "country.name"))
+```
+
+Ok, looks like it works. Note that I made a new dataframe instead of overwriting the original one. If we look in the environment, we see that `wvs_countries` (our new dataframe) has 415 variables vs 414 for the original WVS data. Makes sense: that's the new variable `country_name` that we just created. 
+
+Now, it does look like we have an issue if we look at the warning message above. This is *not* an error message; the code still runs fine, but *R* wants us to know something about, so it's important to be aware of the warning message. In this case, we have two error messages:
+
+1. "the condition has length > 1 and only the first element will be used." What does that mean? Well, it's pretty cryptic, so we'd have to google the error message to get a sense of what it means. Let's just ignore it for our purposes. 
+2. "Some values were not matched unambiguously: 714." This one is saying that there's an issue with the COW code 714; it could not be matched unambiguously. What does that mean? Let's look at which country the COW 714 corresponds to...
+
+```{r}
+# This prints a dataframe containing all countries as rows
+# and all coding schemes as columns
+# note the pipe to select, which keeps only columns 
+# 1 through 6; and then the pipe to head(), which keeps rows
+# 1 through 6
+countrycode::codelist %>%
+  dplyr::select(1:6) %>% 
+  head()
+
+# which country corresponds to COW code 2? The US! 
+# note the select function: you can feed it the names
+# of the columns you want to keep
+countrycode::codelist %>% 
+  filter(cown == 2) %>% 
+  dplyr::select(country.name.en, cown)
+
+# which country corresponds to COW code 714? ....none....
+countrycode::codelist %>% 
+  filter(cown == 714) %>% 
+  dplyr::select(country.name.en, cown)
+```
+
+It looks like there is no country that corresponds to COW code 714. What the hell? What's going on here? **I don't know!** This, again, is an example of how messy the data that we work with can be. The WVS is a famous survey of public opinion, and there are nonetheless some issues that we need to iron out. For our purposes, we will just ignore this problem and move on. 
+
+Back to our main task. We should now have a variable that contains the country names. Did it work as expected? You should **always** double-check whether or not it worked as expected. For instance, we'll call the function `table()` to see if the countries that pop up seem to make sense:
+
+```{r}
+table(wvs_countries$country_name)
+```
+
+That seems to make sense! So why not have a variable `country` that contains the actual country name? One reason is that country names are often not standardized across datasets, which makes things very difficult when you want to combine multiple datasets. For instance, one dataset may have "Bosnia Herzegovina" and the other "Bosnia-Herzegovina". (Standardized) country codes solve this problem!
+
+# Importance of democracy
+
+The second variable that we need is respondents' sense that it is important to leave in a democracy. Let's again use `look_for` to find it in the dataset. 
+
+```{r}
+look_for(wvs_countries, "democracy", details = "none")
+```
+It looks like that's `V162`. Let's see how it's distributed:
+
+```{r}
+table(wvs_countries$V162)
+```
+This is what a lot of datasets look like in the wild: you have to make sure that you recode things so as to get rid of values like -5. In this case, we have -5, -4, -2, and -1 that obviously don't represent stated importance of democracy. Instead, they probably mean things like "respondent refused to answer." For our purposes, we will want to recode them to NA. Let's use `mutate()` along with `ifelse()`: 
+
+```{r}
+# again, I don't overwrite the original variable
+# I make my own (and use a more intuitive name)
+wvs_countries <- wvs_countries %>% 
+  mutate(dem_important = ifelse(V162 %in% c(-5, -4, -2, -1), NA, V162))
+```
+
+Whoa, what's going on in this piece of code? Let's deconstruct it. I first call the dataset and pipe it to `mutate()`. With this, I don't have to specify a data argument in the `mutate()` function. Then, I tell `mutate()` that I want a variable called `dem_important`. Anything to the right of the following "=" sign tells the function how this new variable will be given its values. Its values will be the result of an `ifelse()` function. Remember how this function works: you give it:
+
+1. A condition
+2. An output if the condition is TRUE
+3. An output if the condition is FALSE
+
+In this case, we set the condition to be `V162 %in% c(-5,-4,-2,-1)`. The `%in%` operator is a useful one: by using it, we can avoid using the OR operator over and over again and typing: `V162 == -5 | V162 == -4 | V162 == -2 | V162 == -1`. If the condition is TRUE, we want to return `NA`; if it is false, we simply return the value of `V162`. 
+
+As always, we double-check to make sure the result makes sense:
+
+```{r}
+# note the pipe; not so useful here but just to get you used to it
+wvs_countries$dem_important %>% table()
+```
+
+Looks like that worked! Great. 
+
+# Birth decade
+
+```{r}
+look_for(wvs_countries, "birth", details = "none")
+```
+
+So it looks like the variable that represents year of birth is V236. Let's look at what it contains using the `table()` function...
+
+```{r}
+table(wvs$V236)
+```
+Again, we have values that do not represent a birth year. Let's get rid of those:
+
+```{r}
+wvs_countries <- wvs_countries %>% 
+  mutate(birth_year = ifelse(V236 %in% c(-5, -4, -2, -1), NA, V236))
+
+# double-check
+table(wvs_countries$birth_year)
+```
+Okay, looks pretty good! But what we need is decade of birth, not year of birth. How can we do that? The `tidyverse` approach is to use the function `case_when()`. Here is how it works:
+
+```{r}
+# here's a random vector containing strings
+random_vec <- c("hello", "my", "dude")
+
+# case_when is like ifelse() but with more than two possible outputs
+# you set a condition, if it's true, it returns whatever is after ~
+case_when(random_vec == "hello" ~ "greetings",
+          random_vec == "my" ~ "dear",
+          random_vec == "dude" ~ "lord")
+```
+
+We can combine `case_when()` and `mutate()` in order to create a new variable that represents birth decade. Can you try to do it before I show you? 
+
+```{r}
+# I use lots of line breaks in order to make the code more redable
+# note: indentation is important!
+# you can highlight code and press control + i
+# it will nicely indent your code
+wvs_countries <- wvs_countries %>% 
+  mutate(
+    birth_decade = case_when(
+      birth_year %in% 1900:1910 ~ "1900s",
+      birth_year %in% 1910:1920 ~ "1910s",
+      birth_year %in% 1920:1930 ~ "1920s",
+      birth_year %in% 1930:1940 ~ "1930s",
+      birth_year %in% 1940:1950 ~ "1940s",
+      birth_year %in% 1950:1960 ~ "1950s",
+      birth_year %in% 1960:1970 ~ "1960s",
+      birth_year %in% 1970:1980 ~ "1970s",
+      birth_year %in% 1980:1990 ~ "1980s",
+    )
+  )
+
+# double-checking 
+table(wvs_countries$birth_decade)
+```
+Of course, the code above is still pretty annoying to write and error-prone as well. As always, there are many ways to do things in R. There are more efficient ways! But I wanted to show the very useful `case_when()` function. 
+
+We now everything we need to perform the analysis. But how should we go about it? 
+
+# Reproducing Foa and Mounk's figure 
+
+Foa and Mounk's figure is only concerned with 6 select countries. Let's make a subset that only contains these. 
+
+```{r}
+# filter() is very similar to subset() 
+# but it's a tidyverse function instead of base R
+wvs_6countries <- wvs_countries %>% 
+  filter(country_name %in% c("Sweden", "Australia", "Netherlands",
+                             "United States", "New Zealand", "United Kingdom"))
+
+# Double-checking
+table(wvs_6countries$country_name)
+```
+Great. Now, what's on the y axis exactly? The New York Times article mention it's the proportion of people (in a given birth decade, in a given country) who say that it is "essential" to live in a democracy. Let's open the questionnaire in order to get a sense of what this means. Note that the questionnaire is not the same as the codebook; the former contains the full questions that were asked to respondents -- which is important to know when you're working with this data. As we saw in class, even small differences in wording can affect the conclusions that we draw. 
+
+Looking at the questionnaire, we can search for V162 to take a look at the full wording. How do you think Foa and Mounk/the New York Times coded the data so as to get percentages? Is there anything amiss? 
+
+Well...the word "essential", which appears -- in quotation marks!!! -- in the New York Times figure as well as in scholarly articles that Foa and Mounk have written, does not appear anywhere in the question \emoji{thinking}\emoji{thinking}\emoji{thinking}
+
+It turns out that "essential" means having answered 10 on the importance of democracy item. Anything other than a 10 is then counted as not believing that living in a democracy is "essential". That calls for a new dummy variable!
+
+```{r}
+wvs_6countries <- wvs_6countries %>% 
+  mutate(dem_essential = ifelse(dem_important == 10, 1, 0))
+
+# double-checking
+table(wvs_6countries$dem_essential)
+```
+Now we're all set up. But what we need is a proportion, by birth decade, by country. What's something we've seen before that can do this for us? (Remember that the mean of a dummy variable is a proportion)
+
+```{r}
+# the world-famous group_by/summarise combo
+# we can group by 2 variables! (or more if needed)
+wvs_6countries %>% 
+  group_by(birth_decade, country_name) %>% 
+  summarise(prop_essential = mean(dem_essential, na.rm = T))
+```
+
+Looking good! But we do have a bit of superfluous information: the very old generations with tiny sample sizes are not part of the NYT figure, so we'll get rid of them (sorry!). We also have the proportions for the birth_decade `NA`, which we don't care about. We'll get rid of that as well. We will pipe the dataset to the `filter` function. We will have two conditions:
+
+1. No NAs for `birth_decade`. For this, we can use the function `is_na()` along with the `!` operator, which means NOT. 
+2. `birth_decade` only starts at 1930s. There is actually no `%out%` operator, so we'll use the `%in%` operator along with the `!` operator. 
+
+```{r}
+wvs_6countries %>% 
+  filter(!is.na(birth_decade) & 
+           !(birth_decade %in% c("1900s", "1910s", "1920s"))) %>% 
+  group_by(birth_decade, country_name) %>% 
+  summarise(prop_essential = mean(dem_essential, na.rm = T))
+```
+
+Looking even better! We'll assign the result to a new dataframe
+
+```{r}
+# same code as above but with assignment operator
+essential_gen_country <- wvs_6countries %>% 
+  filter(!is.na(birth_decade) & 
+           !(birth_decade %in% c("1900s", "1910s", "1920s"))) %>% 
+  group_by(birth_decade, country_name) %>% 
+  summarise(prop_essential = mean(dem_essential, na.rm = T))
+```
+
+We are now ready to plot our data!! On the x axis, we want birth decade; on the y axis, we want the proportions who believe democracy is essential. 
+
+```{r}
+library(ggplot2)
+
+ggplot(essential_gen_country, 
+       aes(x = birth_decade, y = prop_essential)) +
+  geom_point()
+```
+
+
+Uhhhhh not looking too great. What we want to do is have small plots for each country, next to one another. We can do this using `facet_wrap()`. We give this function the variable by which we want to "facet" (in this case, the country). 
+
+```{r}
+ggplot(essential_gen_country, 
+       aes(x = birth_decade, y = prop_essential)) +
+  geom_point() +
+  facet_wrap(~country_name) # not the tilde "~"
+```
+
+Okay, that's much better, but the original figure has a single row. We can specify this:
+
+```{r}
+ggplot(essential_gen_country, 
+       aes(x = birth_decade, y = prop_essential)) +
+  geom_point() +
+  facet_wrap(~country_name,
+             nrow = 1)
+```
+
+Wait, New Zealand is missing? It apparently was not asked this particular question in Wave 5 of the World Values Survey. So Foa and Mounk appear to have used Wave 6 for that country. We would have to download that dataset, consult the codebook, recode everything...Sounds painful! So we're not going to do that. Instead, we will just drop it and pretend it's not because we're lazy. 
+
+```{r}
+essential_gen_country <- essential_gen_country %>% 
+  filter(country_name != "New Zealand")
+```
+
+Before moving on to aesthetics, one last thing: the order of countries is all wrong. In the NYT figure, Sweden comes first. How can we change that? `country_name` is currently coded as a character variable. Character variables do not have any specific order; if you plot them, they will show up in alphabetical order. To give them a specific order, we can transform character variables into factor variables and provide the order that we want. Here's how:
+
+```{r}
+essential_gen_country <- essential_gen_country %>% 
+  mutate(
+    country_name = factor(country_name, 
+                          levels = c("Sweden", "Australia", 
+                                     "Netherlands", "United States",
+                                     "United Kingdom"))
+  )
+```
+
+Now, when using ggplot and facetting by `country_name`, the countries will show up in the order that we specified. 
+
+```{r}
+ggplot(essential_gen_country, 
+       aes(x = birth_decade, y = prop_essential)) +
+  geom_point() +
+  facet_wrap(~country_name,
+             nrow = 1)
+```
+
+# Aesthetic improvements
+
+Everything from here on out is completely optional. Our figure is okay, but it's not exactly publication material -- certainly not in the New York Times! What other improvements might we make to our figure? First, we'll change the settings of the y axis. We want to a) represent the full scale from 0 to 1, and b) have "ticks" at 0.25, 0.50, 0.75, and 1. We can do this using `scale_y_continuous()`
+
+```{r}
+# Storing the figure to make further additions easier
+p <- ggplot(essential_gen_country, 
+            aes(x = birth_decade, y = prop_essential)) +
+  geom_point() +
+  facet_wrap(~country_name,
+             nrow = 1) +
+  scale_y_continuous(limits = c(0, 1), 
+                     breaks = c(0.25, 0.5, 0.75, 1))
+```
+
+Next, we'll change the axis labels. 
+
+```{r}
+p <- p +
+  theme_minimal() +
+  labs(y = "", # this one is empty
+       x = "Decade of birth",
+       title = "Percentage of people who it is ''essential'' to live in a democracy")
+
+p
+```
+
+We can also add a geom that will connect all the points together. That would be `geom_line()`. Note that the `aes` from the original `ggplot()` call will by default be transferred to all subsequent geoms, so no need to respecify x and y. 
+
+```{r}
+p <- p +
+  geom_line(group = 1)
+
+p
+```
+
+Now, the obvious problem: the x axis is way too crowded. We can that by playing with `scale_x_discrete()`. We can also change the theme and customize it for our own purposes. For instance, I use the NYT's proprietary font (which is actually pretty hard to get into R). 
+
+```{r}
+library(extrafont)
+p +
+  scale_x_discrete(breaks = c("1930s", "1940s", "1950s", 
+                              "1960s", "1970s", "1980s"),
+                   labels = c("'30s", rep("", 4), "'80s")) +
+  theme_minimal(base_family = "NYTFranklin Semibold") %+replace%
+  theme(panel.grid.minor.y = element_blank(),
+        panel.grid.major.x = element_blank(),
+        axis.line.x = element_line(),
+        axis.ticks.x = element_line())
+```
+
+Getting pretty close to the NYT graphic. The major thing missing are the confidence intervals...
+
+```{r}
+library(DescTools)
+library(scales)
+wvs_6countries %>% 
+  filter(!is.na(birth_decade) & 
+           !(birth_decade %in% c("1900s", "1910s", "1920s")) &
+           country_name != "New Zealand") %>% 
+  group_by(birth_decade, country_name) %>% 
+  summarise(prop_essential = mean(dem_essential, na.rm = T),
+            lwr = MeanCI(dem_essential, na.rm=T)[2],
+            upr = MeanCI(dem_essential, na.rm=T)[3]) %>% 
+  mutate(
+    country_name = factor(country_name, 
+                          levels = c("Sweden", "Australia", 
+                                     "Netherlands", "United States",
+                                     "United Kingdom"))
+  ) %>% 
+  ggplot(aes(x = birth_decade, y = prop_essential,
+             ymin = lwr, ymax = upr)) +
+  geom_point(col = "#007191") +
+  geom_line(group = 1, col = "#007191") +
+  geom_ribbon(group = 1, alpha = 0.2, fill = "#007191") +
+  facet_wrap(~country_name,
+             nrow = 1) +
+  labs(y = "", # this one is empty
+       x = "Decade of birth",
+       title = "Percentage of people who it is ''essential'' to live in a democracy") +
+  scale_y_continuous(limits = c(0, 1), 
+                     breaks = c(0.25, 0.5, 0.75, 1),
+                     labels = scales::percent) +
+  scale_x_discrete(breaks = c("1930s", "1940s", "1950s", 
+                              "1960s", "1970s", "1980s"),
+                   labels = c("'30s", rep("", 4), "'80s")) +
+  theme_minimal(base_family = "NYTFranklin Semibold") %+replace%
+  theme(panel.grid.minor.y = element_blank(),
+        panel.grid.major.x = element_blank(),
+        axis.line.x = element_line(color = "lightgrey"),
+        axis.ticks.x = element_line(color = "lightgrey"),
+        plot.title.position = "plot")
+```

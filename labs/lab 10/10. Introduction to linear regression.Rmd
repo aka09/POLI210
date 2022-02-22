@@ -1,0 +1,120 @@
+---
+title: '10. Linear regression models'
+author: "POLI210, Week 13, Fall 2021"
+output: pdf_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+
+```
+
+# Introduction to the Linear Regression framework
+
+In this lab, we will work with a dataset put together by Colin Scott, a recent graduate of the political science PhD program at McGill. Colin managed to put together thousands of emails of political candidates in Canada and sent them a survey in order to learn about them and about how they differ from the broader Canadian population. Separately, Colin also fielded a survey of this broader Canadian population. The dataset contains survey responses of both candidates and non-candidates. 
+
+Regression analysis is the "workhorse" of quantitative data analysis. It is an extremely flexible analytical tool that is used in every field where quantitative data is found. In this course, we will only scratch the surface of this extremely useful tool, but by the end of the class, you will have all the skills needed to continue to sharpen your analytical skills in more advanced courses.
+
+Using our data, we will build a statistical model to estimate whether candidacy status is a statistically significant predictor of open-mindedness. This is our \textbf{simple bivariate linear regression}. We will then add some control variables to our model, moving from a bivariate to a \textbf{multiple regression} model.
+
+```{r,warning=F, message=F}
+df <- read.csv("labs/lab 10/candidate_data.csv")
+
+bivariate.model <- lm(psyc_openness ~ candidate, data = df)
+bivariate.model
+```
+
+This output is not very information. It provides estimates of the slope (regression coefficient) as well as the intercept, i.e. $\beta_1$ and $\beta_0$. These are definitely quantities that we care about! But the output does not provide us with any information that allows to make a decision regarding the null hypothesis. 
+
+Take a moment to think about what the null hypothesis is in this case.
+
+The tricky thing is that the null hypothesis could be *anything*. It's an "abritrary" reference point. Nonetheless, in the vast majority of cases, the null hypothesis is the following: $H_0\text{:}\beta_1=0$. What this null hypothesis is saying is that the true effect of our independent variable (in this case, candidate status) is 0. We will see whether our evidence is consistent or inconsistent with this null hypothesis. 
+
+Use the `summary()` command to include information about the uncertainty or error in each estimate, as well as the goodness of fit of your model as a whole:
+
+```{r, warning=F, message=F}
+summary(bivariate.model)
+```
+This output now gives you inferential statistical tests of each coefficient in the model. The test being applied here tests whether each coefficient and the intercept are statistically signficantly different from 0. The intercept may or may not be interpretable, depending on whether a value of 0 is meaningful to you.However, we always want to know whether we can reject the null hypothesis that each variable in the model is not related to the outcome, holding constant any other factors in the model.
+
+There are a variety of tools that you can use to beautify the presentation of your regression output. One option that I am particularly fond is the `modelsummary()` function from the package of the same name.^[Note that this very popular package was written and is maintained by a political science professor at Universite de Montreal!]
+
+```{r, warning= F, message = F}
+# install.packages("modelsummary") # Uncomment to install
+library(modelsummary)
+
+modelsummary(bivariate.model)
+```
+
+In a regression model, the intercept is the predicted value of the outcome, when all variables in the model are 0. In this case, we have a single explanatory variable^[also called covariate, independent variable...]: a dummy variable that takes on the value of 1 if the survey respondent is a political candidate. In this case, the intercept represents the predicted value of the outcome (psychological openness) for a unit (a respondent) that scores 0 on all covariates, i.e. a respondent who is not a political candidate. Sometimes, the intercept is not readily interpretable; the independent variables in the model may not have a value of 0 that makes sense. For instance, if I try to explaining voting behavior of office-holders using their age^[Using our jargon, I would *regress voting behavior of office-holders on age*.], the intercept would be the predicted value of the outcome (let's say, a scale from 0 to 1 where 1 means very progressive voting record) when age is equal to 0. But age will never be equal to 0! Babies don't get elected to the legislature. The intercept is still important for the purposes of our model, but it is not readily interpretable.
+
+In the case that interests us, the intercept *is* interpretable. A value of 0 on the `candidate` dummy means that a survey respondent is NOT a political candidate. Therefore, the intercept represents the predicted value of psychological openness for non-candidates.
+
+The coefficient on the `candidate` indicates the predicted change in psychological openness as the `candidate` variable increases by one unit. In this case, increasing by one unit simply means moving from non-candidate to candidate. 
+
+## Moving to a multivariate model
+
+Further research suggests that openness to experience differs with age and gender. Controlling for these factors, do we still find that candidates are more open-minded than the general adult population?
+
+```{r}
+# First, look at the distribution on these two control variables:
+table(df$female)
+table(df$age_cat3)
+```
+
+Age is a categorical variable, so \textsf{R} will automatically make a series of dummy variables comparing each level of age to a reference category. \textsf{R} sets the reference category based on alphabetical order. We want our reference category to be intuitively meaningful. Let’s relevel the age variable to have it in the order that makes sense. 
+
+```{r}
+df$age_cat3 <- factor(df$age_cat3,
+                      levels = c("Under 30 years old",
+                                 "30 to 49 years old",
+                                 "50 years and older"))
+```
+
+Now that we have set the appropriate reference category for our `age` variable, we are ready to move to our multivariate analysis, estimating the difference in open-mindedness between candidates and non-candidates, controlling for gender and age. 
+
+```{r, warning=F, message=F}
+multivariate.model <- lm(psyc_openness ~ candidate + age_cat3 + female, data = df)
+modelsummary(multivariate.model)
+```
+
+The interpretation of each coefficient is similar as in the bivariate model: for every one unit change in X, the predicted outcome is expected to change by a $\beta$-unit shift. However, there is a crucial addition: **holding constant all other factors in the model**. We are "controlling for" all other covariates/independent variables. Let's look a the beta coefficient on `female`. We can say the following: *holding other covariates constant*, a one-unit increase in the value of `female` is expected to increase psychological openness by 0.133. Of course, `female` can only increase by one unit -- it's a dummy variable that takes on the value of 0 or the value of 1. But for other variables that may take on more values, you can multiply the beta coefficient (the expected effect of a one-unit increase in X) to get the expected effect of a two-unit change, or a three-unit change, etc.
+
+Turning to the intercept, it should still be interpreted as the predicted value of Y when all indicators are scored 0. In our case, since we have a categorical variable that represents age categories, it would be more accurate to say that the intercept represents: the predicted psychological openness for an observation with a value of 0 for the `candidate` variable, a value of 0 for the `female` variable, and a the "reference category" as the value for the `age_cat3` variable. The **reference category** is the reference level of our factor variable. In our case, we made sure that it's "30 years or younger". Notice how it is not showing up in our regression output? (go back to it to make sure!) That's entirely normal: the reference category is "omitted", in the sense that the coefficients on the other categories must be interpreted as the expected change in outcome produced by moving from the reference category to that other category. 
+
+Ooof, that's a painful sentence! To give a more concrete example, let's examine the coefficient on the "30 to 49 years old" level/category. We should interpret it the following way: moving from the reference category of "30 years or younger" to the category of "30 to 49 years old" is expected to increase psychological openness by 0.075. 
+
+## What about statistical significance?
+
+Of course, we want to know whether we should trust these results. "Trust" here means: are we sure this is not just statistical noise? For that, we can turn to our trusty (but imperfect!) framework of hypothesis testing. When calling the `summary()` function, you can see that each coefficient has a standard error and a p-value (let's not worry about the t-stat). The standard error should be interpreted the same way as the standard error of the mean: if I were to draw many repeated samples, fit this linear model for each sample, extract the beta coefficient on a particular covariate, and show the sampling distribution of beta coefficients, the standard deviation of that sampling distribution should be equal to the standard error that we estimated here. The higher the standard error, the lower our certainty. 
+
+The p-value should also be interpreted in a similar way to the p-value of a mean given a certain null hypothesis. The lower the p-value, the less likely it is to have estimated this beta coefficient, if the true beta coefficient is 0. And, if our p-value is below our prespecified and arbitrary threshold (our "significance level"), we can reject this null hypothesis. Else, we fail to reject it. We do *not* accept it. 
+
+## What about substantive significance?
+
+As seen in class, we can reach statistically significant results that we don't particularly care about. Substantive significance is about passing the "so what" test. So how do our coefficients fare on this end? 
+
+The coefficients should **always** be interpreted in relation to the scale of the dependent and independent variables. Remember what a beta coefficient means: it is the predicted change in Y resulting from a one-unit increase in some X. Is a one-unit increase in X a lot? We don't know! We have to refer to the distribution of X to get a sense. Is the effect that the beta coefficient represents a lot? We don't know! We have to refer to the distribution of Y to get a sense. This is part of the reason why we've emphasized distributions so much. You *cannot* interpret your regression results without being familiar with the underlying distributions. 
+
+In our case, two of our variables are dummies, meaning that, by definition, they cannot increase by more than one unit. The estimated effect represented by their associated beta coefficients is all the effect they'll have -- there's nothing more to it. Our third variable is a categorical variable, so the interpretation is a bit different (as explained above). 
+
+Many variables that you'll encounter, though, are continuous. If I have an independent variable called **percentage** of something (for instance, percentage of votes, measured from 0 to 100), a one-unit change implies quite a small change. I could take the exact same variable, rescale it from 0 to 1 and call it **proportion** of something, and my interpretation of the regression results would be completely different. In this situation, a one-unit increase in X signifies moving from the minimum to the maximum of my variable! These are things we must keep in mind when interpreting our results.
+
+Our dependent variable `openness` is coded from 1 to 7. For each beta coefficient, you should be asking yourself:
+
+1. How big of a shift is a one-unit increase in X?
+2. How big of a shift in Y is the beta coefficient?
+
+For the covariate `candidate`, it's clear that a one-unit increase is a big deal -- it's a dummy variable, so that's the only change you'll ever see. If we look at the beta coefficient, we can see that it is over 1. When the dependent variable is coded from 1 to 7, a single variable having an effect of over 1 is considered substantively significant. By looking at more of these results, you'll get more of a sense of what is considered "substantively significant". (note also that there are no clear guidelines! it's just a judgment call.)
+
+## What happens to the effect of candidacy status on our estimate of open-mindedness after controlling for age and gender?
+
+Often, it is helpful to examine how our model coefficients change as new variables that are of theoretical importance are entered into the model. We can examine our bivariate and multivariate models side-by-side. In your textbook, this approach is referred to as \textit{block recursive modelling}.
+
+```{r}
+modelsummary(list(bivariate.model, multivariate.model))
+```
+
+We know that in observational data, we can often make more credible claims of causality by controlling for variables that we think of as **confounding** the relationship between X and Y. In observational data, it is common to see the estimated effect of a covariate (call it $X_1$) dramatically change when we introduce another covariate into the model (call it $X_2$). This is generally because $X_2$ confounds the relationship between $X_1$ and $Y$. Not controlling for $X_2$ led to biased estimates of the relationship between $X_1$ and $Y$. Remember sharks and ice cream sales? Once you introduce weather as an additional covariate into your model, the coefficient on ice cream sales competely changes (presumably, it goes down to about 0). 
+

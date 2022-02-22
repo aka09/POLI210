@@ -1,0 +1,680 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+  ignorenonframetext,
+  t]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{metropolis}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={POLI210: Political Science Research Methods},
+  pdfauthor={Olivier Bergeron-Boutin},
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=blue,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{48,48,48}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.87,0.87,0.75}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.86,0.86,0.80}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.76,0.75,0.62}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.75,0.75,0.82}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.94,0.94,0.82}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{\textbf{#1}}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{animate}
+\usepackage{xmpmulti}
+\usepackage{caption}
+\setsansfont[BoldFont={FiraSans-Bold.ttf}]{FiraSans-Light.ttf}
+\setmonofont{FiraMono-Regular.ttf}
+\usepackage{color}
+\definecolor{mygreen}{HTML}{008000}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[style=authoryear,]{biblatex}
+\addbibresource{../210lectures\_bib.bib}
+
+\title{POLI210: Political Science Research Methods}
+\subtitle{Lecture 13.2: Linear regression II}
+\author{Olivier Bergeron-Boutin}
+\date{November 25th, 2021}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Boring admin stuff}
+\protect\hypertarget{boring-admin-stuff}{}
+\begin{itemize}
+\tightlist
+\item
+  Due dates:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Problem set: December 2nd
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Try to knit right now!
+    \end{itemize}
+  \item
+    Team project: December 6th
+  \item
+    Quiz: December 2nd to December 6th -- no late penalty until the 17th
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Will be posted soon
+    \end{itemize}
+  \end{itemize}
+\item
+  Please complete course evals on Minerva
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Adding more covariates}
+\protect\hypertarget{adding-more-covariates}{}
+As seen repeatedly in the class, correlation \(\neq\) causation
+
+\begin{itemize}
+\tightlist
+\item
+  Why? Because of \textbf{confounders}
+\item
+  But if we can ``adjust'' for all relevant confounders (``control'' for
+  them)
+\item
+  We have a stronger claim to causality
+\item
+  In addition, from a predictive inference framework, we can make better
+  predictions of the value \(Y\) will take on
+\end{itemize}
+
+In our regressions, we will include additional covariates
+
+\begin{itemize}
+\tightlist
+\item
+  Covariates = independent variables = explanatory variables
+\item
+  Just to be clear, we keep the same dependent variable
+\item
+  But now seek to explain it using multiple variables
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Our new regression equation}
+\protect\hypertarget{our-new-regression-equation}{}
+With two independent variables, we now have:
+
+\[Y_i = \beta_0 + \beta_1X_1 + \beta_2X_2 + \epsilon_i\] We still have
+our intercept, \(\beta_0\)
+
+\begin{itemize}
+\tightlist
+\item
+  But now we have one coefficient for each independent variable:
+  \(\beta_1\) and \(\beta_2\)
+\item
+  Our interpretation of each coefficient is now a bit different
+\item
+  \(\beta_1\) representes the expected change in \(Y\) occuring as a
+  result of a one-unit change in \(X_1\)\ldots{}\textbf{holding other
+  covariates constant}
+\item
+  In this case, holding \(X_2\) constant
+\item
+  What we can now say:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    The association between \(X_1\) and \(Y\) that \(\beta_1\)
+    identifies is \emph{not} due to confounding by \(X_2\)
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{New regression model with incumbent data}
+\protect\hypertarget{new-regression-model-with-incumbent-data}{}
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{reg2 }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ partyincshr }\SpecialCharTok{\textasciitilde{}}\NormalTok{ gdpchangeyr3 }\SpecialCharTok{+}\NormalTok{ age,}\AttributeTok{data =}\NormalTok{ economy)}
+\FunctionTok{summary}\NormalTok{(reg2)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = partyincshr ~ gdpchangeyr3 + age, data = economy)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -13.7772  -3.6559  -0.1206   3.6909  10.6179 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)  54.97700    7.56543   7.267 4.65e-09 ***
+## gdpchangeyr3  0.63960    0.21801   2.934   0.0053 ** 
+## age          -0.08605    0.12965  -0.664   0.5104    
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 5.581 on 44 degrees of freedom
+##   (184 observations deleted due to missingness)
+## Multiple R-squared:  0.1664, Adjusted R-squared:  0.1285 
+## F-statistic: 4.392 on 2 and 44 DF,  p-value: 0.01823
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Comparing our two models}
+\protect\hypertarget{comparing-our-two-models}{}
+\begin{table}
+\centering
+\begin{tabular}[t]{lcc}
+\toprule
+  & Model 1 & Model 2\\
+\midrule
+(Intercept) & 50.254*** & 54.977***\\
+ & (0.999) & (7.565)\\
+GDP change (year 3) & 0.605** & 0.640**\\
+ & (0.220) & (0.218)\\
+Age &  & -0.086\\
+ &  & (0.130)\\
+\midrule
+Num.Obs. & 48 & 47\\
+R2 & 0.142 & 0.166\\
+R2 Adj. & 0.123 & 0.129\\
+\bottomrule
+\multicolumn{3}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Non-linear relationships are not well captured}
+\protect\hypertarget{non-linear-relationships-are-not-well-captured}{}
+Linear regression models are good at estimating \textbf{linear}
+relationships
+
+\begin{itemize}
+\tightlist
+\item
+  When the relationship between \(X\) and \(Y\) is non-linear, things
+  get more complicated
+\item
+  (There are ways to account for this, but that's for 311)
+\item
+  In short, our \(\beta\)'s will not capture the relationship well
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Airbnb's in London}
+\protect\hypertarget{airbnbs-in-london}{}
+\begin{figure}
+\includegraphics[width=0.85\linewidth]{13.1-Linear-regression-II_files/figure-beamer/unnamed-chunk-5-1} \caption{Longitude and price of London (UK) Airbnb listings on March 4th, 2017}\label{fig:unnamed-chunk-5}
+\end{figure}
+\end{frame}
+
+\begin{frame}[fragile]{Airbnb's in London}
+\protect\hypertarget{airbnbs-in-london-1}{}
+\scriptsize
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = price ~ longitude, data = london)
+## 
+## Residuals:
+##     Min      1Q  Median      3Q     Max 
+## -117.52  -49.04  -21.41   22.07  893.80 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   79.2799     0.6018  131.75   <2e-16 ***
+## longitude   -114.8015     3.8881  -29.53   <2e-16 ***
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 79.69 on 53815 degrees of freedom
+##   (60 observations deleted due to missingness)
+## Multiple R-squared:  0.01594,    Adjusted R-squared:  0.01592 
+## F-statistic: 871.8 on 1 and 53815 DF,  p-value: < 2.2e-16
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Outliers can mess with your results}
+\protect\hypertarget{outliers-can-mess-with-your-results}{}
+\includegraphics[width=0.95\linewidth]{13.1-Linear-regression-II_files/figure-beamer/unnamed-chunk-7-1}
+\end{frame}
+
+\begin{frame}{Outliers can mess with your results}
+\protect\hypertarget{outliers-can-mess-with-your-results-1}{}
+\includegraphics[width=0.95\linewidth]{13.1-Linear-regression-II_files/figure-beamer/unnamed-chunk-8-1}
+\end{frame}
+
+\begin{frame}{Outliers can mess with your results}
+\protect\hypertarget{outliers-can-mess-with-your-results-2}{}
+\includegraphics[width=0.95\linewidth]{13.1-Linear-regression-II_files/figure-beamer/unnamed-chunk-9-1}
+\end{frame}
+
+\begin{frame}{Outliers can mess with your results}
+\protect\hypertarget{outliers-can-mess-with-your-results-3}{}
+\includegraphics[width=0.95\linewidth]{13.1-Linear-regression-II_files/figure-beamer/unnamed-chunk-10-1}
+\end{frame}
+
+\begin{frame}{Outliers can mess with your results}
+\protect\hypertarget{outliers-can-mess-with-your-results-4}{}
+\begin{table}
+\centering
+\begin{tabular}[t]{lcc}
+\toprule
+  & Model 1 & Model 2\\
+\midrule
+(Intercept) & 38.201*** & 56.773***\\
+ & (3.157) & (4.315)\\
+GDP change since 1989 & -7.645*** & -23.763***\\
+ & (2.178) & (3.415)\\
+\midrule
+Num.Obs. & 184 & 181\\
+R2 & 0.063 & 0.213\\
+R2 Adj. & 0.058 & 0.208\\
+\bottomrule
+\multicolumn{3}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Outliers are not just a nuisance}
+\protect\hypertarget{outliers-are-not-just-a-nuisance}{}
+\begin{figure}
+\centering
+\includegraphics{butterfly_ballot.png}
+\caption{The famous butterfly ballot from the 2000 election in Palm
+Beach County}
+\end{figure}
+\end{frame}
+
+\begin{frame}{Outliers are not just a nuisance}
+\protect\hypertarget{outliers-are-not-just-a-nuisance-1}{}
+\includegraphics[width=0.9\linewidth]{13.1-Linear-regression-II_files/figure-beamer/unnamed-chunk-12-1}
+\end{frame}
+
+\begin{frame}{Outliers are not just a nuisance}
+\protect\hypertarget{outliers-are-not-just-a-nuisance-2}{}
+\includegraphics[width=0.9\linewidth]{13.1-Linear-regression-II_files/figure-beamer/unnamed-chunk-13-1}
+\end{frame}
+
+\begin{frame}{Outliers are not just a nuisance}
+\protect\hypertarget{outliers-are-not-just-a-nuisance-3}{}
+\includegraphics[width=0.9\linewidth]{13.1-Linear-regression-II_files/figure-beamer/unnamed-chunk-14-1}
+\end{frame}
+
+\begin{frame}{But generally we should be wary of their influence}
+\protect\hypertarget{but-generally-we-should-be-wary-of-their-influence}{}
+\centering
+
+\includegraphics{inflation_outlier_1.png}
+\end{frame}
+
+\begin{frame}{But generally we should be wary of their influence}
+\protect\hypertarget{but-generally-we-should-be-wary-of-their-influence-1}{}
+\centering
+
+\includegraphics{inflation_outlier_2.png}
+\end{frame}
+
+\begin{frame}{Seems like an important guy\ldots{}}
+\protect\hypertarget{seems-like-an-important-guy}{}
+\centering
+
+\includegraphics{the_inflation_dude.png}
+\end{frame}
+
+\begin{frame}{A note on listwise deletion}
+\protect\hypertarget{a-note-on-listwise-deletion}{}
+What happens to your regression when the dataset has missing data?
+
+\begin{itemize}
+\tightlist
+\item
+  Listwise deletion: any observation that is missing at least one value
+  for any independent variable or the dependent variable will be thrown
+  out
+\item
+  i.e.~the model will not use that observation
+\end{itemize}
+
+\begin{table}
+\centering
+\begin{tabular}[t]{lll}
+\toprule
+Grade (DV) & Happiness & Hours of sleep\\
+\midrule
+\cellcolor{gray!6}{87} & \cellcolor{gray!6}{NA} & \cellcolor{gray!6}{7}\\
+\midrule
+81 & 8 & NA\\
+\midrule
+\cellcolor{gray!6}{NA} & \cellcolor{gray!6}{6} & \cellcolor{gray!6}{3}\\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Running a model:
+\(\text{Sleep}_i = \beta_0 + \beta_1\text{Happiness}_i + \beta_2\text{Sleep}_i + \epsilon_i\)
+\end{frame}
+
+\begin{frame}{What's wrong here?}
+\protect\hypertarget{whats-wrong-here}{}
+\includegraphics{badfigure.png}
+\end{frame}
+
+\begin{frame}[fragile]{COVID and democracy}
+\protect\hypertarget{covid-and-democracy}{}
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{load}\NormalTok{(}\StringTok{"lectures/lecture\_13.1/survey.RData"}\NormalTok{)}
+\CommentTok{\# Model only with anxiety}
+\NormalTok{m1\_anxiety }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}
+\NormalTok{  ea\_3item }\SpecialCharTok{\textasciitilde{}}\NormalTok{ anxiety\_scale,}
+  \AttributeTok{data =}\NormalTok{ survey}
+\NormalTok{)}
+
+\CommentTok{\# formula for the fully{-}specified model}
+\NormalTok{reg\_formula }\OtherTok{\textless{}{-}}\NormalTok{ ea\_3item }\SpecialCharTok{\textasciitilde{}}\NormalTok{ anxiety\_scale }\SpecialCharTok{+}\NormalTok{ birth\_decade }\SpecialCharTok{+}\NormalTok{ educ\_4cat }\SpecialCharTok{+}
+\NormalTok{  deprivation\_scale }\SpecialCharTok{+}\NormalTok{ authority\_scale\_alt }\SpecialCharTok{+}\NormalTok{ partyid}
+
+\CommentTok{\# Fully{-}specified model}
+\NormalTok{m2\_anxiety }\OtherTok{\textless{}{-}} \FunctionTok{lm}\NormalTok{(}
+  \AttributeTok{formula =}\NormalTok{ reg\_formula,}
+  \AttributeTok{data =}\NormalTok{ survey}
+\NormalTok{)}
+\end{Highlighting}
+\end{Shaded}
+\end{frame}
+
+\begin{frame}{Covid and democracy}
+\protect\hypertarget{covid-and-democracy-1}{}
+\scriptsize
+
+\begin{table}
+\centering
+\begin{tabular}[t]{lcc}
+\toprule
+  & Model 1 & Model 2\\
+\midrule
+COVID-related anxiety & 0.243 (0.014)*** & 0.166 (0.017)***\\
+Born in the 1950s &  & -0.017 (0.015)\\
+Born in the 1960s &  & 0.004 (0.016)\\
+Born in the 1970s &  & 0.050 (0.016)**\\
+Born in the 1980s &  & 0.085 (0.016)***\\
+Born since 1990 &  & 0.071 (0.015)***\\
+Deprivation &  & 0.090 (0.016)***\\
+Authoritarianism &  & 0.055 (0.009)***\\
+Completed high school &  & -0.010 (0.015)\\
+Some postsecondary &  & -0.034 (0.016)*\\
+College graduate &  & -0.035 (0.016)*\\
+Conservative partisan &  & -0.079 (0.010)***\\
+NDP partisan &  & -0.043 (0.013)***\\
+Green partisan &  & -0.009 (0.019)\\
+Non-partisan &  & -0.035 (0.015)*\\
+Constant & 0.255 (0.006)*** & 0.242 (0.019)***\\
+\midrule
+Num.Obs. & 2417 & 2177\\
+R2 & 0.114 & 0.206\\
+R2 Adj. & 0.114 & 0.201\\
+AIC & -748.6 & -842.6\\
+BIC & -731.2 & -746.0\\
+Log.Lik. & 377.298 & 438.308\\
+F & 310.625 & 37.399\\
+Std. Errors & HC0 & HC0\\
+\bottomrule
+\end{tabular}
+\end{table}
+\end{frame}
+
+\hypertarget{some-lessons-from-the-class}{%
+\section{Some lessons from the
+class}\label{some-lessons-from-the-class}}
+
+\begin{frame}{Big takeaways}
+\protect\hypertarget{big-takeaways}{}
+\begin{itemize}
+\tightlist
+\item
+  Empirical research is hard!
+
+  \begin{itemize}
+  \tightlist
+  \item
+    People who spend their lives doing this get it wrong all the time
+  \item
+    The first step: recognize how hard this is
+  \end{itemize}
+\item
+  Match the strength of your claims to the strength of your evidence
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Recognize uncertainty
+  \item
+    When reading about politics in popular media, notice how people
+    \emph{don't} do that
+  \end{itemize}
+\item
+  Think about the sort of evidence that would make you change your mind
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If the answer is none\ldots\ldots\ldots\ldots..
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{How can I use this?}
+\protect\hypertarget{how-can-i-use-this}{}
+To learn more\ldots{}
+
+\begin{itemize}
+\tightlist
+\item
+  POLI311: Quantitative methods
+\item
+  POLI313: Qualitative methods
+\item
+  Other than course work: find data that you like!
+\end{itemize}
+
+To apply what we've learned\ldots{}
+
+\begin{itemize}
+\tightlist
+\item
+  In popular media:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    How strong are the claims being made
+  \item
+    How strong is the evidence that is being presented?
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Sometimes, there \emph{is no empirical evidence}; there are entire
+      news articles based on the intuition of ``some dude''
+    \end{itemize}
+  \end{itemize}
+\item
+  In academics:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    When reading empirical research
+  \item
+    When reading non-empirical research: what would a good empirical
+    test look like?
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{References}
+\protect\hypertarget{references}{}
+\scriptsize
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
+  \bibliographytrue
+  \printbibliography[heading=none]
+\end{frame}
+
+\end{document}

@@ -1,0 +1,158 @@
+---
+title: "Problem set 4"
+author: "POLI210, Fall 2021"
+date: "Due December 2nd, 11:59PM"
+output:
+  tint::tintPdf:
+    latex_engine: xelatex
+  tufte::tufte_html: 
+    tufte_features: ["fonts", "background"]
+link-citations: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = TRUE,
+  include = TRUE,
+  message = FALSE,
+  warning = FALSE,
+  fig.margin = TRUE
+)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+# General instructions 
+
+In this assignment, we will use data on the Twitter activity of Islamic State sympathizers in the United Kingdom.^[The data was collected by Tamar Mitts for the following article: Mitts, Tamar. 2019. “From Isolation to Radicalization: Anti-Muslim Hostility and Support for ISIS in the West.” *American Political Science Review* 113(1): 173–94.] This dataset is posted in the assignment folder; a codebook is provided below.^[Note that the dataset is in dta format; you will need to use the `read_dta()` function from the `haven` package to load it into R.]  Any data visualizations you submit should be as informative as possible, with proper titles and axes labels.
+
+Submission: You must submit both a .Rmd file and the .pdf file that the knitting process produces. All of your code must be visible in the knitted PDF. Your written answers must be included as well. If you have any questions about the assignment, **post them on the MyCourses discussions board**. Do not email the instructor or the TAs. If you require individualized assistance, you are of course welcome to office hours.  
+
+# Introduction to the data 
+
+The dataset for this assignment is at the level of Twitter accounts: each row represents one Twitter user. Tamar Mitts used statistical procedures to identify Twitter accounts of ISIS followers and monitored their activity. For each tweet of each user, she used a statistical model that analyzed the content of the tweet and identified whether or not the tweet expressed support for ISIS.^[Mitts had access to over 100 million tweets -- way too many to analyze without a statistical model. These are the sorts of cutting-edge quantitative methods that political scientists (and other researchers) are currently developing.] She also used a statistical model to predict each user's location.^[Most Twitter users don't share their location, so a model that *infers* location based on other characteristics (language of the tweets, location of followers, etc.) is required.] This allows us to have data on the local political context for each user. We will be trying to predict the number of tweets that are sympathetic to ISIS using linear regression models. 
+
+# Codebook
+
+```{r,echo=FALSE, include = TRUE}
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+codebook <- 
+  tribble(
+    ~Variable, ~Description,
+    "user_id_anon", "Unique user ID for each Twitter account",
+    "isis_sympathy_count", "Number of tweets sympathetic to ISIS sent by a user",
+    "right_wing_pct", "Percentage of votes received by far-right parties in the user's locality during the 2015 general elections",
+    "unemployed_pct", "Unemployment rate in the user's locality",
+    "not_born_in_UK_pct", "Percentage of inhabitants of the user's locality who were not born in the United Kingdom"
+  )
+
+knitr::kable(codebook, 
+             caption = "Codebook for Mitts (2018) data", booktabs = T) %>%
+  kable_styling(full_width = T, latex_options = "striped",
+                font_size = 10) %>%
+  column_spec(1, bold = T) %>% 
+  row_spec(1:4, hline_after = TRUE)
+```
+
+# Assignment questions
+
+1. Examine the distribution of tweets that are sympathetic to ISIS using a histogram. How would you describe the distribution? Make sure to mention: a) a measure of central tendency; b) a measure of dispersion; c) skewness. 
+
+```{r}
+library(haven)
+library(ggplot2)
+isis <- read_dta("assignments/pset4/mitts2018.dta")
+
+ggplot(isis, aes(x = is_sympathy_count)) +
+  geom_histogram()
+
+mean(isis$is_sympathy_count, na.rm = T)
+median(isis$is_sympathy_count, na.rm = T)
+sd(isis$is_sympathy_count, na.rm = T)
+```
+
+```{marginfigure}
+The distribution is heavily right-skewed: it has a much longer right-tail. This implies that the mean should be higher than the median, which is indeed the case. The modal value is 0 and the vast majority of accounts posted none to a few pro-ISIS tweets. There are, however, several outliers with a high number of pro-ISIS tweets, which makes for a distribution with a quite high standard deviation.
+```
+
+
+2. Mitts argues that local political conditions affect the behavior of Twitter users. Specifically, she makes the case that anti-Muslim sentiment in a Twitter user's locality is likely to lead to radicalization.^[Radicalization is operationalized with the number of pro-ISIS tweets that a user sends.] Produce a scatterplot showing the relationship the percentage of votes received by far-right parties in a user's locality and the number of pro-ISIS tweets. Make sure to think about which variable goes on the x axis. What can you say about the relationship between far-right voting and radicalization? Be sure to mention both a) strength, and b) direction.
+      a. For 5 bonus points, use a custom ggplot theme of your choice^[`ggplot2` has 8 themes, which you can look at [here](https://ggplot2.tidyverse.org/reference/ggtheme.html). Alternatively, the `ggthemes` packages has nice additional themes, which you can look at [here](https://yutannihilation.github.io/allYourFigureAreBelongToUs/ggthemes/).]; reduce the size of the points to 0.5; reduce the opacity of the points to 0.3 (that's the `alpha` parameter); and add a line of best fit that uses a linear model. 
+
+```{r}
+ggplot(isis, aes(x = right_wing_pct, y = is_sympathy_count)) +
+  geom_point(size = 0.5, alpha = 0.3) +
+  theme_bw() +
+  geom_smooth(method = "lm")
+```
+
+```{marginfigure}
+The relationship between the share of votes received by far-right parties in a user's locality and the number of pro-ISIS tweets sent by a user is extremely weak. Looking at the scatterplot, we cannot eve distinguish a clear direction. 
+```
+
+
+
+3. Fit a linear regression model that predicts the number of tweets sympathetic to ISIS using the percentage of votes received by far-right parties in the user's locality. Present the results using the `summary()` function. No need to interpret them for now. 
+    a. For 5 bonus points, present your results in a publication-quality regression table.^[You can use the function `modelsummary()` from the package of the same name; the argument should be an object containing the linear model.] "Publication quality" implies that `right_wing_pct` should be replaced with a plain English term in the table. Please also replace the standard error of the coefficients with a 95% confidence interval. 
+
+```{r}
+base_model <- lm(is_sympathy_count ~ right_wing_pct, 
+   data = isis)
+
+summary(base_model)
+
+library(modelsummary)
+modelsummary(base_model,
+             coef_rename = c("right_wing_pct" = "% far-right"),
+             statistic = "conf.int",
+             conf_level = .95)
+```
+
+4. What are the estimates for the two beta coefficients, $\hat{\beta}_0$ and $\hat{\beta}_1$? What does each of them mean? 
+
+```{marginfigure}
+Q4: The estimate for $\beta_0$, the intercept, is roughly 5.371. This means that we expect the number of pro-ISIS tweets to be 5.371 when the share of far-right votes is 0. The estimate for $\beta_1$ is roughly 0.021. This means that as the share of far-right votes increases by 1 unit, we expect the number of pro-ISIS tweets to increase by 0.021 units. 
+```
+
+\newpage
+
+5. Interpret both the standard error and the p-value associated to the coefficient on `right_wing_pct`. Based on those values, can we reject the null hypothesis? Make sure to be clear about what the null hypothesis is. 
+
+```{marginfigure}
+Q5: The null hypothesis is that there is no association between the share of far-right votes and the number of pro-ISIS tweets, i.e. $\beta_1 = 0$. The standard error associated to the coefficient on far-right vote share is about 0.008; this is our best guess of the standard deviation of the sampling distribution of the coefficient. In other words, if we were to draw repeated samples and computed the beta coefficient for each sample, we would expect the sampling distribution of beta coefficients to have a standard deviation of about 0.008. The associated p-value is about 0.013, meaning that if the null hypothesis is correct (i.e. $\beta_1 = 0$), we would expect to draw results as extreme as, or more extreme than, what we observe here in about 1\% of repeated samples. Since this is quite surprising, we reject the null hypothesis (assuming a significance level $\alpha = 0.05$)
+```
+
+
+6. For 5 bonus points, comment on the *substantive* significance of your results. Hint: regression coefficients should always be interpreted by referring to the scale of the dependent and independent variables. 
+
+```{marginfigure}
+Q6: Our results are not really substantively significant: moving from the minimum to the maximum of the observed values of the independent variable would only increase the expected number of tweets by about 0.80 ($40*0.021$). 
+```
+
+
+7. For 5 bonus points, what can you say about the fit of our model? In a predictive inference framework, are we doing a good job predicting the number of pro-ISIS tweets? Hint: refer to a measure of model fit such as $R^2$ or RMSE. You can also extract all of the residuals by using `model$residuals`, if `model` is an object that contains the regression object.
+
+```{marginfigure}
+Q7: Our model does not fit the data all that well. If you give me the share of far-right votes, it is hard for me to guess the number of pro-ISIS tweets with any precision. The R-squared nears 0, meaning that we explain very little of the variation in the DV. Our RMSE is nearly 13, meaning that our predictions miss by about 13 tweets (which is a lot given that the mean number of tweets is roughly 5).
+```
+
+
+8. Fit a linear regression model that predicts the number of pro-ISIS tweets using both the share of far-right votes in a user's locality and the percentage of non-natives in the user's locality. Present the results using the `summary()` function.^[You can of course present a publication-quality table here as well, but there are no bonus points for this question.]
+
+```{r}
+m2 <- lm(is_sympathy_count ~ right_wing_pct +
+           not_born_in_UK_pct, 
+   data = isis)
+
+summary(m2)
+```
+
+
+9. Comment on the results above. Why has the coefficient on `right_wing_pct` changed? Have our substantive conclusions changed? 
+
+```{marginfigure}
+Q9: The estimated effect of a one-unit change in far-right vote share is much larger (though still not particularly large). The estimate changed because the new covariate, the proportion of the population born in the UK, is correlated with both the number of pro-ISIS tweets and far-right vote share. In other words, it is a confounder; excluding it leads to biased estimates of the effect of far-right vote share.
+```
+
+

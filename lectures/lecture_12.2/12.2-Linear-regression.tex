@@ -1,0 +1,670 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+\PassOptionsToPackage{dvipsnames,svgnames*,x11names*}{xcolor}
+%
+\documentclass[
+  ignorenonframetext,
+  t]{beamer}
+\usepackage{pgfpages}
+\setbeamertemplate{caption}[numbered]
+\setbeamertemplate{caption label separator}{: }
+\setbeamercolor{caption name}{fg=normal text.fg}
+\beamertemplatenavigationsymbolsempty
+% Prevent slide breaks in the middle of a paragraph
+\widowpenalties 1 10000
+\raggedbottom
+\setbeamertemplate{part page}{
+  \centering
+  \begin{beamercolorbox}[sep=16pt,center]{part title}
+    \usebeamerfont{part title}\insertpart\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{section page}{
+  \centering
+  \begin{beamercolorbox}[sep=12pt,center]{part title}
+    \usebeamerfont{section title}\insertsection\par
+  \end{beamercolorbox}
+}
+\setbeamertemplate{subsection page}{
+  \centering
+  \begin{beamercolorbox}[sep=8pt,center]{part title}
+    \usebeamerfont{subsection title}\insertsubsection\par
+  \end{beamercolorbox}
+}
+\AtBeginPart{
+  \frame{\partpage}
+}
+\AtBeginSection{
+  \ifbibliography
+  \else
+    \frame{\sectionpage}
+  \fi
+}
+\AtBeginSubsection{
+  \frame{\subsectionpage}
+}
+\usepackage{amsmath,amssymb}
+\usepackage{lmodern}
+\usepackage{ifxetex,ifluatex}
+\ifnum 0\ifxetex 1\fi\ifluatex 1\fi=0 % if pdftex
+  \usepackage[T1]{fontenc}
+  \usepackage[utf8]{inputenc}
+  \usepackage{textcomp} % provide euro and other symbols
+\else % if luatex or xetex
+  \usepackage{unicode-math}
+  \defaultfontfeatures{Scale=MatchLowercase}
+  \defaultfontfeatures[\rmfamily]{Ligatures=TeX,Scale=1}
+\fi
+\usetheme[]{metropolis}
+% Use upquote if available, for straight quotes in verbatim environments
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\IfFileExists{microtype.sty}{% use microtype if available
+  \usepackage[]{microtype}
+  \UseMicrotypeSet[protrusion]{basicmath} % disable protrusion for tt fonts
+}{}
+\makeatletter
+\@ifundefined{KOMAClassName}{% if non-KOMA class
+  \IfFileExists{parskip.sty}{%
+    \usepackage{parskip}
+  }{% else
+    \setlength{\parindent}{0pt}
+    \setlength{\parskip}{6pt plus 2pt minus 1pt}}
+}{% if KOMA class
+  \KOMAoptions{parskip=half}}
+\makeatother
+\usepackage{xcolor}
+\IfFileExists{xurl.sty}{\usepackage{xurl}}{} % add URL line breaks if available
+\IfFileExists{bookmark.sty}{\usepackage{bookmark}}{\usepackage{hyperref}}
+\hypersetup{
+  pdftitle={POLI210: Political Science Research Methods},
+  pdfauthor={Olivier Bergeron-Boutin},
+  colorlinks=true,
+  linkcolor=Maroon,
+  filecolor=Maroon,
+  citecolor=Blue,
+  urlcolor=blue,
+  pdfcreator={LaTeX via pandoc}}
+\urlstyle{same} % disable monospaced font for URLs
+\newif\ifbibliography
+\usepackage{color}
+\usepackage{fancyvrb}
+\newcommand{\VerbBar}{|}
+\newcommand{\VERB}{\Verb[commandchars=\\\{\}]}
+\DefineVerbatimEnvironment{Highlighting}{Verbatim}{commandchars=\\\{\}}
+% Add ',fontsize=\small' for more characters per line
+\usepackage{framed}
+\definecolor{shadecolor}{RGB}{48,48,48}
+\newenvironment{Shaded}{\begin{snugshade}}{\end{snugshade}}
+\newcommand{\AlertTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{#1}}
+\newcommand{\AnnotationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\AttributeTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\BaseNTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\BuiltInTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\CharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\CommentTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\CommentVarTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\ConstantTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{\textbf{#1}}}
+\newcommand{\ControlFlowTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\DataTypeTok}[1]{\textcolor[rgb]{0.87,0.87,0.75}{#1}}
+\newcommand{\DecValTok}[1]{\textcolor[rgb]{0.86,0.86,0.80}{#1}}
+\newcommand{\DocumentationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{#1}}
+\newcommand{\ErrorTok}[1]{\textcolor[rgb]{0.76,0.75,0.62}{#1}}
+\newcommand{\ExtensionTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\FloatTok}[1]{\textcolor[rgb]{0.75,0.75,0.82}{#1}}
+\newcommand{\FunctionTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\ImportTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\InformationTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\newcommand{\KeywordTok}[1]{\textcolor[rgb]{0.94,0.87,0.69}{#1}}
+\newcommand{\NormalTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\OperatorTok}[1]{\textcolor[rgb]{0.94,0.94,0.82}{#1}}
+\newcommand{\OtherTok}[1]{\textcolor[rgb]{0.94,0.94,0.56}{#1}}
+\newcommand{\PreprocessorTok}[1]{\textcolor[rgb]{1.00,0.81,0.69}{\textbf{#1}}}
+\newcommand{\RegionMarkerTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\SpecialCharTok}[1]{\textcolor[rgb]{0.86,0.64,0.64}{#1}}
+\newcommand{\SpecialStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\StringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\VariableTok}[1]{\textcolor[rgb]{0.80,0.80,0.80}{#1}}
+\newcommand{\VerbatimStringTok}[1]{\textcolor[rgb]{0.80,0.58,0.58}{#1}}
+\newcommand{\WarningTok}[1]{\textcolor[rgb]{0.50,0.62,0.50}{\textbf{#1}}}
+\usepackage{graphicx}
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+% Scale images if necessary, so that they will not overflow the page
+% margins by default, and it is still possible to overwrite the defaults
+% using explicit options in \includegraphics[width, height, ...]{}
+\setkeys{Gin}{width=\maxwidth,height=\maxheight,keepaspectratio}
+% Set default figure placement to htbp
+\makeatletter
+\def\fps@figure{htbp}
+\makeatother
+\setlength{\emergencystretch}{3em} % prevent overfull lines
+\providecommand{\tightlist}{%
+  \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{-\maxdimen} % remove section numbering
+\usepackage{booktabs}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{multirow}
+\usepackage{wrapfig}
+\usepackage{float}
+\usepackage{colortbl}
+\usepackage{pdflscape}
+\usepackage{tabu}
+\usepackage{threeparttable}
+\usepackage{threeparttablex}
+\usepackage[normalem]{ulem}
+\usepackage{makecell}
+\usepackage{xcolor}
+\usepackage{fontspec}
+\usepackage{animate}
+\usepackage{xmpmulti}
+\usepackage{caption}
+\setsansfont[BoldFont={FiraSans-Bold.ttf}]{FiraSans-Light.ttf}
+\setmonofont{FiraMono-Regular.ttf}
+\usepackage{color}
+\definecolor{mygreen}{HTML}{008000}
+\ifluatex
+  \usepackage{selnolig}  % disable illegal ligatures
+\fi
+\usepackage[style=authoryear,]{biblatex}
+\addbibresource{../210lectures\_bib.bib}
+
+\title{POLI210: Political Science Research Methods}
+\subtitle{Lecture 12.2: Linear regression}
+\author{Olivier Bergeron-Boutin}
+\date{November 23rd, 2021}
+
+\begin{document}
+\frame{\titlepage}
+
+\begin{frame}{Boring admin stuff}
+\protect\hypertarget{boring-admin-stuff}{}
+\begin{itemize}
+\tightlist
+\item
+  More appointments with me available
+\item
+  Lots of tutoring sessions
+\item
+  I know there's a lot going on
+
+  \begin{itemize}
+  \tightlist
+  \item
+    I'm offering as much help as I can -- use it!
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Cats}
+\protect\hypertarget{cats}{}
+\begin{figure}[ht] 
+  \label{ fig7} 
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[]{clem.jpg}
+  \end{minipage}%%
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics[]{arthur.jpg} 
+  \end{minipage} 
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics{lili.jpg} 
+    \vspace{4ex}
+  \end{minipage}%% 
+  \begin{minipage}[b]{0.5\linewidth}
+    \centering
+    \includegraphics{oscar.jpg} 
+    \vspace{4ex}
+  \end{minipage} 
+\end{figure}
+\end{frame}
+
+\begin{frame}{The limitations of correlation coefficients}
+\protect\hypertarget{the-limitations-of-correlation-coefficients}{}
+Two limitations:
+
+\begin{itemize}
+\tightlist
+\item
+  Does not give an estimate of the \textbf{magnitude} of the effect
+
+  \begin{itemize}
+  \tightlist
+  \item
+    If \(X\) increases by one unit, by how much can I expect \(Y\) to
+    change?
+  \end{itemize}
+\item
+  Does not allow us to ``control'' for other variables
+
+  \begin{itemize}
+  \tightlist
+  \item
+    By ``controlling'' for confounders, we will be able to make more
+    plausible claims about causality
+  \end{itemize}
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Correlation does not indicate magnitude of the
+effect}
+\protect\hypertarget{correlation-does-not-indicate-magnitude-of-the-effect}{}
+\includegraphics[width=0.8\linewidth]{12.2-Linear-regression_files/figure-beamer/unnamed-chunk-1-1}
+
+\footnotesize
+
+\begin{verbatim}
+## [1] 0.7425742
+\end{verbatim}
+
+\begin{verbatim}
+## [1] 0.7616742
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{What we want to do}
+\protect\hypertarget{what-we-want-to-do}{}
+\centering
+
+\includegraphics[width=0.9\linewidth]{12.2-Linear-regression_files/figure-beamer/unnamed-chunk-3-1}
+
+\raggedright
+
+Our objective: draw a line through the points that best represents the
+relationship
+\end{frame}
+
+\begin{frame}{Back to middleschool}
+\protect\hypertarget{back-to-middleschool}{}
+We can represent lines in a graph using the following equation:
+\(f(x) = ax + b\)
+
+\begin{itemize}
+\tightlist
+\item
+  \(f(x)\): the value of y; it's determined by the right-hand side of
+  the equation
+\item
+  \(ax\): some constant multiplied by x
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(a\) is the slope of my line
+  \end{itemize}
+\item
+  \(b\): the intercept
+\end{itemize}
+
+If I'm given the values \(a\), \(x\), and \(b\), I can find the value of
+y
+\end{frame}
+
+\begin{frame}{A linear function}
+\protect\hypertarget{a-linear-function}{}
+Let's consider a simple function \(f(x) = 2x + 4\)
+
+\includegraphics[width=0.75\linewidth,height=0.6\textheight]{12.2-Linear-regression_files/figure-beamer/unnamed-chunk-4-1}
+
+\(b\) = 0, because \(y\) is equal to 0 when \(x\) is equal to 0
+
+\(a\) = 2, because for each increase of 1 unit in \(x\), \(y\) increases
+by 2 units
+\end{frame}
+
+\begin{frame}{Regression notation}
+\protect\hypertarget{regression-notation}{}
+What we'll be doing: fit a line through the points
+
+\begin{itemize}
+\tightlist
+\item
+  We will want to find a rule that allows us to choose the best line
+\item
+  This is the ``line of best fit''
+\end{itemize}
+
+The line of best fit is generally expressed in the following way:
+
+\[Y_i = \beta_0 + \beta_1X_1 + \epsilon_i\]
+
+\includegraphics{reg_meme1.png}
+\end{frame}
+
+\begin{frame}{Line of best fit or\ldots?}
+\protect\hypertarget{line-of-best-fit-or}{}
+\includegraphics[width=\textwidth,height=0.9\textheight]{reg_meme2.png}
+\end{frame}
+
+\begin{frame}{Our first attempt}
+\protect\hypertarget{our-first-attempt}{}
+\(\text{VoteShare}_i = \beta_0 + \beta_1\text{Growth}_i + \epsilon_i\)
+
+\includegraphics[width=1\linewidth]{12.2-Linear-regression_files/figure-beamer/unnamed-chunk-5-1}
+
+Here, I arbitrarily chose a line: \(f(x) = 1.5*GDP + 40\)
+
+In other words, I set \(\beta_0\) to 40 and \(\beta_1\) to 1.5
+\end{frame}
+
+\begin{frame}{Our first attempt}
+\protect\hypertarget{our-first-attempt-1}{}
+\includegraphics[width=1\linewidth]{12.2-Linear-regression_files/figure-beamer/unnamed-chunk-6-1}
+
+Let's focus on a single point: the 1932 election
+\end{frame}
+
+\begin{frame}{Our first attempt: residual for the 1932 observation}
+\protect\hypertarget{our-first-attempt-residual-for-the-1932-observation}{}
+\includegraphics[width=0.9\linewidth]{12.2-Linear-regression_files/figure-beamer/unnamed-chunk-7-1}
+
+\textbf{Residual}: the difference between the actual outcome and our
+model's prediction of the outcome
+
+\begin{itemize}
+\tightlist
+\item
+  \({\color[HTML]{FF0000} \epsilon_i} = y_i - \hat{y_i} = 40.9 - 28.9 = 12.0\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Our first attempt: all residuals}
+\protect\hypertarget{our-first-attempt-all-residuals}{}
+\includegraphics[width=0.8\linewidth]{12.2-Linear-regression_files/figure-beamer/unnamed-chunk-8-1}
+
+\begin{itemize}
+\tightlist
+\item
+  We can compute the residual for each observation
+\item
+  Why not try to minimize the sum of residuals?
+\item
+  Some are positive, some are negative; they will cancel out
+\item
+  Instead, we want to choose a line that minimizes the \textbf{sum of
+  squared errors}
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Sum of squared errors}
+\protect\hypertarget{sum-of-squared-errors}{}
+Sum of squared errors (SSE): \hfill \(\sum_{i=1}^{n}(y_i-\hat{y}_i)^2\)
+
+\begin{itemize}
+\tightlist
+\item
+  With \(n=3\):
+  \hfill \((y_1-\hat{y}_1)^2 + (y_2-\hat{y}_2)^2 + (y_3-\hat{y}_3)^2\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Our first attempt: why is it wrong?}
+\protect\hypertarget{our-first-attempt-why-is-it-wrong}{}
+Let's select just 3 observations to simplify the task
+
+\includegraphics[width=0.75\linewidth]{12.2-Linear-regression_files/figure-beamer/unnamed-chunk-9-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \(y_i\): \hspace{2cm} \(52.0, 46.3,54.4\) \pause
+\item
+  \(\hat{y}_i\): \hspace{2cm} \(41.3,46.3,47.0\) \pause
+\item
+  \(\epsilon_i\): \hspace{2cm} \(10.7, 00.0, 07.4\) \pause
+\item
+  SSE: \hspace{2cm} \(10.7^2 + 0^2 + 7.4^2 = 169.5\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}{Our first attempt: why is it wrong?}
+\protect\hypertarget{our-first-attempt-why-is-it-wrong-1}{}
+Let's instead use \(\beta_0 = 45\) and \(\beta_1 = 1\)
+
+\includegraphics[width=0.75\linewidth]{12.2-Linear-regression_files/figure-beamer/unnamed-chunk-10-1}
+
+\begin{itemize}
+\tightlist
+\item
+  \(y_i\): \hspace{2cm} \(52.0, 46.3,54.4\) \pause
+\item
+  \(\hat{y}_i\): \hspace{2cm} \(45.8,49.2,49.6\) \pause
+\item
+  \(\epsilon_i\): \hspace{2cm} \(6.2, -2.9, 4.8\) \pause
+\item
+  SSE: \hspace{2cm} \(6.2^2 + -2.9^2 + 4.8^2 = 69.89\)
+\end{itemize}
+\end{frame}
+
+\begin{frame}[fragile]{Running our regression}
+\protect\hypertarget{running-our-regression}{}
+Of course, we don't have to do this by hand
+
+\begin{itemize}
+\tightlist
+\item
+  The command to run a linear regression in R is \texttt{lm()}
+\item
+  Two main arguments:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    formula, of format \texttt{y\ \textasciitilde{}\ x}
+  \item
+    data
+  \end{itemize}
+\end{itemize}
+
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{lm}\NormalTok{(partyincshr }\SpecialCharTok{\textasciitilde{}}\NormalTok{ gdpchangeyr3, }
+   \AttributeTok{data =} \FunctionTok{subset}\NormalTok{(economy, year }\SpecialCharTok{\%in\%} \FunctionTok{c}\NormalTok{(}\DecValTok{1852}\NormalTok{, }\DecValTok{1860}\NormalTok{, }\DecValTok{2012}\NormalTok{)))}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = partyincshr ~ gdpchangeyr3, data = subset(economy, 
+##     year %in% c(1852, 1860, 2012)))
+## 
+## Coefficients:
+##  (Intercept)  gdpchangeyr3  
+##      51.6700       -0.2373
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Visualizing the correct regression line}
+\protect\hypertarget{visualizing-the-correct-regression-line}{}
+\includegraphics[width=0.75\linewidth]{12.2-Linear-regression_files/figure-beamer/unnamed-chunk-12-1}
+
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
+\begin{tabular}{rrrrr}
+\toprule
+$i$ & $y_i$ & $\hat{y}_i$ & $\epsilon_i$ & $\epsilon_i^2$\\
+\midrule
+1 & 46.32 & 50.67 & -4.35 & 18.92\\
+2 & 54.42 & 50.57 & 3.85 & 14.82\\
+3 & 51.96 & 51.47 & 0.49 & 0.24\\
+\bottomrule
+\end{tabular}
+\end{column}
+
+\begin{column}{0.48\textwidth}
+Sum of Squared Errors: \(18.92 + 14.82 + 0.24 = 33.98\)
+\end{column}
+\end{columns}
+\end{frame}
+
+\begin{frame}{Back to our full data}
+\protect\hypertarget{back-to-our-full-data}{}
+\includegraphics[width=0.75\linewidth]{12.2-Linear-regression_files/figure-beamer/unnamed-chunk-14-1}
+\end{frame}
+
+\begin{frame}[fragile]{Linear regression with our full data}
+\protect\hypertarget{linear-regression-with-our-full-data}{}
+\footnotesize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{lm}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ partyincshr }\SpecialCharTok{\textasciitilde{}}\NormalTok{ gdpchangeyr3, }
+   \AttributeTok{data =}\NormalTok{ economy)}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = partyincshr ~ gdpchangeyr3, data = economy)
+## 
+## Coefficients:
+##  (Intercept)  gdpchangeyr3  
+##      50.2541        0.6051
+\end{verbatim}
+
+\normalsize
+
+This is okay\ldots but there's not a lot of information!
+\end{frame}
+
+\begin{frame}[fragile]{Linear regression with our full data}
+\protect\hypertarget{linear-regression-with-our-full-data-1}{}
+\scriptsize
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\FunctionTok{lm}\NormalTok{(}\AttributeTok{formula =}\NormalTok{ partyincshr }\SpecialCharTok{\textasciitilde{}}\NormalTok{ gdpchangeyr3, }\AttributeTok{data =}\NormalTok{ economy) }\SpecialCharTok{\%\textgreater{}\%} \FunctionTok{summary}\NormalTok{()}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{verbatim}
+## 
+## Call:
+## lm(formula = partyincshr ~ gdpchangeyr3, data = economy)
+## 
+## Residuals:
+##      Min       1Q   Median       3Q      Max 
+## -14.2925  -3.6163  -0.1858   3.8433  10.3324 
+## 
+## Coefficients:
+##              Estimate Std. Error t value Pr(>|t|)    
+## (Intercept)   50.2541     0.9992  50.293  < 2e-16 ***
+## gdpchangeyr3   0.6051     0.2196   2.755  0.00837 ** 
+## ---
+## Signif. codes:  0 '***' 0.001 '**' 0.01 '*' 0.05 '.' 0.1 ' ' 1
+## 
+## Residual standard error: 5.653 on 46 degrees of freedom
+##   (183 observations deleted due to missingness)
+## Multiple R-squared:  0.1417, Adjusted R-squared:  0.123 
+## F-statistic: 7.592 on 1 and 46 DF,  p-value: 0.008372
+\end{verbatim}
+\end{frame}
+
+\begin{frame}{Interpreting our results}
+\protect\hypertarget{interpreting-our-results}{}
+\includegraphics[width=\textwidth,height=0.95\textheight]{reg_results1.png}
+\end{frame}
+
+\begin{frame}{Interpreting our results}
+\protect\hypertarget{interpreting-our-results-1}{}
+\includegraphics[width=\textwidth,height=0.95\textheight]{reg_results2.png}
+\end{frame}
+
+\begin{frame}{Interpreting our results}
+\protect\hypertarget{interpreting-our-results-2}{}
+\includegraphics[width=\textwidth,height=0.95\textheight]{reg_results3.png}
+\end{frame}
+
+\begin{frame}{Interpreting our results}
+\protect\hypertarget{interpreting-our-results-3}{}
+\includegraphics[width=\textwidth,height=0.95\textheight]{reg_results4.png}
+\end{frame}
+
+\begin{frame}{Interpreting our results}
+\protect\hypertarget{interpreting-our-results-4}{}
+\includegraphics[width=\textwidth,height=0.95\textheight]{reg_results5.png}
+\end{frame}
+
+\begin{frame}{Interpreting our results}
+\protect\hypertarget{interpreting-our-results-5}{}
+\includegraphics[width=\textwidth,height=0.95\textheight]{reg_results6.png}
+\end{frame}
+
+\begin{frame}{Interpreting our results}
+\protect\hypertarget{interpreting-our-results-6}{}
+\includegraphics[width=\textwidth,height=0.95\textheight]{reg_results7.png}
+\end{frame}
+
+\begin{frame}{Interpreting our results}
+\protect\hypertarget{interpreting-our-results-7}{}
+\includegraphics[width=\textwidth,height=0.95\textheight]{reg_results8.png}
+\end{frame}
+
+\begin{frame}{How results generally appear in published work}
+\protect\hypertarget{how-results-generally-appear-in-published-work}{}
+\begin{table}
+\centering
+\begin{tabular}[t]{lc}
+\toprule
+  & Model 1\\
+\midrule
+(Intercept) & 50.254***\\
+ & (0.999)\\
+GDP change (year 3) & 0.605**\\
+ & (0.220)\\
+\midrule
+Num.Obs. & 48\\
+R2 & 0.142\\
+R2 Adj. & 0.123\\
+\bottomrule
+\multicolumn{2}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Predicting income}
+\protect\hypertarget{predicting-income}{}
+\includegraphics[width=1\linewidth]{12.2-Linear-regression_files/figure-beamer/unnamed-chunk-18-1}
+\end{frame}
+
+\begin{frame}{A linear regression model predicting income}
+\protect\hypertarget{a-linear-regression-model-predicting-income}{}
+\begin{table}
+\centering
+\begin{tabular}[t]{lc}
+\toprule
+  & Model 1\\
+\midrule
+(Intercept) & 56093.305***\\
+ & (1705.115)\\
+Proportion of women & -30669.943***\\
+ & (2987.010)\\
+\midrule
+Num.Obs. & 172\\
+R2 & 0.383\\
+R2 Adj. & 0.379\\
+\bottomrule
+\multicolumn{2}{l}{\rule{0pt}{1em}+ p $<$ 0.1, * p $<$ 0.05, ** p $<$ 0.01, *** p $<$ 0.001}\\
+\end{tabular}
+\end{table}
+\end{frame}
+
+\begin{frame}{Why more covariates?}
+\protect\hypertarget{why-more-covariates}{}
+\end{frame}
+
+\begin{frame}[allowframebreaks]{}
+  \bibliographytrue
+  \printbibliography[heading=none]
+\end{frame}
+
+\end{document}

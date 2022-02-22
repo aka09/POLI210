@@ -1,0 +1,114 @@
+---
+output: 
+  stevetemplates::article:
+    fig_caption: true
+#bibliography: master.bib
+biblio-style: apsr
+title: "Midterm Study Guide"
+author:
+- name: POLI210
+  affiliation: "Fall 2021"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+abstract: "This document serves as a study guide for the upcoming POLI210 midterm examination. Please read it carefully as it contains important information."
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+header-includes:
+  - \usepackage{changepage} 
+# spacing: double
+endnote: no
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE,
+                      message=FALSE, warning=FALSE,
+                      fig.path='figs/',
+                      cache.path = '_cache/',
+                      fig.process = function(x) {
+                      x2 = sub('-\\d+([.][a-z]+)$', '\\1', x)
+                      if (file.rename(x, x2)) x2 else x
+                      })
+```
+
+\setlength{\parindent}{0pt}
+
+# General points
+
+The midterm exam for POLI210 will be available from Tuesday November 9th at 8am to Friday November 12th at 11:59pm. During this time frame, you have exactly 3 hours to complete the exam once you open it.^[For those who are registered with OSD, I will manually adjust the settings on MyCourses in accordance with the accommodations you have requested.] Do *not* start the exam late on Friday; 11:59PM is the deadline to submit, not to start. The exam will be available under the "Quizzes" tab on MyCourses. 
+
+# Rules
+
+1.  It is strictly forbidden to collaborate with any student(s) from the class nor with anybody else during the exam period. Do not talk about the exam questions with your peers who have not taken the exam. Any attempts to cheat will have strong disciplinary consequences.
+2. The exam is open-book. The goal is *not* to test your ability to remember formulas or specific facts. I am instead interested in your ability to critically approach political science methodology. 
+3. Should there be a connection issue—please contact IT support first (514-398-3398) immediately. For documenting your problem, you also need to contact the instructor by email and attach a screenshot of the problem. 
+4. You are highly encouraged *not* to start the exam at the last minute, e.g. at 9pm on Friday the 12th.
+
+# Material covered
+
+The midterm exam will mostly focus on the material covered in course lectures (up to November 4th inclusively). There will not be any coding questions. Content from the readings is eligible, but less of a focus. What I most care about is the content that I've presented in the lectures. 
+
+# Format 
+
+The midterm exam will be composed of two essay-type questions and five questions with medium-length answers. 
+
+## Essay questions
+
+The purpose of the essay questions is to test your reasoning pertaining to the big questions in political science methodology. These questions will not be about specific details. There is not necessarily a "right" or a "wrong" answer. However, you should refer to the material that we've learned in the class when writing your answer. Here are a few examples of what might be asked: 
+
+\begin{itemize}%[leftmargin=1em]
+  \renewcommand{\labelitemi}{$\Rightarrow$}
+  \setlength\itemsep{0em}
+ \item How close does political science come to the scientific ideal? 
+ \item Political scientists often disagree as to how convincing different methods are in estimating causal relationships. Compare and contrast two of the methods that we have covered in the course -- which do you find most convincing and why? You may choose from: experiments, case studies, comparative studies, and interviews. 
+ \item Some political scientists believe that the recent emphasis on quantitative methods has impoverished the discipline by shifting scholars' focus from big, substantively important questions that are difficult to answer, to theoretically trivial causal effects that can be more easily estimated. Which do you think is preferable -- tackling big questions and come up with imperfect answers, or tackling narrower questions and come up with more certain answers? 
+\end{itemize}
+
+For essay questions, it is good practice to be exceedingly clear about what you'll be arguing from the outset. You may for instance begin by saying "In this short essay, I will argue that..." (You are by no means forced to do that, but it has the benefit of making things clear.) It may also be helpful to collect your thoughts and jot down a rough outline before beginning your writeup. When writing, you should know exactly where you're going; try to follow a gameplan and not improvise. For more tips, see the link I added to MyCourses. I do not have firm expectations regarding how long your answer should be, but something in the neighborhood of 750 words (3 pages) is reasonable.
+
+## Medium-length answers
+
+The purpose of medium-length answers is to test more specific material that we have seen in the course. These will be less about "big questions" and more about your understanding of key concepts in the course: random assignment, internal/external validity, random sampling, purposive sampling, etc. I may ask you to describe a method and its advantages/disadvantages. I may also show you results from a study and ask you to interpret them. Your answers should be roughly 150-200 words, or 1-2 paragraphs, but there are no strict guidelines. 
+
+# Material to cover
+
+The following is not an exhaustive list of all relevant material. Other material may appear on the midterm. 
+
+\vspace{0.5cm}
+
+**Unit 1: Intro + scientific research**
+
+\begin{adjustwidth}{1cm}{}
+Key concepts: Empirical vs normative research; descriptive inference vs predictive inference vs causal inference; independent and dependent variables; the view of the sciences as "rules-based"; core principles of scientific research; epistemological approaches; the role theory in scientific research; inductive vs deductive approaches; falsifiability
+\end{adjustwidth}
+
+
+**Unit 2: The scientific process**
+
+\begin{adjustwidth}{1cm}{}
+Key concepts: scientific literatures; the role of theory in scientific research; parsimony and generality as qualities of a good theory
+\end{adjustwidth}
+
+**Unit 3: causality**
+
+\begin{adjustwidth}{1cm}{}
+Key concepts: potential outcomes, self-selection, selection bias, fundamental problem of causal inference, treatment effect, random assignment, experimental vs observational vs quasi-experimental research, internal vs external validity, different types of experiments, confounders and spurious relationships
+\end{adjustwidth}
+
+**Unit 4: measurement**
+
+\begin{adjustwidth}{1cm}{}
+Key concepts: validity; reliability; levels of measurement; operationalization
+\end{adjustwidth}
+
+**Unit 5: case studies, comparative method, and interviews**
+
+\begin{adjustwidth}{1cm}{}
+Key concepts: small-N research; purposive sampling; successful least-likely; failed most-likely; scope conditions/overgeneralization/undergeneralization/; exploratory vs theory-testing case studies; most-similar systems; most-different systems; deterministic vs probabilistic causation; selecting on the dependent variable; positivism vs interpretivism; relational interviewing
+\end{adjustwidth}
+
+**Unit 6: Survey research and sampling**
+
+\begin{adjustwidth}{1cm}{}
+- Key concepts: population, sample, parameter, and sample statistic; probability sampling; sampling variance; central limit theorem; non-response bias; methods of data collection; double-barelled questions; attention checks; social desirability bias; survey weights; likely voter model; measures of central tendency and dispersion; confidence intervals; standard error of the mean; sampling distribution; confidence level and coverage
+\end{adjustwidth}

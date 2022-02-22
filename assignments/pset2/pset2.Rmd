@@ -122,6 +122,10 @@ debate %>%
             catholic = mean(catholic, na.rm = T))
 ```
 
+```{marginfigure}
+It looks like there are similar proportions of women in the two experimental conditions. This is exactly what we expect given random assignment: the two groups should be, on average, just about the same on all pre-treatment covariates. 
+```
+
 7. Druckman notes that he "recruited mostly young people...from summer courses at the University of Minnesota." Additionally, the sample underrepresents Republicans and overrepresents women. How should we interpret the results in light of this? Are we less confident in establishing causality? 
 
 ```{marginfigure}
@@ -135,13 +139,6 @@ Limited external validity: not clear if the results would hold if we had access 
 debate %>% 
   group_by(sophdum3, tv) %>% 
   summarise(won = mean(won2, na.rm = T))
-
-soph <- subset(debate, sophdum3 == 1)
-nonsoph <- subset(debate, sophdum3 == 0)
-
-ate_soph <- mean(soph$won2[soph$tv==1],na.rm=T) - mean(soph$won2[soph$tv==0],na.rm=T)
-
-ate_nsoph <- mean(nonsoph$won2[nonsoph$tv==1],na.rm=T) - mean(nonsoph$won2[nonsoph$tv==0],na.rm=T)
 ```
 
 

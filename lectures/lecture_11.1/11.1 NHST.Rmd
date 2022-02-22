@@ -47,7 +47,7 @@ knitr::opts_chunk$set(fig.height = 6, fig.width = 10,
                       out.width = '75%')
 ```
 
-```{r customtheme}
+```{r customtheme,echo=FALSE}
 # taken from Andrew Heiss' website
 library(ggtext)
 theme_custom <- function(){
@@ -62,6 +62,170 @@ theme_custom <- function(){
         axis.title.y = element_text(margin = margin(r = 10), hjust = 1, angle = 90))
 }
 ```
+
+## Boring admin stuff
+
+- Problem set 4 will be posted today; **mandatory**
+- Due dates:
+  - Problem set 4: December 2nd, 11:59PM
+  - Quiz 2: November 30th to December 4th
+  - Group project: December 6th, 11:59PM
+- Group project: you should find your teams ASAP
+- I post interesting articles on MyCourses 
+  
+## Final project
+
+- 1500 words
+- Teams of four
+- Pick one article out of 5 and critique it
+
+## Articles to choose from
+
+\footnotesize
+
+```{r,echo=FALSE}
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+tribble(
+  ~Article, ~Authors, ~`Substantive content`, ~`Methodology`,
+  "The Signs of Deconsolidation", 
+  "Roberto Stefan Foa and Yascha Mounk", 
+  "Attitudes toward democracy in advanced democracies", 
+  "Quantitative analysis of survey data",
+  "The Great Divide: Literacy, Nationalism, and the Communist Collapse",
+  "Keith Darden and Anna Grzymala-Busse",
+  "Explaining cross-country variation in the success of communist parties in post-communist countries", 
+  "Cross-country regression",
+  "Conceptual Models and the Cuban Missile Crisis",
+  "Graham T. Allison",
+  "Analysis of the Cuban Missile Crisis and foreign affairs decision-making",
+  "Case study using historical evidence",
+  "Sources of Authoritarian Responsiveness: A Field Experiment in China",
+  "Jidong Chen, Jennifer Pan, and Yiqing Xu",
+  "What motivates government officials in an authoritarian state to be responsive to public demands?",
+  "Field experiment in China",
+  "Democracy, Autocracy, and Revolution in
+Post-Soviet Eurasia",
+"Henry E. Hale",
+"The success or failure of transitions to democracy in post-communist Eurasia",
+"Comparative analysis"
+) %>% 
+  knitr::kable(booktabs = TRUE) %>% 
+  kable_styling(latex_options = "hold_position",
+                font_size = 6) %>% 
+  column_spec(1, width = "12em") %>% 
+  column_spec(2, width = "8em") %>% 
+  column_spec(3, width = "14em") %>% 
+  column_spec(4, width = "9em") %>% 
+  row_spec(0, bold = TRUE) %>% 
+  row_spec(1:4, hline_after = TRUE)
+```
+  
+## Exploration of midterm data 
+
+```{r,echo=FALSE,out.width='100%',fig.height=7,fig.width=10}
+library(tidyverse)
+library(readr)
+library(stringr)
+library(ggplot2)
+library(extrafont)
+library(viridis)
+library(ggpubr)
+midterm <- read_csv("midterm/Midterm - Attempt Details.csv")
+
+# taken from Andrew Heiss' website
+library(ggtext)
+theme_custom <- function(){
+  theme_minimal(base_size = 19,
+                base_family = "Fira Sans") %+replace%
+    theme(legend.position = "none",
+          panel.grid.minor = element_blank(),
+          plot.title = element_markdown(face = "bold", size = rel(1.7)),
+          plot.subtitle = element_markdown(face = "plain", size = rel(1.3)),
+          axis.title = element_text(face = "bold"),
+          axis.title.x = element_text(margin = margin(t = 10), hjust = 0),
+          axis.title.y = element_text(margin = margin(r = 10), hjust = 1, angle = 90))
+}
+
+# important midterm answers
+midterm <- midterm %>% 
+  mutate(word_count = str_count(Answer, "\\w+"),
+         q_type = ifelse(`Q #` %in% c(1, 2), "Essay", "Medium-length")) %>% 
+  rename(question = `Q #`)
+
+# plotting distribution of number of words per question
+essay_plot <- ggplot(filter(midterm, question %in% 1:2),
+       aes(x = word_count, y = factor(question))) +
+  geom_violin(aes(fill = factor(question))) +
+  geom_boxplot(width = 0.15, col = "grey", alpha = 0.4) +
+  theme_bw(base_size = 13) +
+  scale_x_continuous(breaks = seq(0, 1400, 200)) +
+  scale_fill_manual(values = viridis(7)[1:2]) +
+  labs(y = "Question",
+       x = "Number of words") +
+  guides(fill = "none") +
+  theme_custom()
+
+medium_plot <- ggplot(filter(midterm, question %in% 3:7), 
+       aes(x = word_count, y = factor(question))) +
+  geom_violin(aes(fill = factor(question))) +
+  geom_boxplot(width = 0.15, col = "grey", alpha = 0.4) +
+  theme_bw(base_size = 13) +
+  scale_x_continuous(breaks = seq(0, 1400, 200)) +
+  scale_fill_manual(values = viridis(7)[3:7]) +
+  labs(x = "",
+       y = "Question") +
+  theme_custom()
+
+ggarrange(medium_plot, essay_plot, nrow = 2,
+          heights = c(1, 0.7),
+          labels = c("Medium-length answers", "Essay answers"))
+```
+
+## Exploration of midterm data
+
+```{r,echo=FALSE,out.width='100%',fig.height=7,fig.width=10}
+library(tidytext)
+
+# See here: https://rpubs.com/andrew-donnelly/589746
+
+# a dataset at the word level for Q1
+q1_words <- midterm %>%  
+  unnest_tokens(word, Answer)
+
+midterm_words_counts <- midterm %>%
+  unnest_tokens(word, Answer) %>%
+  count(question, word, sort = TRUE) 
+
+total_words <- midterm_words_counts %>%
+  group_by(question) %>% 
+  summarize(total = sum(n))
+
+midterm_words_counts <- left_join(midterm_words_counts, total_words)
+
+midterms_tf_idf <- midterm_words_counts %>%             # Calculates tf-idf
+  bind_tf_idf(word, question, n)
+
+
+midterms_tf_idf %>%
+  arrange(-tf_idf) %>%
+  mutate(word = factor(word, levels = rev(unique(word)))) %>% 
+  group_by(question) %>% 
+  top_n(5) %>% 
+  filter(question != 7) %>% 
+  ggplot(aes(x = word, y = tf_idf, fill = factor(question))) +
+  geom_col(show.legend = FALSE) +
+  labs(x = "", y = "Distinctiveness") +
+  facet_wrap(~question, scales = "free",
+             ncol = 2) +
+  coord_flip() +
+  theme_custom() +
+  scale_fill_viridis_d() +
+  labs(title = "Most distinctive words in each question")
+```
+
+
 
 ## When do you believe me? 
 
@@ -428,11 +592,10 @@ The next step: how likely is the data I observe, if the null is true?
   
 ## Interpreting p-values
 
-In our example above, let's say I randomly sample students and compute a mean grade of 67
+Let's say I randomly sample students and compute a mean grade of 67
 
 - $H_0$: $\mu_{\text{true}} = 73$
-- Let's say I get a p-value of 0.13
-- What I can say:
+- Let's say I get a p-value of 0.13; what I can say:
   - If I were to repeatedly sample from our population (students who took the midterm)...
   - I would expect to get a result as "extreme" as this (extreme = far away from the null hypothesis)...
   - In about 13% of repeated samples...
@@ -443,7 +606,7 @@ In our example above, let's say I randomly sample students and compute a mean gr
     - NO! We do NOT "accept" the null; we "fail to reject"
   - There is no **statistically significant** difference between our sample mean and the null hypothesis 
 
-## p = 0.4
+## p = 0.4 (with non-directional hypothesis)
 
 ```{r,echo=FALSE,out.width='100%',fig.width=10,fig.height=7}
 ggplot(NULL, aes(c(60,86))) +
@@ -484,7 +647,7 @@ ggplot(NULL, aes(c(60,86))) +
        y = "Density")
 ```
 
-## p = 0.2
+## p = 0.2 (with non-directional hypothesis)
 
 ```{r,echo=FALSE,out.width='100%',fig.width=10,fig.height=7}
 ggplot(NULL, aes(c(60,86))) +
@@ -525,7 +688,7 @@ ggplot(NULL, aes(c(60,86))) +
        y = "Density")
 ```
 
-## p = 0.1
+## p = 0.1 (with non-directional hypothesis)
 
 ```{r,echo=FALSE,out.width='100%',fig.width=10,fig.height=7}
 ggplot(NULL, aes(c(60,86))) +
@@ -566,7 +729,7 @@ ggplot(NULL, aes(c(60,86))) +
        y = "Density")
 ```
 
-## p = 0.05
+## p = 0.05 (with non-directional hypothesis)
 
 ```{r,echo=FALSE,out.width='100%',fig.width=10,fig.height=7}
 ggplot(NULL, aes(c(60,86))) +
@@ -709,6 +872,8 @@ And again, depending on how surprising the data is given the null, we decide to 
 t.test(druckman$won2[druckman$tv==0], druckman$won2[druckman$tv==1])
 ```
 
+\normalsize 
+
 The difference-in-means is different from 0 in a **statistically significant** manner
 
 ## The difference-in-means in R
@@ -729,26 +894,99 @@ Are differences-in-means causal quantities?
 - If not, it's probably hard to interpret them causally
 - But they're still interesting!
 
-Statistical significance is not the same as substantive significance!
+## The dangers of hypothesis testing
 
-## Example: difference-in-means
+Null hypothesis statistical testing is, by far, the dominant approach
 
-```{r,echo=FALSE}
-library(knitr)
-library(kableExtra)
-library(tidyverse)
-hyp_grades <- tribble(~`Male #`, ~Grade, ~`Female #`, ~Grade,
-       "1", 63, "1", 68,
-       "2", 67, "2", 74,
-       "3", 71, "3", 73,
-       "4", 56, "4", 76,
-       "5", 77, "5", 61,
-       "6", 47, "6", 54,
-       "7", 55, "7", 61)
-kbl(hyp_grades[1,],
-    booktabs = TRUE, 
-    caption = "Grades of students you meet in lab")
-```
+- But it is easy to misinterpret what our statistical tests are saying
+- Much discussion recently in the scientific community!
+
+## Political Analysis 
+
+![](pa_pvalues.png)
+
+## "p-hacking"
+
+We've seen that there a (completely arbitrary) threshold below which results are considered "statistically significant"
+
+- Publication is much easier if you achieve statisticaly significance
+- Incentive: play around with data until you achieve p < 0.05
+  - Play around: add/remove control variables, remove observations, use alternative measures...
+- Called: p-hacking, researcher degrees of freedom, garden of forking paths...
+- This is a **widespread** problem that we are just starting to grapple with 
+- But when you think about it...
+  - Are you really more certain of your result if p = 0.049 compared to p = 0.051? 
+  
+## Wrong side of the arbitrary threshold
+
+::: columns
+
+:::: column
+
+![](pvalue_disappointment1.png)
+
+::::
+
+:::: column
+
+![](pvalue_disappointment2.png)
+
+::::
+
+:::
+  
+## Jelly beans and acne
+
+![](phacking_xkcd.png)
+
+## Significance 
+
+\centering
+
+![](significance_xkcd.png){height=90%}
+
+## Significance as a dummy
+
+Your results are either statistically significant or they're not
+
+- If p = 0.06 and you set $\alpha = 0.05$, your finding is not statistically significant
+  - What should we do? More research! 
+  - Hopefully with a larger sample that will be able to detect an effect
+  
+You will often see papers that ignore this because they want significant results (remember publication bias?)
+
+- "approaches significance", "marginally significant"...
+- For a longer (and hilarious) list, [see here](https://mchankins.wordpress.com/2013/04/21/still-not-significant-2/)
+\footnotesize
+- "As well as being statistically flawed (results are either significant or not and can’t be qualified), the wording is linguistically interesting, often describing an aspect of the result that just doesn’t exist. For example, “a trend towards significance” expresses non-significance as some sort of motion towards significance, which it isn’t: there is no ‘trend’, in any direction, and nowhere for the trend to be ‘towards’."
+
+## Statistical vs substantive significance
+
+Above all, **we may not care about a statistically significant finding**
+
+Statistical significance $\neq$ substantive significance
+
+It is possible to have a statistically significant difference that is substantively not meaningful 
+
+- e.g. a large survey (60,000) shows that mean happiness for Facebook users is 7.64 on 1-10 scale and 7.68 for non-Facebook users
+- Given the sample size, we may find a *statistically* significant different difference, e.g. $p < 0.01$
+- But do we actually care?
+  - **Substantive** significance: does it pass the "so what" test? 
+
+## Why should I care?
+
+Real-world decisions and our understanding of the world depend on our interpretation of ours results
+
+- And our interpretation depends on whether we have statistical significance 
+
+![](colchicine.png)
+
+## Why should I care?
+
+![](colchine_results.png)
+
+
+
 
 ## References {.allowframebreaks}
 

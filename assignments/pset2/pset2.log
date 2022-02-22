@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.10.11)  15 OCT 2021 10:25
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.10.20)  7 NOV 2021 19:44
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **pset2.tex
 (./pset2.tex
 LaTeX2e <2021-06-01> patch level 1
-L3 programming layer <2021-08-27>
+L3 programming layer <2021-10-18>
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tufte-latex/tufte-
 handout.cls
 Document Class: tufte-handout 2015/06/21 v3.5.2 Tufte-handout class
@@ -119,11 +119,11 @@ sty
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/
 xparse.sty
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2021-08-27 L3 programming layer (loader) 
+Package: expl3 2021-10-18 L3 programming layer (loader) 
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backen
 d-xetex.def
-File: l3backend-xetex.def 2021-08-04 L3 backend support: XeTeX
+File: l3backend-xetex.def 2021-10-18 L3 backend support: XeTeX
 (|extractbb --version)
 \c__kernel_sys_dvipdfmx_version_int=\count193
 \l__color_backend_stack_int=\count194
@@ -434,29 +434,29 @@ sty
 Package: setspace 2011/12/19 v6.7a set line spacing
 ) (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/xcolor.st
 y
-Package: xcolor 2016/05/11 v2.12 LaTeX color extensions (UK)
+Package: xcolor 2021/10/31 v2.13 LaTeX color extensions (UK)
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/color
 .cfg
 File: color.cfg 2016/01/02 v1.6 sample color configuration
 )
-Package xcolor Info: Package option `usenames' ignored on input line 216.
-Package xcolor Info: Driver file: xetex.def on input line 225.
-Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1348.
-Package xcolor Info: Model `RGB' extended on input line 1364.
-Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1366.
-Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1367.
-Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1368.
-Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1369.
-Package xcolor Info: Model `Gray' substituted by `gray' on input line 1370.
-Package xcolor Info: Model `wave' substituted by `hsb' on input line 1371.
+Package xcolor Info: Package option `usenames' ignored on input line 218.
+Package xcolor Info: Driver file: xetex.def on input line 227.
+Package xcolor Info: Model `cmy' substituted by `cmy0' on input line 1352.
+Package xcolor Info: Model `RGB' extended on input line 1368.
+Package xcolor Info: Model `HTML' substituted by `rgb' on input line 1370.
+Package xcolor Info: Model `Hsb' substituted by `hsb' on input line 1371.
+Package xcolor Info: Model `tHsb' substituted by `hsb' on input line 1372.
+Package xcolor Info: Model `HSB' substituted by `hsb' on input line 1373.
+Package xcolor Info: Model `Gray' substituted by `gray' on input line 1374.
+Package xcolor Info: Model `wave' substituted by `hsb' on input line 1375.
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/dvipsnam.
 def
 File: dvipsnam.def 2016/06/17 v3.0m Driver-dependent file (DPC,SPQR)
 ) (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xcolor/svgnam.de
 f
-File: svgnam.def 2016/05/11 v2.12 Predefined colors according to SVG 1.1 (UK)
+File: svgnam.def 2021/10/31 v2.13 Predefined colors according to SVG 1.1 (UK)
 )) (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/natbib/natbib.s
 ty
 Package: natbib 2010/09/13 8.31b (PWD, AO)
@@ -689,7 +689,7 @@ Package: nicefrac 1998/08/04 v0.9b Nice fractions
 ))
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.
 sty
-Package: fancyvrb 2021/08/12 v3.8 verbatim text (tvz,hv)
+Package: fancyvrb 2021/10/15 v3.9 verbatim text (tvz,hv)
 \FV@CodeLineNo=\count321
 \FV@InFile=\read2
 \FV@TabBox=\box108
@@ -1581,26 +1581,26 @@ oto/RobotoCondensed-Regular.otf
 
 LaTeX Warning: Marginpar on page 1 moved.
 
+Requested font "[lmmono10-regular]:" at 10.0pt
+ -> c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/
+lmmono10-regular.otf
 
 LaTeX Warning: Marginpar on page 1 moved.
 
 [1
 
 ]
-Overfull \hbox (12.00002pt too wide) in paragraph at lines 350--358
+Overfull \hbox (12.00002pt too wide) in paragraph at lines 354--362
 [][]  
  []
 
-Requested font "[lmmono10-regular]:" at 10.0pt
- -> c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/
-lmmono10-regular.otf
 Requested font "[lmmono10-italic]:" at 10.0pt
  -> c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/fonts/opentype/public/lm/
 lmmono10-italic.otf
 
 Class tufte-handout Warning: Proper spacing of small-caps letters has not been 
 set up.
-This message occurred on input line 432.
+This message occurred on input line 436.
 
 [2]
 
@@ -1610,7 +1610,7 @@ LaTeX Warning: Marginpar on page 3 moved.
 LaTeX Warning: Marginpar on page 3 moved.
 
 
-Overfull \hbox (197.25pt too wide) in paragraph at lines 526--526
+Overfull \hbox (197.25pt too wide) in paragraph at lines 538--538
 []\TU/lmtt/m/n/10 ## `summarise()` has grouped output by 'sophdum3'. You can ov
 erride using the `.groups` argument.[] 
  []
@@ -1618,7 +1618,7 @@ erride using the `.groups` argument.[]
 
 Class tufte-handout Warning: Proper spacing of small-caps letters has not been 
 set up.
-This message occurred on input line 538.
+This message occurred on input line 550.
 
 [3]
 
@@ -1629,19 +1629,19 @@ Package bibentry Warning: You have used \nobibliography*
 
 Class tufte-handout Warning: Proper spacing of small-caps letters has not been 
 set up.
-This message occurred on input line 542.
+This message occurred on input line 566.
 
 [4] (./pset2.aux)
 Package rerunfilecheck Info: File `pset2.out' has not changed.
 (rerunfilecheck)             Checksum: D41D8CD98F00B204E9800998ECF8427E;0.
  ) 
 Here is how much of TeX's memory you used:
- 17175 strings out of 478492
- 316534 string characters out of 5860434
- 710920 words of memory out of 5000000
- 37077 multiletter control sequences out of 15000+600000
+ 17175 strings out of 478472
+ 316618 string characters out of 5859791
+ 713736 words of memory out of 5000000
+ 37097 multiletter control sequences out of 15000+600000
  409015 words of font info for 89 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
- 108i,17n,112p,282b,598s stack positions out of 5000i,500n,10000p,200000b,80000s
+ 108i,17n,112p,487b,596s stack positions out of 5000i,500n,10000p,200000b,80000s
 
 Output written on pset2.pdf (4 pages).

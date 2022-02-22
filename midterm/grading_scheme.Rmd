@@ -1,0 +1,117 @@
+---
+title: "Midterm grading scheme"
+author: "POLI210, Fall 2021"
+output:
+  tint::tintPdf:
+    latex_engine: xelatex
+  tufte::tufte_html: 
+    tufte_features: ["fonts", "background"]
+header-includes:
+  - \usepackage{longtable}
+link-citations: no
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(
+  echo = FALSE,
+  include = TRUE,
+  warning = FALSE,
+  message = FALSE,
+  fig.margin = TRUE
+)
+knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())
+```
+
+# Essay question 1
+
+```{r}
+library(tidyverse)
+library(knitr)
+library(kableExtra)
+tribble(
+  ~` `, ~`80+`, ~`70-80`, ~`60-70`,
+  "Understanding of causality", 
+  "When defining causality, the student demonstrates a clear understanding of the potential outcomes framework and of the missing counterfactual problem that makes causal inference difficult. It is clear that the student has understood the distinction between causal and predictive inference.", 
+  "The student does not refer directly to the missing potential outcome, but refers to the problem of confounding variables that bias the observed relationship between X and Y. There are some ambiguities relating to the distinction between predictive and causal inference.", 
+  "The student defines causality in a circular way; does not refer to the pontential outcomes framework; and does not explain the problem of confounding.",
+  "Threats to inference", 
+  "The student identifies all major threats to inference that would likely result in biased estimates of the treatment effect using observational data. It is made clear in which direction the bias would likely run in observational data.",
+  "The student identifies some threats to inference that would arise in observational data, but is missing a major one. It is not clear in which direction the bias would likely run in observational data.",
+  "The student does not identify plausible threats to inference and they make no mention of the direction of the bias.",
+  "Credibility of the claim",
+  "The student makes a clear and convincing conclusion regarding the credibility of the causal claim. The student suggests appropriate and realistic tests whose results would help make the claim more/less credible.",
+  "The student makes a conclusion regarding the credibility of the causal claim, but does not justify it convincingly. The student suggests tests whose results would help make the claim more/less credible, but the tests would not provide much additional information on the credibility of the claim or are unrealistic.",
+  "The student does not reach a clear conclusion on the credibility of the causal claim and does not propose additional tests that would help establish the credibility of the causal claim."
+) %>% 
+  kable(booktabs = TRUE) %>% 
+  column_spec(1, width = "6em") %>% 
+  column_spec(2:4, width = "12em") %>% 
+  row_spec(0, bold = TRUE) %>% 
+  row_spec(1:3, hline_after = TRUE)
+```
+
+# Essay question 2
+
+```{r}
+tribble(
+  ~` `, ~`80+`, ~`70-80`, ~`60-70`,
+  "Summary of the approaches", 
+  "The student provides a clear summary of quantitative and qualitative approaches in political science. The student demonstrates an ability to summarize without falling into inaccurate generalizations.", 
+  "The student does not refer directly to the missing potential outcome, but refers to the problem of confounding variables that bias the observed relationship between X and Y. There are some ambiguities relating to the distinction between predictive and causal inference.", 
+  "The student defines causality in a circular way; does not refer to the pontential outcomes framework; and does not explain the problem of confounding.",
+  "Identification of differences", 
+  "The student refers to multiple salient differences between the two approaches and provides a brief summary of each. Examples include: purposive vs random sampling, small-N vs large-N, numbers vs words, claims of generality...",
+  "The student refers to a few differences between the two approaches, but they are not necessarily the most salient ones.",
+  "The student refers to just difference between the two approaches or mentions multiple trivial differences.",
+  "Identification of similarities",
+  "The student identifies multiple salient similarities between the two approaches (e.g. commitment to the same scientific ideal) and provides a brief summary of each. The answer demonstrates a nuanced understanding of the diversity of each approach and does not caricature them.",
+  "The student refers to some similarities between quantitative and qualitative approaches, but does not refer to the broader scientific ideals that both approaches share. The answer lacks some nuance and tends to gloss over the diversity within each of the approaches. ",
+  "The student does not discuss important similarities between the two approaches and only emphasizes differences.",
+  "General conclusions",
+  "The student makes a clear argument regarding the unified logic of inference. The student is fair to both quantitative and qualitative approaches. It is clear that they appreciate the contributions that each can make to the study of politics. They mention that the two approaches are complementary, e.g. in studying different questions or in triangulating evidence.",
+  "The student makes a somewhat unclear conclusion regarding the unified logic of inference. The student is fair to both quantitative and qualitative approaches, but does not note their complementory nature.",
+  "The student does not make a conclusion regarding the unified logic of inference. They seem not to appreciate the contributions that each approach has to make to the scientific study of politics."
+) %>% 
+  kable(booktabs = TRUE) %>% 
+  column_spec(1, width = "6em") %>% 
+  column_spec(2:4, width = "12em") %>% 
+  row_spec(0, bold = TRUE) %>% 
+  row_spec(1:3, hline_after = TRUE)
+```
+
+# Short answers
+
+\small
+
+```{r}
+tribble(
+  ~` `, ~`80+`, ~`70-80`, ~`60-70`,
+  "Question 1", 
+  "The student thoroughly explains the logic of purposive sampling by referring to: a) successful least-likely or failed most-likely cases, and/or b) similar cases that lend themselves to the comparative method. The student also mentions what in-depth study allows: examination of causal mechanisms, exploratory analysis/theory generation. The student also mentions practical reasons for choosing fewer cases, e.g. familiarity.",
+  "The student explains the logic of purposive sampling, but refers to only one of the following: case studies, comparative method, and interviews. The student does not mention the benefits of in-depth study OR does not mention practical reasons for smaller samples.",
+  "The student does not clearly explain the logic of purposive sampling. The student does not mention the benefits of in-depth study AND does not mention practical reasons for smaller samples.",
+  "Question 2", 
+  "The student refers to the unobserved potential outcomes (what would have happened to a candidate had they raised less money); discusses a plausible confounder that likely biases the observed relationship. The terminology is precise.",
+  "The student does not refer to the unobserved potential outcome, but discusses a likely confounder. The terminology is mostly precise, but at times ambiguous or incorrect.",
+  "The student does not refer to the unobserved potential outcome and does not discuss a likely confounder. They make an incorrect conclusion or provide a weak rationale for not establishing causality.",
+  "Question 3", 
+  "The student mentions and thoroughly explains: [practical consedirations and/or limits to the implementation of experiments] AND [concerns about external validity]. The terminology is precise.",
+  "The student mentions and explains appropriately one of: [practical and/or limits to the implementation of experiments] OR [concerns about external validity]. The terminology is mostly precise, but at times ambiguous or incorrect.",
+  "The student does not mention the concepts or explains them inaccurately. The terminology is confusing.",
+  "Question 4",
+  "The student mentions and thoroughly explains BOTH [theory guides observation] AND [data alone cannot uncover causal mechanisms]. The terminology is precise",
+  "The student mentions and appropriately explains one of: [theory guides observation] OR [data alone cannot uncover causal mechanisms]", 
+  "The student mentions neither idea or explains them in an inaccurate fashion.",
+  "Question 5",
+  "The student provides 3 plausible explanations and thoroughly explains each. These may include: non-response bias, social desirability bias, misspecified likely voter models, deficient weighting...",
+  "The student provides 3 plausible causes, but does not thoroughly explain one or two of them.",
+  "The student does not provide 3 plausible causes or does not thoroughly explain any of them."
+) %>% 
+  kable(booktabs = TRUE) %>% 
+  column_spec(1, width = "6em") %>% 
+  column_spec(2:4, width = "12em") %>% 
+  row_spec(0, bold = TRUE) %>% 
+  row_spec(1:4, hline_after = TRUE)
+```
+
+

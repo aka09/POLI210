@@ -452,9 +452,9 @@ cor(london$price, london$longitude, use = "pairwise")
   - Look at a scatterplot of $X$ and $Y$
     - Do any cases stand out? 
     
-## Gorilla in the data 
+## Not plotting your data? You might screw up
 
-![](gorilla.png)
+![See Imai, King, and Velasco Rivera (2020)](delao_errors.png)
 
 ## Scatterplot matrices
 

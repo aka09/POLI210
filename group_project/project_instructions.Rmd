@@ -1,0 +1,123 @@
+---
+output: 
+  stevetemplates::article:
+    fig_caption: true
+#bibliography: master.bib
+biblio-style: apsr
+title: "Group project instructions"
+author:
+- name: POLI210
+  affiliation: "Fall 2021"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+abstract: "This document contains instructions for the group project in POLI210, which is due on December 6th at 11:59PM. Please read it carefully as it contains important information."
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+header-includes:
+  - \usepackage{changepage} 
+  - \usepackage{hyperref}
+  - \usepackage{enumitem}
+# spacing: double
+endnote: no
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE,
+                      echo = FALSE,
+                      message=FALSE, warning=FALSE,
+                      fig.path='figs/',
+                      cache.path = '_cache/',
+                      fig.process = function(x) {
+                      x2 = sub('-\\d+([.][a-z]+)$', '\\1', x)
+                      if (file.rename(x, x2)) x2 else x
+                      })
+```
+
+\setlength{\parindent}{0pt}
+
+# General instructions
+
+The purpose of this group project is to engage critically with the methodology of a published political science article using the concepts and methods we have seen in the class. To "engage critically" means to consider, *in good faith*, the strengths and the weaknesses of the article's methodological approach and to assess the credibility of the empirical evidence that the author(s) marshal in favor of their argument.
+
+Your first task is to consult the list of articles that you may choose from, which is shown just below. I have done my best to cover a wide range of substantive content and methodological approaches. You should read this article *very carefully*, with a particular eye toward understanding the methodology used by the author(s). 
+
+```{r}
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+tribble(
+  ~Article, ~Authors, ~`Substantive content`, ~`Methodology`,
+  "The Signs of Deconsolidation", 
+  "Roberto Stefan Foa and Yascha Mounk", 
+  "Attitudes toward democracy in advanced democracies", 
+  "Quantitative analysis of survey data",
+  "The Great Divide: Literacy, Nationalism, and the Communist Collapse",
+  "Keith Darden and Anna Grzymala-Busse",
+  "Explaining cross-country variation in the success of communist parties in post-communist countries", 
+  "Cross-country regression",
+  "Conceptual Models and the Cuban Missile Crisis",
+  "Graham T. Allison",
+  "Analysis of the Cuban Missile Crisis and foreign affairs decision-making",
+  "Case study using historical evidence",
+  "Sources of Authoritarian Responsiveness: A Field Experiment in China",
+  "Jidong Chen, Jennifer Pan, and Yiqing Xu",
+  "What motivates government officials in an authoritarian state to be responsive to public demands?",
+  "Field experiment in China",
+  "Democracy, Autocracy, and Revolution in
+Post-Soviet Eurasia",
+"Henry E. Hale",
+"The success or failure of transitions to democracy in post-communist Eurasia",
+"Comparative analysis"
+) %>% 
+  knitr::kable(booktabs = TRUE,
+               caption = "Articles to choose from") %>% 
+  kable_styling(latex_options = "hold_position",
+                font_size = 10) %>% 
+  column_spec(1, width = "12em") %>% 
+  column_spec(2, width = "8em") %>% 
+  column_spec(3, width = "14em") %>% 
+  column_spec(4, width = "9em") %>% 
+  row_spec(0, bold = TRUE) %>% 
+  row_spec(1:4, hline_after = TRUE)
+```
+
+You should then form a team of 4 students and write down your names [in this Google Sheets document](https://docs.google.com/spreadsheets/d/1DIcMgokFMLT99Z0v9JgayFyN-1fq7TI9NGmrhumm0qY/edit?usp=sharing). You are strongly encouraged to work with team members who share your substantive interests and/or your methodological inclinations. 
+
+# Specific instructions
+
+Your project should be guided by one overarching question: how convincing is the empirical evidence that the author(s) present in favor of their argument? There is no "correct answer" and I expect that teams working on the same article will form different opinions. However, your rationale for being convinced or unconvinced by the empirical evidence should be grounded in the concepts and methods that we have seen in the course. 
+
+Your project should be divided into two sections. The first section should provide a brief summary of the article under review. Generally, this should not take more than 200 to 300 words. From this short summary, it should be clear: 
+
+1. What the research question/hypotheses are
+2. How the author(s) test their hypotheses
+3. What the purported contribution of the article is to the extant academic literature 
+
+In the second part of your project, you should provide a critical examination of the empirical evidence presented in the article. In short, I want to know whether or not you are convinced, and why. Note that a "critical" examination does not have to be overwhelmingly negative! 
+
+I do not have firm expectations regarding the content of this second section. You are free to structure your argument however you see fit. You can focus on one specific detail that you find crucial or offer a more general persepective of the article that touches on different points. Below is a list of questions that you may want to ask yourself. Depending on the article that you choose, some may be less relevant.
+
+\vspace{5mm}
+
+\begin{itemize}[label=\textbullet,nosep]
+
+\item If the author is making a causal argument, do they have a strong basis for inferring causality? 
+\begin{itemize}[label=\textopenbullet,nosep]
+\item For quantitative approaches: is the sample representative? What implications does this have?
+\item For qualitative approaches: are the cases "good" cases to be exploiting in order to refine theory?
+\end{itemize}
+\item Do the authors do a good job of measuring the key concepts? 
+\item Do the authors provide a good justification for using the methods that they use? 
+\item Is there another empirical method that would have been more appropriate to tackle this research question/hypothesis?
+\item Do the authors do a good job of conveying uncertainty and potential biases? 
+\begin{itemize}[label=\textopenbullet,nosep]
+\item Does the authors' interpretation of their results match the strength of the evidence presented?
+\end{itemize}
+  
+\end{itemize}
+
+
+# Format 
+
+Your project should be no longer than 6 pages (1,500 words). You are not required to include references; if you do, make sure to include a bibliography at the end of your document. 

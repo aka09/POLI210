@@ -1,0 +1,77 @@
+---
+output: 
+  stevetemplates::article:
+    fig_caption: true
+#bibliography: master.bib
+biblio-style: apsr
+title: "Solutions for knitting issues"
+author:
+- name: POLI210
+  affiliation: "Fall 2021"
+date: "`r format(Sys.time(), '%B %d, %Y')`"
+abstract: "This document contains help to solve various knitting issues that you may encounter when trying to produce a PDF from your .Rmd document."
+geometry: margin=1in
+fontfamily: mathpazo
+fontsize: 11pt
+header-includes:
+  - \usepackage{changepage} 
+  - \usepackage{hyperref}
+  - \usepackage{enumitem}
+# spacing: double
+endnote: no
+urlcolor: blue
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(cache=TRUE,
+                      echo = FALSE,
+                      message=FALSE, warning=FALSE,
+                      fig.path='figs/',
+                      cache.path = '_cache/',
+                      fig.process = function(x) {
+                      x2 = sub('-\\d+([.][a-z]+)$', '\\1', x)
+                      if (file.rename(x, x2)) x2 else x
+                      })
+```
+
+\setlength{\parindent}{0pt}
+
+# List of issues
+
+```{r}
+library(knitr)
+library(kableExtra)
+library(tidyverse)
+
+tribble(
+  ~`Error message`, ~`Cause`, ~`Fix`,
+  "! Latex Error: File siunitx.sty not found", 
+  "The modelsummary() function causes issues for some students (not sure sure why!)",
+  "Use screenreg() from the texreg package instead. Delete any mention of modelsummary.",
+  "Warning: The working directory was changed to...inside a notebook chunk",
+  "Your .Rmd file is not in the same folder as the working directory that you set.",
+  "Have the .dta and .rmd files in the same folder, and set the working directory to that folder.",
+  "Error in check_for_XQuartz() : X11 library is missing",
+  "Mac users sometimes need another software called XQuartz in order to knit.",
+  "Go to xquartz.org, download and install the software. Restart RStudio.",
+  "Error in contrib.url(repos, source) : trying to use CRAN without setting a mirror",
+  "You are using install.packages in your rmd.",
+  "Delete the call to install.packages (but keep the call to library)",
+  "My regression tables are showing up in random places in the knitted PDF.",
+  "This is too complicated and I will not explain",
+  "Before the code chunk that produces your output, write, IN PLAIN TEXT: \\clearpage",
+  "! Latex error: Unicode character...not set up for use with Latex.",
+  "You probably copy-pasted the beta symbol from class slides",
+  "Replace the symbol with: $\\beta$ If you do not have a beta, you probably have some other special character. If you google the code of the format U(...), you will see which character is causing the issue."
+) %>% 
+  knitr::kable(booktabs = TRUE,
+               caption = "Knitting issues",
+               escape = TRUE) %>% 
+  kable_styling(latex_options = "hold_position",
+                font_size = 10) %>% 
+  column_spec(1, width = "12em") %>% 
+  column_spec(2, width = "12em") %>% 
+  column_spec(3, width = "12em") %>% 
+  row_spec(0, bold = TRUE) %>% 
+  row_spec(1:5, hline_after = TRUE)
+```

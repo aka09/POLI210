@@ -12,8 +12,8 @@ link-citations: no
 
 ```{r setup, include=FALSE}
 knitr::opts_chunk$set(
-  echo = FALSE,
-  include = FALSE,
+  echo = TRUE,
+  include = TRUE,
   fig.margin = TRUE
 )
 knitr::opts_knit$set(root.dir = rprojroot::find_rstudio_root_file())

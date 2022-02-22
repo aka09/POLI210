@@ -1,11 +1,11 @@
-This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.10.20)  5 NOV 2021 18:44
+This is XeTeX, Version 3.141592653-2.6-0.999993 (TeX Live 2021/W32TeX) (preloaded format=xelatex 2021.11.15)  18 NOV 2021 16:07
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
 **11.1-NHST.tex
 (./11.1-NHST.tex
-LaTeX2e <2021-06-01> patch level 1
-L3 programming layer <2021-10-18> (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf
+LaTeX2e <2021-11-15>
+L3 programming layer <2021-11-12> (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf
 -dist/tex/latex/beamer/beamer.cls
 Document Class: beamer 2021/10/18 v3.64 A class for typesetting presentations
 
@@ -14,20 +14,20 @@ odes.sty
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/etoolbox/etoolbox.
 sty
 Package: etoolbox 2020/10/05 v2.5k e-TeX tools for LaTeX (JAW)
-\etb@tempcnta=\count178
+\etb@tempcnta=\count179
 )
 \beamer@tempbox=\box50
-\beamer@tempcount=\count179
-\c@beamerpauses=\count180
+\beamer@tempcount=\count180
+\c@beamerpauses=\count181
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbased
 ecode.sty
-\beamer@slideinframe=\count181
-\beamer@minimum=\count182
+\beamer@slideinframe=\count182
+\beamer@minimum=\count183
 \beamer@decode@box=\box51
 )
 \beamer@commentbox=\box52
-\beamer@modecount=\count183
+\beamer@modecount=\count184
 ) (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifpdf.st
 y
 Package: ifpdf 2019/10/25 v3.4 ifpdf legacy package. Use iftex instead.
@@ -57,26 +57,26 @@ Package: iftex 2020/03/06 v1.0d TeX engine tests
 \beamer@sectionbox=\box56
 \beamer@logobox=\box57
 \beamer@linebox=\box58
-\beamer@sectioncount=\count184
-\beamer@subsubsectionmax=\count185
-\beamer@subsectionmax=\count186
-\beamer@sectionmax=\count187
-\beamer@totalheads=\count188
-\beamer@headcounter=\count189
-\beamer@partstartpage=\count190
-\beamer@sectionstartpage=\count191
-\beamer@subsectionstartpage=\count192
-\beamer@animationtempa=\count193
-\beamer@animationtempb=\count194
-\beamer@xpos=\count195
-\beamer@ypos=\count196
-\beamer@ypos@offset=\count197
-\beamer@showpartnumber=\count198
-\beamer@currentsubsection=\count199
-\beamer@coveringdepth=\count266
-\beamer@sectionadjust=\count267
-\beamer@toclastsection=\count268
-\beamer@tocsectionnumber=\count269
+\beamer@sectioncount=\count185
+\beamer@subsubsectionmax=\count186
+\beamer@subsectionmax=\count187
+\beamer@sectionmax=\count188
+\beamer@totalheads=\count189
+\beamer@headcounter=\count190
+\beamer@partstartpage=\count191
+\beamer@sectionstartpage=\count192
+\beamer@subsectionstartpage=\count193
+\beamer@animationtempa=\count194
+\beamer@animationtempb=\count195
+\beamer@xpos=\count196
+\beamer@ypos=\count197
+\beamer@ypos@offset=\count198
+\beamer@showpartnumber=\count199
+\beamer@currentsubsection=\count266
+\beamer@coveringdepth=\count267
+\beamer@sectionadjust=\count268
+\beamer@toclastsection=\count269
+\beamer@tocsectionnumber=\count270
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaseo
 ptions.sty
@@ -95,9 +95,9 @@ Package: geometry 2020/01/02 v5.9 Page Geometry
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/iftex/ifvtex.sty
 Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 )
-\Gm@cnth=\count270
-\Gm@cntv=\count271
-\c@Gm@tempcnt=\count272
+\Gm@cnth=\count271
+\Gm@cntv=\count272
+\c@Gm@tempcnt=\count273
 \Gm@bindingoffset=\dimen154
 \Gm@wd@mp=\dimen155
 \Gm@odd@mp=\dimen156
@@ -108,19 +108,19 @@ Package: ifvtex 2019/10/25 v1.7 ifvtex legacy package. Use iftex instead.
 \Gm@layoutvoffset=\dimen161
 \Gm@dimlist=\toks17
 ) (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/size11.clo
-File: size11.clo 2021/02/12 v1.4n Standard LaTeX file (size option)
+File: size11.clo 2021/10/04 v1.4n Standard LaTeX file (size option)
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/basiclayer/pgf
 core.sty
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphicx.
 sty
-Package: graphicx 2020/12/05 v1.2c Enhanced LaTeX Graphics (DPC,SPQR)
+Package: graphicx 2021/09/16 v1.2d Enhanced LaTeX Graphics (DPC,SPQR)
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/graphics.
 sty
 Package: graphics 2021/03/04 v1.4d Standard LaTeX Graphics (DPC,SPQR)
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics/trig.sty
-Package: trig 2016/01/03 v1.10 sin cos tan (DPC)
+Package: trig 2021/08/11 v1.11 sin cos tan (DPC)
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/graphics-cfg/graph
 ics.cfg
@@ -182,14 +182,14 @@ fkeysfiltered.code.tex
 \pgf@yd=\dimen175
 \w@pgf@writea=\write3
 \r@pgf@reada=\read2
-\c@pgf@counta=\count273
-\c@pgf@countb=\count274
-\c@pgf@countc=\count275
-\c@pgf@countd=\count276
+\c@pgf@counta=\count274
+\c@pgf@countb=\count275
+\c@pgf@countc=\count276
+\c@pgf@countd=\count277
 \t@pgf@toka=\toks22
 \t@pgf@tokb=\toks23
 \t@pgf@tokc=\toks24
-\pgf@sys@id@count=\count277
+\pgf@sys@id@count=\count278
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/
 pgf.cfg
@@ -209,13 +209,13 @@ File: pgfsys-dvipdfmx.def 2021/05/15 v3.1.9a (3.1.9a)
 pgfsys-common-pdf.def
 File: pgfsys-common-pdf.def 2021/05/15 v3.1.9a (3.1.9a)
 )
-\pgfsys@objnum=\count278
+\pgfsys@objnum=\count279
 )))
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/
 pgfsyssoftpath.code.tex
 File: pgfsyssoftpath.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfsyssoftpath@smallbuffer@items=\count279
-\pgfsyssoftpath@bigbuffer@items=\count280
+\pgfsyssoftpath@smallbuffer@items=\count280
+\pgfsyssoftpath@bigbuffer@items=\count281
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/systemlayer/
 pgfsysprotocol.code.tex
@@ -261,7 +261,7 @@ util.code.tex)
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath
 parser.code.tex
 \pgfmath@dimen=\dimen176
-\pgfmath@count=\count281
+\pgfmath@count=\count282
 \pgfmath@box=\box60
 \pgfmath@toks=\toks25
 \pgfmath@stack@operand=\toks26
@@ -287,7 +287,7 @@ functions.misc.code.tex)
 functions.integerarithmetics.code.tex)))
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfmath
 float.code.tex
-\c@pgfmathroundto@lastzeros=\count282
+\c@pgfmathroundto@lastzeros=\count283
 ))
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/math/pgfint.
 code.tex)
@@ -327,7 +327,7 @@ File: pgfcorescopes.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgfpic=\box61
 \pgf@hbox=\box62
 \pgf@layerbox@main=\box63
-\pgf@picture@serial@count=\count283
+\pgf@picture@serial@count=\count284
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/p
 gfcoregraphicstate.code.tex
@@ -362,8 +362,8 @@ File: pgfcorearrows.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 gfcoreshade.code.tex
 File: pgfcoreshade.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \pgf@max=\dimen256
-\pgf@sys@shading@range@num=\count284
-\pgf@shadingcount=\count285
+\pgf@sys@shading@range@num=\count285
+\pgf@shadingcount=\count286
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/basiclayer/p
 gfcoreimage.code.tex
@@ -393,8 +393,8 @@ File: pgfcorerdf.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/pgf/utilities/xxco
 lor.sty
 Package: xxcolor 2003/10/24 ver 0.1
-\XC@nummixins=\count286
-\XC@countmixins=\count287
+\XC@nummixins=\count287
+\XC@countmixins=\count288
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atbegshi-ltx.
 sty
@@ -451,8 +451,8 @@ s.sty
 Package: kvoptions 2020-10-07 v3.14 Key value format for package options (HO)
 )
 \@linkdim=\dimen257
-\Hy@linkcounter=\count288
-\Hy@pagecounter=\count289
+\Hy@linkcounter=\count289
+\Hy@pagecounter=\count290
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/pd1enc.de
 f
@@ -471,7 +471,7 @@ Package: intcalc 2019/12/15 v1.3 Expandable calculations with integers (HO)
 s.sty
 Package: etexcmds 2019/12/15 v1.7 Avoid name clashes with e-TeX commands (HO)
 )
-\Hy@SavedSpaceFactor=\count290
+\Hy@SavedSpaceFactor=\count291
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/hyperref/puenc.def
 File: puenc.def 2021-06-07 v7.00m Hyperref: PDF Unicode definition (HO)
@@ -487,7 +487,7 @@ Package hyperref Info: Plain pages OFF on input line 4207.
 Package hyperref Info: Backreferencing OFF on input line 4212.
 Package hyperref Info: Implicit mode OFF; no redefinition of LaTeX internals.
 Package hyperref Info: Bookmarks ON on input line 4445.
-\c@Hy@tempcnt=\count291
+\c@Hy@tempcnt=\count292
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/url/url.sty
 \Urlmuskip=\muskip16
 Package: url 2013/09/16  ver 3.4  Verb mode for urls, etc.
@@ -504,7 +504,7 @@ tcalc.sty
 Package: bigintcalc 2019/12/15 v1.5 Expandable calculations on big integers (HO
 )
 ))
-\Fld@menulength=\count292
+\Fld@menulength=\count293
 \Field@Width=\dimen259
 \Fld@charsize=\dimen260
 Package hyperref Info: Hyper figures OFF on input line 6076.
@@ -516,7 +516,7 @@ Package hyperref Info: Link coloring with OCG OFF on input line 6101.
 Package hyperref Info: PDF/A mode OFF on input line 6106.
 LaTeX Info: Redefining \ref on input line 6146.
 LaTeX Info: Redefining \pageref on input line 6150.
-\Hy@abspage=\count293
+\Hy@abspage=\count294
 
 Package hyperref Message: Stopped early.
 
@@ -533,10 +533,10 @@ Package: stringenc 2019/11/29 v1.12 Convert strings between diff. encodings (HO
 )
 )
 \pdfm@box=\box65
-\c@Hy@AnnotLevel=\count294
-\HyField@AnnotCount=\count295
-\Fld@listcount=\count296
-\c@bookmark@seq@number=\count297
+\c@Hy@AnnotLevel=\count295
+\HyField@AnnotCount=\count296
+\Fld@listcount=\count297
+\c@bookmark@seq@number=\count298
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/rerunfilecheck/rer
 unfilecheck.sty
@@ -544,8 +544,8 @@ Package: rerunfilecheck 2019/12/05 v1.9 Rerun checks for auxiliary files (HO)
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/atveryend-ltx
 .sty
-Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atvery packag
-e
+Package: atveryend-ltx 2020/08/19 v1.0a Emulation of the original atveryend pac
+kage
 with kernel methods
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/uniquecounter/un
@@ -587,36 +587,36 @@ isc.sty)
 woscreens.sty)
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaseo
 verlay.sty
-\beamer@argscount=\count298
+\beamer@argscount=\count299
 \beamer@lastskipcover=\skip50
-\beamer@trivlistdepth=\count299
+\beamer@trivlistdepth=\count300
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaset
 itle.sty)
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbases
 ection.sty
-\c@lecture=\count300
-\c@part=\count301
-\c@section=\count302
-\c@subsection=\count303
-\c@subsubsection=\count304
+\c@lecture=\count301
+\c@part=\count302
+\c@section=\count303
+\c@subsection=\count304
+\c@subsubsection=\count305
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasef
 rame.sty
 \beamer@framebox=\box66
 \beamer@frametitlebox=\box67
 \beamer@zoombox=\box68
-\beamer@zoomcount=\count305
-\beamer@zoomframecount=\count306
+\beamer@zoomcount=\count306
+\beamer@zoomframecount=\count307
 \beamer@frametextheight=\dimen261
-\c@subsectionslide=\count307
+\c@subsectionslide=\count308
 \beamer@frametopskip=\skip51
 \beamer@framebottomskip=\skip52
 \beamer@frametopskipautobreak=\skip53
 \beamer@framebottomskipautobreak=\skip54
 \beamer@envbody=\toks29
 \framewidth=\dimen262
-\c@framenumber=\count308
+\c@framenumber=\count309
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasev
 erbatim.sty
@@ -625,7 +625,7 @@ erbatim.sty
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbasef
 ramesize.sty
 \beamer@splitbox=\box69
-\beamer@autobreakcount=\count309
+\beamer@autobreakcount=\count310
 \beamer@autobreaklastheight=\dimen263
 \beamer@frametitletoks=\toks30
 \beamer@framesubtitletoks=\toks31
@@ -670,8 +670,8 @@ Package: enumerate 2015/07/23 v3.00 enumerate extensions (DPC)
 \@enLab=\toks33
 )
 \beamer@bibiconwidth=\skip55
-\c@figure=\count310
-\c@table=\count311
+\c@figure=\count311
+\c@table=\count312
 \abovecaptionskip=\skip56
 \belowcaptionskip=\skip57
 )
@@ -683,13 +683,13 @@ avigation.sty
 heorems.sty
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsmath.st
 y
-Package: amsmath 2021/04/20 v2.17j AMS math features
+Package: amsmath 2021/10/15 v2.17l AMS math features
 \@mathmargin=\skip58
 For additional information on amsmath, use the `?' option.
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amstext.st
 y
-Package: amstext 2000/06/29 v2.01 AMS text
+Package: amstext 2021/08/26 v2.01 AMS text
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsgen.sty
 File: amsgen.sty 1999/11/30 v2.0 generic functions
@@ -701,15 +701,15 @@ Package: amsbsy 1999/11/29 v1.2d Bold Symbols
 \pmbraise@=\dimen274
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsmath/amsopn.sty
-Package: amsopn 2016/03/08 v2.02 operator names
+Package: amsopn 2021/08/26 v2.02 operator names
 )
-\inf@bad=\count312
+\inf@bad=\count313
 LaTeX Info: Redefining \frac on input line 234.
-\uproot@=\count313
-\leftroot@=\count314
+\uproot@=\count314
+\leftroot@=\count315
 LaTeX Info: Redefining \overline on input line 399.
-\classnum@=\count315
-\DOTSCASE@=\count316
+\classnum@=\count316
+\DOTSCASE@=\count317
 LaTeX Info: Redefining \ldots on input line 496.
 LaTeX Info: Redefining \dots on input line 499.
 LaTeX Info: Redefining \cdots on input line 620.
@@ -718,15 +718,15 @@ LaTeX Info: Redefining \cdots on input line 620.
 \big@size=\dimen275
 LaTeX Font Info:    Redeclaring font encoding OML on input line 743.
 LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
-\macc@depth=\count317
-\c@MaxMatrixCols=\count318
+\macc@depth=\count318
+\c@MaxMatrixCols=\count319
 \dotsspace@=\muskip17
-\c@parentequation=\count319
-\dspbrk@lvl=\count320
+\c@parentequation=\count320
+\dspbrk@lvl=\count321
 \tag@help=\toks35
-\row@=\count321
-\column@=\count322
-\maxfields@=\count323
+\row@=\count322
+\column@=\count323
+\maxfields@=\count324
 \andhelp@=\toks36
 \eqnshift@=\dimen276
 \alignsep@=\dimen277
@@ -738,8 +738,8 @@ LaTeX Font Info:    Redeclaring font encoding OMS on input line 744.
 \multlinegap=\skip59
 \multlinetaggap=\skip60
 \mathdisplay@stack=\toks38
-LaTeX Info: Redefining \[ on input line 2923.
-LaTeX Info: Redefining \] on input line 2924.
+LaTeX Info: Redefining \[ on input line 2938.
+LaTeX Info: Redefining \] on input line 2939.
 ) (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amscls/amsthm.st
 y
 Package: amsthm 2020/05/29 v2.20.6
@@ -753,7 +753,7 @@ Package: amsthm 2020/05/29 v2.20.6
 \thm@headsep=\skip63
 \dth@everypar=\toks44
 )
-\c@theorem=\count324
+\c@theorem=\count325
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/beamerbaset
 hemes.sty))
@@ -775,23 +775,23 @@ ages.sty
 Package: pgfpages 2011/01/05 ver 0.02
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/calc.sty
 Package: calc 2017/05/25 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count325
-\calc@Bcount=\count326
+\calc@Acount=\count326
+\calc@Bcount=\count327
 \calc@Adimen=\dimen284
 \calc@Bdimen=\dimen285
 \calc@Askip=\skip64
 \calc@Bskip=\skip65
 LaTeX Info: Redefining \setlength on input line 80.
 LaTeX Info: Redefining \addtolength on input line 81.
-\calc@Ccount=\count327
+\calc@Ccount=\count328
 \calc@Cskip=\skip66
 )
-\pgf@logicalpages=\count328
-\pgf@firstshipout=\count329
-\pgf@lastshipout=\count330
-\pgf@currentshipout=\count331
-\pgf@cpn=\count332
-\pgf@shipoutnextto=\count333
+\pgf@logicalpages=\count329
+\pgf@firstshipout=\count330
+\pgf@lastshipout=\count331
+\pgf@currentshipout=\count332
+\pgf@cpn=\count333
+\pgf@shipoutnextto=\count334
 \pgfphysicalheight=\dimen286
 \pgfphysicalwidth=\dimen287
 \pgfpages@shipoutbox=\box76
@@ -841,20 +841,20 @@ Package: ifluatex 2019/10/25 v1.5 ifluatex legacy package. Use iftex instead.
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unico
 de-math.sty
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3kernel/expl3.sty
-Package: expl3 2021-10-18 L3 programming layer (loader) 
+Package: expl3 2021-11-12 L3 programming layer (loader) 
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3backend/l3backen
 d-xetex.def
 File: l3backend-xetex.def 2021-10-18 L3 backend support: XeTeX
 (|extractbb --version)
-\c__kernel_sys_dvipdfmx_version_int=\count334
-\l__color_backend_stack_int=\count335
-\g__color_backend_stack_int=\count336
-\g__graphics_track_int=\count337
+\c__kernel_sys_dvipdfmx_version_int=\count335
+\l__color_backend_stack_int=\count336
+\g__color_backend_stack_int=\count337
+\g__graphics_track_int=\count338
 \l__pdf_internal_box=\box77
-\g__pdf_backend_object_int=\count338
-\g__pdf_backend_annotation_int=\count339
-\g__pdf_backend_link_int=\count340
+\g__pdf_backend_object_int=\count339
+\g__pdf_backend_annotation_int=\count340
+\g__pdf_backend_link_int=\count341
 ))
 Package: unicode-math 2020/01/31 v0.8q Unicode maths in XeLaTeX and LuaLaTeX
 
@@ -865,11 +865,11 @@ TeX
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/xparse/
 xparse.sty
-Package: xparse 2021-08-27 L3 Experimental document command parser
+Package: xparse 2021-11-12 L3 Experimental document command parser
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/l3packages/l3keys2
 e/l3keys2e.sty
-Package: l3keys2e 2021-08-27 LaTeX2e option processing using LaTeX3 keys
+Package: l3keys2e 2021-11-12 LaTeX2e option processing using LaTeX3 keys
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fontspec/fontspec.
 sty
@@ -879,17 +879,17 @@ Package: fontspec 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTeX
 xetex.sty
 Package: fontspec-xetex 2020/02/21 v2.7i Font selection for XeLaTeX and LuaLaTe
 X
-\l__fontspec_script_int=\count341
-\l__fontspec_language_int=\count342
-\l__fontspec_strnum_int=\count343
-\l__fontspec_tmp_int=\count344
-\l__fontspec_tmpa_int=\count345
-\l__fontspec_tmpb_int=\count346
-\l__fontspec_tmpc_int=\count347
-\l__fontspec_em_int=\count348
-\l__fontspec_emdef_int=\count349
-\l__fontspec_strong_int=\count350
-\l__fontspec_strongdef_int=\count351
+\l__fontspec_script_int=\count342
+\l__fontspec_language_int=\count343
+\l__fontspec_strnum_int=\count344
+\l__fontspec_tmp_int=\count345
+\l__fontspec_tmpa_int=\count346
+\l__fontspec_tmpb_int=\count347
+\l__fontspec_tmpc_int=\count348
+\l__fontspec_em_int=\count349
+\l__fontspec_emdef_int=\count350
+\l__fontspec_strong_int=\count351
+\l__fontspec_strongdef_int=\count352
 \l__fontspec_tmpa_dim=\dimen288
 \l__fontspec_tmpb_dim=\dimen289
 \l__fontspec_tmpc_dim=\dimen290
@@ -904,9 +904,9 @@ Package: fix-cm 2020/11/24 v1.1t fixes to LaTeX
 File: ts1enc.def 2001/06/05 v3.0e (jk/car/fm) Standard LaTeX file
 LaTeX Font Info:    Redeclaring font encoding TS1 on input line 47.
 ))
-\g__um_fam_int=\count352
-\g__um_fonts_used_int=\count353
-\l__um_primecount_int=\count354
+\g__um_fam_int=\count353
+\g__um_fonts_used_int=\count354
+\l__um_primecount_int=\count355
 \g__um_primekern_muskip=\muskip18
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/unicode-math/unico
@@ -979,7 +979,7 @@ Package: tikz 2021/05/15 v3.1.9a (3.1.9a)
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/libraries/pg
 flibraryplothandlers.code.tex
 File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgf@plot@mark@count=\count355
+\pgf@plot@mark@count=\count356
 \pgfplotmarksize=\dimen295
 )
 \tikz@lastx=\dimen296
@@ -994,19 +994,19 @@ File: pgflibraryplothandlers.code.tex 2021/05/15 v3.1.9a (3.1.9a)
 \tikz@figbox@bg=\box80
 \tikz@tempbox=\box81
 \tikz@tempbox@bg=\box82
-\tikztreelevel=\count356
-\tikznumberofchildren=\count357
-\tikznumberofcurrentchild=\count358
-\tikz@fig@count=\count359
+\tikztreelevel=\count357
+\tikznumberofchildren=\count358
+\tikznumberofcurrentchild=\count359
+\tikz@fig@count=\count360
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/modules/pgfm
 odulematrix.code.tex
 File: pgfmodulematrix.code.tex 2021/05/15 v3.1.9a (3.1.9a)
-\pgfmatrixcurrentrow=\count360
-\pgfmatrixcurrentcolumn=\count361
-\pgf@matrix@numberofcolumns=\count362
+\pgfmatrixcurrentrow=\count361
+\pgfmatrixcurrentcolumn=\count362
+\pgf@matrix@numberofcolumns=\count363
 )
-\tikz@expandcount=\count363
+\tikz@expandcount=\count364
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/generic/pgf/frontendlaye
 r/tikz/libraries/tikzlibrarytopaths.code.tex
@@ -1033,7 +1033,7 @@ Package: beamercolorthememetropolis 2017/01/23 Metropolis color theme
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamertheme-metrop
 olis/beamerfontthememetropolis.sty
 Package: beamerfontthememetropolis 2017/01/23 Metropolis font theme
-\c@fontsnotfound=\count364
+\c@fontsnotfound=\count365
 
 Package beamerthememetropolis Warning: Could not find Fira Sans fonts on input 
 line 95.
@@ -1052,11 +1052,11 @@ Package hyperref Info: Option `colorlinks' set `true' on input line 87.
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/fancyvrb/fancyvrb.
 sty
 Package: fancyvrb 2021/10/15 v3.9 verbatim text (tvz,hv)
-\FV@CodeLineNo=\count365
+\FV@CodeLineNo=\count366
 \FV@InFile=\read3
 \FV@TabBox=\box83
-\c@FancyVerbLine=\count366
-\FV@StepNumber=\count367
+\c@FancyVerbLine=\count367
+\FV@StepNumber=\count368
 \FV@OutFile=\write5
 ) (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/framed/framed.st
 y
@@ -1080,35 +1080,35 @@ Package: booktabs 2020/01/12 v1.61803398 Publication quality tables
 \cmidrulesep=\dimen315
 \cmidrulekern=\dimen316
 \defaultaddspace=\dimen317
-\@cmidla=\count368
-\@cmidlb=\count369
+\@cmidla=\count369
+\@cmidlb=\count370
 \@aboverulesep=\dimen318
 \@belowrulesep=\dimen319
-\@thisruleclass=\count370
-\@lastruleclass=\count371
+\@thisruleclass=\count371
+\@lastruleclass=\count372
 \@thisrulewidth=\dimen320
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/longtable.st
 y
-Package: longtable 2021-05-07 v4.16 Multi-page Table package (DPC)
+Package: longtable 2021-09-01 v4.17 Multi-page Table package (DPC)
 \LTleft=\skip77
 \LTright=\skip78
 \LTpre=\skip79
 \LTpost=\skip80
-\LTchunksize=\count372
+\LTchunksize=\count373
 \LTcapwidth=\dimen321
 \LT@head=\box84
 \LT@firsthead=\box85
 \LT@foot=\box86
 \LT@lastfoot=\box87
 \LT@gbox=\box88
-\LT@cols=\count373
-\LT@rows=\count374
-\c@LT@tables=\count375
-\c@LT@chunks=\count376
+\LT@cols=\count374
+\LT@rows=\count375
+\c@LT@tables=\count376
+\c@LT@chunks=\count377
 \LT@p@ftn=\toks49
 ) (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/tools/array.sty
-Package: array 2021/04/20 v2.5e Tabular extension package (FMi)
+Package: array 2021/10/04 v2.5f Tabular extension package (FMi)
 \col@sep=\dimen322
 \ar@mcellbox=\box89
 \extrarowheight=\dimen323
@@ -1121,7 +1121,7 @@ Package: array 2021/04/20 v2.5e Tabular extension package (FMi)
 sty
 Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 \multirow@colwidth=\skip83
-\multirow@cntb=\count377
+\multirow@cntb=\count378
 \multirow@dima=\skip84
 \bigstrutjot=\dimen324
 )
@@ -1129,13 +1129,13 @@ Package: multirow 2021/03/15 v2.8 Span multiple rows of a table
 y
 \wrapoverhang=\dimen325
 \WF@size=\dimen326
-\c@WF@wrappedlines=\count378
+\c@WF@wrappedlines=\count379
 \WF@box=\box91
 \WF@everypar=\toks51
 Package: wrapfig 2003/01/31  v 3.6
 ) (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/float/float.sty
 Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count379
+\c@float@type=\count380
 \float@exts=\toks52
 \float@box=\box92
 \@float@everytoks=\toks53
@@ -1164,16 +1164,16 @@ Package: tabu 2019/01/11 v2.9 - flexible LaTeX tabulars (FC+tabu-fixed)
 sty
 Package: varwidth 2009/03/30 ver 0.92;  Variable-width minipages
 \@vwid@box=\box94
-\sift@deathcycles=\count380
+\sift@deathcycles=\count381
 \@vwid@loff=\dimen327
 \@vwid@roff=\dimen328
 )
-\c@taburow=\count381
-\tabu@nbcols=\count382
-\tabu@cnt=\count383
-\tabu@Xcol=\count384
-\tabu@alloc=\count385
-\tabu@nested=\count386
+\c@taburow=\count382
+\tabu@nbcols=\count383
+\tabu@cnt=\count384
+\tabu@Xcol=\count385
+\tabu@alloc=\count386
+\tabu@nested=\count387
 \tabu@target=\dimen329
 \tabu@spreadtarget=\dimen330
 \tabu@naturalX=\dimen331
@@ -1215,7 +1215,7 @@ Package: trimspaces 2009/09/17 v1.1 Trim spaces around a token list
 \UL@skip=\skip88
 \UL@hook=\toks57
 \UL@height=\dimen338
-\UL@pe=\count387
+\UL@pe=\count388
 \UL@pixel=\dimen339
 \ULC@box=\box102
 Package: ulem 2019/11/18
@@ -1225,12 +1225,12 @@ Package: ulem 2019/11/18
 sty
 Package: makecell 2009/08/03 V0.1e Managing of Tab Column Heads and Cells
 \rotheadsize=\dimen341
-\c@nlinenum=\count388
+\c@nlinenum=\count389
 \TeXr@lab=\toks58
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/animate/animate.st
 y
-Package: animate 2021/09/02 PDF & SVG animations from files and inline graphics
+Package: animate 2021/11/09 PDF & SVG animations from files and inline graphics
 
 
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/xkeyval/xkeyval.st
@@ -1244,7 +1244,7 @@ tex
 \XKV@toks=\toks59
 \XKV@tempa@toks=\toks60
 )
-\XKV@depth=\count389
+\XKV@depth=\count390
 File: xkeyval.tex 2014/12/03 v2.7a key=value parser (HA)
 )) (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/base/ifthen.sty
 Package: ifthen 2020/11/24 v1.1c Standard LaTeX ifthen package (DPC)
@@ -1263,41 +1263,41 @@ Package zref Info: New property list: main on input line 764.
 Package zref Info: New property: default on input line 765.
 Package zref Info: New property: page on input line 766.
 )
-\c@abspage=\count390
+\c@abspage=\count391
 Package zref Info: New property: abspage on input line 66.
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/media9/pdfbase.sty
 Package: pdfbase 2021/09/12 v0.53 driver independent access to low-level PDF fe
 atures
-\g_pbs_page_int=\count391
-\g_pbs_obj_int=\count392
-\g_pbs_oc_int=\count393
+\g_pbs_page_int=\count392
+\g_pbs_obj_int=\count393
+\g_pbs_oc_int=\count394
 ) (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/ocgx2/ocgbase.st
 y
 Package: ocgbase 2021/06/11 v0.20 support package for ocgx2.sty
-\g_ocgbase_nd_int=\count394
+\g_ocgbase_nd_int=\count395
 )
 \@anim@box=\box103
 \@anim@measbox=\box104
 \@anim@tmpdima=\dimen342
 \@anim@tmpdimb=\dimen343
-\@anim@num=\count395
-\@anim@curframe=\count396
-\@anim@curframe@zb=\count397
-\@anim@resizeflags=\count398
-\@anim@skipfram=\count399
-\@anim@mulframecnt=\count400
+\@anim@num=\count396
+\@anim@curframe=\count397
+\@anim@curframe@zb=\count398
+\@anim@resizeflags=\count399
+\@anim@skipfram=\count400
+\@anim@mulframecnt=\count401
 \@anim@@tmlnfile=\read4
-\@anim@tmpcnt=\count401
-\c@@anim@ltxcnt=\count402
-\@anim@curlayer=\count403
-\@anim@lineno=\count404
-\@anim@curfield=\count405
-\@anim@@resizeflags=\count406
+\@anim@tmpcnt=\count402
+\c@@anim@ltxcnt=\count403
+\@anim@curlayer=\count404
+\@anim@lineno=\count405
+\@anim@curfield=\count406
+\@anim@@resizeflags=\count407
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/beamer/xmpmulti.st
 y
-\@mpm@count=\count407
+\@mpm@count=\count408
 )
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/caption/caption.st
 y
@@ -1320,8 +1320,8 @@ amer.sto
 File: caption-beamer.sto 2020/08/22 v2.0 Adaption of the caption package to the
  beamer document classes (AR)
 ))
-\c@caption@flags=\count408
-\c@continuedfloat=\count409
+\c@caption@flags=\count409
+\c@continuedfloat=\count410
 Package caption Info: float package is loaded.
 Package caption Info: hyperref package is loaded.
 Package caption Info: Hyperref support is turned off
@@ -1472,52 +1472,52 @@ sty
 Package: biblatex 2020/12/31 v3.16 programmable bibliographies (PK/MW)
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/logreq/logreq.sty
 Package: logreq 2010/08/04 v1.0 xml request logger
-\lrq@indent=\count410
+\lrq@indent=\count411
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/logreq/logreq.def
 File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 ))
-\c@tabx@nest=\count411
-\c@listtotal=\count412
-\c@listcount=\count413
-\c@liststart=\count414
-\c@liststop=\count415
-\c@citecount=\count416
-\c@citetotal=\count417
-\c@multicitecount=\count418
-\c@multicitetotal=\count419
-\c@instcount=\count420
-\c@maxnames=\count421
-\c@minnames=\count422
-\c@maxitems=\count423
-\c@minitems=\count424
-\c@citecounter=\count425
-\c@maxcitecounter=\count426
-\c@savedcitecounter=\count427
-\c@uniquelist=\count428
-\c@uniquename=\count429
-\c@refsection=\count430
-\c@refsegment=\count431
-\c@maxextratitle=\count432
-\c@maxextratitleyear=\count433
-\c@maxextraname=\count434
-\c@maxextradate=\count435
-\c@maxextraalpha=\count436
-\c@abbrvpenalty=\count437
-\c@highnamepenalty=\count438
-\c@lownamepenalty=\count439
-\c@maxparens=\count440
-\c@parenlevel=\count441
-\blx@tempcnta=\count442
-\blx@tempcntb=\count443
-\blx@tempcntc=\count444
-\blx@maxsection=\count445
-\blx@maxsegment@0=\count446
-\blx@notetype=\count447
-\blx@parenlevel@text=\count448
-\blx@parenlevel@foot=\count449
-\blx@sectionciteorder@0=\count450
-\blx@entrysetcounter=\count451
-\blx@biblioinstance=\count452
+\c@tabx@nest=\count412
+\c@listtotal=\count413
+\c@listcount=\count414
+\c@liststart=\count415
+\c@liststop=\count416
+\c@citecount=\count417
+\c@citetotal=\count418
+\c@multicitecount=\count419
+\c@multicitetotal=\count420
+\c@instcount=\count421
+\c@maxnames=\count422
+\c@minnames=\count423
+\c@maxitems=\count424
+\c@minitems=\count425
+\c@citecounter=\count426
+\c@maxcitecounter=\count427
+\c@savedcitecounter=\count428
+\c@uniquelist=\count429
+\c@uniquename=\count430
+\c@refsection=\count431
+\c@refsegment=\count432
+\c@maxextratitle=\count433
+\c@maxextratitleyear=\count434
+\c@maxextraname=\count435
+\c@maxextradate=\count436
+\c@maxextraalpha=\count437
+\c@abbrvpenalty=\count438
+\c@highnamepenalty=\count439
+\c@lownamepenalty=\count440
+\c@maxparens=\count441
+\c@parenlevel=\count442
+\blx@tempcnta=\count443
+\blx@tempcntb=\count444
+\blx@tempcntc=\count445
+\blx@maxsection=\count446
+\blx@maxsegment@0=\count447
+\blx@notetype=\count448
+\blx@parenlevel@text=\count449
+\blx@parenlevel@foot=\count450
+\blx@sectionciteorder@0=\count451
+\blx@entrysetcounter=\count452
+\blx@biblioinstance=\count453
 \labelnumberwidth=\skip89
 \labelalphawidth=\skip90
 \biblabelsep=\skip91
@@ -1529,9 +1529,9 @@ File: logreq.def 2010/08/04 v1.0 logreq spec v1.0
 \blx@bcfin=\read5
 \blx@bcfout=\write6
 \blx@langwohyphens=\language3
-\c@mincomprange=\count453
-\c@maxcomprange=\count454
-\c@mincompwidth=\count455
+\c@mincomprange=\count454
+\c@maxcomprange=\count455
+\c@mincompwidth=\count456
 Package biblatex Info: Trying to load biblatex default data model...
 Package biblatex Info: ... file 'blx-dm.def' found.
 
@@ -1543,74 +1543,74 @@ Package biblatex Info: Trying to load biblatex style data model...
 Package biblatex Info: ... file 'authoryear.dbx' not found.
 Package biblatex Info: Trying to load biblatex custom data model...
 Package biblatex Info: ... file 'biblatex-dm.cfg' not found.
-\c@afterword=\count456
-\c@savedafterword=\count457
-\c@annotator=\count458
-\c@savedannotator=\count459
-\c@author=\count460
-\c@savedauthor=\count461
-\c@bookauthor=\count462
-\c@savedbookauthor=\count463
-\c@commentator=\count464
-\c@savedcommentator=\count465
-\c@editor=\count466
-\c@savededitor=\count467
-\c@editora=\count468
-\c@savededitora=\count469
-\c@editorb=\count470
-\c@savededitorb=\count471
-\c@editorc=\count472
-\c@savededitorc=\count473
-\c@foreword=\count474
-\c@savedforeword=\count475
-\c@holder=\count476
-\c@savedholder=\count477
-\c@introduction=\count478
-\c@savedintroduction=\count479
-\c@namea=\count480
-\c@savednamea=\count481
-\c@nameb=\count482
-\c@savednameb=\count483
-\c@namec=\count484
-\c@savednamec=\count485
-\c@translator=\count486
-\c@savedtranslator=\count487
-\c@shortauthor=\count488
-\c@savedshortauthor=\count489
-\c@shorteditor=\count490
-\c@savedshorteditor=\count491
-\c@labelname=\count492
-\c@savedlabelname=\count493
-\c@institution=\count494
-\c@savedinstitution=\count495
-\c@lista=\count496
-\c@savedlista=\count497
-\c@listb=\count498
-\c@savedlistb=\count499
-\c@listc=\count500
-\c@savedlistc=\count501
-\c@listd=\count502
-\c@savedlistd=\count503
-\c@liste=\count504
-\c@savedliste=\count505
-\c@listf=\count506
-\c@savedlistf=\count507
-\c@location=\count508
-\c@savedlocation=\count509
-\c@organization=\count510
-\c@savedorganization=\count511
-\c@origlocation=\count512
-\c@savedoriglocation=\count513
-\c@origpublisher=\count514
-\c@savedorigpublisher=\count515
-\c@publisher=\count516
-\c@savedpublisher=\count517
-\c@language=\count518
-\c@savedlanguage=\count519
-\c@origlanguage=\count520
-\c@savedoriglanguage=\count521
-\c@pageref=\count522
-\c@savedpageref=\count523
+\c@afterword=\count457
+\c@savedafterword=\count458
+\c@annotator=\count459
+\c@savedannotator=\count460
+\c@author=\count461
+\c@savedauthor=\count462
+\c@bookauthor=\count463
+\c@savedbookauthor=\count464
+\c@commentator=\count465
+\c@savedcommentator=\count466
+\c@editor=\count467
+\c@savededitor=\count468
+\c@editora=\count469
+\c@savededitora=\count470
+\c@editorb=\count471
+\c@savededitorb=\count472
+\c@editorc=\count473
+\c@savededitorc=\count474
+\c@foreword=\count475
+\c@savedforeword=\count476
+\c@holder=\count477
+\c@savedholder=\count478
+\c@introduction=\count479
+\c@savedintroduction=\count480
+\c@namea=\count481
+\c@savednamea=\count482
+\c@nameb=\count483
+\c@savednameb=\count484
+\c@namec=\count485
+\c@savednamec=\count486
+\c@translator=\count487
+\c@savedtranslator=\count488
+\c@shortauthor=\count489
+\c@savedshortauthor=\count490
+\c@shorteditor=\count491
+\c@savedshorteditor=\count492
+\c@labelname=\count493
+\c@savedlabelname=\count494
+\c@institution=\count495
+\c@savedinstitution=\count496
+\c@lista=\count497
+\c@savedlista=\count498
+\c@listb=\count499
+\c@savedlistb=\count500
+\c@listc=\count501
+\c@savedlistc=\count502
+\c@listd=\count503
+\c@savedlistd=\count504
+\c@liste=\count505
+\c@savedliste=\count506
+\c@listf=\count507
+\c@savedlistf=\count508
+\c@location=\count509
+\c@savedlocation=\count510
+\c@organization=\count511
+\c@savedorganization=\count512
+\c@origlocation=\count513
+\c@savedoriglocation=\count514
+\c@origpublisher=\count515
+\c@savedorigpublisher=\count516
+\c@publisher=\count517
+\c@savedpublisher=\count518
+\c@language=\count519
+\c@savedlanguage=\count520
+\c@origlanguage=\count521
+\c@savedoriglanguage=\count522
+\c@pageref=\count523
+\c@savedpageref=\count524
 \shorthandwidth=\skip97
 \shortjournalwidth=\skip98
 \shortserieswidth=\skip99
@@ -1643,19 +1643,19 @@ Package biblatex Info: ... file 'biblatex.def' found.
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/biblatex.
 def
 File: biblatex.def 2020/12/31 v3.16 biblatex compatibility (PK/MW)
-\c@textcitecount=\count524
-\c@textcitetotal=\count525
-\c@textcitemaxnames=\count526
-\c@biburlbigbreakpenalty=\count527
-\c@biburlbreakpenalty=\count528
-\c@biburlnumpenalty=\count529
-\c@biburlucpenalty=\count530
-\c@biburllcpenalty=\count531
+\c@textcitecount=\count525
+\c@textcitetotal=\count526
+\c@textcitemaxnames=\count527
+\c@biburlbigbreakpenalty=\count528
+\c@biburlbreakpenalty=\count529
+\c@biburlnumpenalty=\count530
+\c@biburlucpenalty=\count531
+\c@biburllcpenalty=\count532
 \biburlbigskip=\muskip19
 \biburlnumskip=\muskip20
 \biburlucskip=\muskip21
 \biburllcskip=\muskip22
-\c@smartand=\count532
+\c@smartand=\count533
 )
 Package biblatex Info: Trying to load bibliography style 'authoryear'...
 Package biblatex Info: ... file 'authoryear.bbx' found.
@@ -1669,8 +1669,8 @@ Package biblatex Info: ... file 'standard.bbx' found.
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/biblatex/bbx/stand
 ard.bbx
 File: standard.bbx 2020/12/31 v3.16 biblatex bibliography style (PK/MW)
-\c@bbx:relatedcount=\count533
-\c@bbx:relatedtotal=\count534
+\c@bbx:relatedcount=\count534
+\c@bbx:relatedtotal=\count535
 ))
 Package biblatex Info: Trying to load citation style 'authoryear'...
 Package biblatex Info: ... file 'authoryear.cbx' found.
@@ -1693,8 +1693,8 @@ Package biblatex Info: ... file 'biblatex.cfg' found.
 cfg
 File: biblatex.cfg 
 ))
-\@quotelevel=\count535
-\@quotereset=\count536
+\@quotelevel=\count536
+\@quotereset=\count537
 (./11.1-NHST.aux)
 \openout1 = `11.1-NHST.aux'.
 
@@ -1766,7 +1766,7 @@ Package: refcount 2019/12/15 v3.6 Data extraction from label references (HO)
 ettitlestring.sty
 Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
-\c@section@level=\count537
+\c@section@level=\count538
 )
 LaTeX Info: Redefining \ref on input line 180.
 LaTeX Info: Redefining \pageref on input line 180.
@@ -2074,7 +2074,7 @@ Package biblatex Info: Automatic encoding selection.
 (biblatex)             Assuming data encoding 'utf8'.
 Package biblatex Info: Document encoding is UTF8 ....
 Package biblatex Info: ... and expl3
-(biblatex)             2021-10-18 L3 programming layer (loader) 
+(biblatex)             2021-11-12 L3 programming layer (loader) 
 (biblatex)             is new enough (at least 2020/04/06),
 (biblatex)             setting 'casechanger=expl3'.
 
@@ -2111,37 +2111,31 @@ LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/m/n' will be
 [1
 
 ]
-\openout4 = `11.1-NHST.vrb'.
+LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/b/n' will be
+(Font)              scaled to size 9.15584pt on input line 206.
+LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/b/n' will be
+(Font)              scaled to size 10.03381pt on input line 206.
+[2
 
-(./11.1-NHST.vrb
-LaTeX Font Info:    Font shape `TU/FiraMono-Regular.ttf(0)/m/n' will be
-(Font)              scaled to size 9.22536pt on input line 2.
-) [2
+] [3
 
 ]
-LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/b/n' will be
-(Font)              scaled to size 10.03381pt on input line 227.
-[3
+LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/m/n' will be
+(Font)              scaled to size 7.64058pt on input line 246.
 
-] [4
-
-]
-LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/b/n' will be
-(Font)              scaled to size 8.36151pt on input line 247.
-
-Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
+Package fontspec Info: FiraSans-Light scale = 0.8489494439662927.
 
 
-Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
+Package fontspec Info: FiraSans-Light scale = 0.8489494439662927.
 
 
-Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
+Package fontspec Info: FiraSans-Light scale = 0.8489494439662927.
 
 
-Package fontspec Info: FiraSans-Bold scale = 0.8361583700076367.
+Package fontspec Info: FiraSans-Bold scale = 0.8361582191485589.
 
 
-Package fontspec Info: FiraSans-Bold scale = 0.8361583700076367.
+Package fontspec Info: FiraSans-Bold scale = 0.8361582191485589.
 
 
 Package fontspec Info: Font family 'FiraSans-Light.ttf(2)' created for font
@@ -2153,74 +2147,99 @@ old.ttf},Numbers={Monospaced}].
 (fontspec)             series/shapes:
 (fontspec)              
 (fontspec)             - 'normal' (m/n) with NFSS spec.:
-(fontspec)             <->s*[0.8489486192968059]"[FiraSans-Light.ttf]/OT:script
+(fontspec)             <->s*[0.8489494439662927]"[FiraSans-Light.ttf]/OT:script
 =latn;language=dflt;+tnum;mapping=tex-text;"
 (fontspec)             - 'small caps'  (m/sc) with NFSS spec.:
-(fontspec)             <->s*[0.8489486192968059]"[FiraSans-Light.ttf]/OT:script
+(fontspec)             <->s*[0.8489494439662927]"[FiraSans-Light.ttf]/OT:script
 =latn;language=dflt;+tnum;+smcp;mapping=tex-text;"
 (fontspec)             - 'bold' (b/n) with NFSS spec.:
-(fontspec)             <->s*[0.8361583700076367]"[FiraSans-Bold.ttf]/OT:script=
+(fontspec)             <->s*[0.8361582191485589]"[FiraSans-Bold.ttf]/OT:script=
 latn;language=dflt;+tnum;mapping=tex-text;"
 (fontspec)             - 'bold small caps'  (b/sc) with NFSS spec.:
-(fontspec)             <->s*[0.8361583700076367]"[FiraSans-Bold.ttf]/OT:script=
+(fontspec)             <->s*[0.8361582191485589]"[FiraSans-Bold.ttf]/OT:script=
 latn;language=dflt;+tnum;+smcp;mapping=tex-text;"
 
 LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(2)/m/n' will be
-(Font)              scaled to size 9.29602pt on input line 247.
+(Font)              scaled to size 5.09372pt on input line 246.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.89621pt on input line 247.
+(Font)              scaled to size 6.181pt on input line 246.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.64017pt on input line 247.
+(Font)              scaled to size 5.15083pt on input line 246.
 LaTeX Font Info:    Trying to load font information for OML+lmm on input line 2
-47.
+46.
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/lm/omllmm.fd
 File: omllmm.fd 2015/05/01 v1.6.1 Font defs for Latin Modern
 )
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 11.28131pt on input line 247.
+(Font)              scaled to size 6.18155pt on input line 246.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.89691pt on input line 247.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.64066pt on input line 247.
+(Font)              scaled to size 5.15129pt on input line 246.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 11.27914pt on input line 247.
+(Font)              scaled to size 6.18036pt on input line 246.
 LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.8954pt on input line 247.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.63957pt on input line 247.
-LaTeX Font Info:    Trying to load font information for U+msa on input line 247
+(Font)              scaled to size 5.1503pt on input line 246.
+LaTeX Font Info:    Trying to load font information for U+msa on input line 246
 .
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 247
+LaTeX Font Info:    Trying to load font information for U+msb on input line 246
 .
 (c:/Users/olivi/AppData/Roaming/TinyTeX/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
-) [5
+)
+LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(2)/b/n' will be
+(Font)              scaled to size 5.0169pt on input line 246.
+[4
 
 ]
+File: 11.1-NHST_files/figure-beamer/unnamed-chunk-2-1.pdf Graphic file (type pd
+f)
+<use 11.1-NHST_files/figure-beamer/unnamed-chunk-2-1.pdf>
 
-Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
+Overfull \vbox (6.6317pt too high) detected at line 251
+ []
+
+[5
+
+]
+File: 11.1-NHST_files/figure-beamer/unnamed-chunk-3-1.pdf Graphic file (type pd
+f)
+<use 11.1-NHST_files/figure-beamer/unnamed-chunk-3-1.pdf>
+
+Overfull \vbox (6.6317pt too high) detected at line 256
+ []
 
 [6
 
+] [7
+
+] [8
+
 ]
+LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/b/n' will be
+(Font)              scaled to size 8.36151pt on input line 302.
 
 Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
 
-[7
-
-]
-
-Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
-
-[8
-
-]
-
-Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
-
+LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(2)/m/n' will be
+(Font)              scaled to size 9.29602pt on input line 302.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.89621pt on input line 302.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 5.64017pt on input line 302.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 11.28131pt on input line 302.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.89691pt on input line 302.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 5.64066pt on input line 302.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 11.27914pt on input line 302.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.8954pt on input line 302.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 5.63957pt on input line 302.
 [9
 
 ]
@@ -2230,237 +2249,212 @@ Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
 [10
 
 ]
-LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/b/n' will be
-(Font)              scaled to size 9.15584pt on input line 417.
 
-LaTeX Font Warning: Font shape `TU/FiraSans-Light.ttf(0)/m/it' undefined
-(Font)              using `TU/FiraSans-Light.ttf(0)/m/n' instead on input line 
-417.
-
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 10.30167pt on input line 417.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 7.21117pt on input line 417.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 5.15083pt on input line 417.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 10.30258pt on input line 417.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 7.2118pt on input line 417.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 5.15129pt on input line 417.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 10.3006pt on input line 417.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 7.21042pt on input line 417.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 5.1503pt on input line 417.
-
-Overfull \vbox (16.27777pt too high) detected at line 417
- []
+Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
 
 [11
 
-] [12
+]
 
-] [13
+Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
 
-] [14
-
-] [15
+[12
 
 ]
-LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/m/n' will be
-(Font)              scaled to size 7.64058pt on input line 481.
-LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/m/it' will be
-(Font)              scaled to size 8.48953pt on input line 481.
-[16
+
+Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
+
+[13
+
+]
+
+Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
+
+[14
+
+]
+
+LaTeX Font Warning: Font shape `TU/FiraSans-Light.ttf(0)/m/it' undefined
+(Font)              using `TU/FiraSans-Light.ttf(0)/m/n' instead on input line 
+472.
+
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 10.30167pt on input line 472.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 7.21117pt on input line 472.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 10.30258pt on input line 472.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 7.2118pt on input line 472.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 10.3006pt on input line 472.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 7.21042pt on input line 472.
+
+Overfull \vbox (16.27777pt too high) detected at line 472
+ []
+
+[15
+
+] [16
 
 ] [17
 
-]
-File: 11.1-NHST_files/figure-beamer/unnamed-chunk-7-1.pdf Graphic file (type pd
-f)
-<use 11.1-NHST_files/figure-beamer/unnamed-chunk-7-1.pdf>
+] [18
 
-Overfull \vbox (15.1045pt too high) detected at line 489
- []
-
-[18
-
-]
-File: 11.1-NHST_files/figure-beamer/unnamed-chunk-8-1.pdf Graphic file (type pd
-f)
-<use 11.1-NHST_files/figure-beamer/unnamed-chunk-8-1.pdf>
-
-Overfull \vbox (14.44147pt too high) detected at line 496
- []
-
-[19
-
-]
-File: 11.1-NHST_files/figure-beamer/unnamed-chunk-9-1.pdf Graphic file (type pd
-f)
-<use 11.1-NHST_files/figure-beamer/unnamed-chunk-9-1.pdf>
-
-Overfull \vbox (1.26802pt too high) detected at line 503
- []
-
-[20
-
-]
-Overfull \vbox (0.83937pt too high) detected at line 542
- []
-
-[21
+] [19
 
 ]
 LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/m/it' will be
-(Font)              scaled to size 9.29602pt on input line 586.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 9.2715pt on input line 586.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
-(Font)              scaled to size 6.181pt on input line 586.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 9.27232pt on input line 586.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
-(Font)              scaled to size 6.18155pt on input line 586.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 9.27054pt on input line 586.
-LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
-(Font)              scaled to size 6.18036pt on input line 586.
-[22
+(Font)              scaled to size 8.48953pt on input line 536.
+[20
+
+] [21
 
 ]
 File: 11.1-NHST_files/figure-beamer/unnamed-chunk-10-1.pdf Graphic file (type p
 df)
 <use 11.1-NHST_files/figure-beamer/unnamed-chunk-10-1.pdf>
 
-Overfull \vbox (6.6317pt too high) detected at line 591
+Overfull \vbox (15.1045pt too high) detected at line 544
  []
 
-[23
+[22
 
 ]
 File: 11.1-NHST_files/figure-beamer/unnamed-chunk-11-1.pdf Graphic file (type p
 df)
 <use 11.1-NHST_files/figure-beamer/unnamed-chunk-11-1.pdf>
 
-Overfull \vbox (6.6317pt too high) detected at line 596
+Overfull \vbox (14.44147pt too high) detected at line 551
  []
 
-[24
+[23
 
 ]
 File: 11.1-NHST_files/figure-beamer/unnamed-chunk-12-1.pdf Graphic file (type p
 df)
 <use 11.1-NHST_files/figure-beamer/unnamed-chunk-12-1.pdf>
 
-Overfull \vbox (6.6317pt too high) detected at line 601
+Overfull \vbox (1.26802pt too high) detected at line 558
+ []
+
+[24
+
+]
+Overfull \vbox (0.83937pt too high) detected at line 597
  []
 
 [25
 
-] [26
+]
+LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/m/it' will be
+(Font)              scaled to size 9.29602pt on input line 641.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(1)/m/n' will be
+(Font)              scaled to size 9.2715pt on input line 641.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(2)/m/n' will be
+(Font)              scaled to size 9.27232pt on input line 641.
+LaTeX Font Info:    Font shape `TU/latinmodern-math.otf(3)/m/n' will be
+(Font)              scaled to size 9.27054pt on input line 641.
+[26
 
 ]
 File: 11.1-NHST_files/figure-beamer/unnamed-chunk-13-1.pdf Graphic file (type p
 df)
 <use 11.1-NHST_files/figure-beamer/unnamed-chunk-13-1.pdf>
 
-Overfull \vbox (6.6317pt too high) detected at line 644
+Overfull \vbox (6.6317pt too high) detected at line 646
  []
 
 [27
-
-]
-LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/m/n' will be
-(Font)              scaled to size 6.50722pt on input line 680.
-LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/m/n' will be
-(Font)              scaled to size 4.64801pt on input line 680.
-[28
-
-]
-Overfull \vbox (26.2044pt too high) detected at line 723
- []
-
-[29
-
-]
-Overfull \vbox (46.41612pt too high) detected at line 772
- []
-
-[30
 
 ]
 File: 11.1-NHST_files/figure-beamer/unnamed-chunk-14-1.pdf Graphic file (type p
 df)
 <use 11.1-NHST_files/figure-beamer/unnamed-chunk-14-1.pdf>
 
-Overfull \vbox (6.6317pt too high) detected at line 777
+Overfull \vbox (6.6317pt too high) detected at line 651
  []
 
-[31
+[28
 
 ]
 File: 11.1-NHST_files/figure-beamer/unnamed-chunk-15-1.pdf Graphic file (type p
 df)
 <use 11.1-NHST_files/figure-beamer/unnamed-chunk-15-1.pdf>
 
-Overfull \vbox (6.6317pt too high) detected at line 782
+Overfull \vbox (6.6317pt too high) detected at line 656
  []
 
-[32
+[29
+
+] [30
 
 ]
 File: 11.1-NHST_files/figure-beamer/unnamed-chunk-16-1.pdf Graphic file (type p
 df)
 <use 11.1-NHST_files/figure-beamer/unnamed-chunk-16-1.pdf>
 
-Overfull \vbox (6.6317pt too high) detected at line 787
+Overfull \vbox (6.6317pt too high) detected at line 699
+ []
+
+[31
+
+]
+LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/m/n' will be
+(Font)              scaled to size 6.50722pt on input line 735.
+LaTeX Font Info:    Font shape `TU/FiraSans-Light.ttf(0)/m/n' will be
+(Font)              scaled to size 4.64801pt on input line 735.
+[32
+
+]
+Overfull \vbox (26.2044pt too high) detected at line 778
  []
 
 [33
+
+]
+Overfull \vbox (15.13628pt too high) detected at line 824
+ []
+
+[34
 
 ]
 File: 11.1-NHST_files/figure-beamer/unnamed-chunk-17-1.pdf Graphic file (type p
 df)
 <use 11.1-NHST_files/figure-beamer/unnamed-chunk-17-1.pdf>
 
-Overfull \vbox (6.6317pt too high) detected at line 792
+Overfull \vbox (6.6317pt too high) detected at line 829
  []
 
-[34
+[35
 
 ]
-\openout4 = `11.1-NHST.vrb'.
+File: 11.1-NHST_files/figure-beamer/unnamed-chunk-18-1.pdf Graphic file (type p
+df)
+<use 11.1-NHST_files/figure-beamer/unnamed-chunk-18-1.pdf>
 
-(./11.1-NHST.vrb
-LaTeX Font Info:    Font shape `TU/FiraMono-Regular.ttf(0)/m/n' will be
-(Font)              scaled to size 6.73999pt on input line 6.
-) [35
-
-]
-
-Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
-
-
-Overfull \vbox (14.11578pt too high) detected at line 860
+Overfull \vbox (6.6317pt too high) detected at line 834
  []
 
 [36
 
 ]
-Overfull \vbox (11.68633pt too high) detected at line 904
+File: 11.1-NHST_files/figure-beamer/unnamed-chunk-19-1.pdf Graphic file (type p
+df)
+<use 11.1-NHST_files/figure-beamer/unnamed-chunk-19-1.pdf>
+
+Overfull \vbox (6.6317pt too high) detected at line 839
  []
 
 [37
 
 ]
-File: pregnant_error.png Graphic file (type bmp)
-<pregnant_error.png>
+File: 11.1-NHST_files/figure-beamer/unnamed-chunk-20-1.pdf Graphic file (type p
+df)
+<use 11.1-NHST_files/figure-beamer/unnamed-chunk-20-1.pdf>
 
-Overfull \vbox (43.71231pt too high) detected at line 924
+Overfull \vbox (6.6317pt too high) detected at line 844
  []
 
 [38
@@ -2468,18 +2462,51 @@ Overfull \vbox (43.71231pt too high) detected at line 924
 ]
 \openout4 = `11.1-NHST.vrb'.
 
-(./11.1-NHST.vrb) [39
+(./11.1-NHST.vrb
+LaTeX Font Info:    Font shape `TU/FiraMono-Regular.ttf(0)/m/n' will be
+(Font)              scaled to size 6.73999pt on input line 6.
+) [39
 
-] [40
+]
 
-] [41
+Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
 
-] [42
+
+Overfull \vbox (14.11578pt too high) detected at line 912
+ []
+
+[40
+
+]
+Overfull \vbox (11.68633pt too high) detected at line 956
+ []
+
+[41
+
+]
+File: pregnant_error.png Graphic file (type bmp)
+<pregnant_error.png>
+
+Overfull \vbox (43.71231pt too high) detected at line 976
+ []
+
+[42
 
 ]
 \openout4 = `11.1-NHST.vrb'.
 
 (./11.1-NHST.vrb) [43
+
+] [44
+
+] [45
+
+] [46
+
+]
+\openout4 = `11.1-NHST.vrb'.
+
+(./11.1-NHST.vrb) [47
 
 ]
 \openout4 = `11.1-NHST.vrb'.
@@ -2490,21 +2517,69 @@ Overfull \hbox (62.06161pt too wide) in paragraph at lines 24--24
 in means between group 0 and group 1 is not equal to 0[] 
  []
 
-) [44
+) [48
+
+] [49
+
+] [50
+
+]
+File: pa_pvalues.png Graphic file (type bmp)
+<pa_pvalues.png>
+[51
+
+] [52
+
+]
+File: pvalue_disappointment1.png Graphic file (type bmp)
+<pvalue_disappointment1.png>
+File: pvalue_disappointment2.png Graphic file (type bmp)
+<pvalue_disappointment2.png>
+[53
+
+]
+File: phacking_xkcd.png Graphic file (type bmp)
+<phacking_xkcd.png>
+
+Overfull \vbox (37.34328pt too high) detected at line 1185
+ []
+
+[54
+
+]
+File: significance_xkcd.png Graphic file (type bmp)
+<significance_xkcd.png>
+
+Overfull \vbox (12.77917pt too high) detected at line 1192
+ []
+
+[55
+
+]
+Overfull \vbox (12.88463pt too high) detected at line 1233
+ []
+
+[56
+
+] [57
+
+]
+File: colchicine.png Graphic file (type bmp)
+<colchicine.png>
+[58
+
+]
+File: colchine_results.png Graphic file (type bmp)
+<colchine_results.png>
+[59
+
+] [60
 
 ]
 
-Package fontspec Info: FiraSans-Light scale = 0.8489486192968059.
+LaTeX Warning: Empty bibliography on input line 1293.
 
-[45
-
-] [46
-
-]
-
-LaTeX Warning: Empty bibliography on input line 1064.
-
-[47
+[61
 
 ]
 \tf@nav=\write8
@@ -2527,12 +2602,12 @@ Package logreq Info: Writing requests to '11.1-NHST.run.xml'.
 
  ) 
 Here is how much of TeX's memory you used:
- 41677 strings out of 478472
- 846325 string characters out of 5859791
- 1720645 words of memory out of 5000000
- 61167 multiletter control sequences out of 15000+600000
- 412039 words of font info for 107 fonts, out of 8000000 for 9000
+ 43208 strings out of 478274
+ 906131 string characters out of 5854886
+ 1720956 words of memory out of 5000000
+ 62884 multiletter control sequences out of 15000+600000
+ 412079 words of font info for 112 fonts, out of 8000000 for 9000
  14 hyphenation exceptions out of 8191
  101i,13n,122p,1810b,804s stack positions out of 5000i,500n,10000p,200000b,80000s
 
-Output written on 11.1-NHST.pdf (47 pages).
+Output written on 11.1-NHST.pdf (61 pages).
